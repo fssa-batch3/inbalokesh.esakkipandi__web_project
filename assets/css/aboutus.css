@@ -1,0 +1,48 @@
+.ahead h1{
+    text-align: center;
+    margin:20px;
+    background-color: #5cb748;
+    color:white;
+    height:50px;
+    border-radius: 5px;
+    
+}
+
+.lpara{
+    margin:50px;
+    margin-top:50px;
+    font-size: 25px;
+    width:50%;
+    text-align: justify;
+    
+}
+
+.apara{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: aliceblue;
+    margin:20px;
+    border-radius: 10px;
+
+}
+
+.gallery{
+    margin: 20px 40px;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+}
+
+.image{
+    height:300px;
+    border:2px soild grey;
+}
+
+.image img{
+    height:200px;
+    width:250px;
+}

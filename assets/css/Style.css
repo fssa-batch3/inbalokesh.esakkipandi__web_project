@@ -1,0 +1,92 @@
+@import "normalize.css";
+
+body{
+    font-family: 'Kanit', sans-serif;
+}
+
+.header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.head{
+    display:flex;
+
+}
+
+.navbar{
+
+    margin-top:25px;
+    
+
+}
+
+.navbar a{
+
+    text-decoration: none;
+    color:black;
+    padding-right:50px;
+
+}
+
+.Profile button{
+    position: relative;
+    bottom: 10px;
+    right:20px;
+     
+}
+
+.Profile img{
+    margin-top:17px;
+    margin-right: 10px;
+}
+
+.intro{
+    margin:70px;
+    display:flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.intpara{
+
+    margin-top:70px;
+}
+
+.intpara h1{
+    font-size:80px;
+    
+}
+
+.intpara p{
+    font-size:30px;
+    width:80%;
+}
+
+section{
+    margin-top: 300px;
+}
+
+section h2{
+    font-size: 30px;
+    text-align: center;
+    background-color: #5cb748;
+    color:white;
+    height:50px;
+    border-radius: 5px;
+    margin: 20px;;
+     
+}
+
+
+
+.footer img{
+
+    height:30px;
+    width:30px;
+    
+}
+
+
+

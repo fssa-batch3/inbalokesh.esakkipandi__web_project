@@ -1,0 +1,43 @@
+@import "normalize.css";
+
+body{
+    font-family: 'Kanit', sans-serif;
+}
+
+.header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.head{
+    display:flex;
+
+}
+
+.navbar{
+
+    margin-top:25px;
+    
+
+}
+
+.navbar a{
+
+    text-decoration: none;
+    color:black;
+    padding-right:50px;
+
+}
+
+.Profile button{
+    position: relative;
+    bottom: 10px;
+    right:20px;
+     
+}
+
+.Profile img{
+    margin-top:17px;
+    margin-right: 10px;
+}

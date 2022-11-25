@@ -1,0 +1,48 @@
+ .hord h1{
+    text-align: center;
+    margin:20px;
+    background-color: #5cb748;
+    color:white;
+    height:50px;
+    border-radius: 5px;
+
+}
+
+.list img{
+    height:180px;
+    width:250px;
+}
+
+button{
+    height:25px;
+    width:30px;
+    margin:11px;
+}
+
+.but{
+    display: flex;
+}
+
+.olist{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:20px 40px;
+}
+
+.btn{
+    height:40px;
+    width:100px;
+}
+
+.pt{
+    text-align:end;
+    margin:30px;
+    border-top:2px solid grey;
+    border-bottom: 2px solid grey;;
+}
+
+.lbut{
+    display: flex;
+    justify-content: flex-end
+}
