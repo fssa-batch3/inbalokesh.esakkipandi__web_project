@@ -26,23 +26,15 @@
     border-radius: 10px;
 
 }
-
-.gallery{
-    margin: 20px 40px;
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-
-
+.img{
+    background-color: rgb(94, 38, 38);
 }
 
-.image{
-    height:300px;
-    border:2px soild grey;
-}
+.i img{
 
-.image img{
-    height:200px;
-    width:250px;
+    margin-left:150px;
+    margin-bottom:50px;
+    border-radius: 30px;
+    height:80%;
+    width:80%;
 }

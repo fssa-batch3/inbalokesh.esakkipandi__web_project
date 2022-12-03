@@ -5,7 +5,6 @@
     color:white;
     height:50px;
     border-radius: 5px;
-
 }
 
 .list img{
@@ -15,23 +14,59 @@
 
 button{
     height:25px;
-    width:30px;
-    margin:11px;
+    width:35px;
+    margin:10px;
+}
+
+.bod{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.bod img{
+    height:20px;
+    width:55%;
+}
+button.log{
+    width:70px;
 }
 
 .but{
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-radius: 30px;
+    align-items: center;
+    color:white;
+    width:100px;
+    height:40px;
+    background-color: #5cb748;
+    position:relative;
+    top:30px;
+}
+
+.but img{
+    color:white;
+    height:20px;
+    width:20px;
 }
 
 .olist{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin:20px 40px;
+    margin:40px 40px;
 }
 
+.chick h2{
+    margin-right: 30px;
+}
+
+
+
 .btn{
-    height:40px;
+    height:50px;
     width:100px;
 }
 

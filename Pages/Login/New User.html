@@ -1,16 +1,23 @@
 <html>
     <head>
         <title>New User</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="../../assets/css/Reg.css">
+
+
     </head>
 
 <body>
 
+    <div class="new">
+        <div class="bord">
+
     <img src="../../assets/Images/LOGO.png" alt="Logo" height="80px" width="100px">
 
-    <div>
-
+   
         <h1>
-            Register
+            New User
         </h1>
 
         <div class="New">    
@@ -44,16 +51,19 @@
                 <input type="email" name="Email" id="email" placeholder="abc@gmail.com">    
 
                 <br><br>  
-
+                <div class="add">
                 <label>
                     <b>
-                        Address and location 
+                        Address
                     </b>    
                 </label>  
+                <div>
+                <textarea type="text" name="Address" id="Address" placeholder="Address" style="height:80px"></textarea>
+                </div>
+                </div>
 
-                <textarea type="text" name="Address" id="Address" placeholder="" style="resize:vertical">  </textarea> 
-
-                <br><br>  
+                <br>
+                
 
                 <label>
                     <b>
@@ -67,20 +77,21 @@
                 
                 <div class="button">
 
-                <input type="button" name="Confirm" id="Con" value="Confirm"> 
-
+               <a href="../../Index.html"><input type="button" name="Confirm" id="Con" value="Confirm"> 
+               </a> 
             
                 
-                <input type="button" name="Cancel" id="Can" value="Cancel"> 
-
+                <a href="../../Index.html"><input type="button" name="Cancel" id="Can" value="Cancel"> 
+                </a>
                 
-                <input type="button" name="Reset" id="Res" value="Reset"> 
-
+                <a href="./New User.html"><input type="button" name="Reset" id="Res" value="Reset"> 
+                </a>
                 </div>
                 
 
         
             </form>
+        </div>
         </div>
     </div>
 
