@@ -5,14 +5,11 @@
 }
 
 
-
-
 h1.he{
     text-align: center;
     margin:50px;  
     background-color: #5cb748;
     color: white;
-    height: 6%;
     width:100%;
     position: relative;
     right:50px;
@@ -122,6 +119,7 @@ h1.he{
 .price button{
     background-color:orange;
     border-color: transparent;
+    border-radius: 20px;
     font-size: 13px;
     height:30px;
     width:90px;
@@ -137,6 +135,7 @@ h1.he{
 .gif {
     width: 200px;
     position: relative;
+    top: 20px;
     animation-duration: 6s;
     animation-name: running_scooty;
     animation-iteration-count: infinite;

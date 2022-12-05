@@ -1,15 +1,11 @@
 body{
     font-family: 'Kanit', sans-serif;
-  
-    
 }
 
 .log{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    
-   
+    align-items: center; 
 }
 
 .bor{
@@ -19,14 +15,12 @@ body{
     margin-top:15%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 20px;
-
 }
 
 .button{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-
 }
 
 .down{
