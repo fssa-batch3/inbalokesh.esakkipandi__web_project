@@ -27,7 +27,6 @@ body{
     width: 450px;
     height: 840px;
     margin: auto;
-    background-color: white;
     border-radius: 3px;
     background-color: rgb(246, 246, 246);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -41,7 +40,6 @@ body{
     background-color: rgb(246, 246, 246);
 }
 
-  
 h1{
     text-align: center;
 }
@@ -62,16 +60,16 @@ form label{
 }
   
 form input{
-    width: 137%;
+    width: 132%;
     padding: 7px;
     border: none;
     border: 1px solid grey;
-    border-radius: 5px;
+    border-radius: 3px;
     outline: none;
 }
 
 form input.inp{
-    width:100%;
+    width:95%;
 }
 
 input[type="button"]{
@@ -84,13 +82,17 @@ input[type="button"]{
     font-size: 18px;
 }
 
+form input.but{
+    width:100%;
+}
+
 input[type="button"]:hover{
     transform: scale(1.02);
 }
 
 textarea{
     height:70px;
-    width:410px;
+    width:405px;
     font-family: Arial, Helvetica, sans-serif;
 }
 

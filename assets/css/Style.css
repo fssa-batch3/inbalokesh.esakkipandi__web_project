@@ -15,7 +15,6 @@ body{
 
 .head{
     display:flex;
-
 }
 
 .navbar{
@@ -78,7 +77,6 @@ body{
 .intpara h1{
     font-size:70px; 
     color:#408531;
-    font-family: "Courgette";
 }
 
 .intpara p{

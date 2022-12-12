@@ -88,7 +88,7 @@ body{
 }
 
 .slist h3{
-    margin:0;
+    margin:-2px;
 }
 
 .plus{
@@ -165,8 +165,12 @@ body{
     font-size: 20px;
 }
 
+.sumlist{
+    height:150px;
+}
+
 .sumlist button{
-    height:10%;
+    height:30%;
     width:100%;
     margin-top: 30px;
     background-color: #FF7223;

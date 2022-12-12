@@ -3,6 +3,10 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
 }
 
+section{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 h1.he{
     text-align: center;
     margin:50px;  
@@ -121,7 +125,7 @@ h1.he{
 }
 
 .info p{
-    font-size: 12px; 
+    font-size: 13.5px; 
 }
 
 .price{
