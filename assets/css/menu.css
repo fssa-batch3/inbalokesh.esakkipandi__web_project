@@ -1,9 +1,7 @@
-
 @import "header.css";
 *{
-    font-family: 'Kanit', sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
 }
-
 
 h1.he{
     text-align: center;
@@ -12,13 +10,11 @@ h1.he{
     color: white;
     width:100%;
     position: relative;
-    right:50px;
-   
+    right:50px;  
 }
 
 .menu{
     background-color: rgb(244, 244, 244);
-    padding:10px;
     display:flex;
     justify-content: center;
     border-radius: 50px;
@@ -27,10 +23,35 @@ h1.he{
 .menu a{
     text-decoration: none;
     color: Black;
-    margin: 5px 20px;
-    
-    
+    margin: 5px 20px; 
+    padding: 10px;
 }
+
+.menu a:hover{
+    border-bottom:2px solid #FF7223;
+    color: black;
+}
+
+.menu a.all{
+    border-bottom:2px solid #FF7223;
+    color: black;
+}
+
+.menu a.break{
+    border-bottom:2px solid #FF7223;
+    color: black;
+}
+
+.menu a.lunch{
+    border-bottom:2px solid #FF7223;
+    color: black;
+}
+
+.menu a.dinner{
+    border-bottom:2px solid #FF7223;
+    color: black;
+}
+
 .top{
     display:flex;
     justify-content: center;
@@ -40,14 +61,15 @@ h1.he{
 .food{
     margin:20px;
 }
-.details {
+
+.details{
     height:500px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin:0 50px;
-    
+    margin:0 50px;  
 }
+
 .box{
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     border-radius: 20px;
@@ -64,20 +86,21 @@ h1.he{
     transform: scale(1.05);
 }
 
-.box img {
+.box img{
     width: 100%;
     height: 50%;
     border-radius: 10px 10px 0 0;
-
 }
-.border  {
+
+.border{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 200px;
-     width: 200px;
+    width: 200px;
 }
-.border h4 {
+
+.border h4{
     margin: 0;
     text-align: center;
 }
@@ -86,24 +109,19 @@ h1.he{
     height: 70px;
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid grey;
-    
-   
-    
+    border-bottom: 1px solid grey;    
 }
-.info {
+
+.info{
     height: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    
+    justify-content: space-between; 
 }
 
 .info p{
-
-    font-size: 12px;
-    
+    font-size: 12px; 
 }
 
 .price{
@@ -114,7 +132,6 @@ h1.he{
     justify-content: space-between;
     align-items: center;
 }
-
 
 .price button{
     background-color:orange;
@@ -129,10 +146,9 @@ h1.he{
     background-color:orange;
     color: white;
     transform: scale(1.05);
-
 }
 
-.gif {
+.gif{
     width: 200px;
     position: relative;
     top: 20px;
@@ -142,7 +158,7 @@ h1.he{
     margin-top: -30px;
 }
 
-@keyframes running_scooty {
+@keyframes running_scooty{
     0% {
         left: calc(0% - 100px);
     }

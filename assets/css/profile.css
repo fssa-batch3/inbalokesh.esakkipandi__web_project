@@ -1,5 +1,6 @@
 body{
     height:230%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .pro{
     height:60%;
@@ -18,11 +19,6 @@ body{
     margin:0;
     color:white;
     text-align: center;
-}
-
-h2{
-    position: relative;
-    left:450px;
 }
 
 .pbox{
@@ -74,27 +70,70 @@ textarea{
     width:450px;
     position:relative;
     left:300px;
+}
 
+.obox{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding:10px 20px;
+    height:24%;
+    width:90%;
+    margin:30px;
+}
+
+.obox p{
+    color:grey;
 }
 
 .order{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    width:90%;
 }
 
-
-.bu{
+.ibutton{
+    height:200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
-.bu button{
+.ibutton button{
     background-color: white;
     border: 2px solid forestgreen;
-    width:50%;
+    width:100%;
     border-radius: 4px;
+}
+
+.ibutton button:hover{
+    background-color: #e7f5e3;
+    transform: scale(1.05);
+}
+
+.imgbut{
+    height:230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cbut{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.cbut button{
+    background-color: white;
+    border: 2px solid forestgreen;
+    border-radius: 4px;
+}
+
+.cbut button:hover{
+    background-color: #e7f5e3;
+    transform: scale(1.05);
 }
 
 .rate p.rs{
@@ -105,21 +144,20 @@ textarea{
 .rate{
     display:flex;
     justify-content: space-between;
+    width:100%;
+}
+
+.details{
+    width:150px;
+}
+
+.ratee{
+    display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid grey;
-}
-
-
-.obox{
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    padding:10px 20px;
-}
-
-.obox p{
-    color:grey;
 }
 
 .foot{
     position:relative;
-    top:250px;
+    top:700px;  
 }
-

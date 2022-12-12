@@ -1,8 +1,7 @@
 @import "normalize.css";
 
 body{
-    font-family: 'Courgette', cursive;
-    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header{
@@ -11,8 +10,8 @@ body{
     justify-content: space-around;
     align-content: center;
     height: 80px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;}
-
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
 
 .head{
     display:flex;

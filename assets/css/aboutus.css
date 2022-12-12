@@ -1,10 +1,12 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .ahead h1{
     text-align: center;
-    margin:50px 0;
+    margin:50px 0 0 0;
     background-color: #5cb748;
     color:white;
-    border-radius: 5px;
-    
 }
 
 .lpara{
@@ -12,26 +14,23 @@
     margin-top:50px;
     font-size: 25px;
     width:50%;
-    text-align: justify;
-    
+    text-align: justify;   
 }
 
 .apara{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: aliceblue;
-    margin:20px;
+    margin-bottom:40px;
     border-radius: 10px;
-
 }
-.img{
-    background-color: rgb(94, 38, 38);
+
+.i{
+    display: flex;
+    margin-bottom:50px;
 }
 
 .i img{
-
-    margin-left:150px;
-    margin-bottom:50px;
-    border-radius: 30px;
+    height:100%;
+    width:100%;
 }

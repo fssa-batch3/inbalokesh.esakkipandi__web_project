@@ -1,45 +1,48 @@
-.box {
-    display:flex;
-    justify-content: space-between;
-    width:90%;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    align-content: center;
-    margin-left:50px;
-    margin-bottom:65px;
-    margin-top:10px
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  }
-input[type=text], select, textarea {
-    width: 100%;
-    padding: 12px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    box-sizing: border-box; 
-    margin-top: 6px;
-    margin-bottom: 16px; 
-    resize: vertical;
-  }
-  
-  
-  input[type=submit] {
-    background-color: grey;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  input[type=submit]:hover {
-    background-color:  #5cb748;
-  }
+.box{
+  display:flex;
+  justify-content: space-between;
+  width:90%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  align-content: center;
+  margin-left:50px;
+  margin-bottom:65px;
+  margin-top:10px
+}
 
-  h1.con{
-    background-color: #5cb748;
-    color:white;
-    text-align: center;
-    margin:50px 0;
-  }
+input[type=text], select, textarea{
+  width: 100%;
+  padding: 12px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  margin-top: 6px;
+  margin-bottom: 16px; 
+  resize: vertical;
+}
+ 
+input[type=submit]{
+  background-color: grey;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  
+input[type=submit]:hover{
+  background-color:  #5cb748;
+}
+
+h1.con{
+  background-color: #5cb748;
+  color:white;
+  text-align: center;
+  margin:50px 0;
+}
   

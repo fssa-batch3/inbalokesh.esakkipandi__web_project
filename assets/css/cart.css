@@ -1,4 +1,8 @@
- .hord h1{
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hord h1{
     text-align: center;
     margin:50px 0;
     background-color: #5cb748;
@@ -6,93 +10,177 @@
     border-radius: 5px;
 }
 
-.list img{
-    height:180px;
-    width:250px;
-}
-
-button{
-    height:25px;
-    width:35px;
-    margin:10px;
-}
-
-.bod{
+.list{
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    margin:100px 130px 0;
 }
 
-.bod img{
-    height:20px;
-    width:55%;
-}
-button.log{
-    width:70px;
+.lorder{
+    height:700px;
+    width:900px;
 }
 
-.but{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-radius: 30px;
-    align-items: center;
-    color: black;
-    width:100px;
-    height:40px;
-    border:1.5px solid #5cb748;
-    position:relative;
-    top:30px;
+.obox{
+    display: flex; 
+    height:35%;
+    width:95%;
+    margin-bottom: 20px;
 }
 
-.but img{
-    height:12px;
-    width:12px;
-}
-
-.minus{
-    position: relative;
-    top:3px;
+.obox img.food{
+    border-radius: 10px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;    width:40%;   
 }
 
 .olist{
-    display: flex;
-    flex-direction: row;
+    margin-left: 40px;
+    width:100%;
+}
+
+.olist h2{
+    margin-top: 0;
+}
+
+.plist{
+    display:flex;
     justify-content: space-between;
-    margin:40px 40px;
-    
 }
 
-.chick h2{
-    margin-right: 30px;
+.plist p{
+    font-size: 16.5px;
 }
 
-.btn-primary{
-    background-color:#FF7223;
-    color: white;
-    border-color: transparent;
-    border-radius: 10px;
-    height:50px;
-    width:100px;
+.plist h4{
+    margin:16.5px 10px;
 }
 
-.btn{
-    background-color:#FF7223;
-    color: white;
-    border-color: transparent;
-    border-radius: 10px;
-    height:50px;
-    width:100px;
+.select{
+    padding:8px 10px;
+    color:#333333;
+    background-color: #eee;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.pt{
-    text-align:end;
-    margin:30px;
-    border-top:2px solid grey;
-    border-bottom: 2px solid grey;;
+.select option{
+    background-color: white;
 }
 
-.lbut{
+.slist{
+    display:flex;  
+}
+
+.add{
     display: flex;
-    justify-content: flex-end
+    justify-content: space-between;
+    margin-top: 25px;
+    border-radius: 5px;
+    padding:10px 7px 4px;
+    width:80px;
+    background-color:ghostwhite;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
+
+.slist img{
+    height:13px;
+    width:13px;
+}
+
+.slist h3{
+    margin:0;
+}
+
+.plus{
+    margin-top: 3px;
+}
+
+.minus{
+    margin-top: 7px;
+}
+
+.slist button{
+    height:36px;
+    width:90px;
+    margin-top:25px;
+    margin-left: 20px;
+    background-color: #FF7223;
+    border-color: transparent;
+    border-radius: 5px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.summary{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height:500px;
+    width:280px;
+    padding:10px 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.summary h2{
+    text-align: center;
+}
+
+.sum{
+    display:flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.sum h4{
+    margin-top:5px;
+}
+
+.sum p{
+    margin:5px;
+    font-weight:bold;
+    color:rgb(120, 119, 119);
+}
+
+.dtime{
+    margin-bottom: 20px;
+    text-align: end;
+}
+
+.total{
+    width:100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.total h4{
+    margin-top:20px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.total p{
+    margin-top:20px;
+    font-size: 20px;
+}
+
+.sumlist button{
+    height:10%;
+    width:100%;
+    margin-top: 30px;
+    background-color: #FF7223;
+    box-shadow: #FF7223  0px 25px 20px -20px;
+    color:white;
+    border-color: transparent;
+    font-size: 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.sumlist button:hover{
+    transform: scale(1.03);
+}
+
+
