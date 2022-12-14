@@ -72,9 +72,13 @@ textarea{
     left:300px;
 }
 
+.history h2{
+    text-align: center;
+}
+
 .obox{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    padding:10px 20px;
+    padding:10px 0 10px 20px;
     height:24%;
     width:90%;
     margin:30px;
@@ -155,9 +159,4 @@ textarea{
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid grey;
-}
-
-.foot{
-    position:relative;
-    top:700px;  
 }
