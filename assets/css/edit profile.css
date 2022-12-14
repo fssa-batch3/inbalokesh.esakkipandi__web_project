@@ -44,7 +44,7 @@ h2{
 input[type=file]{
     position: absolute;
     left:38%;
-    top:65.5%;
+    top:61%;
     opacity:0;
     cursor: pointer;
 }
