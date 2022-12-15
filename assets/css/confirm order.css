@@ -1,0 +1,16 @@
+.content{
+    height:70vh;
+}
+.placed{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.placed img{
+    height:80px;
+    width:80px;
+}
+

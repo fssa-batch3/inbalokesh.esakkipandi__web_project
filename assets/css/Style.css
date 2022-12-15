@@ -11,6 +11,10 @@ body{
     align-content: center;
     height: 80px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    background-color: white;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
 }
 
 .head{
@@ -31,6 +35,7 @@ body{
     color: white;
     background-color: #5cb748;
     border-color: transparent;
+    cursor: pointer;
     height:50px;
     width:170px;
     font-weight: bold;
@@ -58,6 +63,7 @@ body{
     height:35px;
     width:80px;
     border-radius: 40px;
+    cursor: pointer;
     border-color: transparent;
     background-color:#FF7223;    
 }
