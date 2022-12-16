@@ -1,16 +1,50 @@
 .content{
-    height:70vh;
+    height: 70vh;
 }
-.placed{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
 
+.header{
+    width:173vh;
+}
+
+.placed{
+    height:240px;
+    width:400px;
+    border:solid 2px #32c671;
+    border-radius: 10px;
+    position: relative;
+    top:25%;
+    left:35%;
+    text-align: center;
+    padding: 0 20px 20px;
+    color:#333;
+    box-shadow: -2px 4px 37px -16px rgba(115,201,96,1);
 }
 
 .placed img{
-    height:80px;
-    width:80px;
+    height:60px;
+    width:60px;
+    position:relative;
+    bottom:18px;   
+}
+
+.placed h2{
+    font-size: 30px;
+}
+
+.placed a button{
+    margin-top: 15px;
+    height:40px;
+    width:120px;
+    background-color:#32c671;
+    color:white;
+    cursor: pointer;
+    font-size: 17px;
+    letter-spacing: 0.3px;
+    border-color: transparent;
+    border-radius: 30px;   
+}
+
+.placed a button:hover{
+    transform: scale(1.05);
 }
 
