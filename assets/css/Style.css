@@ -8,8 +8,9 @@ body{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    align-content: center;
-    height: 80px;
+    margin: auto;
+    height: auto;
+    max-width:100%;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
     background-color: white;
     position: sticky;
@@ -17,8 +18,30 @@ body{
     z-index: 1;
 }
 
+.shead{
+    display:flex;
+}
+
 .head{
     display:flex;
+}
+
+.toggle-button{
+    position: absolute;
+    top:28px;
+    right:20px;
+    display:none;
+    flex-direction: column;
+    justify-content: space-between;
+    width:30px;
+    height:21px;
+}
+
+.toggle-button .bar{
+    height:4px;
+    width:100%;
+    background-color: black;
+    border-radius: 10px;
 }
 
 .navbar{
@@ -68,20 +91,28 @@ body{
     background-color:#FF7223;    
 }
 
+section{
+    margin: 140px 140px;
+}
+
 .Profile img{
     margin-top:25px;
     margin-right: 20px;
 }
 
 .intro{
-    margin:140px;
     display:flex;
     justify-content: space-around;
-    margin-top: 120px;  
+}
+
+.intro img{
+    height:60%;
+    width:60%;
+    border-radius: 50px;
 }
 
 .intpara h1{
-    font-size:70px; 
+    font-size:4.375rem; 
     color:#408531;
 }
 
@@ -94,12 +125,13 @@ body{
 .works{
     display: flex;
     flex-direction: row;
-    margin:100px 150px;
+    align-items: center;
     font-family: 'PT Sans Narrow', sans-serif;    
 }
 
 .works img{
-    margin-top: 70px;
+    max-height: 90%;
+    max-width:90%;
 }
 
 .works h2{
@@ -113,12 +145,13 @@ body{
 }
 
 .tpara{
-    width:450px;
-    position: relative;
-    left:70px;
     line-height: 25px;
     letter-spacing: 0.5px;
     text-align: justify;
+}
+
+.tpara p{
+    width:500px;
 }
 
 section.h h2{
@@ -129,10 +162,6 @@ section.h h2{
     padding-top: 30px;
     border-radius: 5px;
     margin-top: 20px;    
-}
-
-.how{
-    height:500px;
 }
 
 .hiw{
@@ -188,6 +217,7 @@ section.h h2{
     flex-wrap: wrap;
     align-content:center;
     align-items:center;
+    margin-top: 50px;
     background-color:rgb(237, 236, 236);
 }
 
@@ -207,7 +237,144 @@ section.h h2{
 
 .phone img{
     margin-top:6px;
-    margin-right:10px;
+    margin-right:10px;   
 }
 
+@media (max-width:1022px) {
+    .header{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .navigation__link{
+        padding: 22px 13px;
+        line-height: 1;
+    }
+    .navigation__link:hover{
+        background-color: rgb(227, 227, 227);
+    }
+    .shead h1{
+        display: none;
+    }
+    .toggle-button{
+        display: flex;
+    }
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 2px;
+    }
+    .head{
+        display: none;
+        height:50vh;
+        background-color: whitesmoke;
+    }
+    .head:nth-child(n+2){
+        flex-direction: column;
+    }
+    .head.active{
+        display: flex;
+    }
+    .Profile{
+        margin: 10px 30px;
+    }
+    .intro{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .intpara h1{
+        font-size: 50px;
+    }
+    .intpara p{
+        font-size: 25px;
+    }
+    .intro img{
+        width:70%;
+        min-width:30rem;
+        border-radius: 50px;
+    }
+    .works{
+        margin: 0;
+        flex-direction: column;
+    }
+    .works img{
+        max-width:30rem;
+    }
+    .hiw{
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .hbox{
+        margin-top: 30px;
+    }
+}
 
+@media (max-width:565px) {
+    .intro img{
+        min-width: 18rem;
+        border-radius: 50px;
+    }
+    .intpara h1{
+        font-size: 35px;
+        margin-left: 30px;
+    }
+    .intpara p{
+        font-size: 20px;
+        margin-left: 30px;
+    }
+    .btn{
+        color: white;
+        background-color: #5cb748;
+        border-color: transparent;
+        cursor: pointer;
+        height:30px;
+        width:100px;
+        font-weight: bold;
+        border-radius: 30px;
+        letter-spacing: 1px;
+        font-size: 10px;
+        margin-left: 30px;
+    }
+    section{
+        margin:10px 20px;
+    }
+    .works img{
+        margin-top:50px;
+        height:12rem;
+    }
+    .tpara p{
+        width:300px;
+        font-size: 3vw;
+    }
+    .tpara h2{
+        font-size: 30px;
+    }
+    .tpara h3{
+        font-size: 20px;
+    }
+    section.h h2{
+        font-size:30px;
+    }
+    .hbox{
+        width:200px;
+    }
+    .hpara h3{
+        font-size: 15px;
+    }
+    .hpara p{
+        font-size: 14px;
+    }
+    .fpara h3{
+        font-size: 15px;
+    }
+    .fpara p{
+        font-size: 14px;
+    }
+    .foot{
+        font-size: 13px;
+    }
+}

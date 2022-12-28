@@ -2,6 +2,9 @@
 
 <html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ONLY HOME FOOD</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,10 +14,16 @@
     </head>
 
     <body>
+        <!-- header starts -->
         <header class="header">   
-            <div class="head">
+            <div class="shead">
                 <a href="./index.html"><img src="./assets/Images/LOGO.png" alt="Logo" height="80px" width="100px"></a>
                     <h1>ONLY HOME FOOD</h1>
+                    <a href="#" class="toggle-button">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </a>    
             </div>
             <div class="head">
                 <nav class="navbar">
@@ -30,7 +39,9 @@
                 </div>
             </div>
         </header>
+        <!-- header ends -->
 
+        <!-- section intro starts -->
         <section class="int">
             <div class="intro">
                 <div class="intpara">
@@ -38,13 +49,17 @@
                     <p> We bring the taste of mothers food in a healthy way to your doorstep.</p>
                     <a href="./Pages/Menu/menu.html"><button class="btn">ORDER NOW</button></a>
                 </div>
-                <img src="./assets/Images/foodd.webp" alt="food image" height="500px" width="500px" style="border-radius:70px">
+                <img src="./assets/Images/foodd.webp" alt="food image">
              </div>
         </section>
+        <!-- section intro ends -->
 
+        <!-- section aim starts -->
         <section>
             <div class="works">
-                <img src="./assets/Images/our aim.webp" alt="Mother cooking image" height="55%" width="55%">
+                <div>
+                <img src="./assets/Images/our aim.webp" alt="Mother cooking image">
+                </div>
                 <div class="tpara">
                     <h2>Our Aim</h2>
                     <h3>One Solution for Everyone</h3>
@@ -60,7 +75,9 @@
                 </div>
             </div>
         </section>
+        <!-- section aim ends -->
 
+        <!-- section how it works starts -->
         <section class="h">
             <div class="how">
                 <h2>How it Works</h2>
@@ -89,8 +106,9 @@
                     </div>
             </div>
         </section>
+        <!-- section how it works ends -->
 
-
+        <!-- footer starts -->
         <footer>
             <div class="foot">
                 <div class="footer">
@@ -116,16 +134,20 @@
                 </div>
             </div>
         </footer>
+        <!-- footer ends -->
 
-    </body>
-    
+        <!-- script -->
+        <script>
+            const toggleButton = document.getElementsByClassName('toggle-button')[0]
+            const navbarLinks = document.getElementsByClassName('head')[0]
+
+            toggleButton.addEventListener('click',() => {
+                navbarLinks.classList.toggle('active')
+            })
+        </script>
+        <!-- script -->
+    </body>  
 </html>
-
-
-
-
-
-
 
 
 
