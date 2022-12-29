@@ -17,8 +17,30 @@ body{
     z-index: 1;
 }
 
+.shead{
+    display:flex;
+}
+
 .head{
     display:flex;
+}
+
+.toggle-button{
+    position: absolute;
+    top:28px;
+    right:20px;
+    display:none;
+    flex-direction: column;
+    justify-content: space-between;
+    width:30px;
+    height:21px;
+}
+
+.toggle-button .bar{
+    height:4px;
+    width:100%;
+    background-color: black;
+    border-radius: 10px;
 }
 
 .navbar{
@@ -49,3 +71,53 @@ body{
     margin-top:25px;
     margin-right: 20px;
 }
+
+@media (max-width:1020px){
+    .header{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .navigation__link{
+        padding: 22px 13px;
+        line-height: 1;
+    }
+    .navigation__link:hover{
+        background-color: rgb(227, 227, 227);
+    }
+    .shead h1{
+        font-size: 30px;
+
+    }
+    .toggle-button{
+        display: flex;
+    }
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 2px;
+    }
+    .head{
+        display: none;
+        height:50vh;
+        background-color: whitesmoke;
+    }
+    .head:nth-child(n+2){
+        flex-direction: column;
+    }
+    .head.active{
+        display: flex;
+    }
+    .Profile{
+        margin: 10px 30px;
+    }
+}
+
+@media (max-width:565px) {
+    .shead h1{
+        font-size: 6vw;
+        margin-top: 25px;
+    }
+}
+
