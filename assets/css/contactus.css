@@ -5,21 +5,22 @@ body{
 .box{
   display:flex;
   justify-content: space-between;
+  align-content: center;
+  align-items: center;
   width:90%;
   border-radius: 5px;
   background-color: #f2f2f2;
-  padding: 20px;
-  align-content: center;
-  margin-left:50px;
-  margin-bottom:65px;
-  margin-top:10px
+  margin: auto;
+  margin-bottom: 50px;
+  padding:20px;
 }
 
 input{
   border: 1px solid #ccc; 
 }
 
-input[type=text], select, textarea{
+input[type=text], [type=tel], [type=email], textarea{
+  height: 100%;
   width: 100%;
   padding: 12px; 
   border: 1px solid #ccc; 
@@ -50,3 +51,27 @@ h1.con{
   margin:50px 0;
 }
   
+@media (max-width:1245px) {
+  .box{
+    flex-direction: column-reverse;
+    width:70%;
+  }
+  .box img{
+    width: 100%;
+  }
+}
+
+@media (max-width:500px) {
+  input[type=text], [type=tel], [type=email], label, textarea{
+    font-size: 12px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+  input[type=text], [type=tel], [type=email], textarea {
+    padding: 9px;
+  }
+  input[type=submit]{
+    font-size: 12px;
+    padding: 6px 15px;
+  }
+} 

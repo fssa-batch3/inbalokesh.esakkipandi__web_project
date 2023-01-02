@@ -12,24 +12,25 @@ body{
 
 .list{
     display: flex;
-    margin:100px 130px 0;
-}
-
-.lorder{
-    height:700px;
-    width:900px;
+    justify-content: space-evenly; 
+    margin-bottom: 40px; 
 }
 
 .obox{
     display: flex; 
-    height:35%;
-    width:95%;
+    height: 15rem;
     margin-bottom: 20px;
+}
+
+.obox img{
+    height:100%;
+    width:100%;
+    object-fit: cover;
 }
 
 .obox img.food{
     border-radius: 10px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;    width:40%;   
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;  
 }
 
 .olist{
@@ -44,10 +45,16 @@ body{
 .plist{
     display:flex;
     justify-content: space-between;
+    height:50%;
+    width: 110%;
 }
 
 .plist p{
     font-size: 16.5px;
+}
+
+.plist p:nth-last-child(1){
+    margin-top: 25px;
 }
 
 .plist h4{
@@ -118,7 +125,7 @@ body{
 .summary{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height:500px;
-    width:280px;
+    width:300px;
     padding:10px 20px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -191,4 +198,77 @@ body{
     transform: scale(1.03);
 }
 
+input[type=button]{
+    background-color: #ff6b16;
+    color: white;
+    width: 23rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
 
+@media all and (max-width:1250px){
+    .list{
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .summary{
+        margin-top: 50px;
+        width: 46rem;
+    }
+    .plist{
+        width: auto;
+    }
+}
+
+@media (max-width:800px){
+    .lorder{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .obox{
+        height:auto;
+        width:50%;
+        flex-direction: column;
+        align-content: center;
+    }
+    .olist{
+        margin: 10px 0;
+    }
+    .summary{
+        margin-top: 50px;
+        width: 80%;
+    }
+}
+
+@media (max-width:680px){
+    .olist{
+        font-size: 2.5vw;
+    }
+    .olist p{
+        font-size: 2.5vw;    
+    }
+    .select{
+        padding: 5px 7px;
+    }
+    input[type=button]{
+        width:50vw; 
+    }
+    .plist{
+        align-content: center;
+    }
+    .slist h3 {
+        margin: 1px;
+    }
+    .slist img{
+        height:11px;
+        width:11px;
+    }
+    .add{
+
+    }
+}
