@@ -72,8 +72,8 @@ form input.inp{
     width:95%;
 }
 
-input[type="button"]{
-    width: 410px;
+button{
+    width: 300px;
     height: 35px;
     margin-top: 20px;
     border: none;
@@ -86,7 +86,7 @@ form input.but{
     width:100%;
 }
 
-input[type="button"]:hover{
+button:hover{
     transform: scale(1.02);
 }
 

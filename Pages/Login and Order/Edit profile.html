@@ -46,28 +46,28 @@
                 <div class="imgb">
                   <img src="../../assets/Images/img.jpg" alt="profile image" height="250px" width="250px">
                   <button>Add Photo</button>
-                  <a href="./Profile.html"><button>Save</button></a>
+                  <button type="button" onclick="submit()">Save</button>
                 </div>
                 <div>
                   <div class="sep">
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" value="Akil" placeholder="Your Name">
+                    <input type="text" id="name" name="name" placeholder="Your Name">
                   </div>
                   <div class="sep">
                     <label for="num">Mobile No</label>
-                    <input type="tel" id="num" name="Mobile No" value="9098888888" placeholder="Mobile No">
+                    <input type="tel" id="phonenumber" name="Mobile No" placeholder="Mobile No">
                   </div>
                   <div class="sep">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="Email" value="akil@gmail.com" placeholder="Email">
+                    <input type="email" id="email" name="Email" placeholder="Email">
                   </div>
                   <div class="sep">
                     <label class="addr">Address</label>
-                    <textarea type="text" name="Address" id="Address" placeholder="Your address">No.7,Murgan Kovil street,Chennai - 600 001.</textarea> 
+                    <textarea type="text" name="Address" id="address" placeholder="Your address"></textarea> 
                   </div>
                   <div class="sep">
                     <label>Password</label> 
-                    <input type="Password" name="Pass" id="Pass" placeholder="Password"> 
+                    <input type="Password" name="Pass" id="password" placeholder="Password"> 
                   </div>
                 </div>
               </div> 
@@ -103,5 +103,24 @@
           </div>
         </div>
       </footer>
+
+      <script>
+        function submit(){
+
+          const name = document.getElementById("name").value
+          const phonenumber = document.getElementById("phonenumber").value
+          const email = document.getElementById("email").value
+          const address = document.getElementById("address").value
+          const password = document.getElementById("password").value
+
+          console.log(name)
+          console.log(phonenumber)
+          console.log(email)
+          console.log(address)
+          console.log(password)
+
+          window.location.href = "./Profile.html"
+        }
+      </script>
     </body>
 </html>

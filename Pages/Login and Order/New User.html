@@ -19,18 +19,19 @@
                 <h1>Sign Up</h1>
                 <form>
                     <label>Name</label>
-                    <input type="text" placeholder="Name" required/>
+                    <input type="text" class="username" id="user_name" placeholder="Name" required/>
                     <label>Mobile No</label>
-                    <input type="tel" placeholder="Mobile No" required/>
+                    <input type="tel" id="user_phonenumber" placeholder="Mobile No" required/>
                     <label>Email</label>
-                    <input type="email" placeholder="Email" required/>
+                    <input type="email" id="user_email" placeholder="Email" required/>
                     <label class="addr">Address</label>
-                    <textarea type="text" name="Address" placeholder="Your address" required></textarea> 
+                    <textarea type="text" id="user_address" name="Address" placeholder="Your address" required></textarea> 
                     <label>Password</label>
-                    <input type="password" placeholder="Password" required/>
+                    <input type="password" id="user_password" placeholder="Password" required/>
                     <label>Confirm Password</label>
-                    <input type="password" placeholder="Confirm Password" required/>
-                    <a href="./Login.html"><input type="button" value="Submit" required/></a>
+                    <input type="password" id="confirm_password" placeholder="Confirm Password" required/>
+                    <button type="button" class="but" onclick="btn()">Submit
+                    </button >
                 </form>
                 <p>
                     By clicking the Submit button,you agree to our <br />
@@ -38,5 +39,34 @@
                 </p>
             </div>
         </div>
+        <script>
+            function btn(){
+                const name = document.getElementById("user_name").value
+                const phonenumber = document.getElementById("user_phonenumber").value
+                const email = document.getElementById("user_email").value
+                const address = document.getElementById("user_address").value
+                const password = document.getElementById("user_password").value
+                const confirm_password = document.getElementById("confirm_password").value
+
+                console.log(name)
+                console.log(phonenumber)
+                console.log(email)
+                console.log(address)
+                console.log(password)
+                console.log(confirm_password)
+
+                // Store a data 
+                
+                localStorage.setItem("user_name", name)
+                localStorage.setItem("user_phonenumber", phonenumber)
+                localStorage.setItem("user_email", email)
+                localStorage.setItem("user_address", address)
+                localStorage.setItem("user_password", password)
+                localStorage.setItem("confirm_password", confirm_password)
+
+                window.location.href = "../../index.html"
+            }
+          
+        </script>
     </body>
 </html>

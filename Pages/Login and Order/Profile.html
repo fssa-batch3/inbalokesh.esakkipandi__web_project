@@ -14,7 +14,7 @@
 
     <body>
       <header class="header">   
-          <div class="head">
+          <div class="shead">
               <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px" width="100px"></a>
               <h1>ONLY HOME FOOD</h1>
               <a href="#" class="toggle-button">
@@ -45,28 +45,28 @@
             <div class="pbox">
               <div class="imgb">
                 <img src="../../assets/Images/img.jpg" alt="Profile image" height="250px" width="250px">
-                <a href="./Edit profile.html"><button>Edit profile</button></a>
+                <button type="button" onclick="btn()">Edit profile</button>
               </div>
               <div>
                 <div class="sep">
                   <label for="name">Name</label>
-                  <input type="text" id="name" name="name" value="Akil" placeholder="Your Name" disabled>
+                  <input type="text" id="user_name" placeholder="Your Name" disabled>
                 </div>
                 <div class="sep">
                   <label for="num">Mobile No</label>
-                  <input type="tel" id="num" name="Mobile No" value="9098888888" placeholder="Mobile No"disabled>
+                  <input type="tel" id="user_phonenumber" placeholder="Mobile No" disabled>
                 </div>
                 <div class="sep">
                   <label for="email">Email</label>
-                  <input type="email" id="email" name="Email" value="akil@gmail.com" placeholder="Email"disabled>
+                  <input type="email" id="user_email" placeholder="Email" disabled>
                 </div>
                 <div class="sep">
                   <label class="addr">Address</label>
-                  <textarea type="text" name="Address" id="Address" placeholder="Your address" disabled>No.7,Murgan Kovil street,Chennai - 600 001.</textarea> 
+                  <textarea type="text" id="user_address" placeholder="Your address" disabled></textarea> 
                 </div>
                 <div class="sep">
                   <label>Password</label> 
-                  <input type="Password" name="Pass" id="Pass" value="neymarjr" placeholder="Password" disabled> 
+                  <input type="Password" name="Pass" id="user_password" placeholder="Password" disabled> 
                 </div>        
               </div>
             </div>  
@@ -77,130 +77,132 @@
           <h2>
             My Orders
           </h2>
-          <div class="obox">
-            <div class="item">
-              <div class="ihead">
-                <h3>Order:#5</h3>
-                <h4 class="ndel">Not Delivered</h4>
+          <div class="overflowbox">
+            <div class="obox">
+              <div class="item">
+                <div class="ihead">
+                  <h3>Order:#5</h3>
+                  <h4 class="ndel">Not Delivered</h4>
+                </div>
+                <h3>Items(2)</h3>
+                <p>30 Nov 2022,01:47 PM</p>
               </div>
-              <h3>Items(2)</h3>
-              <p>30 Nov 2022,01:47 PM</p>
+              <div class="order">
+                <div class="ibutton">
+                  <img src="../../assets/Images/Sambar-Rice-min-scaled.webp" alt="sambar rice image"  height="150px" width="180px" >
+                  <a href="./orderhistory.html"><button>View details</button></a>
+                </div>
+                <div class="details">
+                  <h3>Sambar rice</h3>
+                  <p>Veg</p>
+                    <div class="rate">
+                    <h4>Rs.39</h4>
+                    <h4>QTY: 1</h4>
+                    </div>
+                </div>
+              </div>
             </div>
-            <div class="order">
-              <div class="ibutton">
-                <img src="../../assets/Images/Sambar-Rice-min-scaled.webp" alt="sambar rice image"  height="150px" width="180px" >
-                <a href="./orderhistory.html"><button>View details</button></a>
-              </div>
-              <div class="details">
-                <h3>Sambar rice</h3>
-                <p>Veg</p>
-                  <div class="rate">
-                   <h4>Rs.39</h4>
-                   <h4>QTY: 1</h4>
-                  </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="obox">
-            <div class="item">
-              <div class="ihead">
-                <h3>Order:#4</h3>
-                <h4 class="del">Delivered</h4>
+            <div class="obox">
+              <div class="item">
+                <div class="ihead">
+                  <h3>Order:#4</h3>
+                  <h4 class="del">Delivered</h4>
+                </div>
+                <h3>Items(2)</h3>
+                <p>29 Nov 2022,09:12 AM</p>
               </div>
-              <h3>Items(2)</h3>
-              <p>29 Nov 2022,09:12 AM</p>
+              <div class="order">
+                <div class="ibutton">
+                  <img src="../../assets/Images/chapati.jpg" alt="chapathi image" height="150px" width="180px" >
+                  <a href="./orderhistory 2.html"><button>View details</button></a>
+                </div>
+                <div class="details">
+                  <h3>Chapathi</h3>
+                  <p>Veg</p>
+                    <div class="rate">
+                    <h4>Rs.49</h4>
+                    <h4>QTY: 2</h4>
+                    </div>
+                </div>
+              </div>
             </div>
-            <div class="order">
-              <div class="ibutton">
-                <img src="../../assets/Images/chapati.jpg" alt="chapathi image" height="150px" width="180px" >
-                <a href="./orderhistory 2.html"><button>View details</button></a>
-              </div>
-              <div class="details">
-                <h3>Chapathi</h3>
-                <p>Veg</p>
-                  <div class="rate">
-                   <h4>Rs.49</h4>
-                   <h4>QTY: 2</h4>
-                  </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="obox">
-            <div class="item">
-              <div class="ihead">
-                <h3>Order:#3</h3>
-                <h4 class="del">Delivered</h4>
+            <div class="obox">
+              <div class="item">
+                <div class="ihead">
+                  <h3>Order:#3</h3>
+                  <h4 class="del">Delivered</h4>
+                </div>
+                <h3>Items(1)</h3>
+                <p>28 Nov 2022,06:34 PM</p>
               </div>
-              <h3>Items(1)</h3>
-              <p>28 Nov 2022,06:34 PM</p>
+              <div class="order">
+                <div class="ibutton">
+                  <img src="../../assets/Images/homemade-breakfast.jpg" alt="Idly image" height="150px" width="180px" >
+                  <a href="./orderhistory 3.html"><button>View details</button></a>
+                </div>
+                <div class="details">
+                  <h3>Idly</h3>
+                  <p>Veg</p>
+                    <div class="rate">
+                    <h4>Rs.19</h4>
+                    <h4>QTY: 3</h4>
+                    </div>
+                </div>
+              </div>
             </div>
-            <div class="order">
-              <div class="ibutton">
-                <img src="../../assets/Images/homemade-breakfast.jpg" alt="Idly image" height="150px" width="180px" >
-                <a href="./orderhistory 3.html"><button>View details</button></a>
-              </div>
-              <div class="details">
-                <h3>Idly</h3>
-                <p>Veg</p>
-                  <div class="rate">
-                   <h4>Rs.19</h4>
-                   <h4>QTY: 3</h4>
-                  </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="obox">
-            <div class="item">
-              <div class="ihead">
-                <h3>Order:#2</h3>
-                <h4 class="del">Delivered</h4>
+            <div class="obox">
+              <div class="item">
+                <div class="ihead">
+                  <h3>Order:#2</h3>
+                  <h4 class="del">Delivered</h4>
+                </div>
+                <h3>Items(2)</h3>
+                <p>27 Nov 2022,08:02 AM</p>
               </div>
-              <h3>Items(2)</h3>
-              <p>27 Nov 2022,08:02 AM</p>
+              <div class="order">
+                <div class="ibutton">
+                  <img src="../../assets/Images/Old rice.jpg" alt="Ice biryani image" height="150px" width="180px" >
+                  <a href="./orderhistory 4.html"><button>View details</button></a>
+                </div>
+                <div class="details">
+                  <h3>Ice briyani</h3>
+                  <p>Veg</p>
+                    <div class="rate">
+                    <h4>Rs.39</h4>
+                    <h4>QTY: 1</h4>
+                    </div>
+                </div>
+              </div>
             </div>
-            <div class="order">
-              <div class="ibutton">
-                <img src="../../assets/Images/Old rice.jpg" alt="Ice biryani image" height="150px" width="180px" >
-                <a href="./orderhistory 4.html"><button>View details</button></a>
-              </div>
-              <div class="details">
-                <h3>Ice briyani</h3>
-                <p>Veg</p>
-                  <div class="rate">
-                   <h4>Rs.39</h4>
-                   <h4>QTY: 1</h4>
-                  </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="obox">
-            <div class="item">
-              <div class="ihead">
-                <h3>Order:#1</h3>
-                <h4 class="del">Delivered</h4>
+            <div class="obox">
+              <div class="item">
+                <div class="ihead">
+                  <h3>Order:#1</h3>
+                  <h4 class="del">Delivered</h4>
+                </div>
+                <h3>Items(2)</h3>
+                <p>26 Nov 2022,02:44 PM</p>
               </div>
-              <h3>Items(2)</h3>
-              <p>26 Nov 2022,02:44 PM</p>
+              <div class="order">
+                <div class="ibutton">
+                  <img src="../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg" alt="Mutton biryani image" height="150px" width="180px" >
+                  <a href="./orderhistory 5.html"><button>View details</button></a>
+                </div>
+                <div class="details">
+                  <h3>Mutton Biryani</h3>
+                  <p>Non-Veg</p>
+                    <div class="rate">
+                    <h4>Rs.179</h4>
+                    <h4>QTY: 1</h4>
+                    </div>
+                </div>
+              </div>
             </div>
-            <div class="order">
-              <div class="ibutton">
-                <img src="../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg" alt="Mutton biryani image" height="150px" width="180px" >
-                <a href="./orderhistory 5.html"><button>View details</button></a>
-              </div>
-              <div class="details">
-                <h3>Mutton Biryani</h3>
-                <p>Non-Veg</p>
-                  <div class="rate">
-                   <h4>Rs.179</h4>
-                   <h4>QTY: 1</h4>
-                  </div>
-              </div>
-            </div>
-          </div>
+        </div>
         </div>
       </section>
 
@@ -229,5 +231,31 @@
           </div>
         </div>
       </footer>
+
+
+      <script src="../../assets/javascript/javascript.js"></script>
+
+      <script>
+        
+          const name = localStorage.getItem("user_name");
+          const phonenumber = localStorage.getItem("user_phonenumber");
+          const email = localStorage.getItem("user_email");
+          const address = localStorage.getItem("user_address");
+          const password = localStorage.getItem("user_password");
+
+          console.log(name)
+          console.log(phonenumber)
+          console.log(email)
+          console.log(address)
+          console.log(password)
+
+          document.getElementById("user_name").value = name 
+          document.getElementById("user_phonenumber").value = phonenumber
+          document.getElementById("user_email").value = email
+          document.getElementById("user_address").value = address 
+          document.getElementById("user_password").value = password
+
+      </script>
+
     </body>
 </html>
