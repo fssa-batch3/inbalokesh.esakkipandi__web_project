@@ -1,0 +1,8 @@
+{
+    "food_image" : "string",
+    "alt_names" : "srting",
+    "food_names" : "srting",
+    "food_types" : "srting",
+    "alt_quantity" : "srting",
+    "alt_price" : "number"
+}

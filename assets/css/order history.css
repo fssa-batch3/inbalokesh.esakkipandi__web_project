@@ -3,7 +3,11 @@ body{
 }
 
 section{
-    height:80vh;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 .popup{
@@ -13,13 +17,6 @@ section{
     height:600px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    background-color: white;
     border-radius: 5px;
-    position:absolute;
-    top:12%;
-    left:30%;
-}
-
-.name{
-    width:100px;
 }
 
 .popup img{
@@ -71,7 +68,7 @@ p.quan{
 
 p.fname{
     position: relative;
-    right:50px;
+    right:30px;
     text-align: center;
 }
 
@@ -84,4 +81,43 @@ p.fname{
 
 .spara{
     text-align:end;
+}
+
+@media (max-width:1000px){
+    .popup{
+        position:static;
+        margin:auto;
+        padding-top:10px;
+    }
+    .header{
+        display:none;
+    }
+    .foot{
+        display:none;
+    }
+}
+@media (max-width:550px){
+    .popup{
+        height:130vw;
+        width:80%;
+    }
+    h3,p{
+        font-size: 3vw;
+    }
+    p.quan{
+        margin-left: 120px;
+    }
+    .name{
+        width:70px;
+    }
+    p.fname{
+        position:static;
+        text-align: center;
+    }
+    .quantity{
+        margin-right: 5px;
+    }
+    .cbut button{
+        font-size: 3vw;
+    }
 }

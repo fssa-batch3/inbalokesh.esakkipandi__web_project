@@ -1,0 +1,8 @@
+{
+    "img": "string",
+    "alt_name": "string",
+    "food_name": "string",
+    "h4": "string",
+    "food_price":"number",
+    "h3":"number"
+}

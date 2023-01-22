@@ -78,7 +78,7 @@
             My Orders
           </h2>
           <div class="overflowbox">
-            <div class="obox">
+            <!-- <div class="obox">
               <div class="item">
                 <div class="ihead">
                   <h3>Order:#5</h3>
@@ -90,15 +90,15 @@
               <div class="order">
                 <div class="ibutton">
                   <img src="../../assets/Images/Sambar-Rice-min-scaled.webp" alt="sambar rice image"  height="150px" width="180px" >
-                  <a href="./orderhistory.html"><button>View details</button></a>
+                  <button type="button" onclick="view()">View details</button>
                 </div>
                 <div class="details">
                   <h3>Sambar rice</h3>
                   <p>Veg</p>
-                    <div class="rate">
+                  <div class="rate">
                     <h4>Rs.39</h4>
                     <h4>QTY: 1</h4>
-                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -201,8 +201,8 @@
                     </div>
                 </div>
               </div>
-            </div>
-        </div>
+            </div> -->
+          </div>
         </div>
       </section>
 
@@ -236,7 +236,12 @@
       <script src="../../assets/javascript/javascript.js"></script>
 
       <script>
+
+         function view(){
+            window.location.href = "./orderhistory.html"
+         }
         
+          // profile information//
           const name = localStorage.getItem("user_name");
           const phonenumber = localStorage.getItem("user_phonenumber");
           const email = localStorage.getItem("user_email");
@@ -254,6 +259,184 @@
           document.getElementById("user_email").value = email
           document.getElementById("user_address").value = address 
           document.getElementById("user_password").value = password
+
+
+          // Order history loop//
+
+          let div_obox;
+          let div_item;
+          let div_ihead;
+          let h3;
+          let h4;
+          let p;
+          let div_order;
+          let div_ibutton;
+          let img;
+          let button;
+          let div_details;
+          let div_rate;
+
+          // object
+          const order_history = [
+                {
+                    "h3_order_num": "Order:#5",
+                    "h4_ndel": "Not Delivered",
+                    "h3_items": "Items(2)",
+                    "date": "30 Nov 2022,01:47 PM",
+                    "img":"../../assets/Images/Sambar-Rice-min-scaled.webp",
+                    "alt_name":"Sambar Rice image",
+                    "h3_food_name": "Sambar Rice",
+                    "p_type": "Veg",
+                    "h4_rate": "Rs.39",
+                    "h4_quantity": "QTY: 1"
+                },
+                {
+                    "h3_order_num": "Order:#4",
+                    "h4_ndel": "Delivered",
+                    "h3_items": "Items(2)",
+                    "date": "29 Nov 2022,09:12 AM",
+                    "img":"../../assets/Images/chapati.jpg",
+                    "alt_name":"Chapathi image",
+                    "h3_food_name": "Chapathi",
+                    "p_type": "Veg",
+                    "h4_rate": "Rs.49",
+                    "h4_quantity": "QTY: 2"
+                },
+                {
+                    "h3_order_num": "Order:#3",
+                    "h4_ndel": "Delivered",
+                    "h3_items": "Items(1)",
+                    "date": "28 Nov 2022,06:34 PM",
+                    "img":"../../assets/Images/homemade-breakfast.jpg",
+                    "alt_name":"Idly image",
+                    "h3_food_name": "Idly",
+                    "p_type": "Veg",
+                    "h4_rate": "Rs.19",
+                    "h4_quantity": "QTY: 3"
+                },
+                {
+                    "h3_order_num": "Order:#2",
+                    "h4_ndel": "Delivered",
+                    "h3_items": "Items(2)",
+                    "date": "27 Nov 2022,08:02 AM",
+                    "img":"../../assets/Images/Old rice.jpg",
+                    "alt_name":"Ice biryani image",
+                    "h3_food_name": "Ice Biryani",
+                    "p_type": "Veg",
+                    "h4_rate": "Rs.99",
+                    "h4_quantity": "QTY: 1"
+                },
+                {
+                    "h3_order_num": "Order:#1",
+                    "h4_ndel": "Delivered",
+                    "h3_items": "Items(2)",
+                    "date": "26 Nov 2022,02:44 PM",
+                    "img":"../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
+                    "alt_name":"Mutton Biryani image",
+                    "h3_food_name": "Mutton Biryani",
+                    "p_type": "Non-Veg",
+                    "h4_rate": "Rs.179",
+                    "h4_quantity": "QTY: 1"
+                },
+            ] 
+
+
+          for(let i=0; i<5; i++){
+
+
+          // <div class="obox">
+          div_obox = document.createElement("div");
+          div_obox.setAttribute("class", "obox");
+          console.log(div_obox);
+
+          // <div class="item">
+          div_item = document.createElement("div");
+          div_item.setAttribute("class", "item");
+          div_obox.append(div_item);
+
+          // <div class="ihead">
+          div_ihead = document.createElement("div");
+          div_ihead.setAttribute("class", "ihead");
+          div_item.append(div_ihead);
+
+          // <h3>
+          h3 = document.createElement("h3");
+          h3.innerText = order_history[i]["h3_order_num"];
+          div_ihead.append(h3);
+
+          // <h4>
+          h4 = document.createElement("h4");
+          h4.setAttribute("class", "ndel");
+          h4.innerText = order_history[i]["h4_ndel"];
+          div_ihead.append(h4);
+
+          // <h3>
+          h3 = document.createElement("h3");
+          h3.innerText = order_history[i]["h3_items"];
+          div_item.append(h3);
+
+          // <p>
+          p = document.createElement("p");
+          p.innerText = order_history[i]["date"];
+          div_item.append(p);
+
+          // <div class="order">
+          div_order = document.createElement("div");
+          div_order.setAttribute("class", "order");
+          div_obox.append(div_order);
+
+          // <div class="ibutton">
+          div_ibutton = document.createElement("div");
+          div_ibutton.setAttribute("class", "ibutton");
+          div_order.append(div_ibutton);
+
+          // <img>
+          img = document.createElement("img");
+          img.setAttribute("src", order_history[i]["img"]);
+          img.setAttribute("alt", order_history[i]["alt_name"]);
+          img.setAttribute("height", "150px");
+          img.setAttribute("width", "180px");
+          div_ibutton.append(img);
+
+          // <button>
+          button = document.createElement("button");
+          button.setAttribute("type", "button");
+          button.setAttribute("onclick", "view()");
+          button.innerText = "View details";
+          div_ibutton.append(button);
+
+          // <div class="details">
+          div_details = document.createElement("div");
+          div_details.setAttribute("class", "details");
+          div_order.append(div_details);
+          
+          // <h3>
+          h3 = document.createElement("h3");
+          h3.innerText = order_history[i]["h3_food_name"];
+          div_details.append(h3);
+
+          // <p>
+          p = document.createElement("p");
+          p.innerText = order_history[i]["p_type"];
+          div_details.append(p);
+
+          // <div class="rate">
+          div_rate = document.createElement("div");
+          div_rate.setAttribute("class", "rate");
+          div_details.append(div_rate);
+
+          // <h4>
+          h4 = document.createElement("h4");
+          h4.innerText = order_history[i]["h4_rate"];
+          div_rate.append(h4);
+
+          // <h4>
+          h4 = document.createElement("h4");
+          h4.innerText = order_history[i]["h4_quantity"];
+          div_rate.append(h4);
+
+          document.querySelector("div.overflowbox").append(div_obox);
+        }
 
       </script>
 

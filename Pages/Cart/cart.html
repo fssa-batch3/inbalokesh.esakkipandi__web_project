@@ -48,71 +48,7 @@
         <section>
             <div  class="list">
                 <div class="lorder">
-                    <div class="obox">
-                        <img src="../../assets/Images/Sambar-Rice-min-scaled.webp" alt="Sambar rice image" class="food" >
-                            <div class="olist" >
-                                <h2>Sambar Rice</h2>
-                                <div class="plist">
-                                    <div>
-                                        <p>Quantity:</p>
-                                        <p>Price:</p>
-                                        <p>Delivery time:</p> 
-                                    </div>
-                                    <div>
-                                        <h4>1 plate</h4>
-                                        <h4>Rs.39</h4>
-                                        <div class="dropbox">
-                                            <select class="select" name="time" id="time">
-                                                <option value="Breakfast">Breakfast (7:30 AM to 9:00 AM)</option>
-                                                <option value="Lunch" selected>Lunch (12:30 AM to 2:00 PM)</option>
-                                                <option value="Dinner">Dinner (7:00 PM to 8:30 PM)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slist" >
-                                    <div class="add">
-                                        <img src="../../assets/Images/icon-minus.svg" alt="icon minus" class="minus">
-                                        <h3>1</h3>
-                                        <img src="../../assets/Images/icon-plus.svg" alt="icon plus" class="plus">
-                                    </div>
-                                    <button>Remove</button>
-                                </div>
-                            </div>
-                    </div>
-
-                    <div class="obox">
-                        <img src="../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg" alt="Mutton biryani image" class="food" >
-                            <div class="olist" >
-                                <h2>Mutton Briyani(2)</h2>
-                                    <div class="plist">
-                                        <div>
-                                            <p>Quantity:</p>
-                                            <p>Price:</p> 
-                                            <p>Delivery time:</p>
-                                        </div>
-                                        <div>
-                                            <h4>1 kg</h4>
-                                            <h4>Rs.179</h4>
-                                                <div class="dropbox">
-                                                    <select class="select" name="time" id="time">
-                                                        <option value="Breakfast">Breakfast (7:30 AM to 9:00 AM)</option>
-                                                        <option value="Lunch" Selected>Lunch (12:30 AM to 2:00 PM)</option>
-                                                        <option value="Dinner">Dinner (7:00 PM to 8:30 PM)</option>
-                                                    </select>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div class="slist" >
-                                        <div class="add">
-                                            <img src="../../assets/Images/icon-minus.svg" alt="icon minus" class="minus">
-                                            <h3>2</h3>
-                                            <img src="../../assets/Images/icon-plus.svg" alt="icon plus" class="plus">
-                                        </div>
-                                        <button>Remove</button>
-                                    </div>
-                            </div>
-                    </div>
+                    
                     <div>
                         <a href="../Menu/menu.html"><input type="button" value="+ Add items"></a>
                     </div> 
@@ -184,6 +120,177 @@
         
          <!-- script -->
          <script src="../../assets/javascript/javascript.js"></script>
+
+         <script>
+
+            let div_obox;
+            let img;
+            let div_olist;
+            let h2;
+            let div_plist;
+            let div;
+            let p;
+            let h4;
+            let div_dropbox;
+            let select;
+            let option;
+            let div_slist;
+            let div_add;
+            let img_minus;
+            let img_plus;
+            let h3;
+            let button;
+
+
+            // object //
+            const order_list = [
+                {
+                    "img": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
+                    "alt_name": "Mutton biryani rice image",
+                    "food_name": "Mutton Biryani",
+                    "h4": "1 kg",
+                    "food_price":"Rs. 179",
+                    "h3":"2",
+                },
+                {
+                    "img": "../../assets/Images/Sambar-Rice-min-scaled.webp",
+                    "alt_name": "Sambar rice image",
+                    "food_name": "Sambar Rice",
+                    "h4": "1 plate",
+                    "food_price":"Rs. 39",
+                    "h3":"1",
+                },
+            ] 
+
+            // food list//
+
+            for(let i=0; i<3; i++){
+
+            // <div class="obox">
+            div_obox = document.createElement("div");
+            div_obox.setAttribute("class", "obox");
+            console.log(div_obox);
+
+            // <img class="food">
+            img = document.createElement("img");
+            img.setAttribute("src", order_list[i]["img"])
+            img.setAttribute("alt", order_list[i]["alt_name"]);
+            img.setAttribute("class", "food");
+            div_obox.append(img);
+
+            // <div class="olsit">
+            div_olist = document.createElement("div");
+            div_olist.setAttribute("class", "olist");
+            div_obox.append(div_olist);
+
+            // <h2>
+            h2 = document.createElement("h2");
+            h2.innerText = order_list[i]["food_name"];
+            div_olist.append(h2);
+
+            // <div class="plist">
+            div_plist = document.createElement("div");
+            div_plist.setAttribute("class", "plist");
+            div_olist.append(div_plist);
+
+            // <div class="linfo">
+            div_linfo = document.createElement("div");
+            div_linfo.setAttribute("class", "linfo");
+            div_plist.append(div_linfo);
+
+            // <p>
+            p = document.createElement("p");
+            p.innerText = "Quantity:";
+            div_linfo.append(p);
+
+            p = document.createElement("p");
+            p.innerText = "Price:";
+            div_linfo.append(p);
+
+            p = document.createElement("p");
+            p.innerText = "Delivery time:";
+            div_linfo.append(p);
+
+            // <div class="rinfo"> 
+            div_rinfo = document.createElement("div");
+            div_rinfo.setAttribute("class", "rinfo");
+            div_plist.append(div_rinfo);
+
+            // <h4>
+            h4 = document.createElement("h4");
+            h4.innerText = order_list[i]["h4"];
+            div_rinfo.append(h4);
+
+            h4 = document.createElement("h4");
+            h4.setAttribute("class", "food_price");
+            h4.innerText = order_list[i]["food_price"];
+            div_rinfo.append(h4);
+
+            // <div class="dropbox">
+            div_dropbox = document.createElement("div");
+            div_dropbox.setAttribute("class", "dropbox");
+            div_rinfo.append(div_dropbox);
+
+            // <select class="select">
+            select = document.createElement("select");
+            select.setAttribute("class", "select");
+            select.setAttribute("name", "time");
+            select.setAttribute("id", "time");
+            div_dropbox.append(select);
+
+            // <option>
+            option = document.createElement("option");
+            option.setAttribute("value", "Breakfast");
+            option.innerText = "Breakfast (7:30 AM to 9:00 AM)";
+            select.append(option);
+
+            option = document.createElement("option");
+            option.setAttribute("value", "Lunch");
+            option.innerText = "Lunch (12:30 AM to 2:00 PM)";
+            select.append(option);
+
+            option = document.createElement("option");
+            option.setAttribute("value", "Dinner");
+            option.innerText = "Dinner (7:00 PM to 8:30 PM)";
+            select.append(option);
+
+            // <div class="slist">
+            div_slist = document.createElement("div");
+            div_slist.setAttribute("class", "slist");
+            div_olist.append(div_slist);
+            
+            // <div class="add">
+            div_add = document.createElement("div");
+            div_add.setAttribute("class", "add");
+            div_slist.append(div_add);
+
+            // <img class=minus>
+            img_minus = document.createElement("img");
+            img_minus.setAttribute("src", "../../assets/Images/icon-minus.svg");
+            img_minus.setAttribute("class", "minus");
+            img_minus.setAttribute("alt", "icon minus");
+            div_add.append(img_minus);
+
+            // <h3>
+            h3 = document.createElement("h3");
+            h3.innerText = order_list[i]["h3"];
+            div_add.append(h3);
+
+            // <img class=minus>
+            img_plus = document.createElement("img");
+            img_plus.setAttribute("src", "../../assets/Images/icon-plus.svg");
+            img_plus.setAttribute("class", "plus");
+            img_plus.setAttribute("alt", "icon plus");
+            div_add.append(img_plus);
+
+            // <button>
+            button = document.createElement("button");
+            button.innerText = "Remove";
+            div_slist.append(button);
+
+            document.querySelector("div.lorder").prepend(div_obox);
+        }
+         </script>
          <!-- script -->
     </body>
 </html>
