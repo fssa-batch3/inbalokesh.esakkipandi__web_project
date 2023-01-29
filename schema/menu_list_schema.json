@@ -1,0 +1,13 @@
+{
+    "name": "String",
+    "type": "String",
+    "image": {
+        "source": "String",
+        "alt": "String"
+    },
+    "quantity": ["String"],
+    "price": {
+        "currency": "String",
+        "rate": "Number"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name" : "String",
+    "quantity" : "string",
+    "image":{
+        "source": "string",
+        "alt": "string"
+    },
+    "price":{
+        "currency":"string",
+        "rate":"number"
+    },
+    "ordered": "number"
+}

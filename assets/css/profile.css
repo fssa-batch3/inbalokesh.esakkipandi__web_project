@@ -68,9 +68,8 @@ textarea{
     overflow-y: scroll;
     overflow-x: hidden;
     scroll-margin-top: 100px;
-    padding:0 50px;
     max-width: 1000px;
-    max-height: 500px;
+    max-height: 525px;
 }
 
 ::-webkit-scrollbar{
@@ -84,8 +83,7 @@ textarea{
 .obox{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding:20px;
-    height:24%;
-    width:90%;
+    width:80%;
     margin:30px;
 }
 
@@ -105,6 +103,20 @@ textarea{
     margin-top:0;
 }
 
+.total{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: grey 1px solid;
+    border-bottom: grey 1px solid;
+    margin-bottom:15px;
+}
+
+.total h4{
+    margin:10px;
+}
+
 .item h4.ndel{
     color: tomato;
 }
@@ -113,59 +125,18 @@ textarea{
     color:#5cb748;
 }
 
-p.impnote{
-    color: grey;
-    margin-top: 0;
-    font-size: 14px;
+.order_by h4{
+    color: rgb(94, 93, 93);    
 }
 
-.order{
-    display: flex;
-    justify-content: space-between;
-    width:90%;
-}
-
-.ibutton{
-    height:200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.ibutton button{
+.view_button button{
     background-color: white;
     border: 2px solid forestgreen;
     width:100%;
     border-radius: 4px;
 }
 
-.ibutton button:hover{
-    background-color: #e7f5e3;
-    transform: scale(1.05);
-}
-
-.imgbut{
-    height:230px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.cbut{
-    width:100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.cbut button{
-    background-color: white;
-    border: 2px solid forestgreen;
-    border-radius: 4px;
-}
-
-.cbut button:hover{
+.view_button button:hover{
     background-color: #e7f5e3;
     transform: scale(1.05);
 }
@@ -258,20 +229,11 @@ p.impnote{
     h3,h4,p{
         font-size: 15px;
     }
-    .ibutton img{
-        object-fit: cover;
-        height:35%;
-        width:80%;
-    }
     .obox{
         height:250px;
         margin: 20px;
     }
-    .ibutton{
-        display: flex;
-        justify-content: flex-start;
-    }
-    .ibutton button {
+    .view_button button {
         margin-top: 20px;
         font-size: 13px;
     }

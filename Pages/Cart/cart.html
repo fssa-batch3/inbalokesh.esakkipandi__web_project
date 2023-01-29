@@ -145,26 +145,36 @@
             // object //
             const order_list = [
                 {
-                    "img": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-                    "alt_name": "Mutton biryani rice image",
-                    "food_name": "Mutton Biryani",
-                    "h4": "1 kg",
-                    "food_price":"Rs. 179",
-                    "h3":"2",
+                    "name" : "Mutton Biryani",
+                    "quantity" : "1 kg",
+                    "image":{
+                        "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
+                        "alt": "Mutton Biryani image"
+                    },
+                    "price":{
+                        "currency":"Rs.",
+                        "rate":179
+                    },
+                    "ordered": 2 
                 },
                 {
-                    "img": "../../assets/Images/Sambar-Rice-min-scaled.webp",
-                    "alt_name": "Sambar rice image",
-                    "food_name": "Sambar Rice",
-                    "h4": "1 plate",
-                    "food_price":"Rs. 39",
-                    "h3":"1",
+                    "name" : "Sambar Rice",
+                    "quantity" : "1 plate",
+                    "image":{
+                        "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
+                        "alt": "Sambar rice image"
+                    },
+                    "price":{
+                        "currency":"Rs.",
+                        "rate":39
+                    },
+                    "ordered": 1 
                 },
             ] 
 
             // food list//
 
-            for(let i=0; i<3; i++){
+            for(let i=0; i<2; i++){
 
             // <div class="obox">
             div_obox = document.createElement("div");
@@ -173,8 +183,8 @@
 
             // <img class="food">
             img = document.createElement("img");
-            img.setAttribute("src", order_list[i]["img"])
-            img.setAttribute("alt", order_list[i]["alt_name"]);
+            img.setAttribute("src", order_list[i]["image"]["source"])
+            img.setAttribute("alt", order_list[i]["image"]["alt"]);
             img.setAttribute("class", "food");
             div_obox.append(img);
 
@@ -185,7 +195,7 @@
 
             // <h2>
             h2 = document.createElement("h2");
-            h2.innerText = order_list[i]["food_name"];
+            h2.innerText = order_list[i]["name"];
             div_olist.append(h2);
 
             // <div class="plist">
@@ -218,12 +228,12 @@
 
             // <h4>
             h4 = document.createElement("h4");
-            h4.innerText = order_list[i]["h4"];
+            h4.innerText = order_list[i]["quantity"];
             div_rinfo.append(h4);
 
             h4 = document.createElement("h4");
             h4.setAttribute("class", "food_price");
-            h4.innerText = order_list[i]["food_price"];
+            h4.innerText = order_list[i]["price"]["currency"]+order_list[i]["price"]["rate"];
             div_rinfo.append(h4);
 
             // <div class="dropbox">
@@ -273,7 +283,7 @@
 
             // <h3>
             h3 = document.createElement("h3");
-            h3.innerText = order_list[i]["h3"];
+            h3.innerText = order_list[i]["ordered"];
             div_add.append(h3);
 
             // <img class=minus>

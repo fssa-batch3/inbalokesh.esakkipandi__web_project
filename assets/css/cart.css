@@ -260,7 +260,8 @@ input[type=button]{
     }
     .plist{
         align-content: center;
-    }
+        align-items: baseline;
+    } 
     .slist h3 {
         margin: 1px;
     }

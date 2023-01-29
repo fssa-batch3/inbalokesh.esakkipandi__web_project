@@ -1,444 +1,478 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>ONLY HOME FOOD</title>
-      <link rel="stylesheet" href="../../assets/css/profile.css">
-      <link rel="stylesheet" href="../../assets/css/header.css">
-      <link rel="stylesheet" href="../../assets/css/footer.css">
-      <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
-    </head>
 
-    <body>
-      <header class="header">   
-          <div class="shead">
-              <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px" width="100px"></a>
-              <h1>ONLY HOME FOOD</h1>
-              <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-              </a>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONLY HOME FOOD</title>
+  <link rel="stylesheet" href="../../assets/css/profile.css">
+  <link rel="stylesheet" href="../../assets/css/header.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css">
+  <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+</head>
+
+<body>
+  <header class="header">
+    <div class="shead">
+      <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px" width="100px"></a>
+      <h1>ONLY HOME FOOD</h1>
+      <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+    </div>
+    <div class="head">
+      <nav class="navbar">
+        <a class="navigation__link" href="../../index.html">Home</a>
+        <a class="navigation__link" href="../Menu/menu.html">Menu</a>
+        <a class="navigation__link" href="../Info/about us.html">About Us</a>
+        <a class="navigation__link" href="../Info/contact us.html">Contact Us</a>
+      </nav>
+      <div class="Profile">
+        <a href="Login.html"><button>Login</button></a>
+        <a href="../Cart/cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon" height="30px"
+            width="30px"></a>
+        <a href="Profile.html"><img src="../../assets/Images/person-circle-outline.svg" alt="Profile icon" height="30px"
+            width="30px"></a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="side">
+      <div class="pro">
+        <h1>Profile</h1>
+        <div class="pbox">
+          <div class="imgb">
+            <img src="../../assets/Images/img.jpg" alt="Profile image" height="250px" width="250px">
+            <button type="button" onclick="btn()">Edit profile</button>
           </div>
-          <div class="head">
-              <nav class="navbar">
-                  <a class="navigation__link" href="../../index.html">Home</a>
-                  <a class="navigation__link" href="../Menu/menu.html">Menu</a>
-                  <a class="navigation__link" href="../Info/about us.html">About Us</a>
-                  <a class="navigation__link" href="../Info/contact us.html">Contact Us</a>
-              </nav>
-              <div class="Profile">
-                  <a href="Login.html"><button>Login</button></a>
-                  <a href="../Cart/cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon" height="30px" width="30px"></a>
-                  <a href="Profile.html"><img src="../../assets/Images/person-circle-outline.svg" alt="Profile icon" height="30px" width="30px"></a>
-              </div>
-          </div>
-      </header>
-
-      <section>
-        <div class="side">
-          <div class="pro">
-            <h1>Profile</h1>
-            <div class="pbox">
-              <div class="imgb">
-                <img src="../../assets/Images/img.jpg" alt="Profile image" height="250px" width="250px">
-                <button type="button" onclick="btn()">Edit profile</button>
-              </div>
-              <div>
-                <div class="sep">
-                  <label for="name">Name</label>
-                  <input type="text" id="user_name" placeholder="Your Name" disabled>
-                </div>
-                <div class="sep">
-                  <label for="num">Mobile No</label>
-                  <input type="tel" id="user_phonenumber" placeholder="Mobile No" disabled>
-                </div>
-                <div class="sep">
-                  <label for="email">Email</label>
-                  <input type="email" id="user_email" placeholder="Email" disabled>
-                </div>
-                <div class="sep">
-                  <label class="addr">Address</label>
-                  <textarea type="text" id="user_address" placeholder="Your address" disabled></textarea> 
-                </div>
-                <div class="sep">
-                  <label>Password</label> 
-                  <input type="Password" name="Pass" id="user_password" placeholder="Password" disabled> 
-                </div>        
-              </div>
-            </div>  
-          </div>
-        </div>
-
-        <div class="history">
-          <h2>
-            My Orders
-          </h2>
-          <div class="overflowbox">
-            <!-- <div class="obox">
-              <div class="item">
-                <div class="ihead">
-                  <h3>Order:#5</h3>
-                  <h4 class="ndel">Not Delivered</h4>
-                </div>
-                <h3>Items(2)</h3>
-                <p>30 Nov 2022,01:47 PM</p>
-              </div>
-              <div class="order">
-                <div class="ibutton">
-                  <img src="../../assets/Images/Sambar-Rice-min-scaled.webp" alt="sambar rice image"  height="150px" width="180px" >
-                  <button type="button" onclick="view()">View details</button>
-                </div>
-                <div class="details">
-                  <h3>Sambar rice</h3>
-                  <p>Veg</p>
-                  <div class="rate">
-                    <h4>Rs.39</h4>
-                    <h4>QTY: 1</h4>
-                  </div>
-                </div>
-              </div>
+          <div>
+            <div class="sep">
+              <label for="name">Name</label>
+              <input type="text" id="user_name" placeholder="Your Name" disabled>
             </div>
-
-            <div class="obox">
-              <div class="item">
-                <div class="ihead">
-                  <h3>Order:#4</h3>
-                  <h4 class="del">Delivered</h4>
-                </div>
-                <h3>Items(2)</h3>
-                <p>29 Nov 2022,09:12 AM</p>
-              </div>
-              <div class="order">
-                <div class="ibutton">
-                  <img src="../../assets/Images/chapati.jpg" alt="chapathi image" height="150px" width="180px" >
-                  <a href="./orderhistory 2.html"><button>View details</button></a>
-                </div>
-                <div class="details">
-                  <h3>Chapathi</h3>
-                  <p>Veg</p>
-                    <div class="rate">
-                    <h4>Rs.49</h4>
-                    <h4>QTY: 2</h4>
-                    </div>
-                </div>
-              </div>
+            <div class="sep">
+              <label for="num">Mobile No</label>
+              <input type="tel" id="user_phonenumber" placeholder="Mobile No" disabled>
             </div>
-
-            <div class="obox">
-              <div class="item">
-                <div class="ihead">
-                  <h3>Order:#3</h3>
-                  <h4 class="del">Delivered</h4>
-                </div>
-                <h3>Items(1)</h3>
-                <p>28 Nov 2022,06:34 PM</p>
-              </div>
-              <div class="order">
-                <div class="ibutton">
-                  <img src="../../assets/Images/homemade-breakfast.jpg" alt="Idly image" height="150px" width="180px" >
-                  <a href="./orderhistory 3.html"><button>View details</button></a>
-                </div>
-                <div class="details">
-                  <h3>Idly</h3>
-                  <p>Veg</p>
-                    <div class="rate">
-                    <h4>Rs.19</h4>
-                    <h4>QTY: 3</h4>
-                    </div>
-                </div>
-              </div>
+            <div class="sep">
+              <label for="email">Email</label>
+              <input type="email" id="user_email" placeholder="Email" disabled>
             </div>
-
-            <div class="obox">
-              <div class="item">
-                <div class="ihead">
-                  <h3>Order:#2</h3>
-                  <h4 class="del">Delivered</h4>
-                </div>
-                <h3>Items(2)</h3>
-                <p>27 Nov 2022,08:02 AM</p>
-              </div>
-              <div class="order">
-                <div class="ibutton">
-                  <img src="../../assets/Images/Old rice.jpg" alt="Ice biryani image" height="150px" width="180px" >
-                  <a href="./orderhistory 4.html"><button>View details</button></a>
-                </div>
-                <div class="details">
-                  <h3>Ice briyani</h3>
-                  <p>Veg</p>
-                    <div class="rate">
-                    <h4>Rs.39</h4>
-                    <h4>QTY: 1</h4>
-                    </div>
-                </div>
-              </div>
+            <div class="sep">
+              <label class="addr">Address</label>
+              <textarea type="text" id="user_address" placeholder="Your address" disabled></textarea>
             </div>
-
-            <div class="obox">
-              <div class="item">
-                <div class="ihead">
-                  <h3>Order:#1</h3>
-                  <h4 class="del">Delivered</h4>
-                </div>
-                <h3>Items(2)</h3>
-                <p>26 Nov 2022,02:44 PM</p>
-              </div>
-              <div class="order">
-                <div class="ibutton">
-                  <img src="../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg" alt="Mutton biryani image" height="150px" width="180px" >
-                  <a href="./orderhistory 5.html"><button>View details</button></a>
-                </div>
-                <div class="details">
-                  <h3>Mutton Biryani</h3>
-                  <p>Non-Veg</p>
-                    <div class="rate">
-                    <h4>Rs.179</h4>
-                    <h4>QTY: 1</h4>
-                    </div>
-                </div>
-              </div>
-            </div> -->
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <div class="foot">
-          <div class="footer">
-            <img src="../../assets/Images/logo-facebook.svg" alt="facebook link">
-            <img src="../../assets/Images/logo-instagram.svg" alt="instagram link">
-            <img src="../../assets/Images/logo-twitter.svg" alt="twitter link">
-            <img src="../../assets/Images/logo-whatsapp.svg" alt="whatsapp link">
-          </div>
-          <p>
-            No.123, Rk Road, CLV Nagar, Uthandi, Chennai - 600 119.
-          </p>
-          <div class="phone">
-            <div>
-              <div>
-                <img src="../../assets/Images/call-outline.svg" alt="call image" height="30px" width="30px"> 
-              </div>
-              <img src="../../assets/Images/person-circle-outline.svg" alt="mail image" height="30px" width="30px">
-            </div>
-            <div>
-              <p>+918888888888</p>
-              <p>ohfood@gmail.com</p>    
+            <div class="sep">
+              <label>Password</label>
+              <input type="Password" name="Pass" id="user_password" placeholder="Password" disabled>
             </div>
           </div>
         </div>
-      </footer>
+      </div>
+    </div>
+
+    <div class="history">
+      <h2>
+        My Orders
+      </h2>
+      <div class="overflowbox">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <div class="footer">
+        <img src="../../assets/Images/logo-facebook.svg" alt="facebook link">
+        <img src="../../assets/Images/logo-instagram.svg" alt="instagram link">
+        <img src="../../assets/Images/logo-twitter.svg" alt="twitter link">
+        <img src="../../assets/Images/logo-whatsapp.svg" alt="whatsapp link">
+      </div>
+      <p>
+        No.123, Rk Road, CLV Nagar, Uthandi, Chennai - 600 119.
+      </p>
+      <div class="phone">
+        <div>
+          <div>
+            <img src="../../assets/Images/call-outline.svg" alt="call image" height="30px" width="30px">
+          </div>
+          <img src="../../assets/Images/person-circle-outline.svg" alt="mail image" height="30px" width="30px">
+        </div>
+        <div>
+          <p>+918888888888</p>
+          <p>ohfood@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
-      <script src="../../assets/javascript/javascript.js"></script>
+  <script src="../../assets/javascript/javascript.js"></script>
 
-      <script>
+  <script>
 
-         function view(){
-            window.location.href = "./orderhistory.html"
-         }
-        
-          // profile information//
-          const name = localStorage.getItem("user_name");
-          const phonenumber = localStorage.getItem("user_phonenumber");
-          const email = localStorage.getItem("user_email");
-          const address = localStorage.getItem("user_address");
-          const password = localStorage.getItem("user_password");
+    function view() {
+      window.location.href = "./orderhistory.html"
+    }
 
-          console.log(name)
-          console.log(phonenumber)
-          console.log(email)
-          console.log(address)
-          console.log(password)
+    // profile information//
+    const name = localStorage.getItem("user_name");
+    const phonenumber = localStorage.getItem("user_phonenumber");
+    const email = localStorage.getItem("user_email");
+    const address = localStorage.getItem("user_address");
+    const password = localStorage.getItem("user_password");
 
-          document.getElementById("user_name").value = name 
-          document.getElementById("user_phonenumber").value = phonenumber
-          document.getElementById("user_email").value = email
-          document.getElementById("user_address").value = address 
-          document.getElementById("user_password").value = password
+    console.log(name)
+    console.log(phonenumber)
+    console.log(email)
+    console.log(address)
+    console.log(password)
 
-
-          // Order history loop//
-
-          let div_obox;
-          let div_item;
-          let div_ihead;
-          let h3;
-          let h4;
-          let p;
-          let div_order;
-          let div_ibutton;
-          let img;
-          let button;
-          let div_details;
-          let div_rate;
-
-          // object
-          const order_history = [
-                {
-                    "h3_order_num": "Order:#5",
-                    "h4_ndel": "Not Delivered",
-                    "h3_items": "Items(2)",
-                    "date": "30 Nov 2022,01:47 PM",
-                    "img":"../../assets/Images/Sambar-Rice-min-scaled.webp",
-                    "alt_name":"Sambar Rice image",
-                    "h3_food_name": "Sambar Rice",
-                    "p_type": "Veg",
-                    "h4_rate": "Rs.39",
-                    "h4_quantity": "QTY: 1"
-                },
-                {
-                    "h3_order_num": "Order:#4",
-                    "h4_ndel": "Delivered",
-                    "h3_items": "Items(2)",
-                    "date": "29 Nov 2022,09:12 AM",
-                    "img":"../../assets/Images/chapati.jpg",
-                    "alt_name":"Chapathi image",
-                    "h3_food_name": "Chapathi",
-                    "p_type": "Veg",
-                    "h4_rate": "Rs.49",
-                    "h4_quantity": "QTY: 2"
-                },
-                {
-                    "h3_order_num": "Order:#3",
-                    "h4_ndel": "Delivered",
-                    "h3_items": "Items(1)",
-                    "date": "28 Nov 2022,06:34 PM",
-                    "img":"../../assets/Images/homemade-breakfast.jpg",
-                    "alt_name":"Idly image",
-                    "h3_food_name": "Idly",
-                    "p_type": "Veg",
-                    "h4_rate": "Rs.19",
-                    "h4_quantity": "QTY: 3"
-                },
-                {
-                    "h3_order_num": "Order:#2",
-                    "h4_ndel": "Delivered",
-                    "h3_items": "Items(2)",
-                    "date": "27 Nov 2022,08:02 AM",
-                    "img":"../../assets/Images/Old rice.jpg",
-                    "alt_name":"Ice biryani image",
-                    "h3_food_name": "Ice Biryani",
-                    "p_type": "Veg",
-                    "h4_rate": "Rs.99",
-                    "h4_quantity": "QTY: 1"
-                },
-                {
-                    "h3_order_num": "Order:#1",
-                    "h4_ndel": "Delivered",
-                    "h3_items": "Items(2)",
-                    "date": "26 Nov 2022,02:44 PM",
-                    "img":"../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-                    "alt_name":"Mutton Biryani image",
-                    "h3_food_name": "Mutton Biryani",
-                    "p_type": "Non-Veg",
-                    "h4_rate": "Rs.179",
-                    "h4_quantity": "QTY: 1"
-                },
-            ] 
+    document.getElementById("user_name").value = name
+    document.getElementById("user_phonenumber").value = phonenumber
+    document.getElementById("user_email").value = email
+    document.getElementById("user_address").value = address
+    document.getElementById("user_password").value = password
 
 
-          for(let i=0; i<5; i++){
+    // Order history loop//
 
+    let div_obox;
+    let div_item;
+    let div_ihead;
+    let h3;
+    let h4;
+    let p;
+    let div_order;
+    let div_ibutton;
+    let img;
+    let button;
+    let div_details;
+    let div_rate;
 
-          // <div class="obox">
-          div_obox = document.createElement("div");
-          div_obox.setAttribute("class", "obox");
-          console.log(div_obox);
+    // object
+    const order_history = [
+      {
+        "order_num": 5,
+        "status": "Not Delivered",
+        "items": [
+          {
+            "name": "Mutton Biryani",
+            "type": "Non-veg",
+            "image": {
+              "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
+              "alt": "Mutton Biryani image"
+            },
+            "quantity": 2,
+            "price": {
+              "currency": "Rs ",
+              "rate": 179
+            }
+          },
+          {
+            "name": "Smabar Rice",
+            "type": "Veg",
+            "image": {
+              "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
+              "alt": "Sambar Rice image"
+            },
+            "quantity": 1,
+            "price": {
+              "currency": "Rs ",
+              "rate": 39
+            }
+          }
+          ],
+          "details": {
+            "ordered time":"30 Nov 2022,01:47 PM",
+            "delivery_status": "Not delivered",
+            "total_price":{
+              "currency":"Rs.",
+              "total": 397
+            },
+            "payment":"-"
+          },
+        "timestamp": "30 Nov 2022,01:47 PM",
+        "ordered_by": "inbalokesh@gmail.com"
+      },
 
-          // <div class="item">
-          div_item = document.createElement("div");
-          div_item.setAttribute("class", "item");
-          div_obox.append(div_item);
+      {
+        "order_num": 4,
+        "status": "Delivered",
+        "items": [
+          {
+            "name": "Chapathi with chana",
+            "type": "Veg",
+            "image": {
+              "source": "../../assets/Images/chapati.jpg",
+              "alt": "Chapathi image"
+            },
+            "quantity": 2,
+            "price": {
+              "currency": "Rs ",
+              "rate": 98
+            }
+          },
+          {
+            "name": "Veg Biryani",
+            "type": "Veg",
+            "image": {
+              "source": "../../assets/Images/Vegetable-Biryani-scaled.jpg",
+              "alt": "Veg Biryani image"
+            },
+            "quantity": 1,
+            "price": {
+              "currency": "Rs ",
+              "rate": 69
+            }
+          }
+          ],
+          "details": {
+            "ordered time":"29 Nov 2022,09:12 AM",
+            "delivery_status": "Delivered",
+            "total_price":{
+              "currency":"Rs.",
+              "total": 167
+            },
+            "payment":"Paid(COD)"
+          },
+        "timestamp": "29 Nov 2022,09:12 AM",
+        "ordered_by": "surya.umapathy@ctr.freshworks.com"
+      },
 
-          // <div class="ihead">
-          div_ihead = document.createElement("div");
-          div_ihead.setAttribute("class", "ihead");
-          div_item.append(div_ihead);
-
-          // <h3>
-          h3 = document.createElement("h3");
-          h3.innerText = order_history[i]["h3_order_num"];
-          div_ihead.append(h3);
-
-          // <h4>
-          h4 = document.createElement("h4");
-          h4.setAttribute("class", "ndel");
-          h4.innerText = order_history[i]["h4_ndel"];
-          div_ihead.append(h4);
-
-          // <h3>
-          h3 = document.createElement("h3");
-          h3.innerText = order_history[i]["h3_items"];
-          div_item.append(h3);
-
-          // <p>
-          p = document.createElement("p");
-          p.innerText = order_history[i]["date"];
-          div_item.append(p);
-
-          // <div class="order">
-          div_order = document.createElement("div");
-          div_order.setAttribute("class", "order");
-          div_obox.append(div_order);
-
-          // <div class="ibutton">
-          div_ibutton = document.createElement("div");
-          div_ibutton.setAttribute("class", "ibutton");
-          div_order.append(div_ibutton);
-
-          // <img>
-          img = document.createElement("img");
-          img.setAttribute("src", order_history[i]["img"]);
-          img.setAttribute("alt", order_history[i]["alt_name"]);
-          img.setAttribute("height", "150px");
-          img.setAttribute("width", "180px");
-          div_ibutton.append(img);
-
-          // <button>
-          button = document.createElement("button");
-          button.setAttribute("type", "button");
-          button.setAttribute("onclick", "view()");
-          button.innerText = "View details";
-          div_ibutton.append(button);
-
-          // <div class="details">
-          div_details = document.createElement("div");
-          div_details.setAttribute("class", "details");
-          div_order.append(div_details);
+      {
+        "order_num": 3,
+        "status": "Delivered",
+        "items": [
+          {
+            "name": "Idly",
+            "type": "Veg",
+            "image": {
+              "source": "../../assets/Images/homemade-breakfast.jpg",
+              "alt": "Idly image"
+            },
+            "quantity": 3,
+            "price": {
+              "currency": "Rs ",
+              "rate": 47
+            }
+          },
+          {
+            "name": "Idly",
+            "type": "Veg",
+            "image": {
+              "source": "../../assets/Images/homemade-breakfast.jpg",
+              "alt": "Idly image"
+            },
+            "quantity": 3,
+            "price": {
+              "currency": "Rs ",
+              "rate": 47
+            }
+          }
+          ],
+          "details": {
+            "ordered time":"28 Nov 2022,06:34 PM",
+            "delivery_status": "Delivered",
+            "total_price":{
+              "currency":"Rs.",
+              "total": 47
+            },
+            "payment":"Paid(COD)"
+          },
+        "timestamp": "28 Nov 2022,06:34 PM",
+        "ordered_by": "surya.umapathy@ctr.freshworks.com"
+      },
+      {
+        "order_num": 2,
+        "status": "Delivered",
+        "items": [
+          {
+            "name": "Ice Biryani",
+            "type": "Veg",
+            "image": {
+              "source": "../../assets/Images/Old rice.jpg",
+              "alt": "Ice Biryani image"
+            },
+            "quantity": 1,
+            "price": {
+              "currency": "Rs ",
+              "rate": 99
+            }
+          },
+          {
+            "name": "Morning Combo",
+            "type": "Veg",
+            "image": {
+              "source": "../../assets/Images/TAMIL-NADU-FOOD.jpgp",
+              "alt": "Morning Combo image"
+            },
+            "quantity": 1,
+            "price": {
+              "currency": "Rs ",
+              "rate": 49
+            }
+          }
+          ],
+          "details": {
+            "ordered time":"27 Nov 2022,08:02 AM",
+            "delivery_status": "Delivered",
+            "total_price":{
+              "currency":"Rs.",
+              "total": 148
+            },
+            "payment":"Paid(COD)"
+          },
+        "timestamp": "27 Nov 2022,08:02 AM",
+        "ordered_by": "surya.umapathy@ctr.freshworks.com"
+      },
+      {
+        "order_num": 1,
+        "status": "Delivered",
+        "items": [
+          {
+            "name": "Mutton Biryani",
+            "type": "Non-veg",
+            "image": {
+              "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
+              "alt": "Mutton Biryani image"
+            },
+            "quantity": 1,
+            "price": {
+              "currency": "Rs ",
+              "rate": 179
+            }
+          },
           
-          // <h3>
-          h3 = document.createElement("h3");
-          h3.innerText = order_history[i]["h3_food_name"];
-          div_details.append(h3);
+          {
+            "name": "Chicken Biryani",
+            "type": "Non-veg",
+            "image": {
+              "source": "../../assets/Images/thumb__700_0_0_0_auto.jpg",
+              "alt": "Chicken biryani image"
+            },
+            "quantity": 1,
+            "price": {
+              "currency": "Rs ",
+              "rate": 149
+            }
+          }
+          ],
+          "details": {
+            "ordered time":"26 Nov 2022,02:44 PM",
+            "delivery_status": "Delivered",
+            "total_price":{
+              "currency":"Rs.",
+              "total": 328
+            },
+            "payment":"-"
+          },
+        "timestamp": "26 Nov 2022,02:44 PM",
+        "ordered_by": "surya.umapathy@ctr.freshworks.com"
+      },
+    ]
 
-          // <p>
-          p = document.createElement("p");
-          p.innerText = order_history[i]["p_type"];
-          div_details.append(p);
+   for(let i=0; i<5;i++){
 
-          // <div class="rate">
-          div_rate = document.createElement("div");
-          div_rate.setAttribute("class", "rate");
-          div_details.append(div_rate);
+   
+      // <div class="obox">
+      div_obox = document.createElement("div");
+      div_obox.setAttribute("class", "obox");
+      console.log(div_obox);
 
-          // <h4>
-          h4 = document.createElement("h4");
-          h4.innerText = order_history[i]["h4_rate"];
-          div_rate.append(h4);
+      // <div class="item">
+      div_item = document.createElement("div");
+      div_item.setAttribute("class", "item");
+      div_obox.append(div_item);
 
-          // <h4>
-          h4 = document.createElement("h4");
-          h4.innerText = order_history[i]["h4_quantity"];
-          div_rate.append(h4);
+      // <div class="ihead">
+      div_ihead = document.createElement("div");
+      div_ihead.setAttribute("class", "ihead");
+      div_item.append(div_ihead);
 
-          document.querySelector("div.overflowbox").append(div_obox);
-        }
+      // <h3>
+      h3 = document.createElement("h3");
+      h3.innerText = "Order:#" + order_history[i]["order_num"];
+      div_ihead.append(h3);
 
-      </script>
+      // <h4>
+      h4 = document.createElement("h4");
+      h4.setAttribute("class", "ndel");
+      h4.innerText = order_history[i]["status"];
+      div_ihead.append(h4);
 
-    </body>
+      // <h3>
+      h3 = document.createElement("h3");
+      h3.innerText = "Items(2)";
+      div_item.append(h3);
+
+      // <p>
+      p = document.createElement("p");
+      p.innerText = order_history[i]["timestamp"];
+      div_item.append(p);
+
+      // <div class="order">
+      div_order = document.createElement("div");
+      div_order.setAttribute("class", "order");
+      div_obox.append(div_order);
+
+      // <div class="item_list">
+      div_item_list = document.createElement("div");
+      div_item_list.setAttribute("class", "item_list");
+      div_order.append(div_item_list);
+
+      // <h4> food list//
+      h4 = document.createElement("h4");
+      h4.innerText = order_history[i]["items"][0]["name"] + order_history[i]["items"][0]["quantity"];
+      div_item_list.append(h4);
+
+      // <div class="total">
+      div_total = document.createElement("div");
+      div_total.setAttribute("class", "total");
+      div_order.append(div_total);
+
+      // <h3> Total//
+      h3 = document.createElement("h3");
+      h3.innerText = "Total";
+      div_total.append(h3);
+
+      // <h4> price//
+      h4 = document.createElement("h4");
+      h4.innerText = order_history[i]["details"]["total_price"]["currency"]+order_history[i]["details"]["total_price"]["total"];
+      div_total.append(h4);
+
+      // <div class="ordered_by">
+      div_ordered_by = document.createElement("div");
+      div_ordered_by.setAttribute("class", "order_by");
+      div_order.append(div_ordered_by);
+
+      // <h4> email//
+      h4 = document.createElement("h4");
+      h4.innerText = "Ordered by: " + order_history[i]["ordered_by"];
+      div_ordered_by.append(h4);
+
+      // <div class="view_button">
+      div_view_button = document.createElement("div");
+      div_view_button.setAttribute("class", "view_button");
+      div_order.append(div_view_button); 
+         
+      // <button>
+      button = document.createElement("button");
+      button.setAttribute("type", "button");
+      button.setAttribute("onclick", "view()");
+      button.innerText = "View details";
+      div_view_button.append(button);
+ 
+      document.querySelector("div.overflowbox").append(div_obox);
+
+    }
+  </script>
+
+</body>
+
 </html>
