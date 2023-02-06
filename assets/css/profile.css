@@ -189,15 +189,6 @@ textarea{
     .history h2{
         margin-top:10px;
     }
-    .order{
-        width:110%;
-    }
-    .rate{
-        display:none;
-    }
-    .details{
-        width:175px;
-    }
     .pro{
         border-radius: 0;
         width:100%;
@@ -227,12 +218,17 @@ textarea{
         border-radius: 50%; 
     }
     h3,h4,p{
-        font-size: 15px;
+        font-size: 12px;
     }
     .obox{
-        height:250px;
         margin: 20px;
     }
+    .item{
+        width:200px;
+    }
+    .order_by h4{
+        font-size:12px;
+    } 
     .view_button button {
         margin-top: 20px;
         font-size: 13px;

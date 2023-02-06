@@ -38,8 +38,8 @@
         </div>
       </header>
 
-      <section>
-        <div class="popup">
+      <section class="order_details">
+        <!-- <div class="popup">
           <h3>Order:#5</h3>
             <div class="phead">
               <p>Food Name</p>
@@ -83,7 +83,7 @@
               <a href="../Cart/cart.html"><button>Cancel order</button></a>
               <a href="Profile.html"><button>Close</button></a>
             </div>
-        </div>
+        </div> -->
       </section>
 
       <footer>
@@ -111,11 +111,206 @@
           </div>
         </div>
       </footer>
+
+      <script>
+        let div_popup;
+        let h3_order_num;
+        let div_phead;
+        let p;
+        let div_orderr;
+        let div_name;
+        let p_fname;
+        let p_quantity;
+        let div_dpara;
+        let div_lpara;
+        let div_spara;
+        let p_impnote;
+        let div_cbut;
+        let a;
+        let button;
+
+        const items = [
+          {
+            "name": "Mutton Biryani",
+            "type": "Non-veg",
+            "image": {
+              "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
+              "alt": "Mutton Biryani image"
+            },
+            "quantity": 2,
+            "price": {
+              "currency": "Rs ",
+              "rate": 179
+            }
+          },
+          {
+            "name": "Smabar Rice",
+            "type": "Veg",
+            "image": {
+              "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
+              "alt": "Sambar Rice image"
+            },
+            "quantity": 1,
+            "price": {
+              "currency": "Rs ",
+              "rate": 39
+            }
+          },
+        ]
+
+        // <div class="popuup">
+        div_popup = document.createElement("div");
+        div_popup.setAttribute("class", "popup");
+        console.log(div_popup)
+
+        // <h3> order_num
+        h3_order_num = document.createElement("h3")
+        h3_order_num.innerText = "Order:#5";
+        div_popup.append(h3_order_num)
+
+        // <div class="phead">
+        div_phead = document.createElement("div");
+        div_phead.setAttribute("class", "phead");
+        div_popup.append(div_phead)
+
+        // <p>
+        p = document.createElement("p");
+        p.innerText = "Food Name";
+        div_phead.append(p)
+
+        p = document.createElement("p");
+        p.setAttribute("class", "quan");
+        p.innerText = "Quantity";
+        div_phead.append(p)
+
+        p = document.createElement("p");
+        p.innerText = "Price";
+        div_phead.append(p)
+
+        // Order list //
+        for(let j=0; j<2; j++){
+        // <div class="order">
+        div_order = document.createElement("div");
+        div_order.setAttribute("class", "orderr");
+        div_popup.append(div_order)
+
+        image = document.createElement("img");
+        image.setAttribute("src", "../../assets/Images/Sambar-Rice-min-scaled.webp");
+        image.setAttribute("alt", "Sambar rice");
+        div_order.append(image)
+        
+        div_name = document.createElement("div");
+        div_name.setAttribute("class", "name");
+        div_order.append(div_name)
+
+        p_fname = document.createElement("p");
+        p_fname.setAttribute("class", "fname");
+        p_fname.innerText = "Sambar Rice";
+        div_name.append(p_fname)
+
+        p_fname = document.createElement("p");
+        p_fname.setAttribute("class", "fname");
+        p_fname.innerText = "Veg";
+        div_name.append(p_fname)
+
+        p = document.createElement("p");
+        p.setAttribute("class", "quantity");
+        p.innerText = "1";
+        div_order.append(p)
+
+        p = document.createElement("p");
+        p.innerText = "Rs. 39";
+        div_order.append(p)
+      }
+
+      // <div class="dpara">
+      div_dpara = document.createElement("div");
+      div_dpara.setAttribute("class", "dpara");
+      div_popup.append(div_dpara)
+
+      // <div class="lpara">
+      div_lpara = document.createElement("div");
+      div_lpara.setAttribute("class", "lpara");
+      div_dpara.append(div_lpara)
+
+      // <p>
+      p = document.createElement("p");
+      p.innerText = "Ordered time";
+      div_lpara.append(p)
+
+      p = document.createElement("p");
+      p.innerText = "Delivered time";
+      div_lpara.append(p)
+
+      p = document.createElement("p");
+      p.innerText = "Total";
+      div_lpara.append(p)
+
+      p = document.createElement("p");
+      p.innerText = "Payment";
+      div_lpara.append(p)
+
+      // <div class="spara">
+      div_spara = document.createElement("div");
+      div_spara.setAttribute("class", "spara");
+      div_dpara.append(div_spara)
+
+      // <p>
+      p = document.createElement("p");
+      p.innerText = "30 Nov 2022,01:47 PM";
+      div_spara.append(p)
+
+      p = document.createElement("p");
+      p.innerText = "Not Delivered";
+      div_spara.append(p)
+
+      p = document.createElement("p");
+      p.innerText = "Rs.397";
+      div_spara.append(p)
+
+      p = document.createElement("p");
+      p.innerText = "-";
+      div_spara.append(p)
+
+      // <p class="impnote">
+      p = document.createElement("p");
+      p.setAttribute("class", "impnote");
+      p.innerText = "*Note: You have to cancel your order the same day you have placed it.";
+      div_popup.append(p)
+
+      // <div class="cbut">
+      div_cbut = document.createElement("div");
+      div_cbut.setAttribute("class", "cbut");
+      div_popup.append(div_cbut)
+
+      // <button>
+      button = document.createElement("button");
+      button.setAttribute("onclick", "cancel()");
+      button.innerText = "Cancel order";
+      div_cbut.append(button)
+
+      // <button>
+      button = document.createElement("button");
+      button.setAttribute("onclick", "btn()");
+      button.setAttribute("type", "close");
+      button.innerText = "Close";
+      div_cbut.append(button)
+
+      document.querySelector("section.order_details").append(div_popup)
+
+      function btn(){
+        window.location.href="./Profile.html"
+      }
+      
+      function cancel(){
+        window.location.href="../Cart/cart.html"
+      }
+
+      </script>
+      
+      
+      
+
       
     </body>
 </html>
-
-
-
-    
-  

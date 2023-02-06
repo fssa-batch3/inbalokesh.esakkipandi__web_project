@@ -187,16 +187,16 @@
               "rate": 39
             }
           }
-          ],
-          "details": {
-            "ordered time":"30 Nov 2022,01:47 PM",
-            "delivery_status": "Not delivered",
-            "total_price":{
-              "currency":"Rs.",
-              "total": 397
-            },
-            "payment":"-"
+        ],
+        "details": {
+          "ordered time": "30 Nov 2022,01:47 PM",
+          "delivery_status": "Not delivered",
+          "total_price": {
+            "currency": "Rs.",
+            "total": 397
           },
+          "payment": "-"
+        },
         "timestamp": "30 Nov 2022,01:47 PM",
         "ordered_by": "inbalokesh@gmail.com"
       },
@@ -231,16 +231,16 @@
               "rate": 69
             }
           }
-          ],
-          "details": {
-            "ordered time":"29 Nov 2022,09:12 AM",
-            "delivery_status": "Delivered",
-            "total_price":{
-              "currency":"Rs.",
-              "total": 167
-            },
-            "payment":"Paid(COD)"
+        ],
+        "details": {
+          "ordered time": "29 Nov 2022,09:12 AM",
+          "delivery_status": "Delivered",
+          "total_price": {
+            "currency": "Rs.",
+            "total": 167
           },
+          "payment": "Paid(COD)"
+        },
         "timestamp": "29 Nov 2022,09:12 AM",
         "ordered_by": "surya.umapathy@ctr.freshworks.com"
       },
@@ -262,29 +262,16 @@
               "rate": 47
             }
           },
-          {
-            "name": "Idly",
-            "type": "Veg",
-            "image": {
-              "source": "../../assets/Images/homemade-breakfast.jpg",
-              "alt": "Idly image"
-            },
-            "quantity": 3,
-            "price": {
-              "currency": "Rs ",
-              "rate": 47
-            }
-          }
-          ],
-          "details": {
-            "ordered time":"28 Nov 2022,06:34 PM",
-            "delivery_status": "Delivered",
-            "total_price":{
-              "currency":"Rs.",
-              "total": 47
-            },
-            "payment":"Paid(COD)"
+        ],
+        "details": {
+          "ordered time": "28 Nov 2022,06:34 PM",
+          "delivery_status": "Delivered",
+          "total_price": {
+            "currency": "Rs.",
+            "total": 47
           },
+          "payment": "Paid(COD)"
+        },
         "timestamp": "28 Nov 2022,06:34 PM",
         "ordered_by": "surya.umapathy@ctr.freshworks.com"
       },
@@ -318,16 +305,16 @@
               "rate": 49
             }
           }
-          ],
-          "details": {
-            "ordered time":"27 Nov 2022,08:02 AM",
-            "delivery_status": "Delivered",
-            "total_price":{
-              "currency":"Rs.",
-              "total": 148
-            },
-            "payment":"Paid(COD)"
+        ],
+        "details": {
+          "ordered time": "27 Nov 2022,08:02 AM",
+          "delivery_status": "Delivered",
+          "total_price": {
+            "currency": "Rs.",
+            "total": 148
           },
+          "payment": "Paid(COD)"
+        },
         "timestamp": "27 Nov 2022,08:02 AM",
         "ordered_by": "surya.umapathy@ctr.freshworks.com"
       },
@@ -348,7 +335,7 @@
               "rate": 179
             }
           },
-          
+
           {
             "name": "Chicken Biryani",
             "type": "Non-veg",
@@ -362,24 +349,24 @@
               "rate": 149
             }
           }
-          ],
-          "details": {
-            "ordered time":"26 Nov 2022,02:44 PM",
-            "delivery_status": "Delivered",
-            "total_price":{
-              "currency":"Rs.",
-              "total": 328
-            },
-            "payment":"-"
+        ],
+        "details": {
+          "ordered time": "26 Nov 2022,02:44 PM",
+          "delivery_status": "Delivered",
+          "total_price": {
+            "currency": "Rs.",
+            "total": 328
           },
+          "payment": "-"
+        },
         "timestamp": "26 Nov 2022,02:44 PM",
         "ordered_by": "surya.umapathy@ctr.freshworks.com"
       },
     ]
 
-   for(let i=0; i<5;i++){
+    for (let i = 0; i < 5; i++) {
 
-   
+
       // <div class="obox">
       div_obox = document.createElement("div");
       div_obox.setAttribute("class", "obox");
@@ -402,7 +389,12 @@
 
       // <h4>
       h4 = document.createElement("h4");
-      h4.setAttribute("class", "ndel");
+      if(order_history[i]["status"]=="Not Delivered"){
+        h4.setAttribute("class", "ndel");
+      }
+      else{
+        h4.setAttribute("class", "del");
+      }
       h4.innerText = order_history[i]["status"];
       div_ihead.append(h4);
 
@@ -426,10 +418,15 @@
       div_item_list.setAttribute("class", "item_list");
       div_order.append(div_item_list);
 
-      // <h4> food list//
-      h4 = document.createElement("h4");
-      h4.innerText = order_history[i]["items"][0]["name"] + order_history[i]["items"][0]["quantity"];
-      div_item_list.append(h4);
+      const items = order_history[i]["items"];
+      const noOfItems = items.length
+      // Loop for food
+      for (let j = 0; j < noOfItems; j++) {
+        // <h4> food list//
+        h4 = document.createElement("h4");
+        h4.innerText = items[j]["name"] + items[j]["quantity"];
+        div_item_list.append(h4);
+      }
 
       // <div class="total">
       div_total = document.createElement("div");
@@ -443,7 +440,7 @@
 
       // <h4> price//
       h4 = document.createElement("h4");
-      h4.innerText = order_history[i]["details"]["total_price"]["currency"]+order_history[i]["details"]["total_price"]["total"];
+      h4.innerText = order_history[i]["details"]["total_price"]["currency"] + order_history[i]["details"]["total_price"]["total"];
       div_total.append(h4);
 
       // <div class="ordered_by">
@@ -459,15 +456,15 @@
       // <div class="view_button">
       div_view_button = document.createElement("div");
       div_view_button.setAttribute("class", "view_button");
-      div_order.append(div_view_button); 
-         
+      div_order.append(div_view_button);
+
       // <button>
       button = document.createElement("button");
       button.setAttribute("type", "button");
       button.setAttribute("onclick", "view()");
       button.innerText = "View details";
       div_view_button.append(button);
- 
+
       document.querySelector("div.overflowbox").append(div_obox);
 
     }
