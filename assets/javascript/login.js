@@ -1,5 +1,5 @@
-const signUp = e => {
-
+function signUp(e) {
+    e.preventDefault();
     let user_name = document.getElementById("user_name").value,
         user_phonenumber = document.getElementById("user_phonenumber").value,
         user_email = document.getElementById("user_email").value,
@@ -34,11 +34,11 @@ const signUp = e => {
         alert('Sorry the User already Exist!! \n Try with different Phone number or email');
         document.querySelector('form').reset();
     }
-    e.preventDefault();
+    
 }
 
-const signIn = e =>{
-
+function signIn(e) {
+    e.preventDefault();
     let user_phonenumber = document.getElementById('user_phonenumber').value,
         user_password = document.getElementById('user_password').value;
     
@@ -51,11 +51,11 @@ const signIn = e =>{
 
     if(!exist){
         alert("Incorrect login credentials");
+        document.querySelector('form').reset();        
     }
     else{
         alert("Your login in successful");
         location.href = "/index.html";  
     }
-    e.preventDefault();
 }
 
