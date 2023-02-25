@@ -37,7 +37,7 @@
             <div class="Profile">
                 <a href="../Login and Order/Login.html"><button>Login</button></a>
                 <a href="../Cart/cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon"
-                        height="30px" width="30px"></a>
+                        height="30px" width="30px"><span>0</span></a>
                 <a href="../Login and Order/Profile.html"><img src="../../assets/Images/person-circle-outline.svg"
                         alt="Profile icon" height="30px" width="30px"></a>
             </div>
@@ -94,7 +94,7 @@
     </footer>
     <!-- footer ends -->
 
-    <!-- script -->
+    <!-- script starts-->
     <script src="../../assets/javascript/javascript.js"></script>
 
     <script>
@@ -116,26 +116,6 @@
         let p_price;
         let button;
 
-        // const food_img = ["../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-        // "../../assets/Images/pongal-ven-pongal-500x375.jpg", "../../assets/Images/637945968919611327.webp",
-        // "../../assets/Images/homemade-breakfast.jpg", "../../assets/Images/TAMIL-NADU-FOOD.jpg",
-        // "../../assets/Images/ragi-koozh-kepai-kool-transformed.jpeg", "../../assets/Images/Sambar-Rice-min-scaled.webp",
-        // "../../assets/Images/malabar_parotta-1.jpg", "../../assets/Images/Old rice.jpg",
-        // "../../assets/Images/poori-masala-kizhangu.jpg", "../../assets/Images/curd-rice-recipe.jpg",
-        // "../../assets/Images/chapati.jpg","../../assets/Images/ghee rice.jpg",
-        // "../../assets/Images/thumb__700_0_0_0_auto.jpg", "../../assets/Images/Upma.jpg",
-        // "../../assets/Images/Vegetable-Biryani-scaled.jpg"]
-
-        // const alt_names = ["Mutton Biryani image","Pongal image","Chicken 65 image","Idly image","Morning Combo image","Ragi Koozh image","Sambar Rice image","Poratta image","Ice Biryani image","Poori image","Curd Rice image","Chapathi with Chana image","Ghee Rice image","Chicken Biryani image","Upma image","Veg Biryani image"]
-
-        // const food_names = ["Mutton Biryani","Pongal","Chicken 65","Idly","Morning Combo","Ragi Koozh","Sambar Rice","Poratta","Ice Biryani","Poori","Curd Rice","Chapathi with Chana","Ghee Rice","Chicken Biryani","Upma","Veg Biryani"]
-
-        // const food_types = ["Non-veg","Veg","Non-veg","Veg","Veg","Veg","Veg","Veg","Veg","Veg","Veg","Veg","Veg","Non-veg","Veg","Veg"]
-
-        // const food_quantity = ["1 Kg biryani","1 bowl","250g","4 Idly","Dosa, Idly, Pongal, Vada","1 bowl","1 plate","2 piece","1 bowl","Poori, potato curry","1 bowl","3 Chapati,Chana","Ghee rice,panner curry","1 Kg biryani","1 plate","1 plate"]
-
-        // const food_price = ["Rs. 179","Rs. 29","Rs. 49","Rs. 19","Rs. 49","Rs. 39","Rs. 39","Rs. 19","Rs. 99","Rs. 39","Rs. 39","Rs. 49","Rs. 99","Rs. 149","Rs. 39","Rs.69"]
-
         const food_card_list = [
             {
                 "name": "Mutton Biryani",
@@ -149,6 +129,7 @@
                     "currency": "Rs. ",
                     "rate": 179,
                 },
+                "ordered": 0
             },
             {
                 "name": "Pongal",
@@ -162,6 +143,7 @@
                     "currency": "Rs. ",
                     "rate": 29,
                 },
+                "ordered": 0
             },
             {
                 "name": "Chicken 65",
@@ -175,6 +157,7 @@
                     "currency": "Rs. ",
                     "rate": 49,
                 },
+                "ordered": 0
             },
             {
                 "name": "Idly",
@@ -188,6 +171,7 @@
                     "currency": "Rs. ",
                     "rate": 19,
                 },
+                "ordered": 0
             },
             {
                 "name": "Morning Combo",
@@ -201,6 +185,7 @@
                     "currency": "Rs. ",
                     "rate": 49,
                 },
+                "ordered": 0
             },
             {
                 "name": "Ragi Koozh",
@@ -214,6 +199,7 @@
                     "currency": "Rs. ",
                     "rate": 39,
                 },
+                "ordered": 0
             },
             {
                 "name": "Sambar Rice",
@@ -227,6 +213,7 @@
                     "currency": "Rs. ",
                     "rate": 39,
                 },
+                "ordered": 0
             },
             {
                 "name": "Poratta",
@@ -240,6 +227,7 @@
                     "currency": "Rs. ",
                     "rate": 19,
                 },
+                "ordered": 0
             },
             {
                 "name": "Ice Biryani",
@@ -253,6 +241,7 @@
                     "currency": "Rs. ",
                     "rate": 99,
                 },
+                "ordered": 0
             },
             {
                 "name": "Poori",
@@ -266,6 +255,7 @@
                     "currency": "Rs. ",
                     "rate": 39,
                 },
+                "ordered": 0
             },
             {
                 "name": "Curd Rice",
@@ -279,6 +269,7 @@
                     "currency": "Rs. ",
                     "rate": 39,
                 },
+                "ordered": 0
             },
             {
                 "name": "Chapathi with chana",
@@ -287,11 +278,12 @@
                     "source": "../../assets/Images/chapati.jpg",
                     "alt": "Chapathi with chana image",
                 },
-                "quantity": ["3 Chapati","Chana"],
+                "quantity": ["3 Chapati", "Chana"],
                 "price": {
                     "currency": "Rs. ",
                     "rate": 49,
                 },
+                "ordered": 0
             },
             {
                 "name": "Ghee Rice",
@@ -300,11 +292,12 @@
                     "source": "../../assets/Images/ghee rice.jpg",
                     "alt": "Ghee Rice image",
                 },
-                "quantity": ["Ghee Rice","Panner curry"],
+                "quantity": ["Ghee Rice", "Panner curry"],
                 "price": {
                     "currency": "Rs. ",
                     "rate": 99,
                 },
+                "ordered": 0
             },
             {
                 "name": "Chicken Biryani",
@@ -318,6 +311,7 @@
                     "currency": "Rs. ",
                     "rate": 149,
                 },
+                "ordered": 0
             },
             {
                 "name": "Upma",
@@ -331,6 +325,7 @@
                     "currency": "Rs. ",
                     "rate": 39,
                 },
+                "ordered": 0
             },
             {
                 "name": "Veg Biryani",
@@ -344,6 +339,7 @@
                     "currency": "Rs. ",
                     "rate": 69,
                 },
+                "ordered": 0
             },
 
         ]
@@ -408,20 +404,92 @@
             div_border.append(div_price);
 
             p_price = document.createElement("p");
-            p_price.innerText = food_card_list[i]["price"]["currency"]+ food_card_list[i]["price"]["rate"];
+            p_price.innerText = food_card_list[i]["price"]["currency"] + food_card_list[i]["price"]["rate"];
             div_price.append(p_price);
 
             button = document.createElement("button")
-            button.setAttribute("onclick", "btn()");
+            button.setAttribute("type", "button");
+            button.setAttribute("class", "add_to_cart");
             button.innerText = "Add to cart";
             div_price.append(button);
 
+            // a= document.createElement("a")
+            // a.setAttribute("href", "http://127.0.0.1:5500/Pages/Cart/cart.html?image="+ order_list[i]["image"]["source"]);
+            // button.append(a);
 
             document.querySelector("section.details").append(div_box);
         }
 
+        // function for add to cart //
+        let carts = document.querySelectorAll(".add_to_cart");
+        for (let i = 0; i < carts.length; i++) {
+            carts[i].addEventListener('click', function () {
+                itemCount(food_card_list[i]);
+                totalCost(food_card_list[i])
+            })
+        }
+
+        // function for Number of ordered //s
+        function numberCount() {
+            let foodCount = localStorage.getItem("itemCount");
+            if (foodCount) {
+                document.querySelector('.Profile span').textContent = foodCount;
+            }
+
+        }
+
+        // function for item count//
+        function itemCount(food) {
+            let foodCount = localStorage.getItem("itemCount");
+            foodCount = parseInt(foodCount);
+            if (foodCount) {
+                localStorage.setItem('itemCount', foodCount + 1);
+                document.querySelector('.Profile span').textContent = foodCount + 1
+            }
+            else {
+                localStorage.setItem('itemCount', 1);
+                document.querySelector('.Profile span').textContent = 1
+            }
+            food_list(food)
+        }
+
+        function food_list(food) {
+            let orderItems = JSON.parse(localStorage.getItem("foodsInCart"));
+            if(orderItems!=null){
+                if(orderItems[food.name] == undefined){
+                    orderItems ={
+                        ...orderItems,
+                        [food.name]: food
+                    }
+                }
+                orderItems[food.name].ordered+= 1
+            }
+            else{
+                food.ordered = 1;
+                orderItems = {
+                [food.name]: food
+            }
+           
+            } 
+            localStorage.setItem("foodsInCart", JSON.stringify(orderItems))
+        }
+
+        function totalCost(food){
+            let foodCost = localStorage.getItem("totalCost");
+            if(foodCost != null){
+                foodCost = parseInt(foodCost)
+                localStorage.setItem("totalCost", foodCost + food.price.rate);
+            }
+            else{
+                localStorage.setItem("totalCost", food.price.rate);
+            }
+        }
+
+        numberCount()
+
+
     </script>
-    <!-- script -->
+    <!-- script ends-->
 </body>
 
 </html>

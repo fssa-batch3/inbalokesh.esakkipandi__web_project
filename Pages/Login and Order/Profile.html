@@ -32,7 +32,7 @@
         <a class="navigation__link" href="../Info/contact us.html">Contact Us</a>
       </nav>
       <div class="Profile">
-        <a href="Login.html"><button>Login</button></a>
+        <a href="Login.html"><button class="login">Login</button></a>
         <a href="../Cart/cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon" height="30px"
             width="30px"></a>
         <a href="Profile.html"><img src="../../assets/Images/person-circle-outline.svg" alt="Profile icon" height="30px"
@@ -49,6 +49,7 @@
           <div class="imgb">
             <img src="../../assets/Images/img.jpg" alt="Profile image" height="250px" width="250px">
             <button type="button" onclick="btn()">Edit profile</button>
+            <button type="button" onclick="delData()">Delete</button>
           </div>
           <div>
             <div class="sep">
@@ -111,33 +112,52 @@
     </div>
   </footer>
 
-
   <script src="../../assets/javascript/javascript.js"></script>
-
+<!-- <script src="../../assets/javascript/login.js"></script> -->
   <script>
+    function btn() {
+      window.location.href = "./Edit profile.html"
+    }
 
     function view() {
       window.location.href = "./orderhistory.html"
     }
 
-    // profile information//
-    const name = localStorage.getItem("user_name");
-    const phonenumber = localStorage.getItem("user_phonenumber");
-    const email = localStorage.getItem("user_email");
-    const address = localStorage.getItem("user_address");
-    const password = localStorage.getItem("user_password");
 
-    console.log(name)
-    console.log(phonenumber)
-    console.log(email)
-    console.log(address)
-    console.log(password)
 
-    document.getElementById("user_name").value = name
-    document.getElementById("user_phonenumber").value = phonenumber
-    document.getElementById("user_email").value = email
-    document.getElementById("user_address").value = address
-    document.getElementById("user_password").value = password
+    let userId = JSON.parse(localStorage.getItem('userId'));
+    let user_list = JSON.parse(localStorage.getItem('user_list'));
+
+    function login_data(e) {
+      return e.user_phonenumber == userId;
+    }
+
+    user_data = user_list.find(login_data);
+
+    document.getElementById("user_name").value = user_data["user_name"];
+    document.getElementById("user_phonenumber").value = user_data["user_phonenumber"];
+    document.getElementById("user_email").value = user_data["user_email"];
+    document.getElementById("user_address").value = user_data["user_address"];
+    document.getElementById("user_password").value = user_data["user_password"];
+
+    function delData(e) {
+      if (confirm("Are you sure?")) {
+        let userId = JSON.parse(localStorage.getItem("userId"));
+        let user_list = JSON.parse(localStorage.getItem("user_list"));
+
+        function login_data(e) {
+          return e.user_phonenumber == userId;
+        }
+
+        user_data = user_list.find(login_data);
+
+        const indexOfUser = user_list.indexOf(user_data);
+        
+        user_list.splice(indexOfUser, 1);
+        localStorage.setItem('user_list', JSON.stringify(user_list));
+        window.location.href = "../../index.html";
+      };
+    }
 
 
     // Order history loop//
@@ -389,10 +409,10 @@
 
       // <h4>
       h4 = document.createElement("h4");
-      if(order_history[i]["status"]=="Not Delivered"){
+      if (order_history[i]["status"] == "Not Delivered") {
         h4.setAttribute("class", "ndel");
       }
-      else{
+      else {
         h4.setAttribute("class", "del");
       }
       h4.innerText = order_history[i]["status"];

@@ -100,10 +100,12 @@ body{
 
 .plus{
     margin-top: 3px;
+    cursor: pointer;
 }
 
 .minus{
     margin-top: 7px;
+    cursor: pointer;
 }
 
 .slist button{
@@ -124,7 +126,7 @@ body{
 
 .summary{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height:500px;
+    height:100%;
     width:300px;
     padding:10px 20px;
     border-radius: 10px;
@@ -135,17 +137,17 @@ body{
     text-align: center;
 }
 
-.sum{
+.sum,.food_items{
     display:flex;
     justify-content: space-between;
     align-content: center;
 }
 
-.sum h4{
+.sum h4,.food_items h4{
     margin-top:5px;
 }
 
-.sum p{
+.sum p,.food_items p{
     margin:5px;
     font-weight:bold;
     color:rgb(120, 119, 119);
@@ -176,14 +178,15 @@ body{
     font-size: 20px;
 }
 
-.sumlist{
+/* .sumlist{
     height:150px;
-}
+} */
 
 .sumlist button{
-    height:30%;
+    height:45px;
     width:100%;
     margin-top: 30px;
+    margin-bottom: 20px;
     background-color: #FF7223;
     box-shadow: #FF7223  0px 25px 20px -20px;
     color:white;

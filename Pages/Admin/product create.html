@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/product create.css">
+    <link rel="stylesheet" href="../../assets/css/menu.css">
+    <link rel="stylesheet" href="../../assets/css/login.css">
+    <title>Create Product</title>
+    <style>
+        .header {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .form-box {
+            margin: auto;
+            margin-top: 50px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: -2px 4px 37px -16px rgba(115, 201, 96, 1);
+        }
+
+        form {
+            width: 90%;
+        }
+
+        form input {
+            width: 90%;
+            margin: 10px;
+        }
+
+        .top-head {
+            display: flex;
+            align-items: center;
+        }
+
+        button {
+            width: 92.5%;
+            margin: 10px;
+        }
+
+        .img {
+            width: 150px;
+        }
+
+        .top-head h1 {
+            font-size: 30px;
+            margin-left: 70px;
+        }
+
+        .down-button {
+            display: flex;
+            width: 80%;
+            padding: 20px;
+        }
+
+        button.delete {
+            background-color: rgb(234, 74, 45);
+        }
+
+        button.delete:hover {
+            background-color: rgb(234, 74, 45);
+        }
+
+        button.remove {
+            background-color: rgb(0, 181, 0);
+            height: 32px;
+            width: 80%;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="shead">
+            <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px"
+                    width="100px"></a>
+            <h1>ONLY HOME FOOD</h1>
+    </header>
+
+    <div class="form-box">
+        <form class="create product" form="role" onsubmit="createProduct()">
+            <div class="top-head">
+                <img src="../../assets/Images/LOGO.png" alt="logo" class="img">
+                <h1>Create product</h1>
+            </div>
+            <label>Image</label>
+            <input type="url" id="product_image" placeholder="" required />
+            <label>Food name</label>
+            <input type="text" pattern="[a-zA-Z0-9]+" id="product_name" placeholder="Name" required />
+            <label>Type</label>
+            <input type="text" id="product_type" placeholder="Ex:Non-veg or Veg" required />
+            <label>Quantity</label>
+            <input type="text" id="product_quantity" placeholder="Ex: 1kg aaaaa or 1 bow, etc" required />
+            <label>Price</label>
+            <input type="number" id="product_price" placeholder="Price of the food" required />
+
+            <button type="submit" class="btn-primary">Create</button>
+
+        </form>
+        <div class="down-button">
+            <button type="button" class="btn-update">Update</button>
+            <button type="remove" class="btn-delete">Delete</button>
+        </div>
+
+    </div>
+
+    <h1 class="he">FOOD LIST</h1>
+    <div class="top">
+        <div class="menu">
+            <a href="#" class="all">All</a>
+        </div>
+    </div>
+    <section class="details">
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+
+    <script>
+
+        let food_list = JSON.parse(localStorage.getItem("product_list"));
+
+        for (let i = 0; i < food_list.length; i++) {
+
+            // <div class="box">
+            div_box = document.createElement("div");
+            div_box.setAttribute("class", "box");
+            console.log(div_box);
+
+            // <img>
+            img_food = document.createElement("img");
+            img_food.setAttribute("src", food_list[i]["product_image"]);
+            img_food.setAttribute("alt", food_list[i]["product_name"] + " image");
+            div_box.append(img_food);
+
+            // <div class="border">
+            div_border = document.createElement("div");
+            div_border.setAttribute("class", "border");
+            div_box.append(div_border);
+
+            // <h4>
+            h4 = document.createElement("h4");
+            h4.innerText = food_list[i]["product_name"];
+            div_border.append(h4);
+
+            // <div class="info_box"> 
+            div_info_box = document.createElement("div");
+            div_info_box.setAttribute("class", "info_box");
+            div_border.append(div_info_box);
+
+            // <div class="info">
+            div_info = document.createElement("div");
+            div_info.setAttribute("class", "info");
+            div_info_box.append(div_info);
+
+            h5 = document.createElement("h5");
+            h5.innerText = "Type";
+            div_info.append(h5);
+
+            p = document.createElement("p");
+            p.innerText = food_list[i]["product_type"];
+            div_info.append(p);
+
+            // <div class="info2">
+            div_info = document.createElement("div");
+            div_info.setAttribute("class", "info");
+            div_info_box.append(div_info);
+
+            h5 = document.createElement("h5");
+            h5.innerText = "Quantity";
+            div_info.append(h5);
+
+            p = document.createElement("p");
+            p.innerText = food_list[i]["product_quantity"];
+            div_info.append(p);
+
+            // <div class="price">
+            div_price = document.createElement("div");
+            div_price.setAttribute("class", "price");
+            div_border.append(div_price);
+
+            p_price = document.createElement("p");
+            p_price.innerText = "Rs." + food_list[i]["product_price"];
+            div_price.append(p_price);
+
+            button = document.createElement("button")
+            button.setAttribute("type", "button");
+            button.setAttribute("class", "edit");
+            button.setAttribute("data-id", food_list[i]["product_id"]);
+            button.innerText = "EDIT";
+            div_price.append(button);
+
+            button = document.createElement("button")
+            button.setAttribute("type", "submit");
+            button.setAttribute("class", "remove");
+            button.innerText = "ADD";
+            div_box.append(button);
+
+            // a= document.createElement("a")
+            // a.setAttribute("href", "http://127.0.0.1:5500/Pages/Cart/cart.html?image="+ order_list[i]["image"]["source"]);
+            // button.append(a);
+
+            document.querySelector("section.details").append(div_box);
+        }
+
+        // Function to create product //
+
+        function createProduct(e) {
+            let product_image = document.getElementById("product_image").value,
+                product_name = document.getElementById("product_name").value,
+                product_type = document.getElementById("product_type").value,
+                product_quantity = document.getElementById("product_quantity").value,
+                product_price = document.getElementById("product_price").value;
+
+            let product_list = JSON.parse(localStorage.getItem('product_list')) || [];
+
+            let exist = product_list.length &&
+                JSON.parse(localStorage.getItem('product_list')).some(data =>
+                    data.product_name.toLowerCase() == product_name.toLowerCase()
+                );
+
+            if (!exist) {
+                let product_id = uuidv4()
+                product_list.push({
+                    product_image, product_name, product_type, product_quantity,
+                    product_price, product_id
+                });
+
+                localStorage.setItem('product_list', JSON.stringify(product_list));
+                document.querySelector('form').reset();
+                document.getElementById('product_name').focus();
+                alert('Product created Successfully');
+            }
+
+            else {
+                alert('Sorry the product already Exist!! \n Try with different dish or name');
+                document.querySelector('form').reset();
+            }
+        }
+
+        // Function for edit button //
+        const edit = document.querySelectorAll('button.edit');
+
+        edit.forEach(function (findId) {
+            findId.addEventListener('click', function () {
+                const id = this.dataset.id;
+                localStorage.setItem("product_Uid", JSON.stringify(id));
+                let uid = JSON.parse(localStorage.getItem("product_Uid"));
+                let product = JSON.parse(localStorage.getItem("product_list"));
+
+                function find_data(e) {
+                    return e.product_id == uid;
+                }
+
+                product_data = product.find(find_data);
+
+                document.getElementById("product_image").value = product_data["product_image"];
+                document.getElementById("product_name").value = product_data["product_name"];
+                document.getElementById("product_type").value = product_data["product_type"];
+                document.getElementById("product_quantity").value = product_data["product_quantity"];
+                document.getElementById("product_price").value = product_data["product_price"];
+
+                window.scrollTo(0, 0);
+            });
+        });
+
+
+
+        // Function for update //
+
+        let update = document.querySelector(".btn-update");
+
+        update.addEventListener("click", upadate_product);
+
+        function upadate_product() {
+            let uid = JSON.parse(localStorage.getItem("product_Uid"));
+            let product = JSON.parse(localStorage.getItem("product_list"));
+
+            function find_data(e) {
+                return e.product_id == uid;
+            }
+
+            product_data = product.find(find_data);
+            let edit_image = document.getElementById("product_image").value
+            let edit_name = document.getElementById("product_name").value
+            let edit_type = document.getElementById("product_type").value
+            let edit_quantity = document.getElementById("product_quantity").value
+            let edit_price = document.getElementById("product_price").value
+
+            product_data["product_image"] = edit_image;
+            product_data["product_name"] = edit_name;
+            product_data["product_type"] = edit_type;
+            product_data["product_quantity"] = edit_quantity;
+            product_data["product_price"] = edit_price;
+
+            localStorage.setItem('product_list', JSON.stringify(product));
+
+            alert("Product updated successfully");
+            location.reload();
+        }
+
+        // Function for delete product //
+
+        let del_product = document.querySelector(".btn-delete");
+
+        del_product.addEventListener("click", delData);
+
+        function delData() {
+            if (confirm("Are you sure?")) {
+                let uid = JSON.parse(localStorage.getItem("product_Uid"));
+
+                let product = JSON.parse(localStorage.getItem("product_list"));
+
+                function find_data(e) {
+                    return e.product_id == uid;
+                }
+
+
+                product_data = product.find(find_data);
+
+                const indexOfUser = product.indexOf(product_data);
+
+                product.splice(indexOfUser, 1);
+
+                localStorage.setItem('product_list', JSON.stringify(product));
+                location.reload();
+            };
+
+        }
+
+        // let add = document.querySelectorAll("button.remove");
+
+        // add.forEach(function (add_product) {
+        //     add_product.addEventListener('click', function () {
+        //         let elements = document.querySelectorAll(".edit");
+        //         elements.forEach(function (element) {
+        //             let get_id = element.getAttribute("data-id");
+        //             console.log(get_id)
+
+        //         });
+
+        //     });
+
+        // });
+
+        // For gettin a particular id //
+        let add = document.querySelectorAll("button.remove");
+
+        add.forEach(function (add_product) {
+            add_product.addEventListener('click', function () {
+                let parentBox = this.closest('.box');
+                let get_id = parentBox.querySelector('.edit').getAttribute("data-id");
+                let value = parentBox.querySelector('.info_box .info:last-of-type p');
+
+                let display_foods = JSON.parse(localStorage.getItem('display_foods')) || [];
+
+                let exist = display_foods.length &&
+                    JSON.parse(localStorage.getItem('display_foods')).some(data =>
+                        data.get_id == get_id)
+
+                if (!exist) {
+                    display_foods.push({
+                        "id":get_id
+                    });
+
+                    localStorage.setItem('display_foods', JSON.stringify(display_foods));
+                }
+                else{
+                    alert('This id is already added');
+                }
+
+            });
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
+
+
+<!-- pongal -->
+<!-- <img src="https://iili.io/HMeJ2uj.jpg" alt="pongal ven pongal 500x375" border="0"> -->
+
+<!-- chicken 65 -->
+<!-- <img src="https://iili.io/HMeJ2uj.jpg" alt="pongal ven pongal 500x375" border="0"><img src="https://iili.io/HMe272t.webp" alt="637945968919611327" border="0"> -->

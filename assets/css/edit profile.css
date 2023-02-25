@@ -72,11 +72,13 @@ input[type=file]{
 
 input{
     border-color: transparent;
+    height:25px;
 }
 
 textarea{
     height:60px;
     border-color: transparent;
+    resize: none;
 }
 
 .sep{

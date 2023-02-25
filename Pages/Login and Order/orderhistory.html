@@ -155,7 +155,7 @@
               "currency": "Rs ",
               "rate": 39
             }
-          },
+          }
         ]
 
         // <div class="popuup">
@@ -188,15 +188,15 @@
         div_phead.append(p)
 
         // Order list //
-        for(let j=0; j<2; j++){
+        for(let i=0; i<2; i++){
         // <div class="order">
         div_order = document.createElement("div");
         div_order.setAttribute("class", "orderr");
         div_popup.append(div_order)
 
         image = document.createElement("img");
-        image.setAttribute("src", "../../assets/Images/Sambar-Rice-min-scaled.webp");
-        image.setAttribute("alt", "Sambar rice");
+        image.setAttribute("src", items[i]["image"]["source"]);
+        image.setAttribute("alt", items[i]["image"]["alt"]);
         div_order.append(image)
         
         div_name = document.createElement("div");
@@ -205,21 +205,21 @@
 
         p_fname = document.createElement("p");
         p_fname.setAttribute("class", "fname");
-        p_fname.innerText = "Sambar Rice";
+        p_fname.innerText = items[i]["name"];
         div_name.append(p_fname)
 
         p_fname = document.createElement("p");
         p_fname.setAttribute("class", "fname");
-        p_fname.innerText = "Veg";
+        p_fname.innerText = items[i]["type"];
         div_name.append(p_fname)
 
         p = document.createElement("p");
         p.setAttribute("class", "quantity");
-        p.innerText = "1";
+        p.innerText = items[i]["quantity"];
         div_order.append(p)
 
         p = document.createElement("p");
-        p.innerText = "Rs. 39";
+        p.innerText = items[i]["price"]["currency"]+items[i]["price"]["rate"];
         div_order.append(p)
       }
 

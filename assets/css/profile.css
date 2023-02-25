@@ -55,6 +55,7 @@ input{
 textarea{
     height:60px;
     border-color: transparent;
+    resize: none;
 }
 
 .sep{

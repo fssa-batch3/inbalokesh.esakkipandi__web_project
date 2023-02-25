@@ -17,19 +17,21 @@
             <div class="signupbox">
                 <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="logo"></a>
                 <h1>Sign Up</h1>
-                <form role="form" onsubmit="signUp(event);">
+                <form role="form" name="newform" id="form" onsubmit="signUp(event);">
                     <label>Name</label>
-                    <input type="text" class="username" id="user_name" placeholder="Name" required/>
+                    <input type="text" class="username" id="user_name" pattern="[a-zA-Z0-9]+" title="No spaces in between." placeholder="Name" required/>
                     <label>Mobile No</label>
-                    <input type="tel" id="user_phonenumber" placeholder="Mobile No" required/>
+                    <input type="tel" id="user_phonenumber" placeholder="Mobile No" pattern="[0-9].{9}" title="Write your 10-digit mobile number." required/>
                     <label>Email</label>
-                    <input type="email" id="user_email" placeholder="Email" required/>
+                    <input type="email" id="user_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Write your email properly" required/>
                     <label class="addr">Address</label>
                     <textarea type="text" id="user_address" name="Address" placeholder="Your address" required></textarea> 
                     <label>Password</label>
-                    <input type="password" id="user_password" placeholder="Password" required/>
+                    <input type="password" id="user_password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
                     <label>Confirm Password</label>
-                    <input type="password" id="confirm_password" placeholder="Confirm Password" required/>
+                    <input type="password" id="confirm_password" placeholder="Confirm Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
                     <button type="submit" class="btn-secondary">Submit
                     </button >
                 </form>
@@ -66,43 +68,6 @@
 
             //     window.location.href = "../../index.html"
             // }
-
-            // const signUp =e => {
-
-            //     let user_name = document.getElementById("user_name").value,
-            //         user_phonenumber = document.getElementById("user_phonenumber").value,
-            //         user_email = document.getElementById("user_email").value,
-            //         user_address = document.getElementById("user_address").value,
-            //         user_password = document.getElementById("user_password").value,
-            //         confirm_password = document.getElementById("confirm_password").value;
-
-
-            //     let user_list = JSON.parse(localStorage.getItem('user_list')) || [];
-
-            //     let exist = user_list.length && 
-            //         JSON.parse(localStorage.getItem('user_list')).some(data => 
-            //             data.user_phonenumber.toLowerCase() == user_phonenumber.toLowerCase() ||
-            //             data.user_email.toLowerCase() == user_email.toLowerCase()
-            //         );
-
-            //     if(!exist){
-            //         user_list.push({ user_name, user_phonenumber, user_email, user_address, 
-            //                         user_password, confirm_password });
-                                    
-            //         localStorage.setItem('user_list', JSON.stringify(user_list));
-            //         console.log(localStorage.getItem('user_list'));
-            //         document.querySelector('form').reset();
-            //         document.getElementById('user_phonenumber').focus();
-            //         document.getElementById('user_email').focus();
-            //         alert('Account created Successfully');
-            //     }
-            //     else{
-            //         alert('Sorry the User already Exist!! \n Try with different Phone number or email');
-            //         document.querySelector('form').reset();
-            //     }
-            //     e.preventDefault();
-            // }
-          
         </script>
         <script src="../../assets/javascript/login.js"></script>
     </body>

@@ -24,7 +24,7 @@ body{
 
 .signupbox{
     width: 450px;
-    height: 840px;
+    height: 900px;
     margin: auto;
     border-radius: 3px;
     background-color: rgb(246, 246, 246);
@@ -94,8 +94,9 @@ button:hover{
 }
 
 textarea{
-    height:80px;
+    height:100px;
     width:405px;
+    resize: none;
     font-family: Arial, Helvetica, sans-serif;
 }
 

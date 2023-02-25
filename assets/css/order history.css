@@ -3,7 +3,7 @@ body{
 }
 
 section{
-    height:100vh;
+    margin:50px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -13,8 +13,8 @@ section{
 .popup{
     padding-left:30px;
     padding-right:30px;
+    padding-bottom:20px;
     width:510px;
-    height:600px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    background-color: white;
     border-radius: 5px;
 }
@@ -89,6 +89,9 @@ p.fname{
         margin:auto;
         padding-top:10px;
     }
+    p.quan{
+        margin-left: 165px;
+    }
     .header{
         display:none;
     }
@@ -98,14 +101,15 @@ p.fname{
 }
 @media (max-width:550px){
     .popup{
-        height:130vw;
+        padding-left: 20px;
+        padding-right: 20px;
         width:80%;
     }
     h3,p{
         font-size: 3vw;
     }
     p.quan{
-        margin-left: 120px;
+        margin-left: 65px;
     }
     .name{
         width:70px;
