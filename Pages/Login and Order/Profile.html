@@ -123,9 +123,8 @@
       window.location.href = "./orderhistory.html"
     }
 
-
-
     let userId = JSON.parse(localStorage.getItem('userId'));
+
     let user_list = JSON.parse(localStorage.getItem('user_list'));
 
     function login_data(e) {
@@ -148,12 +147,12 @@
         function login_data(e) {
           return e.user_phonenumber == userId;
         }
-
         user_data = user_list.find(login_data);
 
         const indexOfUser = user_list.indexOf(user_data);
         
         user_list.splice(indexOfUser, 1);
+
         localStorage.setItem('user_list', JSON.stringify(user_list));
         window.location.href = "../../index.html";
       };

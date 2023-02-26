@@ -103,7 +103,6 @@
             <input type="number" id="product_price" placeholder="Price of the food" required />
 
             <button type="submit" class="btn-primary">Create</button>
-
         </form>
         <div class="down-button">
             <button type="button" class="btn-update">Update</button>
@@ -271,8 +270,6 @@
             });
         });
 
-
-
         // Function for update //
 
         let update = document.querySelector(".btn-update");
@@ -335,21 +332,6 @@
 
         }
 
-        // let add = document.querySelectorAll("button.remove");
-
-        // add.forEach(function (add_product) {
-        //     add_product.addEventListener('click', function () {
-        //         let elements = document.querySelectorAll(".edit");
-        //         elements.forEach(function (element) {
-        //             let get_id = element.getAttribute("data-id");
-        //             console.log(get_id)
-
-        //         });
-
-        //     });
-
-        // });
-
         // For gettin a particular id //
         let add = document.querySelectorAll("button.remove");
 
@@ -359,28 +341,25 @@
                 let get_id = parentBox.querySelector('.edit').getAttribute("data-id");
                 let value = parentBox.querySelector('.info_box .info:last-of-type p');
 
-                let display_foods = JSON.parse(localStorage.getItem('display_foods')) || [];
+                let display_foods = JSON.parse(localStorage.getItem('product_ids')) || [];
 
                 let exist = display_foods.length &&
-                    JSON.parse(localStorage.getItem('display_foods')).some(data =>
-                        data.get_id == get_id)
+                    JSON.parse(localStorage.getItem('product_ids')).some(data =>
+                        data.product_id == get_id)
 
                 if (!exist) {
                     display_foods.push({
-                        "id":get_id
+                        "product_id":get_id
                     });
-
-                    localStorage.setItem('display_foods', JSON.stringify(display_foods));
+                    localStorage.setItem('product_ids',  JSON.stringify(display_foods));
+                    alert("Your product is successfully added to the menu");
                 }
-                else{
+                else {
                     alert('This id is already added');
                 }
 
             });
         });
-
-
-
 
     </script>
 

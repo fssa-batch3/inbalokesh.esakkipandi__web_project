@@ -131,7 +131,7 @@
         let edit_email = document.getElementById("user_email").value
         let edit_address = document.getElementById("user_address").value
 
-        user_data["user_name"] = edit_name;
+        user_data["user_name"] = edit_name;   
         user_data["user_phonenumber"] = edit_number;
         user_data["user_email"] = edit_email;
         user_data["user_address"] = edit_address;
@@ -139,7 +139,7 @@
         localStorage.setItem('user_list', JSON.stringify(user_list));
 
         alert("Updated successfully");
-        location.href = "./Profile.html";
+        location.href = "./Profile.html"; 
         // console.log(user_list);
       }
     // function save(){

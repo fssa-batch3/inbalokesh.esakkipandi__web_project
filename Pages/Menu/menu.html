@@ -116,235 +116,252 @@
         let p_price;
         let button;
 
-        const food_card_list = [
-            {
-                "name": "Mutton Biryani",
-                "type": "Non-veg",
-                "image": {
-                    "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-                    "alt": "Mutton Biryani image",
-                },
-                "quantity": ["1 Kg Biryani"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 179,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Pongal",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/pongal-ven-pongal-500x375.jpg",
-                    "alt": "Pongal image",
-                },
-                "quantity": ["1 bowl"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 29,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Chicken 65",
-                "type": "Non-veg",
-                "image": {
-                    "source": "../../assets/Images/637945968919611327.webp",
-                    "alt": "Chicken 65 image",
-                },
-                "quantity": ["250g"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 49,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Idly",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/homemade-breakfast.jpg",
-                    "alt": "Idly image",
-                },
-                "quantity": ["4 Idly"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 19,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Morning Combo",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/TAMIL-NADU-FOOD.jpg",
-                    "alt": "Morning Combo image",
-                },
-                "quantity": ["Dosa", "Idly", "Pongal", "Vadai"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 49,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Ragi Koozh",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/ragi-koozh-kepai-kool-transformed.jpeg",
-                    "alt": "Ragi Koozh image",
-                },
-                "quantity": ["1 Bowl"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 39,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Sambar Rice",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
-                    "alt": "Sambar Rice image",
-                },
-                "quantity": ["1 plate"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 39,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Poratta",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/malabar_parotta-1.jpg",
-                    "alt": "Poratta image",
-                },
-                "quantity": ["2 piece"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 19,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Ice Biryani",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/Old rice.jpg",
-                    "alt": "Ice Biryani image",
-                },
-                "quantity": ["1 Bowl"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 99,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Poori",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/poori-masala-kizhangu.jpg",
-                    "alt": "Poori image",
-                },
-                "quantity": ["3 Poori", "potato curry"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 39,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Curd Rice",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/curd-rice-recipe.jpg",
-                    "alt": "Curd Rice image",
-                },
-                "quantity": ["1 Bowl"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 39,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Chapathi with chana",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/chapati.jpg",
-                    "alt": "Chapathi with chana image",
-                },
-                "quantity": ["3 Chapati", "Chana"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 49,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Ghee Rice",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/ghee rice.jpg",
-                    "alt": "Ghee Rice image",
-                },
-                "quantity": ["Ghee Rice", "Panner curry"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 99,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Chicken Biryani",
-                "type": "Non-veg",
-                "image": {
-                    "source": "../../assets/Images/thumb__700_0_0_0_auto.jpg",
-                    "alt": "Chicken Biryani image",
-                },
-                "quantity": ["1 Kg Biryani"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 149,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Upma",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/Upma.jpg",
-                    "alt": "Upma image",
-                },
-                "quantity": ["1 Bowl"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 39,
-                },
-                "ordered": 0
-            },
-            {
-                "name": "Veg Biryani",
-                "type": "Veg",
-                "image": {
-                    "source": "../../assets/Images/Vegetable-Biryani-scaled.jpg",
-                    "alt": "Veg Biryani image",
-                },
-                "quantity": ["1 plate"],
-                "price": {
-                    "currency": "Rs. ",
-                    "rate": 69,
-                },
-                "ordered": 0
-            },
+        // const food_card_list = [
+        //     {
+        //         "name": "Mutton Biryani",
+        //         "type": "Non-veg",
+        //         "image": {
+        //             "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
+        //             "alt": "Mutton Biryani image",
+        //         },
+        //         "quantity": ["1 Kg Biryani"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 179,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Pongal",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/pongal-ven-pongal-500x375.jpg",
+        //             "alt": "Pongal image",
+        //         },
+        //         "quantity": ["1 bowl"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 29,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Chicken 65",
+        //         "type": "Non-veg",
+        //         "image": {
+        //             "source": "../../assets/Images/637945968919611327.webp",
+        //             "alt": "Chicken 65 image",
+        //         },
+        //         "quantity": ["250g"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 49,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Idly",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/homemade-breakfast.jpg",
+        //             "alt": "Idly image",
+        //         },
+        //         "quantity": ["4 Idly"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 19,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Morning Combo",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/TAMIL-NADU-FOOD.jpg",
+        //             "alt": "Morning Combo image",
+        //         },
+        //         "quantity": ["Dosa", "Idly", "Pongal", "Vadai"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 49,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Ragi Koozh",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/ragi-koozh-kepai-kool-transformed.jpeg",
+        //             "alt": "Ragi Koozh image",
+        //         },
+        //         "quantity": ["1 Bowl"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 39,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Sambar Rice",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
+        //             "alt": "Sambar Rice image",
+        //         },
+        //         "quantity": ["1 plate"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 39,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Poratta",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/malabar_parotta-1.jpg",
+        //             "alt": "Poratta image",
+        //         },
+        //         "quantity": ["2 piece"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 19,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Ice Biryani",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/Old rice.jpg",
+        //             "alt": "Ice Biryani image",
+        //         },
+        //         "quantity": ["1 Bowl"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 99,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Poori",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/poori-masala-kizhangu.jpg",
+        //             "alt": "Poori image",
+        //         },
+        //         "quantity": ["3 Poori", "potato curry"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 39,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Curd Rice",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/curd-rice-recipe.jpg",
+        //             "alt": "Curd Rice image",
+        //         },
+        //         "quantity": ["1 Bowl"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 39,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Chapathi with chana",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/chapati.jpg",
+        //             "alt": "Chapathi with chana image",
+        //         },
+        //         "quantity": ["3 Chapati", "Chana"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 49,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Ghee Rice",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/ghee rice.jpg",
+        //             "alt": "Ghee Rice image",
+        //         },
+        //         "quantity": ["Ghee Rice", "Panner curry"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 99,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Chicken Biryani",
+        //         "type": "Non-veg",
+        //         "image": {
+        //             "source": "../../assets/Images/thumb__700_0_0_0_auto.jpg",
+        //             "alt": "Chicken Biryani image",
+        //         },
+        //         "quantity": ["1 Kg Biryani"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 149,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Upma",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/Upma.jpg",
+        //             "alt": "Upma image",
+        //         },
+        //         "quantity": ["1 Bowl"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 39,
+        //         },
+        //         "ordered": 0
+        //     },
+        //     {
+        //         "name": "Veg Biryani",
+        //         "type": "Veg",
+        //         "image": {
+        //             "source": "../../assets/Images/Vegetable-Biryani-scaled.jpg",
+        //             "alt": "Veg Biryani image",
+        //         },
+        //         "quantity": ["1 plate"],
+        //         "price": {
+        //             "currency": "Rs. ",
+        //             "rate": 69,
+        //         },
+        //         "ordered": 0
+        //     },
 
-        ]
+        // ]
 
-        for (let i = 0; i < 16; i++) {
+        
+        // Function to display foods //
+
+        let product_list = JSON.parse(localStorage.getItem("product_list"));
+        let uu_id = JSON.parse(localStorage.getItem("product_ids"));
+
+        let food_list = [];
+
+        for (let i = 0; i < product_list.length; i++) {
+        for (let j = 0; j < uu_id.length; j++) {
+            if (product_list[i].product_id === uu_id[j].product_id) {
+                food_list.push(product_list[i]);
+            break;
+            }
+        }
+        }
+
+        for (let i = 0; i < food_list.length ; i++) {
 
             // <div class="box">
             div_box = document.createElement("div");
@@ -353,8 +370,8 @@
 
             // <img>
             img_food = document.createElement("img");
-            img_food.setAttribute("src", food_card_list[i]["image"]["source"]);
-            img_food.setAttribute("alt", food_card_list[i]["image"]["alt"]);
+            img_food.setAttribute("src", food_list[i]["product_image"]);
+            img_food.setAttribute("alt", food_list[i]["product_name"] + " image");
             div_box.append(img_food);
 
             // <div class="border">
@@ -364,7 +381,7 @@
 
             // <h4>
             h4 = document.createElement("h4");
-            h4.innerText = food_card_list[i]["name"];
+            h4.innerText = food_list[i]["product_name"];
             div_border.append(h4);
 
             // <div class="info_box"> 
@@ -382,7 +399,7 @@
             div_info.append(h5);
 
             p = document.createElement("p");
-            p.innerText = food_card_list[i]["type"];
+            p.innerText = food_list[i]["product_type"];
             div_info.append(p);
 
             // <div class="info2">
@@ -395,7 +412,7 @@
             div_info.append(h5);
 
             p = document.createElement("p");
-            p.innerText = food_card_list[i]["quantity"];
+            p.innerText = food_list[i]["product_quantity"];
             div_info.append(p);
 
             // <div class="price">
@@ -404,7 +421,7 @@
             div_border.append(div_price);
 
             p_price = document.createElement("p");
-            p_price.innerText = food_card_list[i]["price"]["currency"] + food_card_list[i]["price"]["rate"];
+            p_price.innerText = "Rs." + food_list[i]["product_price"];
             div_price.append(p_price);
 
             button = document.createElement("button")
@@ -420,72 +437,73 @@
             document.querySelector("section.details").append(div_box);
         }
 
+
         // function for add to cart //
-        let carts = document.querySelectorAll(".add_to_cart");
-        for (let i = 0; i < carts.length; i++) {
-            carts[i].addEventListener('click', function () {
-                itemCount(food_card_list[i]);
-                totalCost(food_card_list[i])
-            })
-        }
+        // let carts = document.querySelectorAll(".add_to_cart");
+        // for (let i = 0; i < carts.length; i++) {
+        //     carts[i].addEventListener('click', function () {
+        //         itemCount(food_card_list[i]);
+        //         totalCost(food_card_list[i])
+        //     })
+        // }
 
         // function for Number of ordered //s
-        function numberCount() {
-            let foodCount = localStorage.getItem("itemCount");
-            if (foodCount) {
-                document.querySelector('.Profile span').textContent = foodCount;
-            }
+        // function numberCount() {
+        //     let foodCount = localStorage.getItem("itemCount");
+        //     if (foodCount) {
+        //         document.querySelector('.Profile span').textContent = foodCount;
+        //     }
 
-        }
+        // }
 
         // function for item count//
-        function itemCount(food) {
-            let foodCount = localStorage.getItem("itemCount");
-            foodCount = parseInt(foodCount);
-            if (foodCount) {
-                localStorage.setItem('itemCount', foodCount + 1);
-                document.querySelector('.Profile span').textContent = foodCount + 1
-            }
-            else {
-                localStorage.setItem('itemCount', 1);
-                document.querySelector('.Profile span').textContent = 1
-            }
-            food_list(food)
-        }
+        // function itemCount(food) {
+        //     let foodCount = localStorage.getItem("itemCount");
+        //     foodCount = parseInt(foodCount);
+        //     if (foodCount) {
+        //         localStorage.setItem('itemCount', foodCount + 1);
+        //         document.querySelector('.Profile span').textContent = foodCount + 1
+        //     }
+        //     else {
+        //         localStorage.setItem('itemCount', 1);
+        //         document.querySelector('.Profile span').textContent = 1
+        //     }
+        //     food_list(food)
+        // }
 
-        function food_list(food) {
-            let orderItems = JSON.parse(localStorage.getItem("foodsInCart"));
-            if(orderItems!=null){
-                if(orderItems[food.name] == undefined){
-                    orderItems ={
-                        ...orderItems,
-                        [food.name]: food
-                    }
-                }
-                orderItems[food.name].ordered+= 1
-            }
-            else{
-                food.ordered = 1;
-                orderItems = {
-                [food.name]: food
-            }
+        // function food_list(food) {
+        //     let orderItems = JSON.parse(localStorage.getItem("foodsInCart"));
+        //     if(orderItems!=null){
+        //         if(orderItems[food.name] == undefined){
+        //             orderItems ={
+        //                 ...orderItems,
+        //                 [food.name]: food
+        //             }
+        //         }
+        //         orderItems[food.name].ordered+= 1
+        //     }
+        //     else{
+        //         food.ordered = 1;
+        //         orderItems = {
+        //         [food.name]: food
+        //     }
            
-            } 
-            localStorage.setItem("foodsInCart", JSON.stringify(orderItems))
-        }
+        //     } 
+        //     localStorage.setItem("foodsInCart", JSON.stringify(orderItems))
+        // }
 
-        function totalCost(food){
-            let foodCost = localStorage.getItem("totalCost");
-            if(foodCost != null){
-                foodCost = parseInt(foodCost)
-                localStorage.setItem("totalCost", foodCost + food.price.rate);
-            }
-            else{
-                localStorage.setItem("totalCost", food.price.rate);
-            }
-        }
+        // function totalCost(food){
+        //     let foodCost = localStorage.getItem("totalCost");
+        //     if(foodCost != null){
+        //         foodCost = parseInt(foodCost)
+        //         localStorage.setItem("totalCost", foodCost + food.price.rate);
+        //     }
+        //     else{
+        //         localStorage.setItem("totalCost", food.price.rate);
+        //     }
+        // }
 
-        numberCount()
+        // numberCount()
 
 
     </script>

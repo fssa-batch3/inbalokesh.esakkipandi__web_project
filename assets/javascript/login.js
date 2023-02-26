@@ -57,7 +57,7 @@ function signIn(e){
 
     let exist = user_list.length &&
     JSON.parse(localStorage.getItem('user_list')).some(data =>
-        data.user_phonenumber.toLowerCase() == user_phonenumber &&
+        data.user_phonenumber == user_phonenumber &&
         data.user_password == user_password);
 
     if(!exist){
