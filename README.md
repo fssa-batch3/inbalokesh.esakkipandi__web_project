@@ -5,7 +5,7 @@
 
 PROBLEM STATEMENT -  https://docs.google.com/document/d/19wvSyEjhBu3xp5E8nq7kMPUMXhduhfyA/edit
 
-FLOW CHART - file:///C:/Users/InbaLokeshEsakkipand/Downloads/ONLY%20HOME%20FOOD.pdf
+FLOW CHART - https://drive.google.com/file/d/1PP1BrD-9yDyZgIWO9qBMWlsvC7-v7-kY/view?usp=sharing
 
 LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOamRE39dwJAdSUIM/edit
 
