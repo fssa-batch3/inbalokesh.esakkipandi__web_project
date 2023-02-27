@@ -5,10 +5,9 @@
 
 PROBLEM STATEMENT -  https://docs.google.com/document/d/19wvSyEjhBu3xp5E8nq7kMPUMXhduhfyA/edit
 
-FLOW CHART - https://drive.google.com/drive/folders/1oiVvgdCVyZ4H5N2FhqWzaQNG1Z7kRpzU
+FLOW CHART - file:///C:/Users/InbaLokeshEsakkipand/Downloads/ONLY%20HOME%20FOOD.pdf
 
-LOW FIDELITY - https://drive.google.com/drive/folders/1oiVvgdCVyZ4H5N2FhqWzaQNG1Z7kRpzU
-
+LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOamRE39dwJAdSUIM/edit
 
 
 FEATURES:
