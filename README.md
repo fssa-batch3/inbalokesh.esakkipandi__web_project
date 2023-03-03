@@ -26,3 +26,10 @@ FEATURES:
     - Update product
     - Delete product
     - Add and remove product
+
+3) Cart
+
+    - Add to cart
+    - Read cart
+    - Update cart
+    - Remove cart

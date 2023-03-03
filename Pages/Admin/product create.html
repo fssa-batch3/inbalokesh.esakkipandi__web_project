@@ -59,16 +59,16 @@
             padding: 20px;
         }
 
-        button.delete {
-            background-color: rgb(234, 74, 45);
-        }
-
-        button.delete:hover {
-            background-color: rgb(234, 74, 45);
+        button.add {
+            background-color: rgb(0, 181, 0);
+            height: 32px;
+            width: 80%;
+            border-radius: 3px;
+            cursor: pointer;
         }
 
         button.remove {
-            background-color: rgb(0, 181, 0);
+            background-color: rgb(238, 69, 40);
             height: 32px;
             width: 80%;
             border-radius: 3px;
@@ -105,8 +105,8 @@
             <button type="submit" class="btn-primary">Create</button>
         </form>
         <div class="down-button">
-            <button type="button" class="btn-update">Update</button>
-            <button type="remove" class="btn-delete">Delete</button>
+            <button type="button" class="btn-update" style="display:none;">Update</button>
+            <button type="remove" class="btn-delete" style="display:none;">Delete</button>
         </div>
 
     </div>
@@ -198,8 +198,14 @@
 
             button = document.createElement("button")
             button.setAttribute("type", "submit");
+            button.setAttribute("class", "add");
+            button.innerText = "Add";
+            div_box.append(button);
+
+            button = document.createElement("button")
+            button.setAttribute("type", "submit");
             button.setAttribute("class", "remove");
-            button.innerText = "ADD";
+            button.innerText = "Remove";
             div_box.append(button);
 
             // a= document.createElement("a")
@@ -226,7 +232,7 @@
                 );
 
             if (!exist) {
-                let product_id = uuidv4()
+                let product_id = uuidv4();
                 product_list.push({
                     product_image, product_name, product_type, product_quantity,
                     product_price, product_id
@@ -237,7 +243,6 @@
                 document.getElementById('product_name').focus();
                 alert('Product created Successfully');
             }
-
             else {
                 alert('Sorry the product already Exist!! \n Try with different dish or name');
                 document.querySelector('form').reset();
@@ -250,7 +255,9 @@
         edit.forEach(function (findId) {
             findId.addEventListener('click', function () {
                 const id = this.dataset.id;
+
                 localStorage.setItem("product_Uid", JSON.stringify(id));
+
                 let uid = JSON.parse(localStorage.getItem("product_Uid"));
                 let product = JSON.parse(localStorage.getItem("product_list"));
 
@@ -266,17 +273,22 @@
                 document.getElementById("product_quantity").value = product_data["product_quantity"];
                 document.getElementById("product_price").value = product_data["product_price"];
 
+                document.querySelector('button.btn-primary').setAttribute("style", "display:none;");
+                document.querySelector('button.btn-update').setAttribute("style", "display:inline;");
+                document.querySelector('button.btn-delete').setAttribute("style", "display:inline;");
+
                 window.scrollTo(0, 0);
+
             });
         });
 
         // Function for update //
-
+        
         let update = document.querySelector(".btn-update");
 
-        update.addEventListener("click", upadate_product);
+        update.addEventListener("click", update_product);
 
-        function upadate_product() {
+        function update_product() {
             let uid = JSON.parse(localStorage.getItem("product_Uid"));
             let product = JSON.parse(localStorage.getItem("product_list"));
 
@@ -298,7 +310,6 @@
             product_data["product_price"] = edit_price;
 
             localStorage.setItem('product_list', JSON.stringify(product));
-
             alert("Product updated successfully");
             location.reload();
         }
@@ -330,32 +341,48 @@
 
         }
 
-        // For gettin a particular id //
-        let add = document.querySelectorAll("button.remove");
-
+        // Add for in the menu page //
+        let add = document.querySelectorAll("button.add");
         add.forEach(function (add_product) {
             add_product.addEventListener('click', function () {
                 let parentBox = this.closest('.box');
                 let get_id = parentBox.querySelector('.edit').getAttribute("data-id");
-                let value = parentBox.querySelector('.info_box .info:last-of-type p');
-
+                
                 let display_foods = JSON.parse(localStorage.getItem('product_ids')) || [];
 
                 let exist = display_foods.length &&
                     JSON.parse(localStorage.getItem('product_ids')).some(data =>
                         data.product_id == get_id)
-
                 if (!exist) {
                     display_foods.push({
-                        "product_id":get_id
+                        "product_id": get_id
                     });
-                    localStorage.setItem('product_ids',  JSON.stringify(display_foods));
-                    alert("Your product is successfully added to the menu");
+                    localStorage.setItem('product_ids', JSON.stringify(display_foods));
+                    alert("Your product is successfully added to the menu");     
                 }
                 else {
-                    alert('This id is already added');
+                    alert('This product is already added');
                 }
+            });
+        });
 
+        // Remove food from menu //
+        let remove = document.querySelectorAll("button.remove");
+        remove.forEach(function (remove_product) {
+            remove_product.addEventListener('click', function () {
+                let parentBox = this.closest('.box');
+                let get_id = parentBox.querySelector('.edit').getAttribute("data-id");
+                if (confirm("Are you sure?")) {
+                    let uid = JSON.parse(localStorage.getItem("product_ids"));
+
+                    function find_data(e) {
+                        return e.product_id === get_id;
+                    }
+                    let remove_id = uid.find(find_data);
+                    const indexOfUser = uid.indexOf(remove_id);
+                    uid.splice(indexOfUser, 1);
+                    localStorage.setItem('product_ids', JSON.stringify(uid));
+                }
             });
         });
 
