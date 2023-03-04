@@ -124,6 +124,18 @@
 
     <script>
 
+        let div_box;
+        let img_food;
+        let div_border;
+        let h4;
+        let div_info_box;
+        let div_info;
+        let h5;
+        let p;
+        let div_price;
+        let p_price;
+        let button;
+
         let food_list = JSON.parse(localStorage.getItem("product_list"));
 
         for (let i = 0; i < food_list.length; i++) {
@@ -283,7 +295,7 @@
         });
 
         // Function for update //
-        
+
         let update = document.querySelector(".btn-update");
 
         update.addEventListener("click", update_product);
@@ -347,7 +359,7 @@
             add_product.addEventListener('click', function () {
                 let parentBox = this.closest('.box');
                 let get_id = parentBox.querySelector('.edit').getAttribute("data-id");
-                
+
                 let display_foods = JSON.parse(localStorage.getItem('product_ids')) || [];
 
                 let exist = display_foods.length &&
@@ -358,7 +370,7 @@
                         "product_id": get_id
                     });
                     localStorage.setItem('product_ids', JSON.stringify(display_foods));
-                    alert("Your product is successfully added to the menu");     
+                    alert("Your product is successfully added to the menu");
                 }
                 else {
                     alert('This product is already added');

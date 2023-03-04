@@ -113,7 +113,7 @@
   </footer>
 
   <script src="../../assets/javascript/javascript.js"></script>
-<!-- <script src="../../assets/javascript/login.js"></script> -->
+
   <script>
     function btn() {
       window.location.href = "./Edit profile.html"
@@ -131,7 +131,7 @@
       return e.user_phonenumber == userId;
     }
 
-    user_data = user_list.find(login_data);
+    let user_data = user_list.find(login_data);
 
     document.getElementById("user_name").value = user_data["user_name"];
     document.getElementById("user_phonenumber").value = user_data["user_phonenumber"];
@@ -159,20 +159,7 @@
     }
 
 
-    // Order history loop//
-
-    let div_obox;
-    let div_item;
-    let div_ihead;
-    let h3;
-    let h4;
-    let p;
-    let div_order;
-    let div_ibutton;
-    let img;
-    let button;
-    let div_details;
-    let div_rate;
+   
 
     // object
     const order_history = [
@@ -382,6 +369,20 @@
         "ordered_by": "surya.umapathy@ctr.freshworks.com"
       },
     ]
+
+     // Order history loop//
+    let div_obox;
+    let div_item;
+    let div_ihead;
+    let h3;
+    let h4;
+    let p;
+    let div_order;
+    let div_item_list;
+    let div_total;
+    let div_ordered_by;
+    let div_view_button;
+    let button;
 
     for (let i = 0; i < 5; i++) {
 

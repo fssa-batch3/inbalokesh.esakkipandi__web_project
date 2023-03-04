@@ -353,7 +353,7 @@
         let food_list = [];
 
         for (let i = 0; i < product_list.length; i++) {
-        for (let j = 0; j < uu_id.length; j++) {
+            for(let j = 0; j < uu_id.length; j++) {
             if (product_list[i].product_id === uu_id[j].product_id) {
                 food_list.push(product_list[i]);
             break;
@@ -426,7 +426,7 @@
 
             button = document.createElement("button")
             button.setAttribute("type", "button");
-            button.setAttribute("class", "add_to_cart");
+            button.setAttribute("class", "addCart");
             button.innerText = "Add to cart";
             div_price.append(button);
 
@@ -439,71 +439,6 @@
 
 
         // function for add to cart //
-        // let carts = document.querySelectorAll(".add_to_cart");
-        // for (let i = 0; i < carts.length; i++) {
-        //     carts[i].addEventListener('click', function () {
-        //         itemCount(food_card_list[i]);
-        //         totalCost(food_card_list[i])
-        //     })
-        // }
-
-        // function for Number of ordered //s
-        // function numberCount() {
-        //     let foodCount = localStorage.getItem("itemCount");
-        //     if (foodCount) {
-        //         document.querySelector('.Profile span').textContent = foodCount;
-        //     }
-
-        // }
-
-        // function for item count//
-        // function itemCount(food) {
-        //     let foodCount = localStorage.getItem("itemCount");
-        //     foodCount = parseInt(foodCount);
-        //     if (foodCount) {
-        //         localStorage.setItem('itemCount', foodCount + 1);
-        //         document.querySelector('.Profile span').textContent = foodCount + 1
-        //     }
-        //     else {
-        //         localStorage.setItem('itemCount', 1);
-        //         document.querySelector('.Profile span').textContent = 1
-        //     }
-        //     food_list(food)
-        // }
-
-        // function food_list(food) {
-        //     let orderItems = JSON.parse(localStorage.getItem("foodsInCart"));
-        //     if(orderItems!=null){
-        //         if(orderItems[food.name] == undefined){
-        //             orderItems ={
-        //                 ...orderItems,
-        //                 [food.name]: food
-        //             }
-        //         }
-        //         orderItems[food.name].ordered+= 1
-        //     }
-        //     else{
-        //         food.ordered = 1;
-        //         orderItems = {
-        //         [food.name]: food
-        //     }
-           
-        //     } 
-        //     localStorage.setItem("foodsInCart", JSON.stringify(orderItems))
-        // }
-
-        // function totalCost(food){
-        //     let foodCost = localStorage.getItem("totalCost");
-        //     if(foodCost != null){
-        //         foodCost = parseInt(foodCost)
-        //         localStorage.setItem("totalCost", foodCost + food.price.rate);
-        //     }
-        //     else{
-        //         localStorage.setItem("totalCost", food.price.rate);
-        //     }
-        // }
-
-        // numberCount()
 
 
     </script>

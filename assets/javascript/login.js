@@ -71,17 +71,4 @@ function signIn(e){
     }
 }
 
-// logout toggle function;
-
-// const logIn = document.querySelector(".login");
-// const LogText=document.querySelector("#logOut");
-// LogText.addEventListener("click",logOut)
-
-// function logOut(e){
-// if(logIn.classList.contains(".login")){
-//     logIn.innerHTML="Log Out"
-// }
-// }
-
-
 
