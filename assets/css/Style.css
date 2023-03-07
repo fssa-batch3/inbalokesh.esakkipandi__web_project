@@ -4,56 +4,6 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.header{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: auto;
-    height: auto;
-    max-width:100%;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    background-color: white;
-    position: sticky;
-    top: 0px;
-    z-index: 1;
-}
-
-.shead{
-    display:flex;
-}
-
-.head{
-    display:flex;
-}
-
-.toggle-button{
-    position: absolute;
-    top:28px;
-    right:20px;
-    display:none;
-    flex-direction: column;
-    justify-content: space-between;
-    width:30px;
-    height:21px;
-}
-
-.toggle-button .bar{
-    height:4px;
-    width:100%;
-    background-color: black;
-    border-radius: 10px;
-}
-
-.navbar{
-    margin-top:30px;
-}
-
-.navbar a{
-    text-decoration: none;
-    color:black;
-    padding-right:50px;
-}
-
 .btn{
     color: white;
     background-color: #5cb748;
@@ -78,26 +28,8 @@ body{
     letter-spacing: 1px;
 }
 
-.Profile button{
-    position: relative;
-    bottom: 10px;
-    right:20px;
-    color:white;
-    height:35px;
-    width:80px;
-    border-radius: 40px;
-    cursor: pointer;
-    border-color: transparent;
-    background-color:#FF7223;    
-}
-
 section{
     margin: 140px 140px;
-}
-
-.Profile img{
-    margin-top:25px;
-    margin-right: 20px;
 }
 
 .intro{
@@ -241,44 +173,6 @@ section.h h2{
 }
 
 @media (max-width:1022px) {
-    .header{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-    .navigation__link{
-        padding: 22px 13px;
-        line-height: 1;
-    }
-    .navigation__link:hover{
-        background-color: rgb(227, 227, 227);
-    }
-    .shead h1{
-        font-size: 30px;
-    }
-    .toggle-button{
-        display: flex;
-    }
-    .navbar{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-top: 2px;
-    }
-    .head{
-        display: none;
-        height:50vh;
-        background-color: whitesmoke;
-    }
-    .head:nth-child(n+2){
-        flex-direction: column;
-    }
-    .head.active{
-        display: flex;
-    }
-    .Profile{
-        margin: 10px 30px;
-    }
     .intro{
         display: flex;
         flex-direction: column-reverse;
@@ -314,10 +208,6 @@ section.h h2{
 }
 
 @media (max-width:565px) {
-    .shead h1{
-        font-size: 6vw;
-        margin-top: 25px;
-    }
     .intro img{
         min-width: 18rem;
         border-radius: 50px;

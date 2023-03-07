@@ -37,7 +37,8 @@
             <div class="Profile">
                 <a href="../Login and Order/Login.html"><button>Login</button></a>
                 <a href="../Cart/cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon"
-                        height="30px" width="30px"><span>0</span></a>
+                height="30px" width="30px"></a>
+                <span class="count">0</span>
                 <a href="../Login and Order/Profile.html"><img src="../../assets/Images/person-circle-outline.svg"
                         alt="Profile icon" height="30px" width="30px"></a>
             </div>
@@ -344,24 +345,17 @@
 
         // ]
 
-        
+
         // Function to display foods //
 
         let product_list = JSON.parse(localStorage.getItem("product_list"));
         let uu_id = JSON.parse(localStorage.getItem("product_ids"));
 
-        let food_list = [];
+        let food_list = product_list.filter(product =>
+            uu_id.some(uuid => uuid.product_id === product.product_id)
+        );
 
-        for (let i = 0; i < product_list.length; i++) {
-            for(let j = 0; j < uu_id.length; j++) {
-            if (product_list[i].product_id === uu_id[j].product_id) {
-                food_list.push(product_list[i]);
-            break;
-            }
-        }
-        }
-
-        for (let i = 0; i < food_list.length ; i++) {
+        for (let i = 0; i < food_list.length; i++) {
 
             // <div class="box">
             div_box = document.createElement("div");
@@ -427,18 +421,49 @@
             button = document.createElement("button")
             button.setAttribute("type", "button");
             button.setAttribute("class", "addCart");
+            button.setAttribute("data-uuid", food_list[i]["product_id"]);
             button.innerText = "Add to cart";
             div_price.append(button);
 
-            // a= document.createElement("a")
-            // a.setAttribute("href", "http://127.0.0.1:5500/Pages/Cart/cart.html?image="+ order_list[i]["image"]["source"]);
-            // button.append(a);
+
 
             document.querySelector("section.details").append(div_box);
         }
 
 
         // function for add to cart //
+
+        let carts = document.querySelectorAll("button.addCart");
+        carts.forEach(function (add_foods) {
+            add_foods.addEventListener("click", function () {
+                const uuid = this.dataset.uuid;
+
+                let cart_products = JSON.parse(localStorage.getItem("cart_product")) || [];
+
+                let exist = cart_products.length &&
+                    JSON.parse(localStorage.getItem('cart_product')).some(data =>
+                        data.product_id == uuid)
+
+                if (!exist) {
+                    cart_products.push({
+                        "product_id": uuid,
+                        "quantity_ordered":"1",
+                        "delivery_time":"",
+                        "ordered_time":""
+                    });
+
+                    let food_count = cart_products.length;
+
+                    localStorage.setItem('food_count', JSON.stringify(food_count));
+                    localStorage.setItem('cart_product', JSON.stringify(cart_products));
+                    location.reload()
+                } else {
+                    alert("This product is already added to your cart")
+                }
+            });
+        });
+
+        // To store the count in the cart //
 
 
     </script>

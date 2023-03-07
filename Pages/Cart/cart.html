@@ -93,8 +93,6 @@
     <script src="../../assets/javascript/javascript.js"></script>
 
     <script>
-
-        // for order list//
         let div_obox;
         let img;
         let div_olist;
@@ -132,38 +130,47 @@
         let button_place_order;
 
         // object JSON//
-        const order_list = [
-            {
-                "name": "Mutton Biryani",
-                "quantity": "1 kg",
-                "image": {
-                    "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-                    "alt": "Mutton Biryani image"
-                },
-                "price": {
-                    "currency": "Rs.",
-                    "rate": 179
-                }
-            },
-            {
-                "name": "Sambar Rice",
-                "quantity": "1 plate",
-                "image": {
-                    "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
-                    "alt": "Sambar rice image"
-                },
-                "price": {
-                    "currency": "Rs.",
-                    "rate": 39
-                }
-            }
-        ]
+        // const order_list = [
+        //     {
+        //         "name": "Mutton Biryani",
+        //         "quantity": "1 kg",
+        //         "image": {
+        //             "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
+        //             "alt": "Mutton Biryani image"
+        //         },
+        //         "price": {
+        //             "currency": "Rs.",
+        //             "rate": 179
+        //         }
+        //     },
+        //     {
+        //         "name": "Sambar Rice",
+        //         "quantity": "1 plate",
+        //         "image": {
+        //             "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
+        //             "alt": "Sambar rice image"
+        //         },
+        //         "price": {
+        //             "currency": "Rs.",
+        //             "rate": 39
+        //         }
+        //     }
+        // ]
 
         //********Order food list********//
 
-        const list = order_list.length;
+        // Read Products function //
 
-        for (let i = 0; i < list; i++) {
+        let order_items = JSON.parse(localStorage.getItem("product_list"));
+
+        let cart_id = JSON.parse(localStorage.getItem("cart_product"));
+
+        const cart_list = order_items.filter(product =>
+            cart_id.some(uuid => uuid.product_id === product.product_id)
+        );
+
+
+        for (let i = 0; i < cart_list.length; i++) {
 
             // <div class="obox">
             div_obox = document.createElement("div");
@@ -172,8 +179,8 @@
 
             // <img class="food">
             img = document.createElement("img");
-            img.setAttribute("src", order_list[i]["image"]["source"])
-            img.setAttribute("alt", order_list[i]["image"]["alt"]);
+            img.setAttribute("src", cart_list[i]["product_image"])
+            img.setAttribute("alt", cart_list[i]["product_name"] + " image");
             img.setAttribute("class", "food");
             div_obox.append(img);
 
@@ -184,7 +191,7 @@
 
             // <h2>
             h2 = document.createElement("h2");
-            h2.innerText = order_list[i]["name"];
+            h2.innerText = cart_list[i]["product_name"];
             div_olist.append(h2);
 
             // <div class="plist">
@@ -217,12 +224,12 @@
 
             // <h4>
             h4 = document.createElement("h4");
-            h4.innerText = order_list[i]["quantity"];
+            h4.innerText = cart_list[i]["product_quantity"];
             div_rinfo.append(h4);
 
             h4 = document.createElement("h4");
             h4.setAttribute("class", "food_price");
-            h4.innerText = order_list[i]["price"]["currency"] + order_list[i]["price"]["rate"];
+            h4.innerText = "Rs." + cart_list[i]["product_price"];
             div_rinfo.append(h4);
 
             // <div class="dropbox">
@@ -273,25 +280,28 @@
             // <h3>
             h3 = document.createElement("h3");
             h3.setAttribute("class", "num")
-            h3.innerText = "1";
+            h3.innerText = 1;
             div_add.append(h3);
 
             // <img class=minus>
             img_plus = document.createElement("img");
             img_plus.setAttribute("src", "../../assets/Images/icon-plus.svg");
             img_plus.setAttribute("class", "plus");
+            img_plus.setAttribute("id", "plus_quantity");
             img_plus.setAttribute("alt", "icon plus");
             div_add.append(img_plus);
 
             // <button>
             button = document.createElement("button");
             button.setAttribute("type", "button");
-            button.setAttribute("class", "remove");
+            button.setAttribute("class", "remove_cart");
+            button.setAttribute("data-cart_id", cart_list[i]["product_id"]);
             button.innerText = "Remove";
             div_slist.append(button);
 
             document.querySelector("div.lorder").prepend(div_obox);
         }
+
 
         // ********Summary********//
         // <div class="sumlist">
@@ -299,7 +309,7 @@
         div_sumlist.setAttribute("class", "sumlist");
         console.log(div_sumlist)
 
-        for (let j = 0; j < list; j++) {
+        for (let j = 0; j < cart_list.length; j++) {
             // <div class="food_items">
             div_food_items = document.createElement("div");
             div_food_items.setAttribute("class", "food_items");
@@ -308,13 +318,13 @@
             // <h4 class="name">
             h4_name = document.createElement("h4");
             h4_name.setAttribute("class", "name");
-            h4_name.innerText = order_list[j]["name"];
+            h4_name.innerText = cart_list[j]["product_name"];
             div_food_items.append(h4_name)
 
             // <p class="rate">
             p_rate = document.createElement("p");
             p_rate.setAttribute("class", "rate");
-            p_rate.innerText = order_list[j]["price"]["currency"] + order_list[j]["price"]["rate"];
+            p_rate.innerText = "Rs." + cart_list[j]["product_price"];
             div_food_items.append(p_rate)
 
         }
@@ -322,18 +332,6 @@
         div_sum2 = document.createElement("div");
         div_sum2.setAttribute("class", "sum");
         div_sumlist.append(div_sum2)
-
-        // <h4 class="lsum">
-        h4_lsum = document.createElement("h4");
-        h4_lsum.setAttribute("class", "lsum");
-        h4_lsum.innerText = "Subtotal";
-        div_sum2.append(h4_lsum)
-
-        // <p class="rsum">
-        p_rsum = document.createElement("p");
-        p_rsum.setAttribute("class", "rsum");
-        p_rsum.innerText = "Rs.397";
-        div_sum2.append(p_rsum)
 
         // <div class="sum">
         div_sum3 = document.createElement("div");
@@ -382,6 +380,7 @@
 
         // <div class="sum">
         div_sum5 = document.createElement("div");
+        div_sum5.setAttribute("id", "sum_total");
         div_sum5.setAttribute("class", "sum");
         div_sumlist.append(div_sum5)
 
@@ -395,11 +394,18 @@
         h4_lsum.innerText = "Total";
         div_total.append(h4_lsum)
 
+        // Cart total function //
+        let total_price = cart_list;
+        let price = 0;
+        for (let i = 0; i < total_price.length; i++) {
+            price += parseInt(total_price[i]["product_price"]*cart_id[i]["quantity_ordered"]);
+        }
 
         // <p class="rsum">
         p_rsum = document.createElement("p");
+        p_rsum.setAttribute("id", "total_cost")
         p_rsum.setAttribute("class", "rsum");
-        p_rsum.innerText = "Rs.397";
+        p_rsum.innerText = "Rs." + price;
         div_total.append(p_rsum)
 
         // <button class="place_order">
@@ -410,46 +416,113 @@
 
         document.querySelector("div.summary").append(div_sumlist)
 
-
         // Remove products button function//
 
-        let removeFood = document.getElementsByClassName('remove');
-        console.log(removeFood);
-        for (let i = 0; i < removeFood.length; i++) {
-            let button = removeFood[i]
-            button.addEventListener('click', function (event) {
-                let buttonClicked = event.target
-                buttonClicked.parentElement.parentElement.parentElement.remove()
+        let removeFood = document.querySelectorAll('button.remove_cart');
+        removeFood.forEach(function (remove_id) {
+            remove_id.addEventListener("click", function () {
+                const cartId = this.dataset.cart_id;
+
+                let cart_ids = JSON.parse(localStorage.getItem("cart_product"));
+
+                function find_id(e) {
+                    return e.product_id === cartId;
+                }
+
+                let remove_food = cart_ids.find(find_id);
+                let indexOfItem = cart_ids.indexOf(remove_food);
+                cart_ids.splice(indexOfItem, 1);
+                let count = JSON.parse(localStorage.getItem("food_count"));
+                localStorage.setItem("food_count", count-1)
+                localStorage.setItem("cart_product", JSON.stringify(cart_ids));
+                location.reload()
             })
-        }
+        })
 
-        // Add quantity button function//
-
-        let plus = document.querySelectorAll(".plus");
-        let minus = document.querySelectorAll(".minus");
-        let num = document.querySelectorAll(".num");
-
-        for (let i = 0; i < plus.length; i++) {
-            plus[i].addEventListener("click", function (event) {
-                let n = parseInt(num[i].innerText);
-                if (n < 10) {
-                    n += 1;
-                }
-                num[i].innerText = n;
-            });
-        }
+        // plus quantity function//
         
-        for (let i = 0; i < minus.length; i++) {
-            minus[i].addEventListener("click", function (event) {
-                let n = parseInt(num[i].innerText);
-                if (n > 1) {
-                    n -= 1;
+        let plus = document.querySelectorAll(".plus");
+            plus.forEach(function(find_quantity) {
+                find_quantity.addEventListener("click", function() {
+                let parent = this.parentNode;
+                let num = parent.querySelector(".num");
+                let n = parseInt(num.textContent);
+                if (n < 10) {
+                n += 1;
                 }
-                num[i].innerText = n;
-            });
+                num.textContent = n;
+                // getting the ID
+                let parentBox = this.closest(".slist")
+                let idButton = parentBox.querySelector(".remove_cart").getAttribute("data-cart_id");
 
-        }
-    
+                let cart_product = JSON.parse(localStorage.getItem("cart_product"));
+                function find_cart(e){
+                return e.product_id == idButton;
+                }
+
+                let cart_quantity = cart_product.find(find_cart);
+
+                if (cart_quantity) {
+                cart_quantity.quantity_ordered = n.toString();
+                localStorage.setItem("cart_product", JSON.stringify(cart_product));
+                }
+            });
+        });
+
+        let minus = document.querySelectorAll(".minus");
+            minus.forEach(function(find_quantity) {
+            find_quantity.addEventListener("click", function() {
+                let parent = this.parentNode;
+                let num = parent.querySelector(".num");
+                let n = parseInt(num.textContent);
+                if (n > 1) {
+                n -= 1;
+                }
+                num.textContent = n;
+
+                // getting the ID
+                let parentBox = this.closest(".slist")
+                let idButton = parentBox.querySelector(".remove_cart").getAttribute("data-cart_id");
+
+                let cart_product = JSON.parse(localStorage.getItem("cart_product"));
+                function find_cart(e){
+                return e.product_id == idButton;
+                }
+
+                let cart_quantity = cart_product.find(find_cart);
+
+                if (cart_quantity) {
+                cart_quantity.quantity_ordered = n.toString();
+                localStorage.setItem("cart_product", JSON.stringify(cart_product));
+                }
+            });
+        });
+
+        
+
+        // Function to reload only one div
+
+        // function to update cart total//
+        // function updateTotal() {
+           
+        //     let foodItems = document.getElementsByClassName('sumlist')[0]
+        //     let cartItems = foodItems.getElementsByClassName('food_items')
+        //     let total =0;
+        //     for (let i = 0; i < cartItems.length; i++) {
+        //         let cart = cartItems[i]
+        //         let rate = cart.getElementsByClassName('rate')[0];
+        //         let n = parseInt(num[i].innerText);
+        //         let quantity = n;
+
+        //         let price = parseInt(rate.innerText.replace("Rs.", ""));
+        //         total+= (price*quantity)
+        //         console.log(total)
+        //     }
+        // }
+        // updateTotal()
+
+
+
     </script>
     <!-- script -->
 </body>

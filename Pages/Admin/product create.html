@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/product create.css">
     <link rel="stylesheet" href="../../assets/css/menu.css">
     <link rel="stylesheet" href="../../assets/css/login.css">
     <title>Create Product</title>
@@ -220,10 +219,6 @@
             button.innerText = "Remove";
             div_box.append(button);
 
-            // a= document.createElement("a")
-            // a.setAttribute("href", "http://127.0.0.1:5500/Pages/Cart/cart.html?image="+ order_list[i]["image"]["source"]);
-            // button.append(a);
-
             document.querySelector("section.details").append(div_box);
         }
 
@@ -377,14 +372,22 @@
                 }
             });
         });
-
+        
         // Remove food from menu //
         let remove = document.querySelectorAll("button.remove");
         remove.forEach(function (remove_product) {
             remove_product.addEventListener('click', function () {
                 let parentBox = this.closest('.box');
                 let get_id = parentBox.querySelector('.edit').getAttribute("data-id");
-                if (confirm("Are you sure?")) {
+
+                let display_foods = JSON.parse(localStorage.getItem('product_ids')) || [];
+
+                let exist = display_foods.length &&
+                    JSON.parse(localStorage.getItem('product_ids')).some(data =>
+                        data.product_id == get_id)
+
+                if (exist) {
+                    alert("This product is removed from the menu")
                     let uid = JSON.parse(localStorage.getItem("product_ids"));
 
                     function find_data(e) {
@@ -394,6 +397,9 @@
                     const indexOfUser = uid.indexOf(remove_id);
                     uid.splice(indexOfUser, 1);
                     localStorage.setItem('product_ids', JSON.stringify(uid));
+                }
+                else{
+                    alert("This product is not added yet!")
                 }
             });
         });
@@ -409,4 +415,4 @@
 <!-- <img src="https://iili.io/HMeJ2uj.jpg" alt="pongal ven pongal 500x375" border="0"> -->
 
 <!-- chicken 65 -->
-<!-- <img src="https://iili.io/HMeJ2uj.jpg" alt="pongal ven pongal 500x375" border="0"><img src="https://iili.io/HMe272t.webp" alt="637945968919611327" border="0"> -->
+<!-- <img src="https://iili.io/HMe272t.webp" alt="637945968919611327" border="0"> -->
