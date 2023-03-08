@@ -39,3 +39,4 @@ FEATURES:
     - Place order
     - Read order
     - Delete order
+    - Re-order
