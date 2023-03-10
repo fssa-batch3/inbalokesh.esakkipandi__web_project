@@ -33,3 +33,10 @@ FEATURES:
     - Read cart
     - Update cart
     - Remove cart
+    
+ 4) Order
+ 
+    - Place order
+    - Read order
+    - Delete order
+    - Re-order
