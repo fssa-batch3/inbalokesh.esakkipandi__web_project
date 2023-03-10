@@ -345,7 +345,7 @@
 
         // ]
 
-
+        
         // Function to display foods //
 
         let product_list = JSON.parse(localStorage.getItem("product_list"));
@@ -354,6 +354,8 @@
         let food_list = product_list.filter(product =>
             uu_id.some(uuid => uuid.product_id === product.product_id)
         );
+        
+        console.log(food_list);
 
         for (let i = 0; i < food_list.length; i++) {
 
@@ -456,6 +458,7 @@
 
                     localStorage.setItem('food_count', JSON.stringify(food_count));
                     localStorage.setItem('cart_product', JSON.stringify(cart_products));
+                    alert("Product is added to cart")
                     location.reload()
                 } else {
                     alert("This product is already added to your cart")
@@ -464,7 +467,8 @@
         });
 
         // To store the count in the cart //
-
+        let foodCount = localStorage.getItem("food_count");   
+        document.querySelector('.Profile span').textContent = foodCount;
 
     </script>
     <!-- script ends-->

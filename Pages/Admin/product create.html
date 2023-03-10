@@ -354,7 +354,6 @@
             add_product.addEventListener('click', function () {
                 let parentBox = this.closest('.box');
                 let get_id = parentBox.querySelector('.edit').getAttribute("data-id");
-
                 let display_foods = JSON.parse(localStorage.getItem('product_ids')) || [];
 
                 let exist = display_foods.length &&

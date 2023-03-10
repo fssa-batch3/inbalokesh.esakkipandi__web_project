@@ -118,7 +118,6 @@
         let div_food_items;
         let h4_name;
         let p_rate;
-        let div_sum2;
         let h4_lsum;
         let p_rsum;
         let div_sum3;
@@ -237,26 +236,28 @@
             div_dropbox.setAttribute("class", "dropbox");
             div_rinfo.append(div_dropbox);
 
+            // find from product id
+            let find = cart_id.find(e => e.product_id == cart_list[i]["product_id"]);
+
             // <select class="select">
             select = document.createElement("select");
             select.setAttribute("class", "select");
             select.setAttribute("name", "time");
-            select.setAttribute("id", "time");
             div_dropbox.append(select);
 
             // <option>
             option = document.createElement("option");
-            option.setAttribute("value", "Breakfast");
+            option.setAttribute("value", "Breakfast (7:30 AM to 9:00 AM)");
             option.innerText = "Breakfast (7:30 AM to 9:00 AM)";
             select.append(option);
 
             option = document.createElement("option");
-            option.setAttribute("value", "Lunch");
+            option.setAttribute("value", "Lunch (12:30 AM to 2:00 PM)");
             option.innerText = "Lunch (12:30 AM to 2:00 PM)";
             select.append(option);
 
             option = document.createElement("option");
-            option.setAttribute("value", "Dinner");
+            option.setAttribute("value", "Dinner (7:00 PM to 8:30 PM)");
             option.innerText = "Dinner (7:00 PM to 8:30 PM)";
             select.append(option);
 
@@ -277,10 +278,12 @@
             img_minus.setAttribute("alt", "icon minus");
             div_add.append(img_minus);
 
+             
+
             // <h3>
             h3 = document.createElement("h3");
             h3.setAttribute("class", "num")
-            h3.innerText = 1;
+            h3.innerText = find["quantity_ordered"];
             div_add.append(h3);
 
             // <img class=minus>
@@ -309,12 +312,38 @@
         div_sumlist.setAttribute("class", "sumlist");
         console.log(div_sumlist)
 
+        
+
         for (let j = 0; j < cart_list.length; j++) {
+
+            let find = cart_id.find(e => e.product_id == cart_list[j]["product_id"]);
+    
+            // <div class="sum">
+            div_sum3 = document.createElement("div");
+            div_sum3.setAttribute("class", "sum");
+            div_sumlist.prepend(div_sum3)
+
+            // <h4 class="lsum">
+            h4_lsum = document.createElement("h4");
+            h4_lsum.setAttribute("class", "lsum");
+            h4_lsum.innerText = "Delivery time";
+            div_sum3.append(h4_lsum)
+
+            // <div class="dtime">
+            div_dtime = document.createElement("div");
+            div_dtime.setAttribute("class", "dtime");
+            div_sum3.append(div_dtime)
+
+            // <p class="time">
+            p_time = document.createElement("p");
+            p_time.setAttribute("class", "time");
+            p_time.innerText = "(Tomorrow)" + find["ordered_time"];
+            div_dtime.append(p_time)
             // <div class="food_items">
             div_food_items = document.createElement("div");
             div_food_items.setAttribute("class", "food_items");
             div_sumlist.prepend(div_food_items)
-
+            
             // <h4 class="name">
             h4_name = document.createElement("h4");
             h4_name.setAttribute("class", "name");
@@ -324,42 +353,19 @@
             // <p class="rate">
             p_rate = document.createElement("p");
             p_rate.setAttribute("class", "rate");
-            p_rate.innerText = "Rs." + cart_list[j]["product_price"];
+            p_rate.innerText = "Rs. " + cart_list[j]["product_price"] * find["quantity_ordered"];
             div_food_items.append(p_rate)
 
+        
+
+            // <p class="time">
+            // p_time = document.createElement("p");
+            // p_time.setAttribute("class", "time");
+            // p_time.innerText = "(12:30AM - 2:00PM)";
+            // div_dtime.append(p_time)
+
         }
-        // <div class="sum">
-        div_sum2 = document.createElement("div");
-        div_sum2.setAttribute("class", "sum");
-        div_sumlist.append(div_sum2)
 
-        // <div class="sum">
-        div_sum3 = document.createElement("div");
-        div_sum3.setAttribute("class", "sum");
-        div_sumlist.append(div_sum3)
-
-        // <h4 class="lsum">
-        h4_lsum = document.createElement("h4");
-        h4_lsum.setAttribute("class", "lsum");
-        h4_lsum.innerText = "Delivery time";
-        div_sum3.append(h4_lsum)
-
-        // <div class="dtime">
-        div_dtime = document.createElement("div");
-        div_dtime.setAttribute("class", "dtime");
-        div_sum3.append(div_dtime)
-
-        // <p class="time">
-        p_time = document.createElement("p");
-        p_time.setAttribute("class", "time");
-        p_time.innerText = "(Tomorrow)Lunch";
-        div_dtime.append(p_time)
-
-        // <p class="time">
-        p_time = document.createElement("p");
-        p_time.setAttribute("class", "time");
-        p_time.innerText = "(12:30AM - 2:00PM)";
-        div_dtime.append(p_time)
 
         // <div class="sum">
         div_sum4 = document.createElement("div");
@@ -395,17 +401,19 @@
         div_total.append(h4_lsum)
 
         // Cart total function //
+        
         let total_price = cart_list;
         let price = 0;
         for (let i = 0; i < total_price.length; i++) {
-            price += parseInt(total_price[i]["product_price"]*cart_id[i]["quantity_ordered"]);
+            let find = cart_id.find(e => e.product_id == cart_list[i]["product_id"]);
+            price += parseInt(total_price[i]["product_price"] * find["quantity_ordered"]);
         }
 
         // <p class="rsum">
         p_rsum = document.createElement("p");
         p_rsum.setAttribute("id", "total_cost")
         p_rsum.setAttribute("class", "rsum");
-        p_rsum.innerText = "Rs." + price;
+        p_rsum.innerText = "Rs. " + price;
         div_total.append(p_rsum)
 
         // <button class="place_order">
@@ -465,7 +473,9 @@
                 if (cart_quantity) {
                 cart_quantity.quantity_ordered = n.toString();
                 localStorage.setItem("cart_product", JSON.stringify(cart_product));
+                location.reload()
                 }
+                
             });
         });
 
@@ -494,33 +504,36 @@
                 if (cart_quantity) {
                 cart_quantity.quantity_ordered = n.toString();
                 localStorage.setItem("cart_product", JSON.stringify(cart_product));
+                location.reload()
                 }
             });
         });
 
-        
+        // Funtion to get the delivery time
+        let selected_time = document.querySelectorAll(".select");
+            selected_time.forEach(function(find_time){
+                find_time.addEventListener("click", function(){
+                    let parent_Box = this.closest(".olist");
+                    let id_button = parent_Box.querySelector(".remove_cart").getAttribute("data-cart_id");
+                    let value_time = parent_Box.querySelector(".select").value
+            
+                    let cart_product = JSON.parse(localStorage.getItem("cart_product"));
+                    
+                    function find_cart(e){
+                    return e.product_id == id_button;
+                    }
 
-        // Function to reload only one div
+                    let ordered_time = cart_product.find(find_cart);
+                    // console.log(ordered_time)
 
-        // function to update cart total//
-        // function updateTotal() {
+                    if (ordered_time) {
+                        ordered_time.ordered_time = value_time;
+                        localStorage.setItem("cart_product", JSON.stringify(cart_product));
+                    }
+                })
+            })
+
            
-        //     let foodItems = document.getElementsByClassName('sumlist')[0]
-        //     let cartItems = foodItems.getElementsByClassName('food_items')
-        //     let total =0;
-        //     for (let i = 0; i < cartItems.length; i++) {
-        //         let cart = cartItems[i]
-        //         let rate = cart.getElementsByClassName('rate')[0];
-        //         let n = parseInt(num[i].innerText);
-        //         let quantity = n;
-
-        //         let price = parseInt(rate.innerText.replace("Rs.", ""));
-        //         total+= (price*quantity)
-        //         console.log(total)
-        //     }
-        // }
-        // updateTotal()
-
 
 
     </script>
