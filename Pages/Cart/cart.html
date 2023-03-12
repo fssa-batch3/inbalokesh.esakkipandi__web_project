@@ -238,7 +238,7 @@
 
             // find from product id
             let find = cart_id.find(e => e.product_id == cart_list[i]["product_id"]);
-
+            
             // <select class="select">
             select = document.createElement("select");
             select.setAttribute("class", "select");
@@ -246,21 +246,30 @@
             div_dropbox.append(select);
 
             // <option>
+                
             option = document.createElement("option");
+            option.innerText = find["ordered_time"];
+            select.append(option);
+
+            option = document.createElement("option");
+            option.setAttribute("class", "selected_option");
             option.setAttribute("value", "Breakfast (7:30 AM to 9:00 AM)");
             option.innerText = "Breakfast (7:30 AM to 9:00 AM)";
             select.append(option);
 
             option = document.createElement("option");
+            option.setAttribute("class", "selected_option");
             option.setAttribute("value", "Lunch (12:30 AM to 2:00 PM)");
             option.innerText = "Lunch (12:30 AM to 2:00 PM)";
             select.append(option);
 
             option = document.createElement("option");
+            option.setAttribute("class", "selected_option");
             option.setAttribute("value", "Dinner (7:00 PM to 8:30 PM)");
             option.innerText = "Dinner (7:00 PM to 8:30 PM)";
             select.append(option);
 
+            let option_sel = document.querySelectorAll(".selected_option")
             // <div class="slist">
             div_slist = document.createElement("div");
             div_slist.setAttribute("class", "slist");
@@ -355,8 +364,6 @@
             p_rate.setAttribute("class", "rate");
             p_rate.innerText = "Rs. " + cart_list[j]["product_price"] * find["quantity_ordered"];
             div_food_items.append(p_rate)
-
-        
 
             // <p class="time">
             // p_time = document.createElement("p");

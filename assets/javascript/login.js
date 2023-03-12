@@ -64,6 +64,10 @@ function signIn(e){
         alert("Incorrect login credentials");
         document.querySelector('form').reset();
     }
+    else if(user_phonenumber === "8888888888"){
+        alert("Welcome admin");
+        location.href = "../../Pages/Admin/product create.html";
+    }
     else{
         localStorage.setItem("userId",JSON.stringify(user_phonenumber));
         alert("Your login in successful");
