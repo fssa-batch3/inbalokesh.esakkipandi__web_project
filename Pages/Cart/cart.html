@@ -365,7 +365,7 @@
             p_rate.innerText = "Rs. " + cart_list[j]["product_price"] * find["quantity_ordered"];
             div_food_items.append(p_rate)
 
-            // <p class="time">
+            // <p class="time"> 
             // p_time = document.createElement("p");
             // p_time.setAttribute("class", "time");
             // p_time.innerText = "(12:30AM - 2:00PM)";
@@ -478,11 +478,10 @@
                 let cart_quantity = cart_product.find(find_cart);
 
                 if (cart_quantity) {
-                cart_quantity.quantity_ordered = n.toString();
+                cart_quantity.quantity_ordered = n.toString();  
                 localStorage.setItem("cart_product", JSON.stringify(cart_product));
                 location.reload()
-                }
-                
+                }    
             });
         });
 
