@@ -238,7 +238,7 @@
 
             // find from product id
             let find = cart_id.find(e => e.product_id == cart_list[i]["product_id"]);
-            
+
             // <select class="select">
             select = document.createElement("select");
             select.setAttribute("class", "select");
@@ -246,10 +246,10 @@
             div_dropbox.append(select);
 
             // <option>
-                
-            option = document.createElement("option");
-            option.innerText = find["ordered_time"];
-            select.append(option);
+
+            // option = document.createElement("option");
+            // option.innerText = find["ordered_time"];
+            // select.append(option);
 
             option = document.createElement("option");
             option.setAttribute("class", "selected_option");
@@ -287,7 +287,7 @@
             img_minus.setAttribute("alt", "icon minus");
             div_add.append(img_minus);
 
-             
+
 
             // <h3>
             h3 = document.createElement("h3");
@@ -321,12 +321,12 @@
         div_sumlist.setAttribute("class", "sumlist");
         console.log(div_sumlist)
 
-        
+
 
         for (let j = 0; j < cart_list.length; j++) {
 
             let find = cart_id.find(e => e.product_id == cart_list[j]["product_id"]);
-    
+
             // <div class="sum">
             div_sum3 = document.createElement("div");
             div_sum3.setAttribute("class", "sum");
@@ -352,7 +352,7 @@
             div_food_items = document.createElement("div");
             div_food_items.setAttribute("class", "food_items");
             div_sumlist.prepend(div_food_items)
-            
+
             // <h4 class="name">
             h4_name = document.createElement("h4");
             h4_name.setAttribute("class", "name");
@@ -408,11 +408,12 @@
         div_total.append(h4_lsum)
 
         // Cart total function //
-        
+
         let total_price = cart_list;
         let price = 0;
         for (let i = 0; i < total_price.length; i++) {
             let find = cart_id.find(e => e.product_id == cart_list[i]["product_id"]);
+
             price += parseInt(total_price[i]["product_price"] * find["quantity_ordered"]);
         }
 
@@ -448,22 +449,22 @@
                 let indexOfItem = cart_ids.indexOf(remove_food);
                 cart_ids.splice(indexOfItem, 1);
                 let count = JSON.parse(localStorage.getItem("food_count"));
-                localStorage.setItem("food_count", count-1)
+                localStorage.setItem("food_count", count - 1)
                 localStorage.setItem("cart_product", JSON.stringify(cart_ids));
                 location.reload()
             })
         })
 
         // plus quantity function//
-        
+
         let plus = document.querySelectorAll(".plus");
-            plus.forEach(function(find_quantity) {
-                find_quantity.addEventListener("click", function() {
+        plus.forEach(function (find_quantity) {
+            find_quantity.addEventListener("click", function () {
                 let parent = this.parentNode;
                 let num = parent.querySelector(".num");
                 let n = parseInt(num.textContent);
                 if (n < 10) {
-                n += 1;
+                    n += 1;
                 }
                 num.textContent = n;
                 // getting the ID
@@ -471,28 +472,28 @@
                 let idButton = parentBox.querySelector(".remove_cart").getAttribute("data-cart_id");
 
                 let cart_product = JSON.parse(localStorage.getItem("cart_product"));
-                function find_cart(e){
-                return e.product_id == idButton;
+                function find_cart(e) {
+                    return e.product_id == idButton;
                 }
 
                 let cart_quantity = cart_product.find(find_cart);
 
                 if (cart_quantity) {
-                cart_quantity.quantity_ordered = n.toString();  
-                localStorage.setItem("cart_product", JSON.stringify(cart_product));
-                location.reload()
-                }    
+                    cart_quantity.quantity_ordered = n.toString();
+                    localStorage.setItem("cart_product", JSON.stringify(cart_product));
+                    location.reload()
+                }
             });
         });
 
         let minus = document.querySelectorAll(".minus");
-            minus.forEach(function(find_quantity) {
-            find_quantity.addEventListener("click", function() {
+        minus.forEach(function (find_quantity) {
+            find_quantity.addEventListener("click", function () {
                 let parent = this.parentNode;
                 let num = parent.querySelector(".num");
                 let n = parseInt(num.textContent);
                 if (n > 1) {
-                n -= 1;
+                    n -= 1;
                 }
                 num.textContent = n;
 
@@ -501,46 +502,99 @@
                 let idButton = parentBox.querySelector(".remove_cart").getAttribute("data-cart_id");
 
                 let cart_product = JSON.parse(localStorage.getItem("cart_product"));
-                function find_cart(e){
-                return e.product_id == idButton;
+                function find_cart(e) {
+                    return e.product_id == idButton;
                 }
 
                 let cart_quantity = cart_product.find(find_cart);
 
                 if (cart_quantity) {
-                cart_quantity.quantity_ordered = n.toString();
-                localStorage.setItem("cart_product", JSON.stringify(cart_product));
-                location.reload()
+                    cart_quantity.quantity_ordered = n.toString();
+                    localStorage.setItem("cart_product", JSON.stringify(cart_product));
+                    location.reload()
                 }
             });
         });
 
         // Funtion to get the delivery time
         let selected_time = document.querySelectorAll(".select");
-            selected_time.forEach(function(find_time){
-                find_time.addEventListener("click", function(){
-                    let parent_Box = this.closest(".olist");
-                    let id_button = parent_Box.querySelector(".remove_cart").getAttribute("data-cart_id");
-                    let value_time = parent_Box.querySelector(".select").value
-            
-                    let cart_product = JSON.parse(localStorage.getItem("cart_product"));
-                    
-                    function find_cart(e){
+        selected_time.forEach(function (find_time) {
+            find_time.addEventListener("click", function () {
+                let parent_Box = this.closest(".olist");
+                let id_button = parent_Box.querySelector(".remove_cart").getAttribute("data-cart_id");
+                let value_time = parent_Box.querySelector(".select").value
+
+                let cart_product = JSON.parse(localStorage.getItem("cart_product"));
+
+                function find_cart(e) {
                     return e.product_id == id_button;
-                    }
+                }
 
-                    let ordered_time = cart_product.find(find_cart);
-                    // console.log(ordered_time)
+                let ordered_time = cart_product.find(find_cart);
+                // console.log(ordered_time)
 
-                    if (ordered_time) {
-                        ordered_time.ordered_time = value_time;
-                        localStorage.setItem("cart_product", JSON.stringify(cart_product));
-                    }
-                })
+                if (ordered_time) {
+                    ordered_time.delivery_time = value_time;
+                    localStorage.setItem("cart_product", JSON.stringify(cart_product));
+                }
             })
+        })
 
-            // Order product function //
-           
+        // Order product function //
+        document.querySelector(".place_order").addEventListener("click", function () {
+            let user_list = JSON.parse(localStorage.getItem("user_list"));
+            let user_id = JSON.parse(localStorage.getItem("userId"));
+
+            let current_user = user_list.find(user => user.user_phonenumber === user_id);
+
+            let cart = JSON.parse(localStorage.getItem("cart_product"));
+
+            let order_placed = JSON.parse(localStorage.getItem("order_list")) || [];
+
+            let d = new Date();
+            console.log(d)
+            
+            
+            if (order_placed) {
+                let sid = 1
+                for(let i = 1; i<=order_placed.length; i++){
+                sid+=1;
+                }
+                order_placed.push({
+                    
+                    "order_id": sid,
+                    "ordered_time": d,
+                    "user_id": current_user.user_email,
+                    "ordered_items": cart
+                })
+            }
+
+            localStorage.setItem("order_list", JSON.stringify(order_placed));
+            // location.href = "../Cart/placeorder.html"
+        })
+
+
+//         let dateee = JSON.parse(localStorage.getItem("order_list"));
+//         let d = new Date();
+//         // var objToday = new Date(),
+//             weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
+//             dayOfWeek = weekday[d.getDay()],
+//             domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
+//             dayOfMonth = today + (d.getDate() < 10) ? '0' + d.getDate() + domEnder : d.getDate() + domEnder,
+//             months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+//             curMonth = months[d.getMonth()],
+//             curYear = d.getFullYear(),
+//             curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours()),
+//             curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes(),
+//             curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds(),
+//             curMeridiem = d.getHours() > 12 ? "PM" : "AM";
+//         var today = dayOfMonth +" "+ curMonth +" "+ curYear+" " + dayOfWeek+" " + curHour + ":" + curMinute + ":" + curSeconds + curMeridiem;
+// console.log(today)
+
+//         months = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'),
+//             curMonth = months[d.getMonth()]
+//         console.log(curMonth)
+//         console.log(dateee[0].ordered_time)
 
 
     </script>
