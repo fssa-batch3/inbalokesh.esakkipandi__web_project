@@ -162,213 +162,217 @@
    
 
     // object
-    const order_history = [
-      {
-        "order_num": 5,
-        "status": "Not Delivered",
-        "items": [
-          {
-            "name": "Mutton Biryani",
-            "type": "Non-veg",
-            "image": {
-              "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-              "alt": "Mutton Biryani image"
-            },
-            "quantity": 2,
-            "price": {
-              "currency": "Rs ",
-              "rate": 179
-            }
-          },
-          {
-            "name": "Smabar Rice",
-            "type": "Veg",
-            "image": {
-              "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
-              "alt": "Sambar Rice image"
-            },
-            "quantity": 1,
-            "price": {
-              "currency": "Rs ",
-              "rate": 39
-            }
-          }
-        ],
-        "details": {
-          "ordered time": "30 Nov 2022,01:47 PM",
-          "delivery_status": "Not delivered",
-          "total_price": {
-            "currency": "Rs.",
-            "total": 397
-          },
-          "payment": "-"
-        },
-        "timestamp": "30 Nov 2022,01:47 PM",
-        "ordered_by": "inbalokesh@gmail.com"
-      },
+    // const order_history = [
+    //   {
+    //     "order_num": 5,
+    //     "status": "Not Delivered",
+    //     "items": [
+    //       {
+    //         "name": "Mutton Biryani",
+    //         "type": "Non-veg",
+    //         "image": {
+    //           "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
+    //           "alt": "Mutton Biryani image"
+    //         },
+    //         "quantity": 2,
+    //         "price": {
+    //           "currency": "Rs ",
+    //           "rate": 179
+    //         }
+    //       },
+    //       {
+    //         "name": "Smabar Rice",
+    //         "type": "Veg",
+    //         "image": {
+    //           "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
+    //           "alt": "Sambar Rice image"
+    //         },
+    //         "quantity": 1,
+    //         "price": {
+    //           "currency": "Rs ",
+    //           "rate": 39
+    //         }
+    //       }
+    //     ],
+    //     "details": {
+    //       "ordered time": "30 Nov 2022,01:47 PM",
+    //       "delivery_status": "Not delivered",
+    //       "total_price": {
+    //         "currency": "Rs.",
+    //         "total": 397
+    //       },
+    //       "payment": "-"
+    //     },
+    //     "timestamp": "30 Nov 2022,01:47 PM",
+    //     "ordered_by": "inbalokesh@gmail.com"
+    //   },
 
-      {
-        "order_num": 4,
-        "status": "Delivered",
-        "items": [
-          {
-            "name": "Chapathi with chana",
-            "type": "Veg",
-            "image": {
-              "source": "../../assets/Images/chapati.jpg",
-              "alt": "Chapathi image"
-            },
-            "quantity": 2,
-            "price": {
-              "currency": "Rs ",
-              "rate": 98
-            }
-          },
-          {
-            "name": "Veg Biryani",
-            "type": "Veg",
-            "image": {
-              "source": "../../assets/Images/Vegetable-Biryani-scaled.jpg",
-              "alt": "Veg Biryani image"
-            },
-            "quantity": 1,
-            "price": {
-              "currency": "Rs ",
-              "rate": 69
-            }
-          }
-        ],
-        "details": {
-          "ordered time": "29 Nov 2022,09:12 AM",
-          "delivery_status": "Delivered",
-          "total_price": {
-            "currency": "Rs.",
-            "total": 167
-          },
-          "payment": "Paid(COD)"
-        },
-        "timestamp": "29 Nov 2022,09:12 AM",
-        "ordered_by": "surya.umapathy@ctr.freshworks.com"
-      },
+    //   {
+    //     "order_num": 4,
+    //     "status": "Delivered",
+    //     "items": [
+    //       {
+    //         "name": "Chapathi with chana",
+    //         "type": "Veg",
+    //         "image": {
+    //           "source": "../../assets/Images/chapati.jpg",
+    //           "alt": "Chapathi image"
+    //         },
+    //         "quantity": 2,
+    //         "price": {
+    //           "currency": "Rs ",
+    //           "rate": 98
+    //         }
+    //       },
+    //       {
+    //         "name": "Veg Biryani",
+    //         "type": "Veg",
+    //         "image": {
+    //           "source": "../../assets/Images/Vegetable-Biryani-scaled.jpg",
+    //           "alt": "Veg Biryani image"
+    //         },
+    //         "quantity": 1,
+    //         "price": {
+    //           "currency": "Rs ",
+    //           "rate": 69
+    //         }
+    //       }
+    //     ],
+    //     "details": {
+    //       "ordered time": "29 Nov 2022,09:12 AM",
+    //       "delivery_status": "Delivered",
+    //       "total_price": {
+    //         "currency": "Rs.",
+    //         "total": 167
+    //       },
+    //       "payment": "Paid(COD)"
+    //     },
+    //     "timestamp": "29 Nov 2022,09:12 AM",
+    //     "ordered_by": "surya.umapathy@ctr.freshworks.com"
+    //   },
 
-      {
-        "order_num": 3,
-        "status": "Delivered",
-        "items": [
-          {
-            "name": "Idly",
-            "type": "Veg",
-            "image": {
-              "source": "../../assets/Images/homemade-breakfast.jpg",
-              "alt": "Idly image"
-            },
-            "quantity": 3,
-            "price": {
-              "currency": "Rs ",
-              "rate": 47
-            }
-          },
-        ],
-        "details": {
-          "ordered time": "28 Nov 2022,06:34 PM",
-          "delivery_status": "Delivered",
-          "total_price": {
-            "currency": "Rs.",
-            "total": 47
-          },
-          "payment": "Paid(COD)"
-        },
-        "timestamp": "28 Nov 2022,06:34 PM",
-        "ordered_by": "surya.umapathy@ctr.freshworks.com"
-      },
-      {
-        "order_num": 2,
-        "status": "Delivered",
-        "items": [
-          {
-            "name": "Ice Biryani",
-            "type": "Veg",
-            "image": {
-              "source": "../../assets/Images/Old rice.jpg",
-              "alt": "Ice Biryani image"
-            },
-            "quantity": 1,
-            "price": {
-              "currency": "Rs ",
-              "rate": 99
-            }
-          },
-          {
-            "name": "Morning Combo",
-            "type": "Veg",
-            "image": {
-              "source": "../../assets/Images/TAMIL-NADU-FOOD.jpgp",
-              "alt": "Morning Combo image"
-            },
-            "quantity": 1,
-            "price": {
-              "currency": "Rs ",
-              "rate": 49
-            }
-          }
-        ],
-        "details": {
-          "ordered time": "27 Nov 2022,08:02 AM",
-          "delivery_status": "Delivered",
-          "total_price": {
-            "currency": "Rs.",
-            "total": 148
-          },
-          "payment": "Paid(COD)"
-        },
-        "timestamp": "27 Nov 2022,08:02 AM",
-        "ordered_by": "surya.umapathy@ctr.freshworks.com"
-      },
-      {
-        "order_num": 1,
-        "status": "Delivered",
-        "items": [
-          {
-            "name": "Mutton Biryani",
-            "type": "Non-veg",
-            "image": {
-              "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-              "alt": "Mutton Biryani image"
-            },
-            "quantity": 1,
-            "price": {
-              "currency": "Rs ",
-              "rate": 179
-            }
-          },
+    //   {
+    //     "order_num": 3,
+    //     "status": "Delivered",
+    //     "items": [
+    //       {
+    //         "name": "Idly",
+    //         "type": "Veg",
+    //         "image": {
+    //           "source": "../../assets/Images/homemade-breakfast.jpg",
+    //           "alt": "Idly image"
+    //         },
+    //         "quantity": 3,
+    //         "price": {
+    //           "currency": "Rs ",
+    //           "rate": 47
+    //         }
+    //       },
+    //     ],
+    //     "details": {
+    //       "ordered time": "28 Nov 2022,06:34 PM",
+    //       "delivery_status": "Delivered",
+    //       "total_price": {
+    //         "currency": "Rs.",
+    //         "total": 47
+    //       },
+    //       "payment": "Paid(COD)"
+    //     },
+    //     "timestamp": "28 Nov 2022,06:34 PM",
+    //     "ordered_by": "surya.umapathy@ctr.freshworks.com"
+    //   },
+    //   {
+    //     "order_num": 2,
+    //     "status": "Delivered",
+    //     "items": [
+    //       {
+    //         "name": "Ice Biryani",
+    //         "type": "Veg",
+    //         "image": {
+    //           "source": "../../assets/Images/Old rice.jpg",
+    //           "alt": "Ice Biryani image"
+    //         },
+    //         "quantity": 1,
+    //         "price": {
+    //           "currency": "Rs ",
+    //           "rate": 99
+    //         }
+    //       },
+    //       {
+    //         "name": "Morning Combo",
+    //         "type": "Veg",
+    //         "image": {
+    //           "source": "../../assets/Images/TAMIL-NADU-FOOD.jpgp",
+    //           "alt": "Morning Combo image"
+    //         },
+    //         "quantity": 1,
+    //         "price": {
+    //           "currency": "Rs ",
+    //           "rate": 49
+    //         }
+    //       }
+    //     ],
+    //     "details": {
+    //       "ordered time": "27 Nov 2022,08:02 AM",
+    //       "delivery_status": "Delivered",
+    //       "total_price": {
+    //         "currency": "Rs.",
+    //         "total": 148
+    //       },
+    //       "payment": "Paid(COD)"
+    //     },
+    //     "timestamp": "27 Nov 2022,08:02 AM",
+    //     "ordered_by": "surya.umapathy@ctr.freshworks.com"
+    //   },
+    //   {
+    //     "order_num": 1,
+    //     "status": "Delivered",
+    //     "items": [
+    //       {
+    //         "name": "Mutton Biryani",
+    //         "type": "Non-veg",
+    //         "image": {
+    //           "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
+    //           "alt": "Mutton Biryani image"
+    //         },
+    //         "quantity": 1,
+    //         "price": {
+    //           "currency": "Rs ",
+    //           "rate": 179
+    //         }
+    //       },
 
-          {
-            "name": "Chicken Biryani",
-            "type": "Non-veg",
-            "image": {
-              "source": "../../assets/Images/thumb__700_0_0_0_auto.jpg",
-              "alt": "Chicken biryani image"
-            },
-            "quantity": 1,
-            "price": {
-              "currency": "Rs ",
-              "rate": 149
-            }
-          }
-        ],
-        "details": {
-          "ordered time": "26 Nov 2022,02:44 PM",
-          "delivery_status": "Delivered",
-          "total_price": {
-            "currency": "Rs.",
-            "total": 328
-          },
-          "payment": "-"
-        },
-        "timestamp": "26 Nov 2022,02:44 PM",
-        "ordered_by": "surya.umapathy@ctr.freshworks.com"
-      },
-    ]
+    //       {
+    //         "name": "Chicken Biryani",
+    //         "type": "Non-veg",
+    //         "image": {
+    //           "source": "../../assets/Images/thumb__700_0_0_0_auto.jpg",
+    //           "alt": "Chicken biryani image"
+    //         },
+    //         "quantity": 1,
+    //         "price": {
+    //           "currency": "Rs ",
+    //           "rate": 149
+    //         }
+    //       }
+    //     ],
+    //     "details": {
+    //       "ordered time": "26 Nov 2022,02:44 PM",
+    //       "delivery_status": "Delivered",
+    //       "total_price": {
+    //         "currency": "Rs.",
+    //         "total": 328
+    //       },
+    //       "payment": "-"
+    //     },
+    //     "timestamp": "26 Nov 2022,02:44 PM",
+    //     "ordered_by": "surya.umapathy@ctr.freshworks.com"
+    //   },
+    // ]
+
+    let orderedItems = JSON.parse(localStorage.getItem("order_list"));
+    
+    let product_list = JSON.parse(localStorage.getItem("product_list"));
 
      // Order history loop//
     let div_obox;
@@ -384,7 +388,7 @@
     let div_view_button;
     let button;
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < orderedItems.length; i++) {
 
 
       // <div class="obox">
@@ -404,28 +408,28 @@
 
       // <h3>
       h3 = document.createElement("h3");
-      h3.innerText = "Order:#" + order_history[i]["order_num"];
+      h3.innerText = "Order:#" + orderedItems[i]["order_id"];
       div_ihead.append(h3);
 
       // <h4>
       h4 = document.createElement("h4");
-      if (order_history[i]["status"] == "Not Delivered") {
+      // if (order_history[i]["status"] == "Not Delivered") {
         h4.setAttribute("class", "ndel");
-      }
-      else {
-        h4.setAttribute("class", "del");
-      }
-      h4.innerText = order_history[i]["status"];
+      // }
+      // else {
+      //   h4.setAttribute("class", "del");
+      // }
+      h4.innerText = "Not Delivered";
       div_ihead.append(h4);
 
       // <h3>
       h3 = document.createElement("h3");
-      h3.innerText = "Items(2)";
+      h3.innerText = "Items " + orderedItems[i]["ordered_items"].length;
       div_item.append(h3);
 
       // <p>
       p = document.createElement("p");
-      p.innerText = order_history[i]["timestamp"];
+      p.innerText = orderedItems[i]["ordered_time"];
       div_item.append(p);
 
       // <div class="order">
@@ -438,13 +442,13 @@
       div_item_list.setAttribute("class", "item_list");
       div_order.append(div_item_list);
 
-      const items = order_history[i]["items"];
-      const noOfItems = items.length
+      // const items = order_history[i]["items"];
+      // const noOfItems = items.length
       // Loop for food
-      for (let j = 0; j < noOfItems; j++) {
+      for (let j = 0; j < 2; j++) {
         // <h4> food list//
         h4 = document.createElement("h4");
-        h4.innerText = items[j]["name"] + items[j]["quantity"];
+        h4.innerText = "Pongal";
         div_item_list.append(h4);
       }
 
@@ -460,7 +464,7 @@
 
       // <h4> price//
       h4 = document.createElement("h4");
-      h4.innerText = order_history[i]["details"]["total_price"]["currency"] + order_history[i]["details"]["total_price"]["total"];
+      h4.innerText = "Rs. " + orderedItems[i]["total_price"];
       div_total.append(h4);
 
       // <div class="ordered_by">
@@ -470,7 +474,7 @@
 
       // <h4> email//
       h4 = document.createElement("h4");
-      h4.innerText = "Ordered by: " + order_history[i]["ordered_by"];
+      h4.innerText = "Ordered by: " + orderedItems[i]["user_id"];
       div_ordered_by.append(h4);
 
       // <div class="view_button">

@@ -246,10 +246,9 @@
             div_dropbox.append(select);
 
             // <option>
-
-            // option = document.createElement("option");
-            // option.innerText = find["ordered_time"];
-            // select.append(option);
+            option = document.createElement("option");
+            option.innerText = find["delivery_time"];
+            select.append(option);
 
             option = document.createElement("option");
             option.setAttribute("class", "selected_option");
@@ -286,8 +285,6 @@
             img_minus.setAttribute("class", "minus");
             img_minus.setAttribute("alt", "icon minus");
             div_add.append(img_minus);
-
-
 
             // <h3>
             h3 = document.createElement("h3");
@@ -346,7 +343,7 @@
             // <p class="time">
             p_time = document.createElement("p");
             p_time.setAttribute("class", "time");
-            p_time.innerText = "(Tomorrow)" + find["ordered_time"];
+            p_time.innerText = "(Tomorrow)" + find["delivery_time"];
             div_dtime.append(p_time)
             // <div class="food_items">
             div_food_items = document.createElement("div");
@@ -470,7 +467,6 @@
                 // getting the ID
                 let parentBox = this.closest(".slist")
                 let idButton = parentBox.querySelector(".remove_cart").getAttribute("data-cart_id");
-
                 let cart_product = JSON.parse(localStorage.getItem("cart_product"));
                 function find_cart(e) {
                     return e.product_id == idButton;
@@ -521,6 +517,7 @@
         selected_time.forEach(function (find_time) {
             find_time.addEventListener("click", function () {
                 let parent_Box = this.closest(".olist");
+
                 let id_button = parent_Box.querySelector(".remove_cart").getAttribute("data-cart_id");
                 let value_time = parent_Box.querySelector(".select").value
 
@@ -540,6 +537,9 @@
             })
         })
 
+
+
+
         // Order product function //
         document.querySelector(".place_order").addEventListener("click", function () {
             let user_list = JSON.parse(localStorage.getItem("user_list"));
@@ -552,25 +552,30 @@
             let order_placed = JSON.parse(localStorage.getItem("order_list")) || [];
 
             let d = new Date();
-            console.log(d)
-            
-            
+            // console.log(d)
+
+            let total_price = document.querySelector("#total_cost").innerText.replace("Rs. ", "");
             if (order_placed) {
                 let sid = 1
-                for(let i = 1; i<=order_placed.length; i++){
-                sid+=1;
+                for (let i = 1; i <= order_placed.length; i++) {
+                    sid += 1;
                 }
-                order_placed.push({
-                    
-                    "order_id": sid,
-                    "ordered_time": d,
-                    "user_id": current_user.user_email,
-                    "ordered_items": cart
-                })
+                if (confirm("Are you sure?")) {
+
+                    order_placed.push({
+                        "order_id": sid,
+                        "ordered_time": d,
+                        "user_id": current_user.user_email,
+                        "ordered_items": cart,
+                        "total_price": parseInt(total_price)
+                    })
+
+                }
+
             }
 
             localStorage.setItem("order_list", JSON.stringify(order_placed));
-            // location.href = "../Cart/placeorder.html"
+            location.href = "../Cart/placeorder.html"
         })
 
 

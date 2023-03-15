@@ -416,6 +416,7 @@
             div_border.append(div_price);
 
             p_price = document.createElement("p");
+            p_price.setAttribute("class", "food_price")
             p_price.innerText = "Rs." + food_list[i]["product_price"];
             div_price.append(p_price);
 
@@ -438,6 +439,8 @@
         carts.forEach(function (add_foods) {
             add_foods.addEventListener("click", function () {
                 const uuid = this.dataset.uuid;
+                const price_parent = this.closest(".price");
+                const food_price = price_parent.querySelector(".food_price").innerText.replace("Rs.", "");
 
                 let cart_products = JSON.parse(localStorage.getItem("cart_product")) || [];
 
@@ -449,7 +452,8 @@
                     cart_products.push({
                         "product_id": uuid,
                         "quantity_ordered":"1",
-                        "delivery_time":""
+                        "delivery_time":"",
+                        "price": parseInt(food_price),
                     });
 
                     let food_count = cart_products.length;
