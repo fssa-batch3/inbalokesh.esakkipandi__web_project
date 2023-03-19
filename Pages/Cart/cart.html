@@ -237,12 +237,13 @@
             div_rinfo.append(div_dropbox);
 
             // find from product id
-            
+
             let find = cart_id.find(e => e.product_id == cart_list[i]["product_id"]);
 
             // <select class="select">
             select = document.createElement("select");
             select.setAttribute("class", "select");
+            select.setAttribute("required", "required");
             select.setAttribute("name", "time");
             div_dropbox.append(select);
 
@@ -538,9 +539,6 @@
             })
         })
 
-
-
-
         // Order product function //
         document.querySelector(".place_order").addEventListener("click", function () {
             let user_list = JSON.parse(localStorage.getItem("user_list"));
@@ -553,53 +551,58 @@
             let order_placed = JSON.parse(localStorage.getItem("order_list")) || [];
 
             let d = new Date();
-            // console.log(d)
+
+            weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
+                dayOfWeek = weekday[d.getDay()],
+                domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
+                dayOfMonth = today + (d.getDate() < 10) ? '0' + d.getDate() + domEnder : d.getDate() + domEnder,
+                months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+                curMonth = months[d.getMonth()],
+                curYear = d.getFullYear(),
+                curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours()),
+                curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes(),
+                curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds(),
+                curMeridiem = d.getHours() > 12 ? "PM" : "AM";
+            var today = dayOfMonth + " " + curMonth + " " + curYear + "," + dayOfWeek + " " + curHour + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
 
             let total_price = document.querySelector("#total_cost").innerText.replace("Rs. ", "");
-            if (order_placed) {
-                let sid = 1
-                for (let i = 1; i <= order_placed.length; i++) {
-                    sid += 1;
+            let dTime = ""
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].delivery_time !== "") {
+                    dTime += 1
                 }
-                if (confirm("Are you sure?")) {
-
-                    order_placed.push({
-                        "order_id": sid,
-                        "ordered_time": d,
-                        "user_id": current_user.user_email,
-                        "ordered_items": cart,
-                        "total_price": parseInt(total_price)
-                    })
+                else {
+                    dTime = "";
+                    alert("Please select the Delivery Time")
+                    break
                 }
             }
-            localStorage.setItem("order_list", JSON.stringify(order_placed));
-            location.href = "../Cart/placeorder.html"
+            if (dTime !== "") {
+                if (cart.length > 0) {
+                    let orderId = 1
+                    for (let i = 1; i <= order_placed.length; i++) {
+                        orderId += 1;
+                    }
+                    if (confirm("Are you sure?")) {
+                        order_placed.push({
+                            "order_id": orderId,
+                            "ordered_time": today,
+                            "user_id": current_user.user_email,
+                            "ordered_items": cart,
+                            "total_price": parseInt(total_price)
+                        });
+                        localStorage.setItem("order_list", JSON.stringify(order_placed));
+                        localStorage.setItem("cart_product", "[]");
+                        localStorage.setItem("food_count", 0);
+                        location.href = "../Cart/placeorder.html";
+                    }
+                }
+                else {
+                    alert("You have not added any products to the cart")
+                    location.href = "../Menu/menu.html";
+                }
+            }
         })
-
-
-//         let dateee = JSON.parse(localStorage.getItem("order_list"));
-//         let d = new Date();
-//         // var objToday = new Date(),
-//             weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
-//             dayOfWeek = weekday[d.getDay()],
-//             domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
-//             dayOfMonth = today + (d.getDate() < 10) ? '0' + d.getDate() + domEnder : d.getDate() + domEnder,
-//             months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
-//             curMonth = months[d.getMonth()],
-//             curYear = d.getFullYear(),
-//             curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours()),
-//             curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes(),
-//             curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds(),
-//             curMeridiem = d.getHours() > 12 ? "PM" : "AM";
-//         var today = dayOfMonth +" "+ curMonth +" "+ curYear+" " + dayOfWeek+" " + curHour + ":" + curMinute + ":" + curSeconds + curMeridiem;
-// console.log(today)
-
-//         months = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'),
-//             curMonth = months[d.getMonth()]
-//         console.log(curMonth)
-//         console.log(dateee[0].ordered_time)
-
-
     </script>
     <!-- script -->
 </body>

@@ -195,6 +195,7 @@ body{
     border-radius: 30px;
     font-weight: bold;
     letter-spacing: 1px;
+    cursor:pointer;
 }
 
 .sumlist button:hover{

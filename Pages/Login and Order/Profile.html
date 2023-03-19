@@ -119,10 +119,6 @@
       window.location.href = "./Edit profile.html"
     }
 
-    function view() {
-      window.location.href = "./orderhistory.html"
-    }
-
     let userId = JSON.parse(localStorage.getItem('userId'));
 
     let user_list = JSON.parse(localStorage.getItem('user_list'));
@@ -372,7 +368,12 @@
 
     let orderedItems = JSON.parse(localStorage.getItem("order_list"));
 
+    
     let product_list = JSON.parse(localStorage.getItem("product_list")); 
+
+    if(orderedItems.length == 0){
+      document.querySelector(".history").setAttribute("style", "display:none")
+    }
 
     // Order history loop//
     let div_obox;
@@ -386,10 +387,10 @@
     let div_total;
     let div_ordered_by;
     let div_view_button;
+    let a_view;
     let button;
 
     for (let i = 0; i < orderedItems.length; i++) {
-
 
       // <div class="obox">
       div_obox = document.createElement("div");
@@ -450,7 +451,7 @@
         let foodItems = product_list.filter(product => items[j].product_id === product.product_id)
         // <h4> food list//
         h4 = document.createElement("h4");
-        h4.innerText = foodItems[0]["product_name"];
+        h4.innerText = foodItems[0]["product_name"] + "("+items[j]["quantity_ordered"]+")";
         div_item_list.append(h4);
       }
 
@@ -484,18 +485,24 @@
       div_view_button.setAttribute("class", "view_button");
       div_order.append(div_view_button);
 
+      // <a class = view>
+      a_view = document.createElement("a");
+      a_view.setAttribute("class", "view");
+      a_view.setAttribute("href", "./orderhistory.html?order_id=" + orderedItems[i]["order_id"]);
+      div_view_button.append(a_view);
+
       // <button>
       button = document.createElement("button");
       button.setAttribute("type", "button");
-      button.setAttribute("onclick", "view()");
       button.innerText = "View details";
-      div_view_button.append(button);
+      a_view.append(button);
 
       document.querySelector("div.overflowbox").prepend(div_obox);
 
     }
+
+    
   </script>
 
 </body>
-
 </html>
