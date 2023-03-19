@@ -150,7 +150,7 @@
         user_data = user_list.find(login_data);
 
         const indexOfUser = user_list.indexOf(user_data);
-        
+
         user_list.splice(indexOfUser, 1);
 
         localStorage.setItem('user_list', JSON.stringify(user_list));
@@ -159,7 +159,7 @@
     }
 
 
-   
+
 
     // object
     // const order_history = [
@@ -371,10 +371,10 @@
     // ]
 
     let orderedItems = JSON.parse(localStorage.getItem("order_list"));
-    
-    let product_list = JSON.parse(localStorage.getItem("product_list"));
 
-     // Order history loop//
+    let product_list = JSON.parse(localStorage.getItem("product_list")); 
+
+    // Order history loop//
     let div_obox;
     let div_item;
     let div_ihead;
@@ -414,7 +414,7 @@
       // <h4>
       h4 = document.createElement("h4");
       // if (order_history[i]["status"] == "Not Delivered") {
-        h4.setAttribute("class", "ndel");
+      h4.setAttribute("class", "ndel");
       // }
       // else {
       //   h4.setAttribute("class", "del");
@@ -424,7 +424,7 @@
 
       // <h3>
       h3 = document.createElement("h3");
-      h3.innerText = "Items " + orderedItems[i]["ordered_items"].length;
+      h3.innerText = "Items" + "("+orderedItems[i]["ordered_items"].length +")";
       div_item.append(h3);
 
       // <p>
@@ -442,13 +442,15 @@
       div_item_list.setAttribute("class", "item_list");
       div_order.append(div_item_list);
 
-      // const items = order_history[i]["items"];
-      // const noOfItems = items.length
+      const items = orderedItems[i]["ordered_items"];
+
       // Loop for food
-      for (let j = 0; j < 2; j++) {
+      for (let j = 0; j < items.length; j++) {
+        // function for filter products
+        let foodItems = product_list.filter(product => items[j].product_id === product.product_id)
         // <h4> food list//
         h4 = document.createElement("h4");
-        h4.innerText = "Pongal";
+        h4.innerText = foodItems[0]["product_name"];
         div_item_list.append(h4);
       }
 
@@ -489,7 +491,7 @@
       button.innerText = "View details";
       div_view_button.append(button);
 
-      document.querySelector("div.overflowbox").append(div_obox);
+      document.querySelector("div.overflowbox").prepend(div_obox);
 
     }
   </script>

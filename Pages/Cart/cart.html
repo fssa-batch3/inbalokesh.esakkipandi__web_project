@@ -237,6 +237,7 @@
             div_rinfo.append(div_dropbox);
 
             // find from product id
+            
             let find = cart_id.find(e => e.product_id == cart_list[i]["product_id"]);
 
             // <select class="select">
@@ -569,11 +570,8 @@
                         "ordered_items": cart,
                         "total_price": parseInt(total_price)
                     })
-
                 }
-
             }
-
             localStorage.setItem("order_list", JSON.stringify(order_placed));
             location.href = "../Cart/placeorder.html"
         })
