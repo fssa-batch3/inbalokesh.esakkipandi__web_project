@@ -38,5 +38,5 @@ FEATURES:
  
     - Place order
     - Read order
-    - Delete order
+    - Cancel order
     - Re-order
