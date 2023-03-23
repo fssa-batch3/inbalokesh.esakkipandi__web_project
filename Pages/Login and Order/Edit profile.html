@@ -14,32 +14,6 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="shead">
-      <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px" width="100px"></a>
-      <h1>ONLY HOME FOOD</h1>
-      <a href="#" class="toggle-button">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </a>
-    </div>
-    <div class="head">
-      <nav class="navbar">
-        <a class="navigation__link" href="../../index.html">Home</a>
-        <a class="navigation__link" href="../Menu/menu.html">Menu</a>
-        <a class="navigation__link" href="../Info/about us.html">About Us</a>
-        <a class="navigation__link" href="../Info/contact us.html">Contact Us</a>
-      </nav>
-      <div class="Profile">
-        <a href="./Login.html"><button>Login</button></a>
-        <a href="../Cart/cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon" height="30px"
-            width="30px"></a>
-        <a href="./Profile.html"><img src="../../assets/Images/person-circle-outline.svg" alt="Profile icon"
-            height="30px" width="30px"></a>
-      </div>
-    </div>
-  </header>
 
   <section>
     <div class="side">
@@ -106,6 +80,7 @@
     </div>
   </footer>
 
+  <script src="../../assets/javascript/header.js"></script>
   <script>
 
       let userId = JSON.parse(localStorage.getItem('userId'));
@@ -139,7 +114,7 @@
         localStorage.setItem('user_list', JSON.stringify(user_list));
 
         alert("Updated successfully");
-        location.href = "./Profile.html";
+        window.location.href = "./Profile.html";
       }
 
   </script>

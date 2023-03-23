@@ -1,4 +1,5 @@
 body{
+    
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -20,14 +21,15 @@ section{
 }
 
 .popup img{
-    height:25%;
-    width:25%;
+    height:100%;
+    width:240%;
     object-fit: cover;
 }
 
 .phead{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+    justify-items: end;
     border-top:1px solid grey;
     border-bottom:1px solid grey;
 }
@@ -53,23 +55,16 @@ section{
     background-color: #e7f5e3;
     transform: scale(1.05);
 }
-p.quan{
-    margin-left: 210px;
-}
 
 .orderr{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 2fr));
+    grid-gap: 100px;
     align-items: center;
+    grid-auto-flow: dense;
     padding-bottom:10px;
     margin-top: 20px;
     border-bottom: 1px solid grey;
-}
-
-p.fname{
-    position: relative;
-    right:30px;
-    text-align: center;
 }
 
 .dpara{
@@ -85,12 +80,21 @@ p.fname{
 
 @media (max-width:1000px){
     .popup{
-        position:static;
-        margin:auto;
+        /* position:static;
+        margin:auto; */
         padding-top:10px;
     }
-    p.quan{
-        margin-left: 165px;
+    .orderr{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+        grid-gap: 60px;
+    }
+    .popup img{
+        width:7rem;
+        object-fit: cover;
+    }
+    .name{
+        margin-left: 20px;
     }
     .header{
         display:none;
@@ -100,20 +104,28 @@ p.fname{
     }
 }
 @media (max-width:550px){
+    /* p{
+        font-size: 100px;
+    } */
     .popup{
         padding-left: 20px;
         padding-right: 20px;
-        width:80%;
+    }
+    .orderr{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+        justify-items: flex-end;
+        grid-gap: 20px;
+    }
+    .popup img{
+        height:100%;
+        width:5rem;
+        /* object-fit: cover; */
     }
     h3,p{
         font-size: 3vw;
     }
-    p.quan{
-        margin-left: 65px;
-    }
-    .name{
-        width:70px;
-    }
+    
     p.fname{
         position:static;
         text-align: center;

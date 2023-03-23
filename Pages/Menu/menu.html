@@ -15,45 +15,15 @@
 </head>
 
 <body>
-    <!-- header -->
-    <header class="header">
-        <div class="shead">
-            <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px"
-                    width="100px"></a>
-            <h1>ONLY HOME FOOD</h1>
-            <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-        </div>
-        <div class="head">
-            <nav class="navbar">
-                <a class="navigation__link" href="../../index.html">Home</a>
-                <a class="navigation__link" href="../Menu/menu.html">Menu</a>
-                <a class="navigation__link" href="../Info/about us.html">About Us</a>
-                <a class="navigation__link" href="../Info/contact us.html">Contact Us</a>
-            </nav>
-            <div class="Profile">
-                <a href="../Login and Order/Login.html"><button>Login</button></a>
-                <a href="../Cart/cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon"
-                height="30px" width="30px"></a>
-                <span class="count">0</span>
-                <a href="../Login and Order/Profile.html"><img src="../../assets/Images/person-circle-outline.svg"
-                        alt="Profile icon" height="30px" width="30px"></a>
-            </div>
-        </div>
-    </header>
-    <!-- header ends -->
-
+    
     <!-- filter box -->
     <h1 class="he">Menu</h1>
     <div class="top">
         <div class="menu">
             <a href="./menu.html" class="all">All</a>
-            <a href="./breakfast.html">Breakfast</a>
+            <!-- <a href="./breakfast.html">Breakfast</a>
             <a href="./lunch.html">Lunch</a>
-            <a href="./night.html">Dinner</a>
+            <a href="./night.html">Dinner</a> -->
         </div>
     </div>
 
@@ -96,15 +66,11 @@
     <!-- footer ends -->
 
     <!-- script starts-->
-    <script src="../../assets/javascript/javascript.js"></script>
-
+    <!-- <script src="../../assets/javascript/javascript.js"></script> -->
+    <script src="../../assets/javascript/header.js"></script>
     <script>
-        // To navigate to cart page
-        function btn() {
-            window.location.href = "../Cart/cart.html"
-        }
 
-
+        // DOM //
         let div_box;
         let img_food;
         let div_border;
@@ -344,7 +310,7 @@
         //     },
 
         // ]
-        
+
         // Function to display foods //
 
         let product_list = JSON.parse(localStorage.getItem("product_list"));
@@ -353,7 +319,7 @@
         let food_list = product_list.filter(product =>
             uu_id.some(uuid => uuid.product_id === product.product_id)
         );
-        
+
         console.log(food_list);
 
         for (let i = 0; i < food_list.length; i++) {
@@ -435,8 +401,9 @@
 
         // function for add to cart //
 
-        let carts = document.querySelectorAll("button.addCart");
-        carts.forEach(function (add_foods) {
+
+        let addToCarts = document.querySelectorAll("button.addCart");
+        addToCarts.forEach(function (add_foods) {
             add_foods.addEventListener("click", function () {
                 const uuid = this.dataset.uuid;
                 const price_parent = this.closest(".price");
@@ -446,31 +413,33 @@
 
                 let exist = cart_products.length &&
                     JSON.parse(localStorage.getItem('cart_product')).some(data =>
-                        data.product_id == uuid)
+                        data.product_id == uuid);
 
-                if (!exist) {
-                    cart_products.push({
-                        "product_id": uuid,
-                        "quantity_ordered":"1",
-                        "delivery_time":"",
-                        "price": parseInt(food_price),
-                    });
+                if (userId == null) {
+                    alert("Login to order your food");
+                    location.href = "../Login and Order/Login.html"
+                }
+                else {
+                    if (!exist) {
+                        cart_products.push({
+                            "product_id": uuid,
+                            "quantity_ordered": "1",
+                            "delivery_time": "",
+                            "price": parseInt(food_price),
+                        });
 
-                    let food_count = cart_products.length;
+                        let food_count = cart_products.length;
 
-                    localStorage.setItem('food_count', JSON.stringify(food_count));
-                    localStorage.setItem('cart_product', JSON.stringify(cart_products));
-                    alert("Product is added to cart")
-                    location.reload()
-                } else {
-                    alert("This product is already added to your cart")
+                        localStorage.setItem('food_count', JSON.stringify(food_count));
+                        localStorage.setItem('cart_product', JSON.stringify(cart_products));
+                        alert("Product is added to cart")
+                        window.location.reload()
+                    } else {
+                        alert("This product is already added to your cart")
+                    }
                 }
             });
         });
-
-        // To store the count in the cart //
-        let foodCount = localStorage.getItem("food_count");   
-        document.querySelector('.Profile span').textContent = foodCount;
 
     </script>
     <!-- script ends-->

@@ -16,33 +16,6 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="shead">
-            <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px"
-                    width="100px"></a>
-            <h1>ONLY HOME FOOD</h1>
-            <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-        </div>
-        <div class="head">
-            <nav class="navbar">
-                <a class="navigation__link" href="../../index.html">Home</a>
-                <a class="navigation__link" href="../Menu/menu.html">Menu</a>
-                <a class="navigation__link" href="../Info/about us.html">About Us</a>
-                <a class="navigation__link" href="../Info/contact us.html">Contact Us</a>
-            </nav>
-            <div class="Profile">
-                <a href="../Login and Order/Login.html"><button>Login</button></a>
-                <a href="./cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon" height="30px"
-                        width="30px"></a>
-                <a href="../Login and Order/Profile.html"><img src="../../assets/Images/person-circle-outline.svg"
-                        alt="Profile icon" height="30px" width="30px"></a>
-            </div>
-        </div>
-    </header>
 
     <div class="hord">
         <h1>Order List</h1>
@@ -90,8 +63,8 @@
     </footer>
 
     <!-- script -->
-    <script src="../../assets/javascript/javascript.js"></script>
-
+    <!-- <script src="../../assets/javascript/javascript.js"></script> -->
+    <script src="../../assets/javascript/header.js"></script>
     <script>
         let div_obox;
         let img;
@@ -245,8 +218,10 @@
             select.setAttribute("class", "select");
             select.setAttribute("required", "required");
             select.setAttribute("name", "time");
+            select.setAttribute("id", "select_id");
             div_dropbox.append(select);
 
+            
             // <option>
             option = document.createElement("option");
             option.innerText = find["delivery_time"];
@@ -254,23 +229,26 @@
 
             option = document.createElement("option");
             option.setAttribute("class", "selected_option");
+            option.setAttribute("id", "option_1");
             option.setAttribute("value", "Breakfast (7:30 AM to 9:00 AM)");
             option.innerText = "Breakfast (7:30 AM to 9:00 AM)";
             select.append(option);
 
             option = document.createElement("option");
             option.setAttribute("class", "selected_option");
+            option.setAttribute("id", "option_2");
             option.setAttribute("value", "Lunch (12:30 AM to 2:00 PM)");
             option.innerText = "Lunch (12:30 AM to 2:00 PM)";
             select.append(option);
 
             option = document.createElement("option");
             option.setAttribute("class", "selected_option");
+            option.setAttribute("id", "option_3");
             option.setAttribute("value", "Dinner (7:00 PM to 8:30 PM)");
             option.innerText = "Dinner (7:00 PM to 8:30 PM)";
             select.append(option);
 
-            let option_sel = document.querySelectorAll(".selected_option")
+
             // <div class="slist">
             div_slist = document.createElement("div");
             div_slist.setAttribute("class", "slist");
@@ -313,6 +291,14 @@
             document.querySelector("div.lorder").prepend(div_obox);
         }
 
+        // Function for the remove duplicate option //
+        document.querySelectorAll('select').forEach((select) => {
+                const options = []
+                select.querySelectorAll('option').forEach((option) => {
+                    if (options.includes(option.value)) option.remove()
+                    else options.push(option.value)
+                })
+            })
 
         // ********Summary********//
         // <div class="sumlist">
@@ -450,7 +436,7 @@
                 let count = JSON.parse(localStorage.getItem("food_count"));
                 localStorage.setItem("food_count", count - 1)
                 localStorage.setItem("cart_product", JSON.stringify(cart_ids));
-                location.reload()
+                window.location.reload()
             })
         })
 
@@ -479,7 +465,7 @@
                 if (cart_quantity) {
                     cart_quantity.quantity_ordered = n.toString();
                     localStorage.setItem("cart_product", JSON.stringify(cart_product));
-                    location.reload()
+                    window.location.reload()
                 }
             });
         });
@@ -509,7 +495,7 @@
                 if (cart_quantity) {
                     cart_quantity.quantity_ordered = n.toString();
                     localStorage.setItem("cart_product", JSON.stringify(cart_product));
-                    location.reload()
+                    window.location.reload()
                 }
             });
         });
@@ -518,6 +504,7 @@
         let selected_time = document.querySelectorAll(".select");
         selected_time.forEach(function (find_time) {
             find_time.addEventListener("click", function () {
+
                 let parent_Box = this.closest(".olist");
 
                 let id_button = parent_Box.querySelector(".remove_cart").getAttribute("data-cart_id");
@@ -573,7 +560,7 @@
                 }
                 else {
                     dTime = "";
-                    alert("Please select the Delivery Time")
+                    alert("Please select the delivery time and quantity")
                     break
                 }
             }
@@ -589,7 +576,8 @@
                             "ordered_time": today,
                             "user_id": current_user.user_email,
                             "ordered_items": cart,
-                            "total_price": parseInt(total_price)
+                            "total_price": parseInt(total_price),
+                            "order_status": "Not Delivered"
                         });
                         localStorage.setItem("order_list", JSON.stringify(order_placed));
                         localStorage.setItem("cart_product", "[]");

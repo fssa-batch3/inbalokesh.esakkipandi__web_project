@@ -14,32 +14,6 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="shead">
-      <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px" width="100px"></a>
-      <h1>ONLY HOME FOOD</h1>
-      <a href="#" class="toggle-button">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </a>
-    </div>
-    <div class="head">
-      <nav class="navbar">
-        <a class="navigation__link" href="../../index.html">Home</a>
-        <a class="navigation__link" href="../Menu/menu.html">Menu</a>
-        <a class="navigation__link" href="../Info/about us.html">About Us</a>
-        <a class="navigation__link" href="../Info/contact us.html">Contact Us</a>
-      </nav>
-      <div class="Profile">
-        <a href="Login.html"><button class="login">Login</button></a>
-        <a href="../Cart/cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon" height="30px"
-            width="30px"></a>
-        <a href="Profile.html"><img src="../../assets/Images/person-circle-outline.svg" alt="Profile icon" height="30px"
-            width="30px"></a>
-      </div>
-    </div>
-  </header>
 
   <section>
     <div class="side">
@@ -48,8 +22,12 @@
         <div class="pbox">
           <div class="imgb">
             <img src="../../assets/Images/img.jpg" alt="Profile image" height="250px" width="250px">
-            <button type="button" onclick="btn()">Edit profile</button>
-            <button type="button" onclick="delData()">Delete</button>
+            <div class="button_row">
+              <button type="button" onclick="btn()">Edit profile</button>
+              <button type="button" onclick="delData()">Delete</button>
+              <a href="../../index.html"><button type="submit" id="logout_user">Log Out</button></a>
+            </div>
+
           </div>
           <div>
             <div class="sep">
@@ -68,10 +46,10 @@
               <label class="addr">Address</label>
               <textarea type="text" id="user_address" placeholder="Your address" disabled></textarea>
             </div>
-            <div class="sep">
+            <!-- <div class="sep">
               <label>Password</label>
               <input type="Password" name="Pass" id="user_password" placeholder="Password" disabled>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -112,14 +90,16 @@
     </div>
   </footer>
 
-  <script src="../../assets/javascript/javascript.js"></script>
+  <script src="../../assets/javascript/header.js"></script>
+  <!-- <script src="../../assets/javascript/javascript.js"></script> -->
 
   <script>
+
     function btn() {
       window.location.href = "./Edit profile.html"
     }
 
-    let userId = JSON.parse(localStorage.getItem('userId'));
+    // let userId = JSON.parse(localStorage.getItem('userId'));
 
     let user_list = JSON.parse(localStorage.getItem('user_list'));
 
@@ -133,7 +113,7 @@
     document.getElementById("user_phonenumber").value = user_data["user_phonenumber"];
     document.getElementById("user_email").value = user_data["user_email"];
     document.getElementById("user_address").value = user_data["user_address"];
-    document.getElementById("user_password").value = user_data["user_password"];
+    // document.getElementById("user_password").value = user_data["user_password"];
 
     function delData(e) {
       if (confirm("Are you sure?")) {
@@ -154,355 +134,150 @@
       };
     }
 
-
-
-
-    // object
-    // const order_history = [
-    //   {
-    //     "order_num": 5,
-    //     "status": "Not Delivered",
-    //     "items": [
-    //       {
-    //         "name": "Mutton Biryani",
-    //         "type": "Non-veg",
-    //         "image": {
-    //           "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-    //           "alt": "Mutton Biryani image"
-    //         },
-    //         "quantity": 2,
-    //         "price": {
-    //           "currency": "Rs ",
-    //           "rate": 179
-    //         }
-    //       },
-    //       {
-    //         "name": "Smabar Rice",
-    //         "type": "Veg",
-    //         "image": {
-    //           "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
-    //           "alt": "Sambar Rice image"
-    //         },
-    //         "quantity": 1,
-    //         "price": {
-    //           "currency": "Rs ",
-    //           "rate": 39
-    //         }
-    //       }
-    //     ],
-    //     "details": {
-    //       "ordered time": "30 Nov 2022,01:47 PM",
-    //       "delivery_status": "Not delivered",
-    //       "total_price": {
-    //         "currency": "Rs.",
-    //         "total": 397
-    //       },
-    //       "payment": "-"
-    //     },
-    //     "timestamp": "30 Nov 2022,01:47 PM",
-    //     "ordered_by": "inbalokesh@gmail.com"
-    //   },
-
-    //   {
-    //     "order_num": 4,
-    //     "status": "Delivered",
-    //     "items": [
-    //       {
-    //         "name": "Chapathi with chana",
-    //         "type": "Veg",
-    //         "image": {
-    //           "source": "../../assets/Images/chapati.jpg",
-    //           "alt": "Chapathi image"
-    //         },
-    //         "quantity": 2,
-    //         "price": {
-    //           "currency": "Rs ",
-    //           "rate": 98
-    //         }
-    //       },
-    //       {
-    //         "name": "Veg Biryani",
-    //         "type": "Veg",
-    //         "image": {
-    //           "source": "../../assets/Images/Vegetable-Biryani-scaled.jpg",
-    //           "alt": "Veg Biryani image"
-    //         },
-    //         "quantity": 1,
-    //         "price": {
-    //           "currency": "Rs ",
-    //           "rate": 69
-    //         }
-    //       }
-    //     ],
-    //     "details": {
-    //       "ordered time": "29 Nov 2022,09:12 AM",
-    //       "delivery_status": "Delivered",
-    //       "total_price": {
-    //         "currency": "Rs.",
-    //         "total": 167
-    //       },
-    //       "payment": "Paid(COD)"
-    //     },
-    //     "timestamp": "29 Nov 2022,09:12 AM",
-    //     "ordered_by": "surya.umapathy@ctr.freshworks.com"
-    //   },
-
-    //   {
-    //     "order_num": 3,
-    //     "status": "Delivered",
-    //     "items": [
-    //       {
-    //         "name": "Idly",
-    //         "type": "Veg",
-    //         "image": {
-    //           "source": "../../assets/Images/homemade-breakfast.jpg",
-    //           "alt": "Idly image"
-    //         },
-    //         "quantity": 3,
-    //         "price": {
-    //           "currency": "Rs ",
-    //           "rate": 47
-    //         }
-    //       },
-    //     ],
-    //     "details": {
-    //       "ordered time": "28 Nov 2022,06:34 PM",
-    //       "delivery_status": "Delivered",
-    //       "total_price": {
-    //         "currency": "Rs.",
-    //         "total": 47
-    //       },
-    //       "payment": "Paid(COD)"
-    //     },
-    //     "timestamp": "28 Nov 2022,06:34 PM",
-    //     "ordered_by": "surya.umapathy@ctr.freshworks.com"
-    //   },
-    //   {
-    //     "order_num": 2,
-    //     "status": "Delivered",
-    //     "items": [
-    //       {
-    //         "name": "Ice Biryani",
-    //         "type": "Veg",
-    //         "image": {
-    //           "source": "../../assets/Images/Old rice.jpg",
-    //           "alt": "Ice Biryani image"
-    //         },
-    //         "quantity": 1,
-    //         "price": {
-    //           "currency": "Rs ",
-    //           "rate": 99
-    //         }
-    //       },
-    //       {
-    //         "name": "Morning Combo",
-    //         "type": "Veg",
-    //         "image": {
-    //           "source": "../../assets/Images/TAMIL-NADU-FOOD.jpgp",
-    //           "alt": "Morning Combo image"
-    //         },
-    //         "quantity": 1,
-    //         "price": {
-    //           "currency": "Rs ",
-    //           "rate": 49
-    //         }
-    //       }
-    //     ],
-    //     "details": {
-    //       "ordered time": "27 Nov 2022,08:02 AM",
-    //       "delivery_status": "Delivered",
-    //       "total_price": {
-    //         "currency": "Rs.",
-    //         "total": 148
-    //       },
-    //       "payment": "Paid(COD)"
-    //     },
-    //     "timestamp": "27 Nov 2022,08:02 AM",
-    //     "ordered_by": "surya.umapathy@ctr.freshworks.com"
-    //   },
-    //   {
-    //     "order_num": 1,
-    //     "status": "Delivered",
-    //     "items": [
-    //       {
-    //         "name": "Mutton Biryani",
-    //         "type": "Non-veg",
-    //         "image": {
-    //           "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-    //           "alt": "Mutton Biryani image"
-    //         },
-    //         "quantity": 1,
-    //         "price": {
-    //           "currency": "Rs ",
-    //           "rate": 179
-    //         }
-    //       },
-
-    //       {
-    //         "name": "Chicken Biryani",
-    //         "type": "Non-veg",
-    //         "image": {
-    //           "source": "../../assets/Images/thumb__700_0_0_0_auto.jpg",
-    //           "alt": "Chicken biryani image"
-    //         },
-    //         "quantity": 1,
-    //         "price": {
-    //           "currency": "Rs ",
-    //           "rate": 149
-    //         }
-    //       }
-    //     ],
-    //     "details": {
-    //       "ordered time": "26 Nov 2022,02:44 PM",
-    //       "delivery_status": "Delivered",
-    //       "total_price": {
-    //         "currency": "Rs.",
-    //         "total": 328
-    //       },
-    //       "payment": "-"
-    //     },
-    //     "timestamp": "26 Nov 2022,02:44 PM",
-    //     "ordered_by": "surya.umapathy@ctr.freshworks.com"
-    //   },
-    // ]
-
     let orderedItems = JSON.parse(localStorage.getItem("order_list"));
 
-    
-    let product_list = JSON.parse(localStorage.getItem("product_list")); 
 
-    if(orderedItems.length == 0){
+    let product_list = JSON.parse(localStorage.getItem("product_list"));
+
+    if (orderedItems == null || orderedItems.length == 0) {
       document.querySelector(".history").setAttribute("style", "display:none")
     }
+    else {
 
-    // Order history loop//
-    let div_obox;
-    let div_item;
-    let div_ihead;
-    let h3;
-    let h4;
-    let p;
-    let div_order;
-    let div_item_list;
-    let div_total;
-    let div_ordered_by;
-    let div_view_button;
-    let a_view;
-    let button;
+      // Order history loop//
+      let div_obox;
+      let div_item;
+      let div_ihead;
+      let h3;
+      let h4;
+      let p;
+      let div_order;
+      let div_item_list;
+      let div_total;
+      let div_ordered_by;
+      let div_view_button;
+      let a_view;
+      let button;
 
-    for (let i = 0; i < orderedItems.length; i++) {
+      for (let i = 0; i < orderedItems.length; i++) {
 
-      // <div class="obox">
-      div_obox = document.createElement("div");
-      div_obox.setAttribute("class", "obox");
-      console.log(div_obox);
+        // <div class="obox">
+        div_obox = document.createElement("div");
+        div_obox.setAttribute("class", "obox");
+        console.log(div_obox);
 
-      // <div class="item">
-      div_item = document.createElement("div");
-      div_item.setAttribute("class", "item");
-      div_obox.append(div_item);
+        // <div class="item">
+        div_item = document.createElement("div");
+        div_item.setAttribute("class", "item");
+        div_obox.append(div_item);
 
-      // <div class="ihead">
-      div_ihead = document.createElement("div");
-      div_ihead.setAttribute("class", "ihead");
-      div_item.append(div_ihead);
+        // <div class="ihead">
+        div_ihead = document.createElement("div");
+        div_ihead.setAttribute("class", "ihead");
+        div_item.append(div_ihead);
 
-      // <h3>
-      h3 = document.createElement("h3");
-      h3.innerText = "Order:#" + orderedItems[i]["order_id"];
-      div_ihead.append(h3);
+        // <h3>
+        h3 = document.createElement("h3");
+        h3.innerText = "Order:#" + orderedItems[i]["order_id"];
+        div_ihead.append(h3);
 
-      // <h4>
-      h4 = document.createElement("h4");
-      // if (order_history[i]["status"] == "Not Delivered") {
-      h4.setAttribute("class", "ndel");
-      // }
-      // else {
-      //   h4.setAttribute("class", "del");
-      // }
-      h4.innerText = "Not Delivered";
-      div_ihead.append(h4);
-
-      // <h3>
-      h3 = document.createElement("h3");
-      h3.innerText = "Items" + "("+orderedItems[i]["ordered_items"].length +")";
-      div_item.append(h3);
-
-      // <p>
-      p = document.createElement("p");
-      p.innerText = orderedItems[i]["ordered_time"];
-      div_item.append(p);
-
-      // <div class="order">
-      div_order = document.createElement("div");
-      div_order.setAttribute("class", "order");
-      div_obox.append(div_order);
-
-      // <div class="item_list">
-      div_item_list = document.createElement("div");
-      div_item_list.setAttribute("class", "item_list");
-      div_order.append(div_item_list);
-
-      const items = orderedItems[i]["ordered_items"];
-
-      // Loop for food
-      for (let j = 0; j < items.length; j++) {
-        // function for filter products
-        let foodItems = product_list.filter(product => items[j].product_id === product.product_id)
-        // <h4> food list//
+        // <h4>
         h4 = document.createElement("h4");
-        h4.innerText = foodItems[0]["product_name"] + "("+items[j]["quantity_ordered"]+")";
-        div_item_list.append(h4);
+        if (orderedItems[i]["order_status"] == "Not Delivered") {
+          h4.setAttribute("class", "ndel");
+        }
+        else if(orderedItems[i]["order_status"] == "Delivered"){
+          h4.setAttribute("class", "del");
+        } 
+        else if(orderedItems[i]["order_status"] == "Cancelled") {
+          h4.setAttribute("class", "cancel");
+        }
+        h4.innerText = orderedItems[i]["order_status"];
+        div_ihead.append(h4);
+
+        // <h3>
+        h3 = document.createElement("h3");
+        h3.innerText = "Items" + "(" + orderedItems[i]["ordered_items"].length + ")";
+        div_item.append(h3);
+
+        // <p>
+        p = document.createElement("p");
+        p.innerText = orderedItems[i]["ordered_time"];
+        div_item.append(p);
+
+        // <div class="order">
+        div_order = document.createElement("div");
+        div_order.setAttribute("class", "order");
+        div_obox.append(div_order);
+
+        // <div class="item_list">
+        div_item_list = document.createElement("div");
+        div_item_list.setAttribute("class", "item_list");
+        div_order.append(div_item_list);
+
+        const items = orderedItems[i]["ordered_items"];
+
+        // Loop for food
+        for (let j = 0; j < items.length; j++) {
+          // function for filter products
+          let foodItems = product_list.filter(product => items[j].product_id === product.product_id)
+          // <h4> food list//
+          h4 = document.createElement("h4");
+          h4.innerText = foodItems[0]["product_name"] + "(" + items[j]["quantity_ordered"] + ")";
+          div_item_list.append(h4);
+        }
+
+        // <div class="total">
+        div_total = document.createElement("div");
+        div_total.setAttribute("class", "total");
+        div_order.append(div_total);
+
+        // <h3> Total//
+        h3 = document.createElement("h3");
+        h3.innerText = "Total";
+        div_total.append(h3);
+
+        // <h4> price//
+        h4 = document.createElement("h4");
+        h4.innerText = "Rs. " + orderedItems[i]["total_price"];
+        div_total.append(h4);
+
+        // <div class="ordered_by">
+        div_ordered_by = document.createElement("div");
+        div_ordered_by.setAttribute("class", "order_by");
+        div_order.append(div_ordered_by);
+
+        // <h4> email//
+        h4 = document.createElement("h4");
+        h4.innerText = "Ordered by: " + orderedItems[i]["user_id"];
+        div_ordered_by.append(h4);
+
+        // <div class="view_button">
+        div_view_button = document.createElement("div");
+        div_view_button.setAttribute("class", "view_button");
+        div_order.append(div_view_button);
+
+        // <a class = view>
+        a_view = document.createElement("a");
+        a_view.setAttribute("class", "view");
+        a_view.setAttribute("href", "./orderhistory.html?order_id=" + orderedItems[i]["order_id"]);
+        div_view_button.append(a_view);
+
+        // <button>
+        button = document.createElement("button");
+        button.setAttribute("type", "button");
+        button.innerText = "View details";
+        a_view.append(button);
+
+        document.querySelector("div.overflowbox").prepend(div_obox);
+
       }
-
-      // <div class="total">
-      div_total = document.createElement("div");
-      div_total.setAttribute("class", "total");
-      div_order.append(div_total);
-
-      // <h3> Total//
-      h3 = document.createElement("h3");
-      h3.innerText = "Total";
-      div_total.append(h3);
-
-      // <h4> price//
-      h4 = document.createElement("h4");
-      h4.innerText = "Rs. " + orderedItems[i]["total_price"];
-      div_total.append(h4);
-
-      // <div class="ordered_by">
-      div_ordered_by = document.createElement("div");
-      div_ordered_by.setAttribute("class", "order_by");
-      div_order.append(div_ordered_by);
-
-      // <h4> email//
-      h4 = document.createElement("h4");
-      h4.innerText = "Ordered by: " + orderedItems[i]["user_id"];
-      div_ordered_by.append(h4);
-
-      // <div class="view_button">
-      div_view_button = document.createElement("div");
-      div_view_button.setAttribute("class", "view_button");
-      div_order.append(div_view_button);
-
-      // <a class = view>
-      a_view = document.createElement("a");
-      a_view.setAttribute("class", "view");
-      a_view.setAttribute("href", "./orderhistory.html?order_id=" + orderedItems[i]["order_id"]);
-      div_view_button.append(a_view);
-
-      // <button>
-      button = document.createElement("button");
-      button.setAttribute("type", "button");
-      button.innerText = "View details";
-      a_view.append(button);
-
-      document.querySelector("div.overflowbox").prepend(div_obox);
-
     }
 
-    
+
+
   </script>
 
 </body>
+
 </html>

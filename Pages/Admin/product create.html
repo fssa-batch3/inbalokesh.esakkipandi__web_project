@@ -318,7 +318,7 @@
 
             localStorage.setItem('product_list', JSON.stringify(product));
             alert("Product updated successfully");
-            location.reload();
+            window.location.reload()
         }
 
         // Function for delete product //
@@ -343,7 +343,7 @@
                 product.splice(indexOfUser, 1);
 
                 localStorage.setItem('product_list', JSON.stringify(product));
-                location.reload();
+                window.location.reload()
             };
 
         }
