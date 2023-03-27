@@ -539,19 +539,7 @@
 
             let d = new Date();
 
-            weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
-                dayOfWeek = weekday[d.getDay()],
-                domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
-                dayOfMonth = today + (d.getDate() < 10) ? '0' + d.getDate() + domEnder : d.getDate() + domEnder,
-                months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
-                curMonth = months[d.getMonth()],
-                curYear = d.getFullYear(),
-                curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours()),
-                curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes(),
-                curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds(),
-                curMeridiem = d.getHours() > 12 ? "PM" : "AM";
-            var today = dayOfMonth + " " + curMonth + " " + curYear + "," + dayOfWeek + " " + curHour + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
-
+         
             let total_price = document.querySelector("#total_cost").innerText.replace("Rs. ", "");
             let dTime = ""
             for (let i = 0; i < cart.length; i++) {
@@ -573,7 +561,7 @@
                     if (confirm("Are you sure?")) {
                         order_placed.push({
                             "order_id": orderId,
-                            "ordered_time": today,
+                            "ordered_time": d,
                             "user_id": current_user.user_email,
                             "ordered_items": cart,
                             "total_price": parseInt(total_price),

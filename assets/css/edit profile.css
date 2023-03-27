@@ -33,6 +33,10 @@ h2{
     left:450px;
 }
 
+::-webkit-scrollbar{
+    display: none;
+}
+
 .pbox{
     display: flex;
     justify-content: space-between;

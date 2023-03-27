@@ -59,9 +59,6 @@ const userId = JSON.parse(localStorage.getItem("userId"));
 if (userId) {
     document.body.insertAdjacentHTML("afterbegin", after);
 
-    const button = document.getElementById("login_user");
-    button?.addEventListener("click", () => document.body.innerHTML = before);
-
     // To store the count in the cart //
     let span = document.querySelector('.Profile span');
     let foodCount = localStorage.getItem("food_count");
@@ -98,7 +95,7 @@ else {
             navbarLinks.classList.toggle('active')
         })
     })
-
+    
     const buttonLogout = document.getElementById("logout_user");
     buttonLogout?.removeEventListener("click", () => document.body.innerHTML = after);
     localStorage.removeItem("userId");

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  
+
   <section class="order_details">
 
   </section>
@@ -201,7 +201,7 @@
     div_lpara.append(p)
 
     p = document.createElement("p");
-    p.innerText = "Delivered time";
+    p.innerText = "Delivery status";
     div_lpara.append(p)
 
     p = document.createElement("p");
@@ -217,9 +217,24 @@
     div_spara.setAttribute("class", "spara");
     div_dpara.append(div_spara)
 
+    // Date format to show //
+    let d = new Date(orders["ordered_time"]);
+    weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
+      dayOfWeek = weekday[d.getDay()],
+      domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
+      dayOfMonth = orderTime + (d.getDate() < 10) ? '0' + d.getDate() + domEnder : d.getDate() + domEnder,
+      months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+      curMonth = months[d.getMonth()],
+      curYear = d.getFullYear(),
+      curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours()),
+      curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes(),
+      curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds(),
+      curMeridiem = d.getHours() > 12 ? "PM" : "AM";
+    var orderTime = dayOfMonth + " " + curMonth + " " + curYear + "," + dayOfWeek + " " + curHour + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
+
     // <p>
     p = document.createElement("p");
-    p.innerText = orders["ordered_time"];
+    p.innerText = orderTime;
     div_spara.append(p)
 
     p = document.createElement("p");
@@ -245,23 +260,40 @@
     div_cbut.setAttribute("class", "cbut");
     div_popup.append(div_cbut)
 
+    // Function for button //
+    const startTime = d;
+
+    const endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate() + 1, 0, 0, 0, 0);
+
+    const difference = endTime - startTime;
+    console.log('Start Time:', startTime);
+    console.log('End Time:', endTime);
+    console.log('Dif Time:', difference);
+
+    // function cancel(){
+    //   document.querySelector(".cancel_order").setAttribute("style", "display:none");
+
+    // }
+    // setTimeout(function () {cancel()}, difference);
+   
+
+
     // <button>
-    if(orders["order_status"] == "Cancelled"){
+    if (orders["order_status"] == "Cancelled") {
       button = document.createElement("button");
       button.setAttribute("class", "cancel_order");
       button.setAttribute("style", "display:none");
-      button.setAttribute("onclick", "cancel()");
       button.innerText = "Cancel order";
       div_cbut.append(button)
     }
-    else{
+    else {
       button = document.createElement("button");
       button.setAttribute("class", "cancel_order");
       button.setAttribute("onclick", "cancel()");
       button.innerText = "Cancel order";
       div_cbut.append(button)
     }
-    
+
     // <button>
     button = document.createElement("button");
     button.setAttribute("onclick", "reOrder()");
@@ -297,6 +329,7 @@
       alert("Your product is added to the cart");
       window.location.href = "../Cart/cart.html";
     }
+
 
   </script>
 </body>

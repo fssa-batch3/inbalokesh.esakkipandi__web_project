@@ -9,6 +9,11 @@ section{
     justify-content: center;
     flex-wrap: wrap;
     align-content: center;
+    margin-top: 70px;
+}
+
+::-webkit-scrollbar{
+    display: none;
 }
 
 .popup{
@@ -80,8 +85,6 @@ section{
 
 @media (max-width:1000px){
     .popup{
-        /* position:static;
-        margin:auto; */
         padding-top:10px;
     }
     .orderr{
@@ -93,9 +96,6 @@ section{
         width:7rem;
         object-fit: cover;
     }
-    .name{
-        margin-left: 20px;
-    }
     .header{
         display:none;
     }
@@ -104,9 +104,6 @@ section{
     }
 }
 @media (max-width:550px){
-    /* p{
-        font-size: 100px;
-    } */
     .popup{
         padding-left: 20px;
         padding-right: 20px;
@@ -114,18 +111,18 @@ section{
     .orderr{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
-        justify-items: flex-end;
+        justify-items: center;
         grid-gap: 20px;
     }
     .popup img{
-        height:100%;
-        width:5rem;
+        height:95%;
+        width:110%;
         /* object-fit: cover; */
     }
     h3,p{
         font-size: 3vw;
-    }
-    
+    }   
+
     p.fname{
         position:static;
         text-align: center;

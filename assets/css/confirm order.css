@@ -6,6 +6,10 @@
     align-content: center;
 }
 
+::-webkit-scrollbar{
+    display: none;
+}
+
 .placed{
     height:260px;
     width:400px;

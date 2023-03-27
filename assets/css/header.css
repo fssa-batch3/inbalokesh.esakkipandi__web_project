@@ -125,6 +125,7 @@ span.count{
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
+        width: 100%;
     }
     .navbar a{
         width: 100%;

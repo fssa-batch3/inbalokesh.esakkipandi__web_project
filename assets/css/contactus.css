@@ -2,6 +2,10 @@ body{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+::-webkit-scrollbar{
+  display: none;
+}
+
 .box{
   display:flex;
   justify-content: space-between;

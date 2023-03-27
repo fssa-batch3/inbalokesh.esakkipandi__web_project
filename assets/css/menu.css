@@ -6,6 +6,10 @@ body{
     overflow-x: hidden;
 }
 
+::-webkit-scrollbar{
+    display: none;
+}
+
 .toggle-button{
     position: absolute;
     top:28px;

@@ -9,6 +9,10 @@ body{
     color:white;
 }
 
+::-webkit-scrollbar{
+    display: none;
+}
+
 .toggle-button{
     position: absolute;
     top:28px;

@@ -186,10 +186,10 @@
         if (orderedItems[i]["order_status"] == "Not Delivered") {
           h4.setAttribute("class", "ndel");
         }
-        else if(orderedItems[i]["order_status"] == "Delivered"){
+        else if (orderedItems[i]["order_status"] == "Delivered") {
           h4.setAttribute("class", "del");
-        } 
-        else if(orderedItems[i]["order_status"] == "Cancelled") {
+        }
+        else if (orderedItems[i]["order_status"] == "Cancelled") {
           h4.setAttribute("class", "cancel");
         }
         h4.innerText = orderedItems[i]["order_status"];
@@ -200,9 +200,24 @@
         h3.innerText = "Items" + "(" + orderedItems[i]["ordered_items"].length + ")";
         div_item.append(h3);
 
+        // Date format to show //
+        let d = new Date(orderedItems[i]["ordered_time"]);
+        weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
+          dayOfWeek = weekday[d.getDay()],
+          domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
+          dayOfMonth = orderTime + (d.getDate() < 10) ? '0' + d.getDate() + domEnder : d.getDate() + domEnder,
+          months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+          curMonth = months[d.getMonth()],
+          curYear = d.getFullYear(),
+          curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours()),
+          curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes(),
+          curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds(),
+          curMeridiem = d.getHours() > 12 ? "PM" : "AM";
+        var orderTime = dayOfMonth + " " + curMonth + " " + curYear + "," + dayOfWeek + " " + curHour + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
+
         // <p>
         p = document.createElement("p");
-        p.innerText = orderedItems[i]["ordered_time"];
+        p.innerText = orderTime;
         div_item.append(p);
 
         // <div class="order">
@@ -270,6 +285,7 @@
         a_view.append(button);
 
         document.querySelector("div.overflowbox").prepend(div_obox);
+
 
       }
     }
