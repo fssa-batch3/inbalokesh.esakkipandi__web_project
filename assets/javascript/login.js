@@ -12,9 +12,6 @@ function signUp(e) {
             alert("Re-enter the Password");
             confirm_password.value=reset(); 
         }
-        else{
-            alert("Password Matched");   
-        }
     }
     checkPassword();
 

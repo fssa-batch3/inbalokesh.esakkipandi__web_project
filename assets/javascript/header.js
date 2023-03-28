@@ -55,7 +55,7 @@ const before =
 `
 
 const userId = JSON.parse(localStorage.getItem("userId"));
-
+console.log(userId)
 if (userId) {
     document.body.insertAdjacentHTML("afterbegin", after);
 
