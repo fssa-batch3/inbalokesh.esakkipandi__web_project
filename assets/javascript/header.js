@@ -55,7 +55,6 @@ const before =
 `
 
 const userId = JSON.parse(localStorage.getItem("userId"));
-console.log(userId)
 if (userId) {
     document.body.insertAdjacentHTML("afterbegin", after);
 
@@ -82,6 +81,7 @@ if (userId) {
         if (confirm("Are you sure?")) {
             localStorage.removeItem("userId");
             document.body.innerHTML = before;
+            window.location.href = "../../index.html";
         }
     });
 }

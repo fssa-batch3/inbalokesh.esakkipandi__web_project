@@ -25,7 +25,7 @@
             <div class="button_row">
               <button type="button" onclick="btn()">Edit profile</button>
               <button type="button" onclick="delData()">Delete</button>
-              <a href="../../index.html"><button type="submit" id="logout_user">Log Out</button></a>
+              <button type="submit" id="logout_user">Log Out</button>
             </div>
 
           </div>
@@ -64,34 +64,11 @@
     </div>
   </section>
 
-  <footer>
-    <div class="foot">
-      <div class="footer">
-        <img src="../../assets/Images/logo-facebook.svg" alt="facebook link">
-        <img src="../../assets/Images/logo-instagram.svg" alt="instagram link">
-        <img src="../../assets/Images/logo-twitter.svg" alt="twitter link">
-        <img src="../../assets/Images/logo-whatsapp.svg" alt="whatsapp link">
-      </div>
-      <p>
-        No.123, Rk Road, CLV Nagar, Uthandi, Chennai - 600 119.
-      </p>
-      <div class="phone">
-        <div>
-          <div>
-            <img src="../../assets/Images/call-outline.svg" alt="call image" height="30px" width="30px">
-          </div>
-          <img src="../../assets/Images/person-circle-outline.svg" alt="mail image" height="30px" width="30px">
-        </div>
-        <div>
-          <p>+918888888888</p>
-          <p>ohfood@gmail.com</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
+  <!-- header script -->
   <script src="../../assets/javascript/header.js"></script>
-  <!-- <script src="../../assets/javascript/javascript.js"></script> -->
+
+  <!-- footer script -->
+  <script src="../../assets/javascript/footer.js"></script>
 
   <script>
 
@@ -113,7 +90,6 @@
     document.getElementById("user_phonenumber").value = user_data["user_phonenumber"];
     document.getElementById("user_email").value = user_data["user_email"];
     document.getElementById("user_address").value = user_data["user_address"];
-    // document.getElementById("user_password").value = user_data["user_password"];
 
     function delData(e) {
       if (confirm("Are you sure?")) {
@@ -134,12 +110,13 @@
       };
     }
 
-    let orderedItems = JSON.parse(localStorage.getItem("order_list"));
-
+    let orderList = JSON.parse(localStorage.getItem("order_list")) || [];
 
     let product_list = JSON.parse(localStorage.getItem("product_list"));
 
-    if (orderedItems == null || orderedItems.length == 0) {
+    let orderedItems = orderList.filter(e => e.ordered_items[0].user_id == userId);
+
+    if (orderList == null || orderedItems.length == 0) {
       document.querySelector(".history").setAttribute("style", "display:none")
     }
     else {
@@ -178,7 +155,7 @@
 
         // <h3>
         h3 = document.createElement("h3");
-        h3.innerText = "Order:#" + orderedItems[i]["order_id"];
+        h3.innerText = "Order:#" + (i+1);
         div_ihead.append(h3);
 
         // <h4>
@@ -264,7 +241,7 @@
 
         // <h4> email//
         h4 = document.createElement("h4");
-        h4.innerText = "Ordered by: " + orderedItems[i]["user_id"];
+        h4.innerText = "Ordered by: " + orderedItems[i]["ordered_by"];
         div_ordered_by.append(h4);
 
         // <div class="view_button">

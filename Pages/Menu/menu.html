@@ -15,15 +15,12 @@
 </head>
 
 <body>
-    
+
     <!-- filter box -->
     <h1 class="he">Menu</h1>
     <div class="top">
         <div class="menu">
             <a href="./menu.html" class="all">All</a>
-            <!-- <a href="./breakfast.html">Breakfast</a>
-            <a href="./lunch.html">Lunch</a>
-            <a href="./night.html">Dinner</a> -->
         </div>
     </div>
 
@@ -37,37 +34,13 @@
         <img src="../../assets/Images/scooty.gif" alt="scooty img" height="150px" width="150px">
     </div>
 
-    <!-- footer starts -->
-    <footer>
-        <div class="foot">
-            <div class="footer">
-                <img src="../../assets/Images/logo-facebook.svg" alt="facebook link">
-                <img src="../../assets/Images/\/logo-instagram.svg" alt="instagram link">
-                <img src="../../assets/Images/logo-twitter.svg" alt="twitter link">
-                <img src="../../assets/Images/logo-whatsapp.svg" alt="whatsapp link">
-            </div>
-            <p>
-                No.123, Rk Road, CLV Nagar, Uthandi, Chennai - 600 119.
-            </p>
-            <div class="phone">
-                <div>
-                    <div>
-                        <img src="../../assets/Images/call-outline.svg" alt="call image" height="30px" width="30px">
-                    </div>
-                    <img src="../../assets/Images/mail-outline.svg" alt="mail image" height="30px" width="30px">
-                </div>
-                <div>
-                    <p>+918888888888</p>
-                    <p>ohfood@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- footer ends -->
-
     <!-- script starts-->
-    <!-- <script src="../../assets/javascript/javascript.js"></script> -->
+
+    <!-- header script -->
     <script src="../../assets/javascript/header.js"></script>
+
+    <!-- footer script -->
+    <script src="../../assets/javascript/footer.js"></script>
     <script>
 
         // DOM //
@@ -398,10 +371,7 @@
             document.querySelector("section.details").append(div_box);
         }
 
-
         // function for add to cart //
-
-
         let addToCarts = document.querySelectorAll("button.addCart");
         addToCarts.forEach(function (add_foods) {
             add_foods.addEventListener("click", function () {
@@ -413,7 +383,7 @@
 
                 let exist = cart_products.length &&
                     JSON.parse(localStorage.getItem('cart_product')).some(data =>
-                        data.product_id == uuid);
+                        data.product_id == uuid && data.user_id == userId);
 
                 if (userId == null) {
                     alert("Login to order your food");
@@ -422,6 +392,7 @@
                 else {
                     if (!exist) {
                         cart_products.push({
+                            "user_id": userId,
                             "product_id": uuid,
                             "quantity_ordered": "1",
                             "delivery_time": "",
@@ -432,7 +403,6 @@
 
                         localStorage.setItem('food_count', JSON.stringify(food_count));
                         localStorage.setItem('cart_product', JSON.stringify(cart_products));
-                        alert("Product is added to cart")
                         window.location.reload()
                     } else {
                         alert("This product is already added to your cart")
@@ -443,6 +413,7 @@
 
     </script>
     <!-- script ends-->
+
 </body>
 
 </html>

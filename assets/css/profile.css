@@ -52,6 +52,7 @@ section{
     border-color:transparent;
     border-radius: 5px;
     background-color: #FF7223;
+    cursor: pointer;
 }
 
 input{

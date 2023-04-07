@@ -13,32 +13,32 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
 
 1) User (completed)
 
-    - Create user 
-    - Read user 
-    - Update user 
-    - Delete user 
+    - Create user (completed)
+    - Read user (completed)
+    - Update user (completed)
+    - Delete user (completed)
 
 2) Product (completed)
 
-    - Create product 
-    - Read product 
-    - Update product 
-    - Delete product 
-    - Add and remove product 
+    - Create product (completed)
+    - Read product (completed)
+    - Update product (completed)
+    - Delete product (completed)
+    - Add and remove product (completed)
 
 3) Cart (completed)
 
-    - Add to cart 
-    - Read cart 
-    - Update cart 
-    - Remove cart 
+    - Add to cart (completed)
+    - Read cart (completed)
+    - Update cart (completed)
+    - Remove cart (completed)
     
- 4) Order (Not-completed)
+ 4) Order (completed)
  
-    - Place order 
-    - Read order 
-    - Cancel order 
-    - Re-order 
+    - Place order (completed)
+    - Read order (Not-completed)
+    - Cancel order (completed)
+    - Re-order (completed)
 
 
 ## User
@@ -46,9 +46,10 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
 ### Create an account
 - Scenario 1: Successfully create an account
     - Steps:
-        1. Navigate to the registration page.
-        2. Enter the required information such as name, phone no, email, address and password.
-        3. Click the "Submit" button.
+        1. Click "Login" button.
+        2. Navigate to the login page.
+        3. Enter the required information such as name, phone no, email, address and password.
+        4. Click the "Submit" button.
     - Expected Result:
         - The user is redirected to the login page.
 
@@ -145,16 +146,100 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
         4. Confirm the order by cliking "Yes".
         5. Click "View order" button.
     - Expected Result:
-        - Order is placed sucesfully.
+        - Order is placed successfully.
 
 ### View order
-- Scenario 1: Successfully place the order
+- Scenario 1: Successfully view the order
     - Steps:
         1. Log in as a buyer.
-        2. Navigate to the cart page.
-        3. Click "Place order" button.
-        4. Confirm the order by cliking "Yes".
-        5. Click "View order" button.
+        2. Navigate to the profile page.
+        3. To get more details of the order.
+        4. Click "View details" button.
+        5. View the order details.
     - Expected Result:
-        - Order is placed sucesfully.
+        - Order details is viewed successfully.
+.
 
+### Cancel order
+- Scenario 1: Successfully cancel the order
+    - Steps:
+        1. Log in as a buyer.
+        2. Navigate to the profile page.
+        3. Click "View details" button.
+        4. Click "Cancel order" button.
+    - Expected Result:
+        - Order is cancelled successfully.
+
+### Re-order the items
+- Scenario 1: Successfully re-order the items
+    - Steps:
+        1. Log in as a buyer.
+        2. Navigate to the profile page.
+        3. Click "View details" button.
+        4. Click "Re-order" button.
+    - Expected Result:
+        - Order is moved to the cart successfully.
+
+## Admin
+
+### Create product/item
+- Scenario 1: Successfully create an item
+    - Steps:
+        1. Login as a admin.
+        2. Navigate to the create product page.
+        3. Upload the image url, food name, type, quantity and price.
+        4. Click the "Create" button.
+    - Expected Result:
+        - The product/item is created sucessfully.
+
+### View the list products/items
+- Scenario 1: Successfully View the list of products/items
+    - Steps:
+        1. Login as a admin.
+        2. Navigate to the create product page.
+        3. View the created card of the products/items.
+    - Expected Result:
+        - The product/item is viewed sucessfully.
+
+### Edit the product/item
+- Scenario 1: Successfully edit the product/item
+    - Steps:
+        1. Login as a admin.
+        2. Navigate to the create product page.
+        3. Click the "Edit" button for the item you want to edit.
+        4. Selected product is viewd in the form.
+        5. Edit the product.
+        6. Click the "Update" button.
+    - Expected Result:
+        - The product/item is updated sucessfully.
+
+### Delete the product/item
+- Scenario 1: Successfully delete the product/item
+    - Steps:
+        1. Login as a admin.
+        2. Navigate to the create product page.
+        3. Click the "Edit" button for the item you want to edit.
+        4. Selected product is viewd in the form.
+        5. Click the "Delete" button.
+    - Expected Result:
+        - The product/item is deleted sucessfully.
+
+### Add the product/item to the Menu
+- Scenario 1: Successfully add the product/item to Menu
+    - Steps:
+        1. Login as a admin.
+        2. Navigate to the create product page.
+        3. Click the "Add" button for the item you want to add.
+        4. Selected product is added to the Menu.
+    - Expected Result:
+        - The product/item is added to the menu sucessfully.
+
+### Remove the product/item from the Menu
+- Scenario 1: Successfully remove the product/item from the Menu
+    - Steps:
+        1. Login as a admin.
+        2. Navigate to the create product page.
+        3. Click the "Remove" button for the item you want to remove.
+        4. Selected product is removed from the Menu.
+    - Expected Result:
+        - The product/item is removed from the menu sucessfully.

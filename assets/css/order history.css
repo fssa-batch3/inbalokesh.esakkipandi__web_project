@@ -30,7 +30,9 @@ section{
     width:240%;
     object-fit: cover;
 }
-
+.name{
+    text-align: center;
+}
 .phead{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));

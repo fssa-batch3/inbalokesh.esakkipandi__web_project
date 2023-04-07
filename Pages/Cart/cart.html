@@ -36,34 +36,10 @@
         </div>
     </section>
 
-    <footer>
-        <div class="foot">
-            <div class="footer">
-                <img src="../../assets/Images/logo-facebook.svg" alt="facebook link">
-                <img src="../../assets/Images/logo-instagram.svg" alt="instagram link">
-                <img src="../../assets/Images/logo-twitter.svg" alt="twitter link">
-                <img src="../../assets/Images/logo-whatsapp.svg" alt="whatsapp link">
-            </div>
-            <p>
-                No.123, Rk Road, CLV Nagar, Uthandi, Chennai - 600 119.
-            </p>
-            <div class="phone">
-                <div>
-                    <div>
-                        <img src="../../assets/Images/call-outline.svg" alt="call image" height="30px" width="30px">
-                    </div>
-                    <img src="../../assets/Images/mail-outline.svg" alt="mail image" height="30px" width="30px">
-                </div>
-                <div>
-                    <p>+918888888888</p>
-                    <p>ohfood@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <!-- script -->
-    <!-- <script src="../../assets/javascript/javascript.js"></script> -->
+    <!-- script for generating unique Id -->
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+
     <script src="../../assets/javascript/header.js"></script>
     <script>
         let div_obox;
@@ -137,11 +113,13 @@
 
         let cart_id = JSON.parse(localStorage.getItem("cart_product"));
 
+        const find_user = cart_id.filter(e => e.user_id == userId);
+
         const cart_list = order_items.filter(product =>
-            cart_id.some(uuid => uuid.product_id === product.product_id)
+            find_user.some(uuid => uuid.product_id === product.product_id)
         );
 
-
+        console.log(cart_list)
         for (let i = 0; i < cart_list.length; i++) {
 
             // <div class="obox">
@@ -211,17 +189,17 @@
 
             // find from product id
 
-            let find = cart_id.find(e => e.product_id == cart_list[i]["product_id"]);
+            let find = find_user.find(e => e.product_id == cart_list[i]["product_id"]);
 
             // <select class="select">
             select = document.createElement("select");
             select.setAttribute("class", "select");
             select.setAttribute("required", "required");
+            select.setAttribute("title", "Select the time you want");
             select.setAttribute("name", "time");
             select.setAttribute("id", "select_id");
             div_dropbox.append(select);
 
-            
             // <option>
             option = document.createElement("option");
             option.innerText = find["delivery_time"];
@@ -293,12 +271,12 @@
 
         // Function for the remove duplicate option //
         document.querySelectorAll('select').forEach((select) => {
-                const options = []
-                select.querySelectorAll('option').forEach((option) => {
-                    if (options.includes(option.value)) option.remove()
-                    else options.push(option.value)
-                })
+            const options = []
+            select.querySelectorAll('option').forEach((option) => {
+                if (options.includes(option.value)) option.remove()
+                else options.push(option.value)
             })
+        })
 
         // ********Summary********//
         // <div class="sumlist">
@@ -310,7 +288,7 @@
 
         for (let j = 0; j < cart_list.length; j++) {
 
-            let find = cart_id.find(e => e.product_id == cart_list[j]["product_id"]);
+            let find = find_user.find(e => e.product_id == cart_list[j]["product_id"]);
 
             // <div class="sum">
             div_sum3 = document.createElement("div");
@@ -349,13 +327,6 @@
             p_rate.setAttribute("class", "rate");
             p_rate.innerText = "Rs. " + cart_list[j]["product_price"] * find["quantity_ordered"];
             div_food_items.append(p_rate)
-
-            // <p class="time"> 
-            // p_time = document.createElement("p");
-            // p_time.setAttribute("class", "time");
-            // p_time.innerText = "(12:30AM - 2:00PM)";
-            // div_dtime.append(p_time)
-
         }
 
 
@@ -397,8 +368,7 @@
         let total_price = cart_list;
         let price = 0;
         for (let i = 0; i < total_price.length; i++) {
-            let find = cart_id.find(e => e.product_id == cart_list[i]["product_id"]);
-
+            let find = find_user.find(e => e.product_id == cart_list[i]["product_id"]);
             price += parseInt(total_price[i]["product_price"] * find["quantity_ordered"]);
         }
 
@@ -424,18 +394,15 @@
             remove_id.addEventListener("click", function () {
                 const cartId = this.dataset.cart_id;
 
-                let cart_ids = JSON.parse(localStorage.getItem("cart_product"));
-
                 function find_id(e) {
                     return e.product_id === cartId;
                 }
-
-                let remove_food = cart_ids.find(find_id);
-                let indexOfItem = cart_ids.indexOf(remove_food);
-                cart_ids.splice(indexOfItem, 1);
+                let remove_food = find_user.find(find_id);
+                let indexOfItem = cart_id.indexOf(remove_food);
+                cart_id.splice(indexOfItem, 1);
                 let count = JSON.parse(localStorage.getItem("food_count"));
                 localStorage.setItem("food_count", count - 1)
-                localStorage.setItem("cart_product", JSON.stringify(cart_ids));
+                localStorage.setItem("cart_product", JSON.stringify(cart_id));
                 window.location.reload()
             })
         })
@@ -446,27 +413,25 @@
         plus.forEach(function (find_quantity) {
             find_quantity.addEventListener("click", function () {
                 let parent = this.parentNode;
+                // console.log(parent)
                 let num = parent.querySelector(".num");
                 let n = parseInt(num.textContent);
                 if (n < 10) {
                     n += 1;
                 }
                 num.textContent = n;
-                // getting the ID
                 let parentBox = this.closest(".slist")
                 let idButton = parentBox.querySelector(".remove_cart").getAttribute("data-cart_id");
-                let cart_product = JSON.parse(localStorage.getItem("cart_product"));
                 function find_cart(e) {
                     return e.product_id == idButton;
                 }
-
-                let cart_quantity = cart_product.find(find_cart);
-
+                let cart_quantity = find_user.find(find_cart);
                 if (cart_quantity) {
                     cart_quantity.quantity_ordered = n.toString();
-                    localStorage.setItem("cart_product", JSON.stringify(cart_product));
-                    window.location.reload()
+                    localStorage.setItem("cart_product", JSON.stringify(cart_id));
+                    window.location.reload()  
                 }
+                
             });
         });
 
@@ -484,17 +449,14 @@
                 // getting the ID
                 let parentBox = this.closest(".slist")
                 let idButton = parentBox.querySelector(".remove_cart").getAttribute("data-cart_id");
-
-                let cart_product = JSON.parse(localStorage.getItem("cart_product"));
                 function find_cart(e) {
                     return e.product_id == idButton;
                 }
 
-                let cart_quantity = cart_product.find(find_cart);
-
+                let cart_quantity = find_user.find(find_cart);
                 if (cart_quantity) {
                     cart_quantity.quantity_ordered = n.toString();
-                    localStorage.setItem("cart_product", JSON.stringify(cart_product));
+                    localStorage.setItem("cart_product", JSON.stringify(cart_id));
                     window.location.reload()
                 }
             });
@@ -504,24 +466,18 @@
         let selected_time = document.querySelectorAll(".select");
         selected_time.forEach(function (find_time) {
             find_time.addEventListener("click", function () {
-
                 let parent_Box = this.closest(".olist");
 
                 let id_button = parent_Box.querySelector(".remove_cart").getAttribute("data-cart_id");
                 let value_time = parent_Box.querySelector(".select").value
-
-                let cart_product = JSON.parse(localStorage.getItem("cart_product"));
-
                 function find_cart(e) {
                     return e.product_id == id_button;
                 }
 
-                let ordered_time = cart_product.find(find_cart);
-                // console.log(ordered_time)
-
+                let ordered_time = find_user.find(find_cart);
                 if (ordered_time) {
                     ordered_time.delivery_time = value_time;
-                    localStorage.setItem("cart_product", JSON.stringify(cart_product));
+                    localStorage.setItem("cart_product", JSON.stringify(cart_id));
                 }
             })
         })
@@ -529,9 +485,8 @@
         // Order product function //
         document.querySelector(".place_order").addEventListener("click", function () {
             let user_list = JSON.parse(localStorage.getItem("user_list"));
-            let user_id = JSON.parse(localStorage.getItem("userId"));
 
-            let current_user = user_list.find(user => user.user_phonenumber === user_id);
+            let current_user = user_list.find(user => user.user_phonenumber === userId);
 
             let cart = JSON.parse(localStorage.getItem("cart_product"));
 
@@ -539,38 +494,41 @@
 
             let d = new Date();
 
-         
             let total_price = document.querySelector("#total_cost").innerText.replace("Rs. ", "");
-            let dTime = ""
-            for (let i = 0; i < cart.length; i++) {
-                if (cart[i].delivery_time !== "") {
-                    dTime += 1
+            let delTime = ""
+            for (let i = 0; i < find_user.length; i++) {
+                if (find_user[i].delivery_time !== "") {
+                    delTime += 1
                 }
                 else {
-                    dTime = "";
+                    delTime = "";
                     alert("Please select the delivery time and quantity")
                     break
                 }
             }
-            if (dTime !== "") {
-                if (cart.length > 0) {
-                    let orderId = 1
-                    for (let i = 1; i <= order_placed.length; i++) {
-                        orderId += 1;
-                    }
+            if (delTime !== "") {
+                if (find_user.length > 0) {
+                    let orderId = uuidv4();
+                    // for (let i = 1; i <= order_placed.length; i++) {
+                    //     orderId += 1;
+                    // }
                     if (confirm("Are you sure?")) {
                         order_placed.push({
                             "order_id": orderId,
                             "ordered_time": d,
-                            "user_id": current_user.user_email,
-                            "ordered_items": cart,
+                            "ordered_by": current_user.user_email,
+                            "ordered_items": find_user,
                             "total_price": parseInt(total_price),
                             "order_status": "Not Delivered"
                         });
+
+                        cart_id = cart_id.filter(e => e.user_id !== userId);
+                        console.log(cart_id)
+
                         localStorage.setItem("order_list", JSON.stringify(order_placed));
-                        localStorage.setItem("cart_product", "[]");
-                        localStorage.setItem("food_count", 0);
-                        location.href = "../Cart/placeorder.html";
+                        localStorage.setItem("cart_product", JSON.stringify(cart_id)); 
+                        // localStorage.setItem("food_count", 0);
+                        // location.href = "../Cart/placeorder.html";
                     }
                 }
                 else {
@@ -580,7 +538,8 @@
             }
         })
     </script>
-    <!-- script -->
+    <!-- script for footer -->
+    <script src="../../assets/javascript/footer.js"></script>
 </body>
 
 </html>
