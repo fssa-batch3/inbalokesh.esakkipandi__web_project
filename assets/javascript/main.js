@@ -2,8 +2,6 @@ const products = JSON.parse(localStorage.getItem("product_list"));
 
 const show_products = JSON.parse(localStorage.getItem("product_ids"));
 
-const user_list = JSON.parse(localStorage.getItem("user_list"));
-
 if (!products) {
     localStorage.setItem("product_list", JSON.stringify(
         [
@@ -41,37 +39,6 @@ if (!show_products) {
             { "product_id": "2c5d0f02-5449-4e65-ad3e-c719ebfab4c5" },
             { "product_id": "8f308f4f-daa9-420d-82fb-bfc2d3cf0d06" },
             { "product_id": "6c21b6e8-27ef-4401-936d-38790f6b7845" }
-        ]
-    ));
-}
-
-if (!user_list) {
-    localStorage.setItem("user_list", JSON.stringify(
-        [
-            {
-                "user_name": "Admin",
-                "user_phonenumber": "8888888888",
-                "user_email": "admin@gmail.com",
-                "user_address": "Chennai",
-                "user_password": "Admin123",
-                "confirm_password": "Admin123"
-            },
-            {
-                "user_name": "Loki",
-                "user_phonenumber": "1234567898",
-                "user_email": "loki@gmail.com",
-                "user_address": "Chennai",
-                "user_password": "Inba1234",
-                "confirm_password": "Inba1234"
-            },
-            {
-                "user_name": "Surya",
-                "user_phonenumber": "9876543211",
-                "user_email": "surya@gmail.com",
-                "user_address": "Chennai",
-                "user_password": "Surya1234",
-                "confirm_password": "Surya1234"
-            }
         ]
     ));
 }

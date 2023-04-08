@@ -172,19 +172,20 @@
         div_item.append(h3);
 
         // Date format to show //
+
         let d = new Date(orderedItems[i]["ordered_time"]);
-        let weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
-          dayOfWeek = weekday[d.getDay()],
-          domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
-          dayOfMonth = orderTime + (d.getDate() < 10) ? '0' + d.getDate() + domEnder : d.getDate() + domEnder,
-          months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
-          curMonth = months[d.getMonth()],
-          curYear = d.getFullYear(),
-          curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours()),
-          curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes(),
-          curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds(),
-          curMeridiem = d.getHours() > 12 ? "PM" : "AM";
-        var orderTime = dayOfMonth + " " + curMonth + " " + curYear + "," + dayOfWeek + " " + curHour + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
+        let weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat');
+        let dayOfWeek = weekday[d.getDay()];
+        let domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }();
+        let dayOfMonth = (d.getDate() < 10 ? '0' : '') + d.getDate() + domEnder;
+        let months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+        let curMonth = months[d.getMonth()];
+        let curYear = d.getFullYear();
+        let curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours());
+        let curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+        let curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds();
+        let curMeridiem = d.getHours() >= 12 ? "PM" : "AM";
+        let orderTime = dayOfMonth + " " + curMonth + " " + curYear + "," + dayOfWeek + " " + curHour + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
 
         // <p>
         p = document.createElement("p");
@@ -204,14 +205,16 @@
         const items = orderedItems[i]["ordered_items"];
 
         // Loop for food
-        for (let j = 0; j < items.length; j++) {
-          // function for filter products
-          let foodItems = product_list.filter(product => items[j].product_id === product.product_id)
-          // <h4> food list//
-          h4 = document.createElement("h4");
-          h4.innerText = foodItems[0]["product_name"] + "(" + items[j]["quantity_ordered"] + ")";
+        for (const item of items) {
+          // function for filtering products
+          const foodItems = product_list.filter(product => item.product_id === product.product_id);
+
+          // create <h4> element for food list
+          const h4 = document.createElement("h4");
+          h4.innerText = `${foodItems[0].product_name} (${item.quantity_ordered})`;
           div_item_list.append(h4);
         }
+
 
         // <div class="total">
         div_total = document.createElement("div");

@@ -167,19 +167,20 @@
     div_dpara.append(div_spara)
 
     // Date format to show //
+    
     let d = new Date(orders["ordered_time"]);
-    let weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
-      dayOfWeek = weekday[d.getDay()],
-      domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
-      dayOfMonth = orderTime + (d.getDate() < 10) ? '0' + d.getDate() + domEnder : d.getDate() + domEnder,
-      months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
-      curMonth = months[d.getMonth()],
-      curYear = d.getFullYear(),
-      curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours()),
-      curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes(),
-      curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds(),
-      curMeridiem = d.getHours() > 12 ? "PM" : "AM";
-    var orderTime = dayOfMonth + " " + curMonth + " " + curYear + "," + dayOfWeek + " " + curHour + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
+    let weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat');
+    let dayOfWeek = weekday[d.getDay()];
+    let domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }();
+    let dayOfMonth = (d.getDate() < 10 ? '0' : '') + d.getDate() + domEnder;
+    let months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+    let curMonth = months[d.getMonth()];
+    let curYear = d.getFullYear();
+    let curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours());
+    let curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+    let curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds();
+    let curMeridiem = d.getHours() >= 12 ? "PM" : "AM";
+    let orderTime = dayOfMonth + " " + curMonth + " " + curYear + "," + dayOfWeek + " " + curHour + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
 
     // <p>
     p = document.createElement("p");
