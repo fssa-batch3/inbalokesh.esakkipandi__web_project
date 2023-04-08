@@ -170,15 +170,6 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
     - Expected Result:
         - Order is cancelled successfully.
 
-### Re-order the items
-- Scenario 1: Successfully re-order the items
-    - Steps:
-        1. Log in as a buyer.
-        2. Navigate to the profile page.
-        3. Click "View details" button.
-        4. Click "Re-order" button.
-    - Expected Result:
-        - Order is moved to the cart successfully.
 
 ## Admin
 

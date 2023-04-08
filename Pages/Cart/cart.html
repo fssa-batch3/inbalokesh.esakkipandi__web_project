@@ -77,34 +77,6 @@
         let div_total;
         let button_place_order;
 
-        // object JSON//
-        // const order_list = [
-        //     {
-        //         "name": "Mutton Biryani",
-        //         "quantity": "1 kg",
-        //         "image": {
-        //             "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-        //             "alt": "Mutton Biryani image"
-        //         },
-        //         "price": {
-        //             "currency": "Rs.",
-        //             "rate": 179
-        //         }
-        //     },
-        //     {
-        //         "name": "Sambar Rice",
-        //         "quantity": "1 plate",
-        //         "image": {
-        //             "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
-        //             "alt": "Sambar rice image"
-        //         },
-        //         "price": {
-        //             "currency": "Rs.",
-        //             "rate": 39
-        //         }
-        //     }
-        // ]
-
         //********Order food list********//
 
         // Read Products function //
@@ -119,7 +91,6 @@
             find_user.some(uuid => uuid.product_id === product.product_id)
         );
 
-        console.log(cart_list)
         for (let i = 0; i < cart_list.length; i++) {
 
             // <div class="obox">
@@ -319,7 +290,7 @@
             // <h4 class="name">
             h4_name = document.createElement("h4");
             h4_name.setAttribute("class", "name");
-            h4_name.innerText = cart_list[j]["product_name"];
+            h4_name.innerText = cart_list[j]["product_name"] + "(" + find["quantity_ordered"] + ")";
             div_food_items.append(h4_name)
 
             // <p class="rate">
@@ -429,9 +400,9 @@
                 if (cart_quantity) {
                     cart_quantity.quantity_ordered = n.toString();
                     localStorage.setItem("cart_product", JSON.stringify(cart_id));
-                    window.location.reload()  
+                    window.location.reload()
                 }
-                
+
             });
         });
 
@@ -488,30 +459,24 @@
 
             let current_user = user_list.find(user => user.user_phonenumber === userId);
 
-            let cart = JSON.parse(localStorage.getItem("cart_product"));
-
             let order_placed = JSON.parse(localStorage.getItem("order_list")) || [];
 
             let d = new Date();
 
             let total_price = document.querySelector("#total_cost").innerText.replace("Rs. ", "");
-            let delTime = ""
-            for (let i = 0; i < find_user.length; i++) {
-                if (find_user[i].delivery_time !== "") {
-                    delTime += 1
-                }
-                else {
+            let delTime = "";
+            for (let user of find_user) {
+                if (user.delivery_time !== "") {
+                    delTime += 1;
+                } else {
                     delTime = "";
-                    alert("Please select the delivery time and quantity")
-                    break
+                    alert("Please select the delivery time and quantity");
+                    break;
                 }
             }
             if (delTime !== "") {
                 if (find_user.length > 0) {
                     let orderId = uuidv4();
-                    // for (let i = 1; i <= order_placed.length; i++) {
-                    //     orderId += 1;
-                    // }
                     if (confirm("Are you sure?")) {
                         order_placed.push({
                             "order_id": orderId,
@@ -526,9 +491,9 @@
                         console.log(cart_id)
 
                         localStorage.setItem("order_list", JSON.stringify(order_placed));
-                        localStorage.setItem("cart_product", JSON.stringify(cart_id)); 
-                        // localStorage.setItem("food_count", 0);
-                        // location.href = "../Cart/placeorder.html";
+                        localStorage.setItem("cart_product", JSON.stringify(cart_id));
+                        localStorage.setItem("food_count", 0);
+                        location.href = "../Cart/placeorder.html";
                     }
                 }
                 else {

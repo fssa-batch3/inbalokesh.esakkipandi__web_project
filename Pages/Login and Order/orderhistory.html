@@ -44,35 +44,6 @@
     let a;
     let button;
 
-    // const items = [
-    //   {
-    //     "name": "Mutton Biryani",
-    //     "type": "Non-veg",
-    //     "image": {
-    //       "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-    //       "alt": "Mutton Biryani image"
-    //     },
-    //     "quantity": 2,
-    //     "price": {
-    //       "currency": "Rs ",
-    //       "rate": 179
-    //     }
-    //   },
-    //   {
-    //     "name": "Smabar Rice",
-    //     "type": "Veg",
-    //     "image": {
-    //       "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
-    //       "alt": "Sambar Rice image"
-    //     },
-    //     "quantity": 1,
-    //     "price": {
-    //       "currency": "Rs ",
-    //       "rate": 39
-    //     }
-    //   }
-    // ]
-
     let order_history = JSON.parse(localStorage.getItem("order_list"));
 
 
@@ -197,7 +168,7 @@
 
     // Date format to show //
     let d = new Date(orders["ordered_time"]);
-    weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
+    let weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
       dayOfWeek = weekday[d.getDay()],
       domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
       dayOfMonth = orderTime + (d.getDate() < 10) ? '0' + d.getDate() + domEnder : d.getDate() + domEnder,
@@ -239,14 +210,14 @@
     div_popup.append(div_cbut)
 
     // Function for button //
-    const startTime = d;
+    // const startTime = d;
 
-    const endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate() + 1, 0, 0, 0, 0);
+    // const endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate() + 1, 0, 0, 0, 0);
 
-    const difference = endTime - startTime;
-    console.log('Start Time:', startTime);
-    console.log('End Time:', endTime);
-    console.log('Dif Time:', difference);
+    // const difference = endTime - startTime;
+    // console.log('Start Time:', startTime);
+    // console.log('End Time:', endTime);
+    // console.log('Dif Time:', difference);
 
     // function cancel(){
     //   document.querySelector(".cancel_order").setAttribute("style", "display:none");
@@ -274,12 +245,6 @@
 
     // <button>
     button = document.createElement("button");
-    button.setAttribute("onclick", "reOrder()");
-    button.innerText = "Re-order";
-    div_cbut.append(button)
-
-    // <button>
-    button = document.createElement("button");
     button.setAttribute("onclick", "btn()");
     button.setAttribute("type", "close");
     button.innerText = "Close";
@@ -299,25 +264,6 @@
         location.href = "../Login and Order/Profile.html"
       }
     }
-
-    function reOrder() {
-      let cart_products = JSON.parse(localStorage.getItem("cart_product")) || [];
-
-      let exist = cart_products.some(data => data.user_id === userId);
-
-      if (exist) {
-        cart_products.push(...items);
-      } else {
-        cart_products.push(...items);
-      }
-
-      localStorage.setItem("cart_product", JSON.stringify(cart_products));
-      localStorage.setItem("food_count", parseInt(items.length));
-      alert("Your product is added to the cart");
-      window.location.href = "../Cart/cart.html";
-    }
-
-
 
   </script>
 </body>

@@ -46,10 +46,6 @@
               <label class="addr">Address</label>
               <textarea type="text" id="user_address" placeholder="Your address" disabled></textarea>
             </div>
-            <!-- <div class="sep">
-              <label>Password</label>
-              <input type="Password" name="Pass" id="user_password" placeholder="Password" disabled>
-            </div> -->
           </div>
         </div>
       </div>
@@ -75,8 +71,6 @@
     function btn() {
       window.location.href = "./Edit profile.html"
     }
-
-    // let userId = JSON.parse(localStorage.getItem('userId'));
 
     let user_list = JSON.parse(localStorage.getItem('user_list'));
 
@@ -155,7 +149,7 @@
 
         // <h3>
         h3 = document.createElement("h3");
-        h3.innerText = "Order:#" + (i+1);
+        h3.innerText = "Order:#" + (i + 1);
         div_ihead.append(h3);
 
         // <h4>
@@ -179,7 +173,7 @@
 
         // Date format to show //
         let d = new Date(orderedItems[i]["ordered_time"]);
-        weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
+        let weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'),
           dayOfWeek = weekday[d.getDay()],
           domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
           dayOfMonth = orderTime + (d.getDate() < 10) ? '0' + d.getDate() + domEnder : d.getDate() + domEnder,
@@ -265,7 +259,7 @@
 
       }
     }
-    
+
   </script>
 
 </body>

@@ -55,27 +55,37 @@ const before =
 `
 
 const userId = JSON.parse(localStorage.getItem("userId"));
+
 if (userId) {
     document.body.insertAdjacentHTML("afterbegin", after);
 
+    const cartProducts = JSON.parse(localStorage.getItem("cart_product"))
+    const find_user = cartProducts.filter(e => e.user_id == userId);
+
+    if (find_user) {
+        let food_count = find_user.length;
+        localStorage.setItem('food_count', JSON.stringify(food_count));
+    }
+    
     // To store the count in the cart //
     let span = document.querySelector('.Profile span');
-    let foodCount = localStorage.getItem("food_count");
+    let foodCount = JSON.parse(localStorage.getItem("food_count"));
     span.textContent = foodCount;
 
     if (span.textContent == 0) {
         span.setAttribute("style", "display:none")
     }
 
+    // For toggle button
     const toggleButton = document.querySelectorAll('.toggle-button')
     const navbarLinks = document.querySelector('.head')
 
-    toggleButton.forEach(function(open){
-        open.addEventListener("click", function(){
+    toggleButton.forEach(function (open) {
+        open.addEventListener("click", function () {
             navbarLinks.classList.toggle('active')
         })
     })
-    
+
     const buttonLogout = document.getElementById("logout_user");
     buttonLogout?.addEventListener("click", () => {
         if (confirm("Are you sure?")) {
@@ -90,12 +100,12 @@ else {
     const toggleButton = document.querySelectorAll('.toggle-button')
     const navbarLinks = document.querySelector('.head')
 
-    toggleButton.forEach(function(open){
-        open.addEventListener("click", function(){
+    toggleButton.forEach(function (open) {
+        open.addEventListener("click", function () {
             navbarLinks.classList.toggle('active')
         })
     })
-    
+
     const buttonLogout = document.getElementById("logout_user");
     buttonLogout?.removeEventListener("click", () => document.body.innerHTML = after);
     localStorage.removeItem("userId");

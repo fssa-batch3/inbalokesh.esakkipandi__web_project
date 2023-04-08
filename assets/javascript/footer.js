@@ -1,12 +1,12 @@
 const origin = window.location.origin;
 
-const footer = 
-`
-<footer>
+const footer =
+    `
+        <footer>
             <div class="foot">
                 <div class="footer">
                     <img src="${origin}/assets/Images/logo-facebook.svg" alt="facebook link">
-                    <img src="${origin}/assets/Images/\/logo-instagram.svg" alt="instagram link">
+                    <img src="${origin}/assets/Images/logo-instagram.svg" alt="instagram link">
                     <img src="${origin}/assets/Images/logo-twitter.svg" alt="twitter link">
                     <img src="${origin}/assets/Images/logo-whatsapp.svg" alt="whatsapp link">
                 </div>
@@ -27,6 +27,6 @@ const footer =
                 </div>
             </div>
         </footer>
-`
+    `
 document.body.insertAdjacentHTML("beforeend", footer);
 
