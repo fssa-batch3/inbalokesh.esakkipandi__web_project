@@ -55,16 +55,15 @@ form{
 form label{
     display: flex;
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 17px;
 }
   
 form input{
     width: 132%;
     padding: 7px;
     border: none;
-    border: 1px solid grey;
+    border: 1px solid #ccc;
     border-radius: 3px;
-    outline: none;
 }
 
 form input.inp{
@@ -96,6 +95,7 @@ button:hover{
 textarea{
     height:100px;
     width:405px;
+    border: 1px solid #ccc;
     resize: none;
     font-family: Arial, Helvetica, sans-serif;
 }

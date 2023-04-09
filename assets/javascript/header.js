@@ -60,13 +60,13 @@ if (userId) {
     document.body.insertAdjacentHTML("afterbegin", after);
 
     const cartProducts = JSON.parse(localStorage.getItem("cart_product"))
-    const find_user = cartProducts.filter(e => e.user_id == userId);
-
-    if (find_user) {
-        let food_count = find_user.length;
-        localStorage.setItem('food_count', JSON.stringify(food_count));
-    }
-    
+    if(cartProducts){
+        const find_user = cartProducts.filter(e => e.user_id == userId);
+        if (find_user) {
+            let food_count = find_user.length;
+            localStorage.setItem('food_count', JSON.stringify(food_count));
+        }
+    }  
     // To store the count in the cart //
     let span = document.querySelector('.Profile span');
     let foodCount = JSON.parse(localStorage.getItem("food_count"));

@@ -20,14 +20,14 @@ section{
     padding-left:30px;
     padding-right:30px;
     padding-bottom:20px;
-    width:510px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
+    background-color: white;
     border-radius: 5px;
 }
 
 .popup img{
-    height:100%;
-    width:240%;
+    height:95px;
+    width:320%;
     object-fit: cover;
 }
 .name{
@@ -65,8 +65,8 @@ section{
 
 .orderr{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 2fr));
-    grid-gap: 100px;
+    grid-template-columns: repeat(auto-fit, minmax(42px, 0fr));
+    grid-gap: 110px;
     align-items: center;
     grid-auto-flow: dense;
     padding-bottom:10px;

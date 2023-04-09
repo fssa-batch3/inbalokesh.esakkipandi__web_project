@@ -22,7 +22,7 @@
     </div>
 
     <section>
-        <div class="list">
+        <div class="list">  
             <div class="lorder">
 
                 <div>
@@ -166,14 +166,18 @@
             select = document.createElement("select");
             select.setAttribute("class", "select");
             select.setAttribute("required", "required");
-            select.setAttribute("title", "Select the time you want");
             select.setAttribute("name", "time");
             select.setAttribute("id", "select_id");
             div_dropbox.append(select);
 
             // <option>
             option = document.createElement("option");
-            option.innerText = find["delivery_time"];
+            if (find["delivery_time"] == "") {
+                option.innerText = "-- Select the delivery time --";
+            }
+            else {
+                option.innerText = find["delivery_time"];
+            }
             select.append(option);
 
             option = document.createElement("option");
@@ -477,7 +481,7 @@
             if (delTime !== "") {
                 if (find_user.length > 0) {
                     let orderId = uuidv4();
-                    if (confirm("Are you sure?")) {
+                    if (confirm("Confirm your order")) {
                         order_placed.push({
                             "order_id": orderId,
                             "ordered_time": d,
