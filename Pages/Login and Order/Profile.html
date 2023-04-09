@@ -24,8 +24,8 @@
             <img src="../../assets/Images/img.jpg" alt="Profile image" height="250px" width="250px">
             <div class="button_row">
               <button type="button" onclick="btn()">Edit profile</button>
-              <button type="button" onclick="delData()">Delete</button>
-              <button type="submit" id="logout_user">Log Out</button>
+              <button type="button" id="delete_user">Delete</button>
+              <button type="submit" id="logout_user">Logout</button>
             </div>
 
           </div>
@@ -84,25 +84,6 @@
     document.getElementById("user_phonenumber").value = user_data["user_phonenumber"];
     document.getElementById("user_email").value = user_data["user_email"];
     document.getElementById("user_address").value = user_data["user_address"];
-
-    function delData(e) {
-      if (confirm("Are you sure?")) {
-        let userId = JSON.parse(localStorage.getItem("userId"));
-        let user_list = JSON.parse(localStorage.getItem("user_list"));
-
-        function login_data(e) {
-          return e.user_phonenumber == userId;
-        }
-        user_data = user_list.find(login_data);
-
-        const indexOfUser = user_list.indexOf(user_data);
-
-        user_list.splice(indexOfUser, 1);
-
-        localStorage.setItem('user_list', JSON.stringify(user_list));
-        window.location.href = "../../index.html";
-      };
-    }
 
     let orderList = JSON.parse(localStorage.getItem("order_list")) || [];
 

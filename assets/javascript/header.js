@@ -94,6 +94,28 @@ if (userId) {
             window.location.href = "../../index.html";
         }
     });
+
+    const buttonDelete = document.getElementById("delete_user");
+    buttonDelete?.addEventListener("click", () =>{
+        if (confirm("Are you sure?")) {
+            let user_list = JSON.parse(localStorage.getItem("user_list"));
+      
+            function login_data(e) {
+              return e.user_phonenumber == userId;
+            }
+            user_data = user_list.find(login_data);
+      
+            const indexOfUser = user_list.indexOf(user_data);
+      
+            user_list.splice(indexOfUser, 1);
+      
+            localStorage.setItem('user_list', JSON.stringify(user_list));
+            localStorage.removeItem("userId");
+            document.body.innerHTML = before;
+            window.location.href = "../../index.html";
+          };
+    })
+
 }
 else {
     document.body.insertAdjacentHTML("afterbegin", before);
@@ -104,10 +126,5 @@ else {
         open.addEventListener("click", function () {
             navbarLinks.classList.toggle('active')
         })
-    })
-
-    const buttonLogout = document.getElementById("logout_user");
-    buttonLogout?.removeEventListener("click", () => document.body.innerHTML = after);
-    localStorage.removeItem("userId");
+    });
 }
-
