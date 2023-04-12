@@ -167,7 +167,7 @@
     div_dpara.append(div_spara)
 
     // Date format to show //
-    
+
     let d = new Date(orders["ordered_time"]);
     let weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat');
     let dayOfWeek = weekday[d.getDay()];
@@ -211,37 +211,27 @@
     div_popup.append(div_cbut)
 
     // Function for button //
-    // const startTime = d;
+    const startTime = d;
 
-    // const endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate() + 1, 0, 0, 0, 0);
+    const endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate() + 1, 0, 0, 0, 0);
+    const now = new Date()
 
-    // const difference = endTime - startTime;
-    // console.log('Start Time:', startTime);
-    // console.log('End Time:', endTime);
-    // console.log('Dif Time:', difference);
-
-    // function cancel(){
-    //   document.querySelector(".cancel_order").setAttribute("style", "display:none");
-
-    // }
-    // setTimeout(function () {cancel()}, difference);
-
-
-
-    // <button>
-    if (orders["order_status"] == "Cancelled") {
-      button = document.createElement("button");
-      button.setAttribute("class", "cancel_order");
-      button.setAttribute("style", "display:none");
-      button.innerText = "Cancel order";
-      div_cbut.append(button)
-    }
-    else {
-      button = document.createElement("button");
-      button.setAttribute("class", "cancel_order");
-      button.setAttribute("onclick", "cancel()");
-      button.innerText = "Cancel order";
-      div_cbut.append(button)
+    if (endTime > now) {
+      // <button>
+      if (orders["order_status"] == "Cancelled") {
+        button = document.createElement("button");
+        button.setAttribute("class", "cancel_order");
+        button.setAttribute("style", "display:none");
+        button.innerText = "Cancel order";
+        div_cbut.append(button)
+      }
+      else {
+        button = document.createElement("button");
+        button.setAttribute("class", "cancel_order");
+        button.setAttribute("onclick", "cancel()");
+        button.innerText = "Cancel order";
+        div_cbut.append(button)
+      }
     }
 
     // <button>
