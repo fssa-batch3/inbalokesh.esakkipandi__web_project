@@ -19,7 +19,7 @@
                 <h1>Login</h1>
                 <form role="form" onsubmit="signIn(event)";>
                     <label>Mobile No</label>
-                    <input type="tel" class="inp" id="user_phonenumber" pattern="[0-9].{9}" placeholder="Mobile No" required/>
+                    <input type="tel" class="inp" id="user_phonenumber" pattern="[0-9].{9}" maxlength="10" placeholder="Mobile No" required/>
                     <label>Password</label>
                     <input type="password" class="inp" id="user_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" required/>

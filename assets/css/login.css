@@ -24,7 +24,7 @@ body{
 
 .signupbox{
     width: 450px;
-    height: 900px;
+    height: 930px;
     margin: auto;
     border-radius: 3px;
     background-color: rgb(246, 246, 246);
@@ -112,6 +112,11 @@ p{
     font-size: 15px;
 }
   
+h5.password_note{
+    color: #393E46;
+    width:26rem;
+}
+
 @media (max-width:490px){
     .new img{
         position:relative;
@@ -128,6 +133,9 @@ p{
     }
     .btn-secondary{
         width:83.5vw;
+    }
+    h5.password_note{
+        width:86vw;
     }
 } 
 

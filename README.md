@@ -36,7 +36,7 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
  4) Order (Not-completed)
  
     - Place order (completed)
-    - Read order (Not-completed)
+    - Read order (completed)
     - Cancel order (completed)
     - Re-order (Not-completed)
 

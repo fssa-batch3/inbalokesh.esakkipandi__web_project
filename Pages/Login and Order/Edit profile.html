@@ -28,11 +28,11 @@
             <div>
               <div class="sep">
                 <label for="name">Name</label>
-                <input type="text" id="user_name" pattern="[a-zA-Z0-9]+" name="name" placeholder="Your Name">
+                <input type="text" id="user_name" name="name" placeholder="Your Name">
               </div>
               <div class="sep">
                 <label for="num">Mobile No</label>
-                <input type="tel" id="user_phonenumber" pattern="[0-9].{9}" name="Mobile No" placeholder="Mobile No" readonly>
+                <input type="tel" id="user_phonenumber" pattern="[6-9]{1}[0-9]{9}" maxlength="10" title="Write your 10-digit mobile number." name="Mobile No" placeholder="Mobile No" readonly>
               </div>
               <div class="sep">
                 <label for="email">Email</label>
@@ -95,7 +95,7 @@
 
       function update_details(e) {
         e.preventDefault();
-        let edit_name = document.getElementById("user_name").value
+        let edit_name = document.getElementById("user_name").value.trim().split(/\s+/g).join(' ')
         let edit_number = document.getElementById("user_phonenumber").value
         let edit_email = document.getElementById("user_email").value
         let edit_address = document.getElementById("user_address").value

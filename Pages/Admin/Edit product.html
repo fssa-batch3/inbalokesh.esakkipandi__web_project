@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/menu.css">
+    <link rel="stylesheet" href="../../assets/css/login.css">
+    <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+    <title>Edit Products</title>
+    <style>
+        .header {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .form-box {
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: -2px 4px 37px -16px rgba(115, 201, 96, 1);
+        }
+
+        form {
+            width: 90%;
+        }
+
+        form input {
+            width: 90%;
+            height: 10%;
+            margin: 10px;
+        }
+
+        .top-head {
+            display: flex;
+            align-items: center;
+        }
+
+        button {
+            width: 92.5%;
+            margin: 10px;
+        }
+
+        .img {
+            width: 150px;
+        }
+
+        .top-head h1 {
+            font-size: 30px;
+            margin-left: 100px;
+        }
+
+        .down-button {
+            width: 90%;
+            margin-left: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="shead">
+            <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px"
+                    width="100px"></a>
+            <h1>ONLY HOME FOOD</h1>
+    </header>
+
+    <div class="form-box">
+        <form class="create product" form="role" onsubmit="update_product()">
+            <div class="top-head">
+                <img src="../../assets/Images/LOGO.png" alt="logo" class="img">
+                <h1>Edit product</h1>
+            </div>
+            <label>Image</label>
+            <input type="url" id="product_image" placeholder="" required/>
+            <label>Food name</label>
+            <input type="text" id="product_name" placeholder="Ex: Mutton Biryani" required/>
+            <label>Type</label>
+            <input type="text" id="product_type" pattern="[a-zA-Z0-9-]+" placeholder="Ex:Non-veg or Veg" required/>
+            <label>Quantity</label>
+            <input type="number" id="product_quantity" placeholder="Ex: 1 or 2" min="1" max="999" required/>
+            <label>Quantity Type</label>
+            <input type="text" id="quantity_type" pattern="[a-zA-Z0-9]+" placeholder="Ex: kg,bowl,plate etc" required/>
+            <label>Price</label>
+            <input type="number" id="product_price" placeholder="Price of the food" min="1" required/>
+
+            <button type="submit" class="btn-update">Update</button>
+        </form>
+        <div class="down-button">
+            <button type="remove" class="btn-delete">Delete</button>
+        </div>
+
+    </div>
+
+    <script>
+
+        // To show the details//
+        let uid = JSON.parse(localStorage.getItem("product_Uid"));
+        let product = JSON.parse(localStorage.getItem("product_list"));
+
+        product_data = product.find(e=>e.product_id == uid);
+
+        document.getElementById("product_image").value = product_data["product_image"];
+        document.getElementById("product_name").value = product_data["product_name"];
+        document.getElementById("product_type").value = product_data["product_type"];
+        document.getElementById("product_quantity").value = product_data["product_quantity"];
+        document.getElementById("quantity_type").value = product_data["quantity_type"];
+        document.getElementById("product_price").value = product_data["product_price"];
+
+        // Function for update //
+
+        // let update = document.getElementById("update_item");
+
+        // update.addEventListener("onsubmit", update_product);
+
+        function update_product() {
+            event.preventDefault();
+            let uid = JSON.parse(localStorage.getItem("product_Uid"));
+            let product = JSON.parse(localStorage.getItem("product_list"));
+
+            product_data = product.find(e=>e.product_id == uid);
+
+            let edit_image = document.getElementById("product_image").value
+            let edit_name = document.getElementById("product_name").value.trim().split(/\s+/g).join(' ')
+            let edit_type = document.getElementById("product_type").value
+            let edit_quantity = document.getElementById("product_quantity").value
+            let edit_quantity_type =document.getElementById("quantity_type").value
+            let edit_price = document.getElementById("product_price").value
+
+            product_data["product_image"] = edit_image;
+            product_data["product_name"] = edit_name;
+            product_data["product_type"] = edit_type;
+            product_data["product_quantity"] = edit_quantity;
+            product_data["quantity_type"] = edit_quantity_type;
+            product_data["product_price"] = edit_price;
+
+            localStorage.setItem('product_list', JSON.stringify(product));
+            alert("Product updated successfully");
+            localStorage.removeItem("product_Uid");
+            window.location.href="./product create.html";
+        }
+
+        // Function for delete product //
+
+        let del_product = document.querySelector(".btn-delete");
+        del_product.addEventListener("click", delData);
+
+        function delData() {
+            if (confirm("Are you sure?")) {
+                let uid = JSON.parse(localStorage.getItem("product_Uid"));
+
+                let product = JSON.parse(localStorage.getItem("product_list"));
+
+                product_data = product.find(e=>e.product_id == uid);
+
+                const indexOfUser = product.indexOf(product_data);
+
+                product.splice(indexOfUser, 1);
+
+                localStorage.setItem('product_list', JSON.stringify(product));
+                window.location.href="./product create.html";
+            };
+
+        }
+
+    </script>
+
+</body>
+
+</html>

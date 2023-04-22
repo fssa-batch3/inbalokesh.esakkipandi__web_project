@@ -19,19 +19,20 @@
                 <h1>Sign Up</h1>
                 <form role="form" name="newform" id="form" onsubmit="signUp(event);">
                     <label>Name</label>
-                    <input type="text" class="username" id="user_name" pattern="[a-zA-Z0-9]+" title="No spaces in between." placeholder="Name" required/>
+                    <input type="text" class="username" id="user_name" minlength="3" placeholder="Name" required/>
                     <label>Mobile No</label>
-                    <input type="tel" id="user_phonenumber" placeholder="Mobile No" pattern="[0-9].{9}" title="Write your 10-digit mobile number." required/>
+                    <input type="tel" id="user_phonenumber" placeholder="Mobile No" pattern="[6-9]{1}[0-9]{9}" maxlength="10" title="Write your 10-digit mobile number." required/>
                     <label>Email</label>
-                    <input type="email" id="user_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Write your email properly" required/>
+                    <input type="email" id="user_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,}$" title="Write your email properly" required/>
                     <label class="addr">Address</label>
                     <textarea type="text" id="user_address" name="Address" placeholder="Your address" required></textarea> 
                     <label>Password</label>
-                    <input type="password" id="user_password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                    <input type="password" id="user_password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Password must contain at least one number,one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                    <h5 class="password_note">(Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters)</h5>
                     <label>Confirm Password</label>
-                    <input type="password" id="confirm_password" placeholder="Confirm Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                    <input type="password" id="confirm_password" placeholder="Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
                     <button type="submit" class="btn-secondary">Submit
                     </button >
                 </form>
