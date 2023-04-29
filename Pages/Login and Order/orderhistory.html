@@ -2,247 +2,276 @@
 
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONLY HOME FOOD</title>
-  <link rel="stylesheet" href="../../assets/css/header.css">
-  <link rel="stylesheet" href="../../assets/css/footer.css">
-  <link rel="stylesheet" href="../../assets/css/order history.css">
-  <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ONLY HOME FOOD</title>
+        <link rel="stylesheet" href="../../assets/css/header.css">
+        <link rel="stylesheet" href="../../assets/css/footer.css">
+        <link rel="stylesheet" href="../../assets/css/order history.css">
+        <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+    </head>
 
-<body>
+    <body>
 
-  <section class="order_details">
+        <section class="order_details">
 
-  </section>
+        </section>
 
-  <!-- header script -->
-  <script src="../../assets/javascript/header.js"></script>
+        <!-- header script -->
+        <script src="../../assets/javascript/header.js"></script>
 
-  <!-- footer script -->
-  <script src="../../assets/javascript/footer.js"></script>
-  <script>
-
-
-    let div_popup;
-    let h3_order_num;
-    let div_phead;
+        <!-- footer script -->
+        <script src="../../assets/javascript/footer.js"></script>
+        <script>
     let p;
     let div_order;
     let image;
     let div_name;
     let p_fname;
-    let p_quantity;
-    let div_dpara;
-    let div_lpara;
-    let div_spara;
-    let p_impnote;
+    // let p_quantity;
+    // let p_impnote;
     let div_cbut;
-    let a;
+    // let a;
     let button;
 
-    let order_history = JSON.parse(localStorage.getItem("order_list"));
+    const order_history = JSON.parse(localStorage.getItem("order_list"));
 
-
-    const url = window.location.search
+    const url = window.location.search;
     // console.log(url)
-    const urlParams = new URLSearchParams(url)
+    const urlParams = new URLSearchParams(url);
     // console.log(urlParams)
 
-    const order_id = urlParams.get("order_id")
-    console.log(order_id)
+    const order_id = urlParams.get("order_id");
+    console.log(order_id);
 
-    let product_list = JSON.parse(localStorage.getItem("product_list"))
+    const product_list = JSON.parse(localStorage.getItem("product_list"));
     // console.log(product_list)
 
-    const orders = order_history.find(e => e.order_id == order_id);
-    console.log(orders)
+    const orders = order_history.find((e) => e.order_id === order_id);
+    console.log(orders);
 
-    const items = orders["ordered_items"];
+    const items = orders.ordered_items;
 
-    const foodData = product_list.filter(product =>
-      items.some(id => id.product_id == product.product_id));
+    const foodData = product_list.filter((product) =>
+      items.some((id) => id.product_id === product.product_id)
+);
     // console.log(foodData)
 
     // <div class="popuup">
-    div_popup = document.createElement("div");
+    const div_popup = document.createElement("div");
     div_popup.setAttribute("class", "popup");
-    console.log(div_popup)
+    console.log(div_popup);
 
     // <h3> order_num
-    h3_order_num = document.createElement("h3")
-    h3_order_num.innerText = "Order_id: " + order_id;
-    div_popup.append(h3_order_num)
+    const h3_order_num = document.createElement("h3");
+    h3_order_num.innerText = `Order_id: ${order_id}`;
+    div_popup.append(h3_order_num);
 
     // <div class="phead">
-    div_phead = document.createElement("div");
+    const div_phead = document.createElement("div");
     div_phead.setAttribute("class", "phead");
-    div_popup.append(div_phead)
+    div_popup.append(div_phead);
 
     // <p>
     p = document.createElement("p");
     p.innerText = "Food Name";
-    div_phead.append(p)
+    div_phead.append(p);
 
     p = document.createElement("p");
     p.setAttribute("class", "quan");
     p.innerText = "Quantity";
-    div_phead.append(p)
+    div_phead.append(p);
 
     p = document.createElement("p");
     p.innerText = "Price";
-    div_phead.append(p)
+    div_phead.append(p);
 
     // Order list //
     for (let i = 0; i < foodData.length; i++) {
       // <div class="order">
       div_order = document.createElement("div");
       div_order.setAttribute("class", "orderr");
-      div_popup.append(div_order)
+      div_popup.append(div_order);
 
       image = document.createElement("img");
-      image.setAttribute("src", foodData[i]["product_image"]);
-      image.setAttribute("alt", foodData[i]["product_name"] + " image");
-      div_order.append(image)
+      image.setAttribute("src", foodData[i].product_image);
+      image.setAttribute("alt", `${foodData[i].product_name} image`);
+      div_order.append(image);
 
       div_name = document.createElement("div");
       div_name.setAttribute("class", "name");
-      div_order.append(div_name)
+      div_order.append(div_name);
 
       p_fname = document.createElement("p");
       p_fname.setAttribute("class", "fname");
-      p_fname.innerText = foodData[i]["product_name"];
-      div_name.append(p_fname)
+      p_fname.innerText = foodData[i].product_name;
+      div_name.append(p_fname);
 
       p_fname = document.createElement("p");
       p_fname.setAttribute("class", "fname");
-      p_fname.innerText = foodData[i]["product_type"];
-      div_name.append(p_fname)
+      p_fname.innerText = foodData[i].product_type;
+      div_name.append(p_fname);
 
       p = document.createElement("p");
       p.setAttribute("class", "quantity");
-      p.innerText = items[i]["quantity_ordered"];
-      div_order.append(p)
+      p.innerText = items[i].quantity_ordered;
+      div_order.append(p);
 
       p = document.createElement("p");
-      p.innerText = "Rs. " + foodData[i]["product_price"] * items[i]["quantity_ordered"];
-      div_order.append(p)
+      p.innerText = `Rs. ${foodData[i].product_price * items[i].quantity_ordered}`;
+      div_order.append(p);
     }
 
     // <div class="dpara">
-    div_dpara = document.createElement("div");
+    const div_dpara = document.createElement("div");
     div_dpara.setAttribute("class", "dpara");
-    div_popup.append(div_dpara)
+    div_popup.append(div_dpara);
 
     // <div class="lpara">
-    div_lpara = document.createElement("div");
+    const div_lpara = document.createElement("div");
     div_lpara.setAttribute("class", "lpara");
-    div_dpara.append(div_lpara)
+    div_dpara.append(div_lpara);
 
     // <p>
     p = document.createElement("p");
     p.innerText = "Ordered time";
-    div_lpara.append(p)
+    div_lpara.append(p);
 
     p = document.createElement("p");
     p.innerText = "Delivery status";
-    div_lpara.append(p)
+    div_lpara.append(p);
 
     p = document.createElement("p");
     p.innerText = "Total";
-    div_lpara.append(p)
+    div_lpara.append(p);
 
     p = document.createElement("p");
     p.innerText = "Payment";
-    div_lpara.append(p)
+    div_lpara.append(p);
 
     // <div class="spara">
-    div_spara = document.createElement("div");
+    const div_spara = document.createElement("div");
     div_spara.setAttribute("class", "spara");
-    div_dpara.append(div_spara)
+    div_dpara.append(div_spara);
 
     // Date format to show //
 
-    let d = new Date(orders["ordered_time"]);
-    let weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat');
-    let dayOfWeek = weekday[d.getDay()];
-    let domEnder = function () { var a = d; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }();
-    let dayOfMonth = (d.getDate() < 10 ? '0' : '') + d.getDate() + domEnder;
-    let months = new Array('January', 'February', 'Mar', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
-    let curMonth = months[d.getMonth()];
-    let curYear = d.getFullYear();
-    let curHour = d.getHours() > 12 ? d.getHours() - 12 : (d.getHours() < 10 ? "0" + d.getHours() : d.getHours());
-    let curMinute = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
-    let curSeconds = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds();
-    let curMeridiem = d.getHours() >= 12 ? "PM" : "AM";
-    let orderTime = dayOfMonth + " " + curMonth + " " + curYear + "," + dayOfWeek + " " + curHour + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
+    const d = new Date(orders.ordered_time);
+    const weekday = new Array("Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat");
+    const dayOfWeek = weekday[d.getDay()];
+    const domEnder = (function () {
+  let a = d;
+  if (/1/.test(parseInt(`${a}`.charAt(0)))) return "th";
+  a = parseInt(`${a}`.charAt(1));
+  return a === 1 ? "st" : a === 2 ? "nd" : a === 3 ? "rd" : "th";
+})();
+    const dayOfMonth = (d.getDate() < 10 ? "0" : "") + d.getDate() + domEnder;
+    const months = new Array(
+  "January",
+  "February",
+  "Mar",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+);
+    const curMonth = months[d.getMonth()];
+    const curYear = d.getFullYear();
+    const curHour =
+  d.getHours() > 12
+    ? d.getHours() - 12
+    : d.getHours() < 10
+        ? `0${d.getHours()}`
+    : d.getHours();
+    const curMinute = d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes();
+    const curSeconds = d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds();
+    const curMeridiem = d.getHours() >= 12 ? "PM" : "AM";
+    const orderTime = `${dayOfMonth} ${curMonth} ${curYear},${dayOfWeek} ${curHour}:${curMinute}:${curSeconds} ${curMeridiem}`;
 
     // <p>
     p = document.createElement("p");
     p.innerText = orderTime;
-    div_spara.append(p)
+    div_spara.append(p);
 
     p = document.createElement("p");
-    p.innerText = orders["order_status"];
-    div_spara.append(p)
+    p.innerText = orders.order_status;
+    div_spara.append(p);
 
     p = document.createElement("p");
-    p.innerText = "Rs." + orders["total_price"];
-    div_spara.append(p)
+    p.innerText = `Rs.${orders.total_price}`;
+    div_spara.append(p);
 
     p = document.createElement("p");
     p.innerText = "COD";
-    div_spara.append(p)
+    div_spara.append(p);
 
     // <p class="impnote">
     p = document.createElement("p");
     p.setAttribute("class", "impnote");
-    p.innerText = "Note: You can only cancel your order on the same day of the placement.";
-    div_popup.append(p)
+    p.innerText =
+  "Note: You can only cancel your order on the same day of the placement.";
+    div_popup.append(p);
 
     // <div class="cbut">
     div_cbut = document.createElement("div");
     div_cbut.setAttribute("class", "cbut");
-    div_popup.append(div_cbut)
+    div_popup.append(div_cbut);
 
     // Function for button //
     const startTime = d;
 
-    const endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate() + 1, 0, 0, 0, 0);
-    const now = new Date()
+    const endTime = new Date(
+  startTime.getFullYear(),
+  startTime.getMonth(),
+  startTime.getDate() + 1,
+  0,
+  0,
+  0,
+  0
+);
+    const now = new Date();
 
     if (endTime > now) {
       // <button>
-      if (orders["order_status"] == "Cancelled") {
+      if (orders.order_status === "Cancelled") {
         button = document.createElement("button");
         button.setAttribute("class", "cancel_order");
         button.setAttribute("style", "display:none");
         button.innerText = "Cancel order";
-        div_cbut.append(button)
-      }
-      else {
+        div_cbut.append(button);
+      } else {
         button = document.createElement("button");
         button.setAttribute("class", "cancel_order");
         button.setAttribute("onclick", "cancel()");
         button.innerText = "Cancel order";
-        div_cbut.append(button)
+        div_cbut.append(button);
       }
     }
+
+    button = document.createElement("button");
+    button.setAttribute("class", "re_order");
+    button.setAttribute("onclick", "re_order()");
+    button.innerText = "Re-order";
+    div_cbut.append(button);
 
     // <button>
     button = document.createElement("button");
     button.setAttribute("onclick", "btn()");
     button.setAttribute("type", "close");
     button.innerText = "Close";
-    div_cbut.append(button)
+    div_cbut.append(button);
 
-    document.querySelector("section.order_details").append(div_popup)
+    document.querySelector("section.order_details").append(div_popup);
 
     function btn() {
-      window.location.href = "./Profile.html"
+      window.location.href = "./Profile.html";
     }
 
     function cancel() {
@@ -250,11 +279,20 @@
         const indexOfOrder = order_history.indexOf(orders);
         order_history[indexOfOrder].order_status = "Cancelled";
         localStorage.setItem("order_list", JSON.stringify(order_history));
-        location.href = "../Login and Order/Profile.html"
+        window.location.href = "../Login and Order/Profile.html";
       }
     }
 
+    function re_order() {
+      let cart_product = JSON.parse(localStorage.getItem("cart_product"));
+      cart_product = cart_product.filter((e) => e.user_id !== userId);
+      cart_product.push(...items);
+      localStorage.setItem("cart_product", JSON.stringify(cart_product));
+      localStorage.setItem("food_count", parseInt(items.length));
+      alert("Your product is added to the cart");
+      window.location.href = "../Cart/cart.html";
+    }
   </script>
-</body>
+    </body>
 
 </html>

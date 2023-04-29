@@ -1,7 +1,6 @@
-const root = window.location.origin
+const root = window.location.origin;
 
-const after =
-    `
+const after = `
         <header class="header">   
             <div class="shead">
                 <a href="${root}/index.html"><img src="${root}/assets/Images/LOGO.png" alt="Logo" height="80px" width="100px"></a>
@@ -26,10 +25,9 @@ const after =
                 </div>
             </div>
         </header>
-`
+`;
 
-const before =
-    `
+const before = `
         <header class="header">   
             <div class="shead">
                 <a href="${root}/index.html"><img src="${root}/assets/Images/LOGO.png" alt="Logo" height="80px" width="100px"></a>
@@ -52,79 +50,74 @@ const before =
                 </div>
             </div>
         </header>
-`
+`;
 
 const userId = JSON.parse(localStorage.getItem("userId"));
 
 if (userId) {
-    document.body.insertAdjacentHTML("afterbegin", after);
+  document.body.insertAdjacentHTML("afterbegin", after);
 
-    const cartProducts = JSON.parse(localStorage.getItem("cart_product"))
-    if(cartProducts){
-        const find_user = cartProducts.filter(e => e.user_id == userId);
-        if (find_user) {
-            let food_count = find_user.length;
-            localStorage.setItem('food_count', JSON.stringify(food_count));
-        }
-    }  
-    // To store the count in the cart //
-    let span = document.querySelector('.Profile span');
-    let foodCount = JSON.parse(localStorage.getItem("food_count"));
-    span.textContent = foodCount;
-
-    if (span.textContent == 0) {
-        span.setAttribute("style", "display:none")
+  const cartProducts = JSON.parse(localStorage.getItem("cart_product"));
+  if (cartProducts) {
+    const find_user = cartProducts.filter((e) => e.user_id === userId);
+    if (find_user) {
+      const food_count = find_user.length;
+      localStorage.setItem("food_count", JSON.stringify(food_count));
     }
+  }
+  // To store the count in the cart //
+  const span = document.querySelector(".Profile span");
+  const foodCount = JSON.parse(localStorage.getItem("food_count"));
+  span.textContent = foodCount;
 
-    // For toggle button
-    const toggleButton = document.querySelectorAll('.toggle-button')
-    const navbarLinks = document.querySelector('.head')
+  if (span.textContent === 0) {
+    span.setAttribute("style", "display:none");
+  }
 
-    toggleButton.forEach(function (open) {
-        open.addEventListener("click", function () {
-            navbarLinks.classList.toggle('active')
-        })
-    })
+  // For toggle button
+  const toggleButton = document.querySelectorAll(".toggle-button");
+  const navbarLinks = document.querySelector(".head");
 
-    const buttonLogout = document.getElementById("logout_user");
-    buttonLogout?.addEventListener("click", () => {
-        if (confirm("Are you sure?")) {
-            localStorage.removeItem("userId");
-            document.body.innerHTML = before;
-            window.location.href = "../../index.html";
-        }
+  toggleButton.forEach((open) => {
+    open.addEventListener("click", () => {
+      navbarLinks.classList.toggle("active");
     });
+  });
 
-    const buttonDelete = document.getElementById("delete_user");
-    buttonDelete?.addEventListener("click", () =>{
-        if (confirm("Are you sure?")) {
-            let user_list = JSON.parse(localStorage.getItem("user_list"));
-      
-            function login_data(e) {
-              return e.user_phonenumber == userId;
-            }
-            let user_data = user_list.find(login_data);
-      
-            const indexOfUser = user_list.indexOf(user_data);
-      
-            user_list.splice(indexOfUser, 1);
-      
-            localStorage.setItem('user_list', JSON.stringify(user_list));
-            localStorage.removeItem("userId");
-            document.body.innerHTML = before;
-            window.location.href = "../../index.html";
-          };
-    })
+  const buttonLogout = document.getElementById("logout_user");
+  buttonLogout?.addEventListener("click", () => {
+    if (confirm("Are you sure?")) {
+      localStorage.removeItem("userId");
+      document.body.innerHTML = before;
+      window.location.href = "../../index.html";
+    }
+  });
 
-}
-else {
-    document.body.insertAdjacentHTML("afterbegin", before);
-    const toggleButton = document.querySelectorAll('.toggle-button')
-    const navbarLinks = document.querySelector('.head')
+  const buttonDelete = document.getElementById("delete_user");
+  buttonDelete?.addEventListener("click", () => {
+    if (confirm("Are you sure?")) {
+      const user_list = JSON.parse(localStorage.getItem("user_list"));
 
-    toggleButton.forEach(function (open) {
-        open.addEventListener("click", function () {
-            navbarLinks.classList.toggle('active')
-        })
+      const user_data = user_list.find((e) => e.user_phonenumber === userId);
+
+      const indexOfUser = user_list.indexOf(user_data);
+
+      user_list.splice(indexOfUser, 1);
+
+      localStorage.setItem("user_list", JSON.stringify(user_list));
+      localStorage.removeItem("userId");
+      document.body.innerHTML = before;
+      window.location.href = "../../index.html";
+    }
+  });
+} else {
+  document.body.insertAdjacentHTML("afterbegin", before);
+  const toggleButton = document.querySelectorAll(".toggle-button");
+  const navbarLinks = document.querySelector(".head");
+
+  toggleButton.forEach((open) => {
+    open.addEventListener("click", () => {
+      navbarLinks.classList.toggle("active");
     });
+  });
 }

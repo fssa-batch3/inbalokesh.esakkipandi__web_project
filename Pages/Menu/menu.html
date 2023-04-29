@@ -2,48 +2,60 @@
 
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONLY HOME FOOD</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../../assets/css/menu.css">
-    <link rel="stylesheet" href="../../assets/css/footer.css">
-    <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ONLY HOME FOOD</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="../../assets/css/menu.css">
+        <link rel="stylesheet" href="../../assets/css/footer.css">
+        <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+    </head>
 
-<body>
+    <body>
 
-    <!-- filter box -->
-    <h1 class="he">Menu</h1>
-    <div class="top">
-        <div class="menu">
-            <a href="./menu.html" class="all">All</a>
+        <!-- filter box -->
+        <h1 class="he">Menu</h1>
+        <div class="search_box">
+            <input type="text" class="search" placeholder="Search" id="search_food">
+            <div>
+                <a href="#">
+                    <img class="search_image" src="../../assets/Images/Search image.png" alt="">
+                </a>
+            </div>
         </div>
-    </div>
+        <div class="top">
+            <div class="menu">
+                <a href="./menu.html" class="all">All</a>
+            </div>
+        </div>
 
-    <!-- list of food starts -->
-    <section class="details">
-    </section>
-    <!-- list of foods end -->
+        <div class="res">
+            <!-- <div class="no_result">
+                <img class="result_img" src="../../assets/Images/no-result.png" alt="No result image">
+                </div> -->
+        </div>
 
-    <!-- scooty gif -->
-    <div class="gif">
-        <img src="../../assets/Images/scooty.gif" alt="scooty img" height="150px" width="150px">
-    </div>
+        <!-- list of food starts -->
+        <section class="details">
+        </section>
+        <!-- list of foods end -->
 
-    <!-- script starts-->
+        <!-- scooty gif -->
+        <div class="gif">
+            <img src="../../assets/Images/scooty.gif" alt="scooty img" height="150px" width="150px">
+        </div>
 
-    <!-- header script -->
-    <script src="../../assets/javascript/header.js"></script>
+        <!-- script starts-->
 
-    <!-- footer script -->
-    <script src="../../assets/javascript/footer.js"></script>
-    <script>
+        <!-- header script -->
+        <script src="../../assets/javascript/header.js"></script>
 
-        // DOM //
+        <!-- footer script -->
+        <script src="../../assets/javascript/footer.js"></script>
+        <script>// DOM //
         let div_box;
         let img_food;
         let div_border;
@@ -55,134 +67,180 @@
         let div_price;
         let p_price;
         let button;
-
+        let div_no_result;
+        let result_img;
 
         // Function to display foods //
 
-        let product_list = JSON.parse(localStorage.getItem("product_list"));
-        let uu_id = JSON.parse(localStorage.getItem("product_ids"));
-        console.log(uu_id)
+        const product_list = JSON.parse(localStorage.getItem("product_list"));
+        const uu_id = JSON.parse(localStorage.getItem("product_ids"));
+        console.log(uu_id);
 
-        let food_list = product_list.filter(product =>
-            uu_id.some(uuid => product.product_id === uuid.product_id)
-        );
+        const food_list = product_list.filter((product) =>
+  uu_id.some((uuid) => product.product_id === uuid.product_id)
+);
 
         console.log(food_list);
 
-        if (food_list !== null) {
-            for (let i = 0; i < food_list.length; i++) {
+        if (food_list !== null || food_list.length !== 0) {
+          for (let i = 0; i < food_list.length; i++) {
+    // <div class="box">
+            div_box = document.createElement("div");
+            div_box.setAttribute("class", "box");
+            console.log(div_box);
 
-                // <div class="box">
-                div_box = document.createElement("div");
-                div_box.setAttribute("class", "box");
-                console.log(div_box);
+            // <img>
+            img_food = document.createElement("img");
+            img_food.setAttribute("src", food_list[i].product_image);
+            img_food.setAttribute("alt", `${food_list[i].product_name} image`);
+            div_box.append(img_food);
 
-                // <img>
-                img_food = document.createElement("img");
-                img_food.setAttribute("src", food_list[i]["product_image"]);
-                img_food.setAttribute("alt", food_list[i]["product_name"] + " image");
-                div_box.append(img_food);
+            // <div class="border">
+            div_border = document.createElement("div");
+            div_border.setAttribute("class", "border");
+            div_box.append(div_border);
 
-                // <div class="border">
-                div_border = document.createElement("div");
-                div_border.setAttribute("class", "border");
-                div_box.append(div_border);
+            // <h4>
+            h4 = document.createElement("h4");
+            h4.innerText = food_list[i].product_name;
+            div_border.append(h4);
 
-                // <h4>
-                h4 = document.createElement("h4");
-                h4.innerText = food_list[i]["product_name"];
-                div_border.append(h4);
+            // <div class="info_box">
+            div_info_box = document.createElement("div");
+            div_info_box.setAttribute("class", "info_box");
+            div_border.append(div_info_box);
 
-                // <div class="info_box"> 
-                div_info_box = document.createElement("div");
-                div_info_box.setAttribute("class", "info_box");
-                div_border.append(div_info_box);
+            // <div class="info">
+            div_info = document.createElement("div");
+            div_info.setAttribute("class", "info");
+            div_info_box.append(div_info);
 
-                // <div class="info">
-                div_info = document.createElement("div");
-                div_info.setAttribute("class", "info");
-                div_info_box.append(div_info);
+            h5 = document.createElement("h5");
+            h5.innerText = "Type";
+            div_info.append(h5);
 
-                h5 = document.createElement("h5");
-                h5.innerText = "Type";
-                div_info.append(h5);
+            p = document.createElement("p");
+            p.innerText = food_list[i].product_type;
+            div_info.append(p);
 
-                p = document.createElement("p");
-                p.innerText = food_list[i]["product_type"];
-                div_info.append(p);
+            // <div class="info2">
+            div_info = document.createElement("div");
+            div_info.setAttribute("class", "info");
+            div_info_box.append(div_info);
 
-                // <div class="info2">
-                div_info = document.createElement("div");
-                div_info.setAttribute("class", "info");
-                div_info_box.append(div_info);
+            h5 = document.createElement("h5");
+            h5.innerText = "Quantity";
+            div_info.append(h5);
 
-                h5 = document.createElement("h5");
-                h5.innerText = "Quantity";
-                div_info.append(h5);
+            p = document.createElement("p");
+            p.innerText = `${food_list[i].product_quantity} ${food_list[i].quantity_type}`;
+            div_info.append(p);
 
-                p = document.createElement("p");
-                p.innerText = food_list[i]["product_quantity"] + " " + food_list[i]["quantity_type"];
-                div_info.append(p);
+            // <div class="price">
+            div_price = document.createElement("div");
+            div_price.setAttribute("class", "price");
+            div_border.append(div_price);
 
-                // <div class="price">
-                div_price = document.createElement("div");
-                div_price.setAttribute("class", "price");
-                div_border.append(div_price);
+            p_price = document.createElement("p");
+            p_price.setAttribute("class", "food_price");
+            p_price.innerText = `Rs.${food_list[i].product_price}`;
+            div_price.append(p_price);
 
-                p_price = document.createElement("p");
-                p_price.setAttribute("class", "food_price")
-                p_price.innerText = "Rs." + food_list[i]["product_price"];
-                div_price.append(p_price);
+            button = document.createElement("button");
+            button.setAttribute("type", "button");
+            button.setAttribute("class", "addCart");
+            button.setAttribute("data-uuid", food_list[i].product_id);
+            button.innerText = "Add to cart";
+            div_price.append(button);
 
-                button = document.createElement("button")
-                button.setAttribute("type", "button");
-                button.setAttribute("class", "addCart");
-                button.setAttribute("data-uuid", food_list[i]["product_id"]);
-                button.innerText = "Add to cart";
-                div_price.append(button);
+            document.querySelector("section.details").append(div_box);
+          }
+        } else {
+  div_no_result = document.createElement("div");
+          div_no_result.setAttribute("class", "no_result");
+          console.log(div_no_result);
 
-                document.querySelector("section.details").append(div_box);
-            }
+          // <img>
+          result_img = document.createElement("img");
+          result_img.setAttribute("class", "result_img");
+          result_img.setAttribute("src", "../../assets/Images/no-result.png");
+          result_img.setAttribute("alt", "No result Image");
+          div_no_result.append(result_img);
+
+          document.querySelector("div.res").append(div_no_result);
         }
         // function for add to cart //
-        let addToCarts = document.querySelectorAll("button.addCart");
-        addToCarts.forEach(function (add_foods) {
-            add_foods.addEventListener("click", function () {
-                const uuid = this.dataset.uuid;
-                const price_parent = this.closest(".price");
-                const food_price = price_parent.querySelector(".food_price").innerText.replace("Rs.", "");
+        const addToCarts = document.querySelectorAll("button.addCart");
+        addToCarts.forEach(function addCarts(add_foods) {
+          add_foods.addEventListener("click", function clickToAdd() {
+            const { uuid } = this.dataset;
+            const price_parent = this.closest(".price");
+            const food_price = price_parent
+      .querySelector(".food_price")
+      .innerText.replace("Rs.", "");
 
-                let cart_products = JSON.parse(localStorage.getItem("cart_product")) || [];
+            const cart_products =
+      JSON.parse(localStorage.getItem("cart_product")) || [];
 
-                let exist = cart_products.length &&
-                    JSON.parse(localStorage.getItem('cart_product')).some(data =>
-                        data.product_id == uuid && data.user_id == userId);
+            const exist =
+      cart_products.length &&
+      JSON.parse(localStorage.getItem("cart_product")).some(
+        (data) => data.product_id === uuid && data.user_id === userId
+      );
 
-                if (userId == null) {
-                    alert("Login to order your food");
-                    location.href = "../Login and Order/Login.html"
-                }
-                else {
-                    if (!exist) {
-                        cart_products.push({
-                            "user_id": userId,
-                            "product_id": uuid,
-                            "quantity_ordered": "1",
-                            "delivery_time": "",
-                            "price": parseInt(food_price),
-                        });
-                        localStorage.setItem('cart_product', JSON.stringify(cart_products));
-                        window.location.reload()
-                    } else {
-                        alert("This product is already added to your cart")
-                    }
-                }
-            });
+    if (userId == null) {
+              alert("Login to order your food");
+              window.location.href = "../Login and Order/Login.html";
+            } else if (!exist) {
+      cart_products.push({
+        user_id: userId,
+                product_id: uuid,
+                quantity_ordered: "1",
+                delivery_time: "",
+                price: parseInt(food_price),
+      });
+      localStorage.setItem("cart_product", JSON.stringify(cart_products));
+      window.location.reload();
+    } else {
+      alert("This product is already added to your cart");
+    }
+          });
         });
 
-    </script>
-    <!-- script ends-->
+        
+        const searchBox = document.getElementById("search_food");
+        searchBox.addEventListener("keyup", function findFood() {
+          const input_search = document
+    .getElementById("search_food")
+    .value.toUpperCase();
 
-</body>
+  const item = document.querySelectorAll("div.box");
+
+  // const result = document.querySelector("div.no_result");
+
+  const item_name = document.getElementsByTagName("h4");
+
+  for (let i = 0; i < item_name.length; i++) {
+            const a = item[i].getElementsByTagName("h4")[0];
+
+            const value = a.innerText || a.innerHTML || a.textContent;
+
+            if (input_search === " ") {
+              return false;
+            }
+            else{
+              if (value.toUpperCase().indexOf(input_search) > -1) {
+              item[i].style.display = "";
+            } else {
+              item[i].style.display = "none";
+            }
+            }
+            
+  }
+});
+</script>
+        <!-- script ends-->
+
+    </body>
 
 </html>

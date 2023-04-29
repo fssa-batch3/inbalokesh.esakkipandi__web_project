@@ -1,7 +1,6 @@
-const origin = window.location.origin;
+const { origin } = window.location;
 
-const footer =
-    `
+const footer = `
         <footer>
             <div class="foot">
                 <div class="footer">
@@ -27,6 +26,5 @@ const footer =
                 </div>
             </div>
         </footer>
-    `
+    `;
 document.body.insertAdjacentHTML("beforeend", footer);
-

@@ -39,28 +39,30 @@
         <script src="../../assets/javascript/footer.js"></script>
 
         <script>
-            document.querySelector("#feedback_form").addEventListener("submit", function(e){
-                e.preventDefault()
-                let name = document.getElementById("name").value;
-                let number = document.getElementById("number").value;
-                let email = document.getElementById("email").value;
-                let message = document.getElementById("message").value
+            document
+  .querySelector("#feedback_form")
+  .addEventListener("submit", function contactForm(e) {
+                e.preventDefault();
+                const name = document.getElementById("name").value;
+                const number = document.getElementById("number").value;
+                const email = document.getElementById("email").value;
+                const message = document.getElementById("message").value;
 
-                let user_messages = JSON.parse(localStorage.getItem("user_messages")) || [];
+                const user_messages =
+      JSON.parse(localStorage.getItem("user_messages")) || [];
 
                 user_messages.push({
-                    "name" : name,
-                    "number" : number,
-                    "email" : email,
-                    "message" : message
-                })
-                
+                  name,
+                  number,
+                  email,
+                  message,
+                });
+            
                 localStorage.setItem("user_messages", JSON.stringify(user_messages));
-                document.querySelector('form').reset();
+                document.querySelector("form").reset();
                 alert("Your message has been submited");
-                // window.location.reload()
-            })
-
+                window.location.reload();
+              });
         </script>
         <!-- script -->
     </body>
