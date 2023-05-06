@@ -70,7 +70,7 @@ if (userId) {
   const foodCount = JSON.parse(localStorage.getItem("food_count"));
   span.textContent = foodCount;
 
-  if (span.textContent === 0) {
+  if (span.textContent == 0) {
     span.setAttribute("style", "display:none");
   }
 
@@ -96,16 +96,23 @@ if (userId) {
   const buttonDelete = document.getElementById("delete_user");
   buttonDelete?.addEventListener("click", () => {
     if (confirm("Are you sure?")) {
-      const user_list = JSON.parse(localStorage.getItem("user_list"));
+      let user_list = JSON.parse(localStorage.getItem("user_list"));
+      const cart_list = JSON.parse(localStorage.getItem("cart_product"));
+      const order_list = JSON.parse(localStorage.getItem("order_list"));
 
       const user_data = user_list.find((e) => e.user_phonenumber === userId);
+      const cart_data = cart_list.filter((e) => e.user_id !== userId);
+      const order_data = order_list.filter((e)=> e.ordered_items[0].user_id !== userId);
 
       const indexOfUser = user_list.indexOf(user_data);
 
       user_list.splice(indexOfUser, 1);
 
       localStorage.setItem("user_list", JSON.stringify(user_list));
+      localStorage.setItem("cart_product", JSON.stringify(cart_data));
+      localStorage.setItem("order_list", JSON.stringify(order_data));
       localStorage.removeItem("userId");
+      localStorage.removeItem("food_count");
       document.body.innerHTML = before;
       window.location.href = "../../index.html";
     }

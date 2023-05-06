@@ -27,7 +27,6 @@ function signUp(e) {
     if (result === 10) {
       alert("Enter your number properly");
       user_phonenumber.value = reset();
-    } else {
     }
   }
   function validate() {
@@ -101,7 +100,6 @@ function signIn(e) {
     if (result === 10) {
       alert("Enter your number properly");
       user_phonenumber.value = reset();
-    } else {
     }
   }
   check_phonenumber();
@@ -121,10 +119,10 @@ function signIn(e) {
     document.querySelector("form").reset();
   } else if (user_phonenumber === "8888888889") {
     alert("Welcome admin");
-    location.href = "../../Pages/Admin/product create.html";
+    window.location.href = "../../Pages/Admin/product create.html";
   } else {
     localStorage.setItem("userId", JSON.stringify(user_phonenumber));
     alert("Your login in successful");
-    location.href = "../../Pages/Login and Order/Profile.html";
+    window.location.href = "../../Pages/Login and Order/Profile.html";
   }
 }

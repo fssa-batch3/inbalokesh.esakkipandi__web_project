@@ -24,21 +24,23 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
     - Read product (completed)
     - Update product (completed)
     - Delete product (completed)
-    - Add and remove product (completed)
+    - Add product (completed)
+    - Remove product (completed)
 
 3) Cart (completed)
 
+    - Search item (completed)
     - Add to cart (completed)
     - Read cart (completed)
     - Update cart (completed)
     - Remove cart (completed)
     
- 4) Order (Not-completed)
+ 4) Order (completed)
  
     - Place order (completed)
     - Read order (completed)
     - Cancel order (completed)
-    - Re-order (Not-completed)
+    - Re-order (completed)
 
 
 ## User
@@ -101,6 +103,15 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
         3. View the list of available food items.
     - Expected Result:
         - The user can view the list of available items.
+
+### Search the items(Menu) (completed)
+- Scenario 1: Successfully search your food item
+    - Steps:
+        1. Log in as a user.
+        2. Navigate to the Menu page.
+        3. Search the food you want.
+    - Expected Result:
+        - The user can view the items according to their search.
 
 ### Add product/item to cart (completed)
 - Scenario 1: Successfully add item to cart
@@ -176,6 +187,16 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
         - Order is cancelled successfully.
         - Status is updated as cancelled.
 
+### Re-order (completed)
+- Scenario 1: Successfully re-order the items.
+    - Steps:
+        1. Log in as a user.
+        2. Navigate to the profile page.
+        3. Click "View details" button of the order.
+        4. Click "Re-order" button.
+    - Expected Result:
+        - Items in that order is moved to the cart successfully.
+
 ### Logout (completed)
 - Scenario 1: Successfully logout from the account
     - Steps:
@@ -183,7 +204,7 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
         2. Navigate to the profile page.
         3. Click "Logout" and select "Yes" button to logout from the account.
     - Expected Result:
-        - The user is logged out sucessfully.
+        - The user is logged out successfully.
 
 
 ## Admin
@@ -205,7 +226,7 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
         3. Upload the image url, food name, type, quantity and price.
         4. Click the "Create" button.
     - Expected Result:
-        - The product/item is created sucessfully.
+        - The product/item is created successfully.
 
 ### View the list products/items (completed)
 - Scenario 1: Successfully View the list of products/items
@@ -214,7 +235,7 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
         2. Navigate to the create product page.
         3. View the created card of the products/items.
     - Expected Result:
-        - The product/item is viewed sucessfully.
+        - The product/item is viewed successfully.
 
 ### Edit the product/item (completed)
 - Scenario 1: Successfully edit the product/item
@@ -226,7 +247,7 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
         5. Edit the product.
         6. Click the "Update" button.
     - Expected Result:
-        - The product/item is updated sucessfully.
+        - The product/item is updated successfully.
 
 ### Delete the product/item (completed)
 - Scenario 1: Successfully delete the product/item
@@ -237,7 +258,7 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
         4. Selected product is viewd in the form.
         5. Click the "Delete" button.
     - Expected Result:
-        - The product/item is deleted sucessfully.
+        - The product/item is deleted successfully.
 
 ### Add the product/item to the Menu (completed)
 - Scenario 1: Successfully add the product/item to Menu
@@ -247,7 +268,7 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
         3. Click the "Add" button for the item you want to add.
         4. Selected product is added to the Menu.
     - Expected Result:
-        - The product/item is added to the menu sucessfully.
+        - The product/item is added to the menu successfully.
 
 ### Remove the product/item from the Menu (completed)
 - Scenario 1: Successfully remove the product/item from the Menu
@@ -257,4 +278,4 @@ LOW FIDELITY - https://docs.google.com/document/d/1UDu2AEF0KWBcD3FHCd2NA6LUcekOa
         3. Click the "Remove" button for the item you want to remove.
         4. Selected product is removed from the Menu.
     - Expected Result:
-        - The product/item is removed from the menu sucessfully.
+        - The product/item is removed from the menu successfully.

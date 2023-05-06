@@ -117,12 +117,32 @@ h5.password_note{
     width:26rem;
 }
 
+.addressBox{
+    width: 450px;
+    height: 800px;
+    margin: auto;
+    border-radius: 3px;
+    background-color: rgb(246, 246, 246);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.default{
+    display: flex;
+    align-items: baseline;
+}
+#checkBox{
+    height: 15px;
+    width: 25px;
+}
+
 @media (max-width:490px){
     .new img{
         position:relative;
         left:25%;
     }
     .signupbox{
+        width:100%;
+    }
+    .addressBox{
         width:100%;
     }
     form input{
