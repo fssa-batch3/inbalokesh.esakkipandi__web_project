@@ -19,7 +19,7 @@ if (!products) {
         product_image: "https://iili.io/HMe272t.webp",
         product_name: "Chicken 65",
         product_type: "Non-Veg",
-        product_quantity: "1",  
+        product_quantity: "1",
         quantity_type: "plate",
         product_price: "63",
         product_id: "2c5d0f02-5449-4e65-ad3e-c719ebfab4c5",

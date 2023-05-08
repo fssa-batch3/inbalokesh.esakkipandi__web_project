@@ -84,7 +84,7 @@
       return e.user_phonenumber === userId;
     }
 
-    let user_data = user_list.find(login_data);
+    const user_data = user_list.find(login_data);
 
     document.getElementById("user_name").value = user_data.user_name;
     document.getElementById("user_phonenumber").value = user_data.user_phonenumber;
@@ -93,13 +93,13 @@
 
     function update_details(e) {
       e.preventDefault();
-      let edit_name = document
+      const edit_name = document
         .getElementById("user_name")
         .value.trim()
         .split(/\s+/g)
         .join(" ");
-      let edit_number = document.getElementById("user_phonenumber").value;
-      let edit_email = document.getElementById("user_email").value;
+      const edit_number = document.getElementById("user_phonenumber").value;
+      const edit_email = document.getElementById("user_email").value;
       let edit_address = document
         .getElementById("user_address")
         .value.trim()

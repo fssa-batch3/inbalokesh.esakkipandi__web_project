@@ -1,67 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Only home food</title>
-    <link rel="stylesheet" href="../../assets/css/login.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Only home food</title>
+        <link rel="stylesheet" href="../../assets/css/login.css">
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <!-- <div class="new">
-        <div class="addressBox">
+        <!-- <div class="new">
+            <div class="addressBox">
             <a href="../../index.html">
-                <img src="../../assets/Images/LOGO.png" alt="logo">
+            <img src="../../assets/Images/LOGO.png" alt="logo">
             </a>
             <h1>Address</h1> -->
-    <!-- <form role="form" name="address" id="addressForm"> -->
-    <div class="container">
-        <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+        <!-- <form role="form" name="address" id="addressForm"> -->
+        <div class="container">
+            <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
 
-        <!-- Google map -->
-        <div id="map"></div>
+            <div id="map"></div>
 
-        <!-- Display geolocation data -->
-        <ul class="geo-data">
-            <li>Full Address: <span id="location"></span></li>
-            <li>Postal Code: <span id="postal_code"></span></li>
-            <li>Country: <span id="country"></span></li>
-            <li>Latitude: <span id="lat"></span></li>
-            <li>Longitude: <span id="lon"></span></li>
-        </ul>
-    </div>
-    <!-- <label>Mobile No</label>
-                <input type="tel" id="mobile_number" placeholder="Mobile No" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
-                    title="Write your 10-digit mobile number." required>
-                <label>House no, Flat no</label>
-                <input type="text" class="houseNumber" id="house_number" placeholder="No.7" required>
-                <label>Street Name</label>
-                <input type="text" class="streetName" id="street_name" placeholder="C.L.V nagar" required>
-                <label>Town or Village Name</label>
-                <input type="text" id="town_name" placeholder="Perungudi" required>
-                <label>Disctrict/City</label>
-                <input type="text" id="city" placeholder="Kanchipuram" required>
-                <label>Pin Code</label>
-                <input type="number" id="pinCode" name="pincode" min="600001" max="643253"
-                    pattern="[6]{1}[0-4]{2}[0-9]{4}" maxlength="6" placeholder="600096" required />
-                <div class="default">
-                    <input type="checkbox" id="checkBox">
-                    <label for="checkBox">Set as default address</label>
-                </div> -->
-    <!-- </div>
-                <button type="submit" class="btn-secondary">Add address
-                </button>
+            <ul class="geo-data">
+                <li>
+                    Full Address: <span id="location"></span>
+                </li>
+                <li>
+                    Postal Code: <span id="postal_code"></span>
+                </li>
+                <li>
+                    Country: <span id="country"></span>
+                </li>
+                <li>
+                    Latitude: <span id="lat"></span>
+                </li>
+                <li>
+                    Longitude: <span id="lon"></span>
+                </li>
+            </ul>
+        </div>
+        <!-- <label>Mobile No</label>
+            <input type="tel" id="mobile_number" placeholder="Mobile No" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
+            title="Write your 10-digit mobile number." required>
+            <label>House no, Flat no</label>
+            <input type="text" class="houseNumber" id="house_number" placeholder="No.7" required>
+            <label>Street Name</label>
+            <input type="text" class="streetName" id="street_name" placeholder="C.L.V nagar" required>
+            <label>Town or Village Name</label>
+            <input type="text" id="town_name" placeholder="Perungudi" required>
+            <label>Disctrict/City</label>
+            <input type="text" id="city" placeholder="Kanchipuram" required>
+            <label>Pin Code</label>
+            <input type="number" id="pinCode" name="pincode" min="600001" max="643253"
+            pattern="[6]{1}[0-4]{2}[0-9]{4}" maxlength="6" placeholder="600096" required />
+            <div class="default">
+            <input type="checkbox" id="checkBox">
+            <label for="checkBox">Set as default address</label>
+            </div> -->
+        <!-- </div>
+            <button type="submit" class="btn-secondary">Add address
+            </button>
             </form> -->
-    <!-- </div>
-    </div> -->
+        <!-- </div>
+            </div> -->
 
-    <!-- <script
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAisncEj6pNGFLG5JPFGVfYistn-rOIcS4"></script> -->
-    <script>
+        <!-- <script
+            src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAisncEj6pNGFLG5JPFGVfYistn-rOIcS4"></script> -->
+        <script>
 
         let map;
 
@@ -75,7 +83,7 @@
             });
         }
 
-        initMap();
+       
 
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -146,6 +154,7 @@
                 document.getElementById('lon').innerHTML = place.geometry.location.lng();
             });
         }
+        initMap();
 
 //         new google.maps.places.Autocomplete();
 
@@ -188,6 +197,6 @@
         //         // window.location.reload();
         //     });
     </script>
-</body>
+    </body>
 
 </html>
