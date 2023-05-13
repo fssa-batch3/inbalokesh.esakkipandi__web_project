@@ -2,511 +2,529 @@
 
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ONLY HOME FOOD</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="../../assets/css/header.css">
-        <link rel="stylesheet" href="../../assets/css/cart.css">
-        <link rel="stylesheet" href="../../assets/css/footer.css">
-        <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONLY HOME FOOD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/header.css">
+  <link rel="stylesheet" href="../../assets/css/cart.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css">
+  <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+</head>
 
-    <body>
+<body>
 
-        <div class="hord">
-            <h1>My Cart</h1>
+  <div class="hord">
+    <h1>My Cart</h1>
+  </div>
+
+  <section>
+    <div class="list">
+      <div class="lorder">
+        <img class="emptyCart" src="../../assets/Images/empty cart.jpg" alt="empty_cart" style="display: none;">
+        <h2 class="noItems" style="display: none;">No Items in your cart!!</h2>
+        <div>
+          <a href="../Menu/menu.html">
+            <input type="button" value="+ Add items" id="addItems">
+          </a>
         </div>
+      </div>
 
-        <section>
-            <div class="list">  
-                <div class="lorder">
+      <div class="summary" style="display: none;">
+        <h2>SUMMARY</h2>
+      </div>
+    </div>
+  </section>
 
-                    <div>
-                        <a href="../Menu/menu.html">
-                            <input type="button" value="+ Add items">
-                        </a>
-                    </div>
-                </div>
+  <!-- script -->
+  <!-- script for generating unique Id -->
+  <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
 
-                <div class="summary">
-                    <h2>SUMMARY</h2>
-                </div>
-            </div>
-        </section>
+  <script src="../../assets/javascript/header.js"></script>
 
-        <!-- script -->
-        <!-- script for generating unique Id -->
-        <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+  <script>
+    let div_obox;
+    let img;
+    let div_olist;
+    let h2;
+    let div_plist;
+    let div_linfo;
+    let div_rinfo;
+    let p;
+    let h4;
+    let div_dropbox;
+    let select;
+    let option;
+    let div_slist;
+    let div_add;
+    let img_minus;
+    let img_plus;
+    let h3;
+    let button;
 
-        <script src="../../assets/javascript/header.js"></script>
-        <script>
-        let div_obox;
-        let img;
-        let div_olist;
-        let h2;
-        let div_plist;
-        let div_linfo;
-        let div_rinfo;
-        let p;
-        let h4;
-        let div_dropbox;
-        let select;
-        let option;
-        let div_slist;
-        let div_add;
-        let img_minus;
-        let img_plus;
-        let h3;
-        let button;
+    // For summary//
 
-        // For summary//
+    let div_food_items;
+    let h4_name;
+    let p_rate;
+    let h4_lsum;
+    let p_rsum;
+    let div_sum3;
+    let div_dtime;
+    let p_time;
 
-        let div_food_items;
-        let h4_name;
-        let p_rate;
-        let h4_lsum;
-        let p_rsum;
-        let div_sum3;
-        let div_dtime;
-        let p_time;
+    //********Order food list********//
 
-        //********Order food list********//
+    // Read Products function //
 
-        // Read Products function //
+    const order_items = JSON.parse(localStorage.getItem("product_list"));
 
-        const order_items = JSON.parse(localStorage.getItem("product_list"));
+    let cart_id = JSON.parse(localStorage.getItem("cart_product"));
 
-        let cart_id = JSON.parse(localStorage.getItem("cart_product"));
+    const find_user = cart_id.filter((e) => e.user_id === userId);
 
-        const find_user = cart_id.filter((e) => e.user_id === userId);
+    const cart_list = order_items.filter((product) =>
+      find_user.some((uuid) => uuid.product_id === product.product_id)
+    );
 
-        const cart_list = order_items.filter((product) =>
-          find_user.some((uuid) => uuid.product_id === product.product_id)
-        );
+    if(cart_list === [] || cart_list.length === 0){
+      document.querySelector(".emptyCart").style.display= "";
+      document.querySelector(".noItems").style.display= "";
+      document.getElementById("addItems").style = "width: 27rem";    
+    }
+    else{
 
-        for (let i = 0; i < cart_list.length; i++) {
-  // <div class="obox">
-          div_obox = document.createElement("div");
-          div_obox.setAttribute("class", "obox");
-          console.log(div_obox);
+    for (let i = 0; i < cart_list.length; i++) {
+      document.querySelector(".summary").style.display= "";
+      // <div class="obox">
+      div_obox = document.createElement("div");
+      div_obox.setAttribute("class", "obox");
+      console.log(div_obox);
 
-          // <img class="food">
-          img = document.createElement("img");
-          img.setAttribute("src", cart_list[i].product_image);
-          img.setAttribute("alt", `${cart_list[i].product_name} image`);
-          img.setAttribute("class", "food");
-          div_obox.append(img);
+      // <img class="food">
+      img = document.createElement("img");
+      img.setAttribute("src", cart_list[i].product_image);
+      img.setAttribute("alt", `${cart_list[i].product_name} image`);
+      img.setAttribute("class", "food");
+      div_obox.append(img);
 
-          // <div class="olsit">
-          div_olist = document.createElement("div");
-          div_olist.setAttribute("class", "olist");
-          div_obox.append(div_olist);
+      // <div class="olsit">
+      div_olist = document.createElement("div");
+      div_olist.setAttribute("class", "olist");
+      div_obox.append(div_olist);
 
-          // <h2>
-          h2 = document.createElement("h2");
-          h2.innerText = cart_list[i].product_name;
-          div_olist.append(h2);
+      // <h2>
+      h2 = document.createElement("h2");
+      h2.innerText = cart_list[i].product_name;
+      div_olist.append(h2);
 
-          // <div class="plist">
-          div_plist = document.createElement("div");
-          div_plist.setAttribute("class", "plist");
-          div_olist.append(div_plist);
+      // <div class="plist">
+      div_plist = document.createElement("div");
+      div_plist.setAttribute("class", "plist");
+      div_olist.append(div_plist);
 
-          // <div class="linfo">
-          div_linfo = document.createElement("div");
-          div_linfo.setAttribute("class", "linfo");
-          div_plist.append(div_linfo);
+      // <div class="linfo">
+      div_linfo = document.createElement("div");
+      div_linfo.setAttribute("class", "linfo");
+      div_plist.append(div_linfo);
 
-          // <p>
-          p = document.createElement("p");
-          p.innerText = "Quantity:";
-          div_linfo.append(p);
+      // <p>
+      p = document.createElement("p");
+      p.innerText = "Quantity:";
+      div_linfo.append(p);
 
-          p = document.createElement("p");
-          p.innerText = "Price:";
-          div_linfo.append(p);
+      p = document.createElement("p");
+      p.innerText = "Price:";
+      div_linfo.append(p);
 
-          p = document.createElement("p");
-          p.innerText = "Delivery time:";
-          div_linfo.append(p);
+      p = document.createElement("p");
+      p.innerText = "Delivery time:";
+      div_linfo.append(p);
 
-          // <div class="rinfo">
-          div_rinfo = document.createElement("div");
-          div_rinfo.setAttribute("class", "rinfo");
-          div_plist.append(div_rinfo);
+      // <div class="rinfo">
+      div_rinfo = document.createElement("div");
+      div_rinfo.setAttribute("class", "rinfo");
+      div_plist.append(div_rinfo);
 
-          // <h4>
-          h4 = document.createElement("h4");
-          h4.innerText = `${cart_list[i].product_quantity} ${cart_list[i].quantity_type}`;
-          div_rinfo.append(h4);
+      // <h4>
+      h4 = document.createElement("h4");
+      h4.innerText = `${cart_list[i].product_quantity} ${cart_list[i].quantity_type}`;
+      div_rinfo.append(h4);
 
-          h4 = document.createElement("h4");
-          h4.setAttribute("class", "food_price");
-          h4.innerText = `Rs.${cart_list[i].product_price}`;
-          div_rinfo.append(h4);
+      h4 = document.createElement("h4");
+      h4.setAttribute("class", "food_price");
+      h4.innerText = `Rs.${cart_list[i].product_price}`;
+      div_rinfo.append(h4);
 
-          // <div class="dropbox">
-          div_dropbox = document.createElement("div");
-          div_dropbox.setAttribute("class", "dropbox");
-          div_rinfo.append(div_dropbox);
+      // <div class="dropbox">
+      div_dropbox = document.createElement("div");
+      div_dropbox.setAttribute("class", "dropbox");
+      div_rinfo.append(div_dropbox);
 
-          // find from product id
+      // find from product id
 
-          const find = find_user.find((e) => e.product_id === cart_list[i].product_id);
+      const find = find_user.find((e) => e.product_id === cart_list[i].product_id);
 
-          // <select class="select">
-          select = document.createElement("select");
-          select.setAttribute("class", "select");
-          select.setAttribute("required", "required");
-          select.setAttribute("name", "time");
-          select.setAttribute("id", "select_id");
-          div_dropbox.append(select);
+      // <select class="select">
+      select = document.createElement("select");
+      select.setAttribute("class", "select");
+      select.setAttribute("required", "required");
+      select.setAttribute("name", "time");
+      div_dropbox.append(select);
 
-          // <option>
-          option = document.createElement("option");
-          if (find.delivery_time === "") {
-            option.innerText = "-- Select the delivery time --";
-          } else {
-            option.innerText = find.delivery_time;
-          }
-          select.append(option);
+      // <option>
+      option = document.createElement("option");
+      if (find.delivery_time === "") {
+        option.innerText = "-- Select the delivery time --";
+      } else {
+        option.innerText = find.delivery_time;
+      }
+      select.append(option);
 
-          option = document.createElement("option");
-          option.setAttribute("class", "selected_option");
-          option.setAttribute("id", "option_1");
-          option.setAttribute("value", "Breakfast (7:30 AM to 9:00 AM)");
-          option.innerText = "Breakfast (7:30 AM to 9:00 AM)";
-          select.append(option);
+      option = document.createElement("option");
+      option.setAttribute("class", "selected_option");
+      option.setAttribute("id", "option_1");
+      option.setAttribute("value", "Breakfast (7:30 AM to 9:00 AM)");
+      option.innerText = "Breakfast (7:30 AM to 9:00 AM)";
+      select.append(option);
 
-          option = document.createElement("option");
-          option.setAttribute("class", "selected_option");
-          option.setAttribute("id", "option_2");
-          option.setAttribute("value", "Lunch (12:30 AM to 2:00 PM)");
-          option.innerText = "Lunch (12:30 AM to 2:00 PM)";
-          select.append(option);
+      option = document.createElement("option");
+      option.setAttribute("class", "selected_option");
+      option.setAttribute("id", "option_2");
+      option.setAttribute("value", "Lunch (12:30 AM to 2:00 PM)");
+      option.innerText = "Lunch (12:30 AM to 2:00 PM)";
+      select.append(option);
 
-          option = document.createElement("option");
-          option.setAttribute("class", "selected_option");
-          option.setAttribute("id", "option_3");
-          option.setAttribute("value", "Dinner (7:00 PM to 8:30 PM)");
-          option.innerText = "Dinner (7:00 PM to 8:30 PM)";
-          select.append(option);
+      option = document.createElement("option");
+      option.setAttribute("class", "selected_option");
+      option.setAttribute("id", "option_3");
+      option.setAttribute("value", "Dinner (7:00 PM to 8:30 PM)");
+      option.innerText = "Dinner (7:00 PM to 8:30 PM)";
+      select.append(option);
 
-  // <div class="slist">
-          div_slist = document.createElement("div");
-          div_slist.setAttribute("class", "slist");
-          div_olist.append(div_slist);
+      // <div class="slist">
+      div_slist = document.createElement("div");
+      div_slist.setAttribute("class", "slist");
+      div_olist.append(div_slist);
 
-          // <div class="add">
-          div_add = document.createElement("div");
-          div_add.setAttribute("class", "add");
-          div_slist.append(div_add);
+      // <div class="add">
+      div_add = document.createElement("div");
+      div_add.setAttribute("class", "add");
+      div_slist.append(div_add);
 
-          // <img class=minus>
-          img_minus = document.createElement("img");
-          img_minus.setAttribute("src", "../../assets/Images/icon-minus.svg");
-          img_minus.setAttribute("class", "minus");
-          img_minus.setAttribute("alt", "icon minus");
-          div_add.append(img_minus);
+      // <img class=minus>
+      img_minus = document.createElement("img");
+      img_minus.setAttribute("src", "../../assets/Images/icon-minus.svg");
+      img_minus.setAttribute("class", "minus");
+      img_minus.setAttribute("alt", "icon minus");
+      div_add.append(img_minus);
 
-          // <h3>
-          h3 = document.createElement("h3");
-          h3.setAttribute("class", "num");
-          h3.innerText = find.quantity_ordered;
-          div_add.append(h3);
+      // <h3>
+      h3 = document.createElement("h3");
+      h3.setAttribute("class", "num");
+      h3.innerText = find.quantity_ordered;
+      div_add.append(h3);
 
-          // <img class=minus>
-          img_plus = document.createElement("img");
-          img_plus.setAttribute("src", "../../assets/Images/icon-plus.svg");
-          img_plus.setAttribute("class", "plus");
-          img_plus.setAttribute("id", "plus_quantity");
-          img_plus.setAttribute("alt", "icon plus");
-          div_add.append(img_plus);
+      // <img class=minus>
+      img_plus = document.createElement("img");
+      img_plus.setAttribute("src", "../../assets/Images/icon-plus.svg");
+      img_plus.setAttribute("class", "plus");
+      img_plus.setAttribute("id", "plus_quantity");
+      img_plus.setAttribute("alt", "icon plus");
+      div_add.append(img_plus);
 
-          // <button>
-          button = document.createElement("button");
-          button.setAttribute("type", "button");
-          button.setAttribute("class", "remove_cart");
-          button.setAttribute("data-cart_id", cart_list[i].product_id);
-          button.innerText = "Remove";
-          div_slist.append(button);
+      // <button>
+      button = document.createElement("button");
+      button.setAttribute("type", "button");
+      button.setAttribute("class", "remove_cart");
+      button.setAttribute("data-cart_id", cart_list[i].product_id);
+      button.innerText = "Remove";
+      div_slist.append(button);
 
-          document.querySelector("div.lorder").prepend(div_obox);
+      document.querySelector("div.lorder").prepend(div_obox);
+    }
+
+    // Function for the remove duplicate option //
+    document.querySelectorAll("select").forEach((selectOption) => {
+      const options = [];
+      selectOption.querySelectorAll("option").forEach((eachOption) => {
+        if (options.includes(eachOption.value)) eachOption.remove();
+        else options.push(eachOption.value);
+      });
+    });
+
+    // ********Summary********//
+    // <div class="sumlist">
+    const div_sumlist = document.createElement("div");
+    div_sumlist.setAttribute("class", "sumlist");
+    console.log(div_sumlist);
+
+    for (let j = 0; j < cart_list.length; j++) {
+      const find = find_user.find((e) => e.product_id === cart_list[j].product_id);
+
+      // <div class="sum">
+      div_sum3 = document.createElement("div");
+      div_sum3.setAttribute("class", "sum");
+      div_sumlist.prepend(div_sum3);
+
+      // <h4 class="lsum">
+      h4_lsum = document.createElement("h4");
+      h4_lsum.setAttribute("class", "lsum");
+      h4_lsum.innerText = "Delivery time";
+      div_sum3.append(h4_lsum);
+
+      // <div class="dtime">
+      div_dtime = document.createElement("div");
+      div_dtime.setAttribute("class", "dtime");
+      div_sum3.append(div_dtime);
+
+      // <p class="time">
+      p_time = document.createElement("p");
+      p_time.setAttribute("class", "time");
+      p_time.innerText = `(Tomorrow)${find.delivery_time}`;
+      div_dtime.append(p_time);
+      // <div class="food_items">
+      div_food_items = document.createElement("div");
+      div_food_items.setAttribute("class", "food_items");
+      div_sumlist.prepend(div_food_items);
+
+      // <h4 class="name">
+      h4_name = document.createElement("h4");
+      h4_name.setAttribute("class", "name");
+      h4_name.innerText = `${cart_list[j].product_name}(${find.quantity_ordered})`;
+      div_food_items.append(h4_name);
+
+      // <p class="rate">
+      p_rate = document.createElement("p");
+      p_rate.setAttribute("class", "rate");
+      p_rate.innerText = `Rs. ${cart_list[j].product_price * find.quantity_ordered
+        }`;
+      div_food_items.append(p_rate);
+    }
+
+    // <div class="sum">
+    const div_sum4 = document.createElement("div");
+    div_sum4.setAttribute("class", "sum");
+    div_sumlist.append(div_sum4);
+
+    // <h4 class="lsum">
+    h4_lsum = document.createElement("h4");
+    h4_lsum.setAttribute("class", "lsum");
+    h4_lsum.innerText = "Delivery charge";
+    div_sum4.append(h4_lsum);
+
+    // <p class="rsum">
+    p_rsum = document.createElement("p");
+    p_rsum.setAttribute("class", "rsum");
+    p_rsum.innerText = "Free";
+    div_sum4.append(p_rsum);
+
+    // <div class="sum">
+    const div_sum5 = document.createElement("div");
+    div_sum5.setAttribute("id", "sum_total");
+    div_sum5.setAttribute("class", "sum");
+    div_sumlist.append(div_sum5);
+
+    const div_total = document.createElement("div");
+    div_total.setAttribute("class", "total");
+    div_sum5.append(div_total);
+
+    // <h4 class="lsum">
+    h4_lsum = document.createElement("h4");
+    h4_lsum.setAttribute("class", "lsum");
+    h4_lsum.innerText = "Total";
+    div_total.append(h4_lsum);
+
+    // Cart total function //
+
+    const totalPrice = cart_list;
+    let price = 0;
+    for (let i = 0; i < totalPrice.length; i++) {
+      const find = find_user.find((e) => e.product_id === cart_list[i].product_id);
+      price += parseInt(totalPrice[i].product_price * find.quantity_ordered);
+    }
+
+    // <p class="rsum">
+    p_rsum = document.createElement("p");
+    p_rsum.setAttribute("id", "total_cost");
+    p_rsum.setAttribute("class", "rsum");
+    p_rsum.innerText = `Rs. ${price}`;
+    div_total.append(p_rsum);
+
+    // <button class="place_order">
+    const button_place_order = document.createElement("button");
+    button_place_order.setAttribute("class", "place_order");
+    button_place_order.innerText = "Place Order";
+    div_sumlist.append(button_place_order);
+
+    document.querySelector("div.summary").append(div_sumlist);
+    
+    // Remove products button function//
+
+    const removeFood = document.querySelectorAll("button.remove_cart");
+    removeFood.forEach(function removeItem(remove_id) {
+      remove_id.addEventListener("click", function () {
+        const cartId = this.dataset.cart_id;
+
+        const remove_food = find_user.find((e) => e.product_id === cartId);
+
+        const indexOfItem = cart_id.indexOf(remove_food);
+        cart_id.splice(indexOfItem, 1);
+        const count = JSON.parse(localStorage.getItem("food_count"));
+        localStorage.setItem("food_count", count - 1);
+        localStorage.setItem("cart_product", JSON.stringify(cart_id));
+        window.location.reload();
+      });
+    });
+
+    // plus quantity function//
+
+    const plus = document.querySelectorAll(".plus");
+    plus.forEach(function addQuantity(find_quantity) {
+      find_quantity.addEventListener("click", function () {
+        const parent = this.parentNode;
+        // console.log(parent)
+        const num = parent.querySelector(".num");
+        let n = parseInt(num.textContent);
+        if (n < 10) {
+          n += 1;
+        }
+        num.textContent = n;
+        const parentBox = this.closest(".slist");
+        const idButton = parentBox
+          .querySelector(".remove_cart")
+          .getAttribute("data-cart_id");
+        function find_cart(e) {
+          return e.product_id === idButton;
+        }
+        const cart_quantity = find_user.find(find_cart);
+        if (cart_quantity) {
+          cart_quantity.quantity_ordered = n.toString();
+          localStorage.setItem("cart_product", JSON.stringify(cart_id));
+          window.location.reload();
+        }
+      });
+    });
+
+    const minus = document.querySelectorAll(".minus");
+    minus.forEach(function minusQuantity(find_quantity) {
+      find_quantity.addEventListener("click", function () {
+        const parent = this.parentNode;
+        const num = parent.querySelector(".num");
+        let n = parseInt(num.textContent);
+        if (n > 1) {
+          n -= 1;
+        }
+        num.textContent = n;
+
+        // getting the ID
+        const parentBox = this.closest(".slist");
+        const idButton = parentBox
+          .querySelector(".remove_cart")
+          .getAttribute("data-cart_id");
+        function find_cart(e) {
+          return e.product_id === idButton;
         }
 
-        // Function for the remove duplicate option //
-        document.querySelectorAll("select").forEach((selectOption) => {
-          const options = [];
-          selectOption.querySelectorAll("option").forEach((eachOption) => {
-            if (options.includes(eachOption.value)) eachOption.remove();
-            else options.push(eachOption.value);
-          });
-        });
+        const cart_quantity = find_user.find(find_cart);
+        if (cart_quantity) {
+          cart_quantity.quantity_ordered = n.toString();
+          localStorage.setItem("cart_product", JSON.stringify(cart_id));
+          window.location.reload();
+        }
+      });
+    });
 
-        // ********Summary********//
-        // <div class="sumlist">
-        const div_sumlist = document.createElement("div");
-        div_sumlist.setAttribute("class", "sumlist");
-        console.log(div_sumlist);
+    // Funtion to get the delivery time
+    const selected_time = document.querySelectorAll(".select");
+    selected_time.forEach(function selectTime(find_time) {
+      find_time.addEventListener("click", function () {
+        const parent_Box = this.closest(".olist");
 
-        for (let j = 0; j < cart_list.length; j++) {
-  const find = find_user.find((e) => e.product_id === cart_list[j].product_id);
-
-          // <div class="sum">
-          div_sum3 = document.createElement("div");
-          div_sum3.setAttribute("class", "sum");
-          div_sumlist.prepend(div_sum3);
-
-          // <h4 class="lsum">
-          h4_lsum = document.createElement("h4");
-          h4_lsum.setAttribute("class", "lsum");
-          h4_lsum.innerText = "Delivery time";
-          div_sum3.append(h4_lsum);
-
-          // <div class="dtime">
-          div_dtime = document.createElement("div");
-          div_dtime.setAttribute("class", "dtime");
-          div_sum3.append(div_dtime);
-
-          // <p class="time">
-          p_time = document.createElement("p");
-          p_time.setAttribute("class", "time");
-          p_time.innerText = `(Tomorrow)${find.delivery_time}`;
-          div_dtime.append(p_time);
-          // <div class="food_items">
-          div_food_items = document.createElement("div");
-          div_food_items.setAttribute("class", "food_items");
-          div_sumlist.prepend(div_food_items);
-
-          // <h4 class="name">
-          h4_name = document.createElement("h4");
-          h4_name.setAttribute("class", "name");
-          h4_name.innerText = `${cart_list[j].product_name}(${find.quantity_ordered})`;
-          div_food_items.append(h4_name);
-
-          // <p class="rate">
-          p_rate = document.createElement("p");
-          p_rate.setAttribute("class", "rate");
-          p_rate.innerText = `Rs. ${
-    cart_list[j].product_price * find.quantity_ordered
-  }`;
-          div_food_items.append(p_rate);
+        const id_button = parent_Box
+          .querySelector(".remove_cart")
+          .getAttribute("data-cart_id");
+        const value_time = parent_Box.querySelector(".select").value;
+        function find_cart(e) {
+          return e.product_id === id_button;
         }
 
-        // <div class="sum">
-        const div_sum4 = document.createElement("div");
-        div_sum4.setAttribute("class", "sum");
-        div_sumlist.append(div_sum4);
-
-        // <h4 class="lsum">
-        h4_lsum = document.createElement("h4");
-        h4_lsum.setAttribute("class", "lsum");
-        h4_lsum.innerText = "Delivery charge";
-        div_sum4.append(h4_lsum);
-
-        // <p class="rsum">
-        p_rsum = document.createElement("p");
-        p_rsum.setAttribute("class", "rsum");
-        p_rsum.innerText = "Free";
-        div_sum4.append(p_rsum);
-
-        // <div class="sum">
-        const div_sum5 = document.createElement("div");
-        div_sum5.setAttribute("id", "sum_total");
-        div_sum5.setAttribute("class", "sum");
-        div_sumlist.append(div_sum5);
-
-        const div_total = document.createElement("div");
-        div_total.setAttribute("class", "total");
-        div_sum5.append(div_total);
-
-        // <h4 class="lsum">
-        h4_lsum = document.createElement("h4");
-        h4_lsum.setAttribute("class", "lsum");
-        h4_lsum.innerText = "Total";
-        div_total.append(h4_lsum);
-
-        // Cart total function //
-
-        const totalPrice = cart_list;
-        let price = 0;
-        for (let i = 0; i < totalPrice.length; i++) {
-          const find = find_user.find((e) => e.product_id === cart_list[i].product_id);
-          price += parseInt(totalPrice[i].product_price * find.quantity_ordered);
+        const ordered_time = find_user.find(find_cart);
+        if (ordered_time) {
+          ordered_time.delivery_time = value_time;
+          localStorage.setItem("cart_product", JSON.stringify(cart_id));
         }
+      });
+    });
 
-        // <p class="rsum">
-        p_rsum = document.createElement("p");
-        p_rsum.setAttribute("id", "total_cost");
-        p_rsum.setAttribute("class", "rsum");
-        p_rsum.innerText = `Rs. ${price}`;
-        div_total.append(p_rsum);
+    // Order product function //
+    document.querySelector(".place_order").addEventListener("click", function () {
+      const user_list = JSON.parse(localStorage.getItem("user_list"));
 
-        // <button class="place_order">
-        const button_place_order = document.createElement("button");
-        button_place_order.setAttribute("class", "place_order");
-        button_place_order.innerText = "Place Order";
-        div_sumlist.append(button_place_order);
+      const current_user = user_list.find(
+        (user) => user.user_phonenumber === userId
+      );
 
-        document.querySelector("div.summary").append(div_sumlist);
+      const order_placed = JSON.parse(localStorage.getItem("order_list")) || [];
 
-        // Remove products button function//
+      const ordered_items = JSON.parse(localStorage.getItem("ordered_items")) || [];
 
-        const removeFood = document.querySelectorAll("button.remove_cart");
-        removeFood.forEach(function removeItem(remove_id) {
-          remove_id.addEventListener("click", function () {
-            const cartId = this.dataset.cart_id;
+      const d = new Date();
 
-            const remove_food = find_user.find((e) => e.product_id === cartId);
-        
-            const indexOfItem = cart_id.indexOf(remove_food);
-            cart_id.splice(indexOfItem, 1);
-            const count = JSON.parse(localStorage.getItem("food_count"));
-            localStorage.setItem("food_count", count - 1);
+      const total_price = document
+        .querySelector("#total_cost")
+        .innerText.replace("Rs. ", "");
+      let delTime = "";
+      for (const user of find_user) {
+        if (user.delivery_time !== "") {
+          delTime += 1;
+        } else {
+          delTime = "";
+          alert("Please select the delivery time and quantity");
+          break;
+        }
+      }
+      if (delTime !== "") {
+        if (find_user.length > 0) {
+          const orderId = uuidv4();
+          if (confirm("Confirm your order")) {
+            order_placed.push({
+              order_id: orderId,
+              ordered_time: d,
+              ordered_by: current_user.user_email,
+              userId:userId,
+              total_price: parseInt(total_price)
+            });
+
+            for (let i = 0; i < find_user.length; i++) {
+              let status = find_user[i];
+              status.order_status = "Not Delivered";
+              status.order_id = orderId;
+            }
+
+            ordered_items.push(...find_user)
+
+            cart_id = cart_id.filter((e) => e.user_id !== userId);
+
+            localStorage.setItem("order_list", JSON.stringify(order_placed));
+            localStorage.setItem("ordered_items", JSON.stringify(ordered_items));
             localStorage.setItem("cart_product", JSON.stringify(cart_id));
-            window.location.reload();
-          });
-        });
-
-        // plus quantity function//
-
-        const plus = document.querySelectorAll(".plus");
-        plus.forEach(function addQuantity(find_quantity) {
-          find_quantity.addEventListener("click", function () {
-            const parent = this.parentNode;
-            // console.log(parent)
-            const num = parent.querySelector(".num");
-            let n = parseInt(num.textContent);
-            if (n < 10) {
-              n += 1;
-            }
-            num.textContent = n;
-            const parentBox = this.closest(".slist");
-            const idButton = parentBox
-      .querySelector(".remove_cart")
-      .getAttribute("data-cart_id");
-            function find_cart(e) {
-              return e.product_id === idButton;
-            }
-            const cart_quantity = find_user.find(find_cart);
-            if (cart_quantity) {
-              cart_quantity.quantity_ordered = n.toString();
-              localStorage.setItem("cart_product", JSON.stringify(cart_id));
-              window.location.reload();
-            }
-  });
-        });
-
-        const minus = document.querySelectorAll(".minus");
-        minus.forEach(function minusQuantity(find_quantity) {
-          find_quantity.addEventListener("click", function () {
-            const parent = this.parentNode;
-            const num = parent.querySelector(".num");
-            let n = parseInt(num.textContent);
-            if (n > 1) {
-              n -= 1;
-            }
-            num.textContent = n;
-
-            // getting the ID
-            const parentBox = this.closest(".slist");
-            const idButton = parentBox
-      .querySelector(".remove_cart")
-      .getAttribute("data-cart_id");
-            function find_cart(e) {
-              return e.product_id === idButton;
-            }
-
-            const cart_quantity = find_user.find(find_cart);
-            if (cart_quantity) {
-              cart_quantity.quantity_ordered = n.toString();
-              localStorage.setItem("cart_product", JSON.stringify(cart_id));
-              window.location.reload();
-            }
-          });
-        });
-
-        // Funtion to get the delivery time
-        const selected_time = document.querySelectorAll(".select");
-        selected_time.forEach(function selectTime(find_time) {
-          find_time.addEventListener("click", function () {
-            const parent_Box = this.closest(".olist");
-
-            const id_button = parent_Box
-      .querySelector(".remove_cart")
-      .getAttribute("data-cart_id");
-            const value_time = parent_Box.querySelector(".select").value;
-            function find_cart(e) {
-              return e.product_id === id_button;
-            }
-
-            const ordered_time = find_user.find(find_cart);
-            if (ordered_time) {
-              ordered_time.delivery_time = value_time;
-              localStorage.setItem("cart_product", JSON.stringify(cart_id));
-            }
-          });
-        });
-
-        // Order product function //
-        document.querySelector(".place_order").addEventListener("click", function () {
-          const user_list = JSON.parse(localStorage.getItem("user_list"));
-
-          const current_user = user_list.find(
-    (user) => user.user_phonenumber === userId
-  );
-
-          const order_placed = JSON.parse(localStorage.getItem("order_list")) || [];
-
-          const d = new Date();
-
-          const total_price = document
-    .querySelector("#total_cost")
-    .innerText.replace("Rs. ", "");
-          let delTime = "";
-          for (const user of find_user) {
-            if (user.delivery_time !== "") {
-              delTime += 1;
-            } else {
-              delTime = "";
-              alert("Please select the delivery time and quantity");
-              break;
-            }
+            localStorage.setItem("food_count", 0);
+            window.location.href = "../Cart/placeorder.html";
           }
-          if (delTime !== "") {
-            if (find_user.length > 0) {
-              const orderId = uuidv4();
-              if (confirm("Confirm your order")) {
-                order_placed.push({
-                  order_id: orderId,
-                  ordered_time: d,
-                  ordered_by: current_user.user_email,
-                  ordered_items: find_user,
-                  total_price: parseInt(total_price),
-                  order_status: "Not Delivered",
-                });
-
-                cart_id = cart_id.filter((e) => e.user_id !== userId);
-                console.log(cart_id);
-
-                localStorage.setItem("order_list", JSON.stringify(order_placed));
-                localStorage.setItem("cart_product", JSON.stringify(cart_id));
-                localStorage.setItem("food_count", 0);
-                window.location.href = "../Cart/placeorder.html";
-              }
-            } else {
-              alert("You have not added any products to the cart");
-              window.location.href = "../Menu/menu.html";
-            }
-          }
-        });
-    </script>
-        <!-- script for footer -->
-        <script src="../../assets/javascript/footer.js"></script>
-    </body>
+        } else {
+          alert("You have not added any products to the cart");
+          window.location.href = "../Menu/menu.html";
+        }
+      }
+    });
+  }         
+  </script>
+  <!-- script for footer -->
+  <script src="../../assets/javascript/footer.js"></script>
+</body>
 
 </html>

@@ -2,29 +2,29 @@
 
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ONLY HOME FOOD</title>
-        <link rel="stylesheet" href="../../assets/css/header.css">
-        <link rel="stylesheet" href="../../assets/css/footer.css">
-        <link rel="stylesheet" href="../../assets/css/order history.css">
-        <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONLY HOME FOOD</title>
+  <link rel="stylesheet" href="../../assets/css/header.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css">
+  <link rel="stylesheet" href="../../assets/css/order history.css">
+  <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+</head>
 
-    <body>
+<body>
 
-        <section class="order_details">
+  <section class="order_details">
 
-        </section>
+  </section>
 
-        <!-- header script -->
-        <script src="../../assets/javascript/header.js"></script>
+  <!-- header script -->
+  <script src="../../assets/javascript/header.js"></script>
 
-        <!-- footer script -->
-        <script src="../../assets/javascript/footer.js"></script>
-        <script>
+  <!-- footer script -->
+  <script src="../../assets/javascript/footer.js"></script>
+  <script>
     let p;
     let div_order;
     let image;
@@ -39,24 +39,24 @@
     const order_history = JSON.parse(localStorage.getItem("order_list"));
 
     const url = window.location.search;
-    // console.log(url)
     const urlParams = new URLSearchParams(url);
-    // console.log(urlParams)
-
     const order_id = urlParams.get("order_id");
     console.log(order_id);
 
     const product_list = JSON.parse(localStorage.getItem("product_list"));
     // console.log(product_list)
 
+    const orderItem = JSON.parse(localStorage.getItem("ordered_items"));
+
     const orders = order_history.find((e) => e.order_id === order_id);
     console.log(orders);
 
-    const items = orders.ordered_items;
+    const items = orderItem.filter((e) => e.order_id === orders.order_id);
+    console.log(items)
 
     const foodData = product_list.filter((product) =>
       items.some((id) => id.product_id === product.product_id)
-);
+    );
     // console.log(foodData)
 
     // <div class="popuup">
@@ -86,6 +86,10 @@
 
     p = document.createElement("p");
     p.innerText = "Price";
+    div_phead.append(p);
+
+    p = document.createElement("p");
+    p.innerText = "Delivery";
     div_phead.append(p);
 
     // Order list //
@@ -119,9 +123,17 @@
       p.innerText = items[i].quantity_ordered;
       div_order.append(p);
 
+
       p = document.createElement("p");
+      p.setAttribute("class", "cost");
       p.innerText = `Rs. ${foodData[i].product_price * items[i].quantity_ordered}`;
       div_order.append(p);
+
+      p = document.createElement("p");
+      p.setAttribute("class", "deliveryStatus");
+      p.innerText = "(" + items[i].delivery_time[0] + ") " + items[i].order_status;
+      div_order.append(p);
+
     }
 
     // <div class="dpara">
@@ -157,39 +169,38 @@
     div_dpara.append(div_spara);
 
     // Date format to show //
-
     const d = new Date(orders.ordered_time);
     const weekday = new Array("Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat");
     const dayOfWeek = weekday[d.getDay()];
     const domEnder = (function () {
-  let a = d;
-  if (/1/.test(parseInt(`${a}`.charAt(0)))) return "th";
-  a = parseInt(`${a}`.charAt(1));
-  return a === 1 ? "st" : a === 2 ? "nd" : a === 3 ? "rd" : "th";
-})();
+      let a = d;
+      if (/1/.test(parseInt(`${a}`.charAt(0)))) return "th";
+      a = parseInt(`${a}`.charAt(1));
+      return a === 1 ? "st" : a === 2 ? "nd" : a === 3 ? "rd" : "th";
+    })();
     const dayOfMonth = (d.getDate() < 10 ? "0" : "") + d.getDate() + domEnder;
     const months = new Array(
-  "January",
-  "February",
-  "Mar",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-);
+      "January",
+      "February",
+      "Mar",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    );
     const curMonth = months[d.getMonth()];
     const curYear = d.getFullYear();
     const curHour =
-  d.getHours() > 12
-    ? d.getHours() - 12
-    : d.getHours() < 10
-        ? `0${d.getHours()}`
-    : d.getHours();
+      d.getHours() > 12
+        ? d.getHours() - 12
+        : d.getHours() < 10
+          ? `0${d.getHours()}`
+          : d.getHours();
     const curMinute = d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes();
     const curSeconds = d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds();
     const curMeridiem = d.getHours() >= 12 ? "PM" : "AM";
@@ -201,7 +212,7 @@
     div_spara.append(p);
 
     p = document.createElement("p");
-    p.innerText = orders.order_status;
+    p.innerText = "Not delivered";
     div_spara.append(p);
 
     p = document.createElement("p");
@@ -216,7 +227,7 @@
     p = document.createElement("p");
     p.setAttribute("class", "impnote");
     p.innerText =
-  "Note: You can only cancel your order on the same day of the placement.";
+      "Note: You can only cancel your order on the same day of the placement.";
     div_popup.append(p);
 
     // <div class="cbut">
@@ -228,14 +239,14 @@
     const startTime = d;
 
     const endTime = new Date(
-  startTime.getFullYear(),
-  startTime.getMonth(),
-  startTime.getDate() + 1,
-  0,
-  0,
-  0,
-  0
-);
+      startTime.getFullYear(),
+      startTime.getMonth(),
+      startTime.getDate() + 1,
+      0,
+      0,
+      0,
+      0
+    );
     const now = new Date();
 
     if (endTime > now) {
@@ -275,10 +286,11 @@
     }
 
     function cancel() {
-      if (confirm("Are you sure to cancel the order")) {
-        const indexOfOrder = order_history.indexOf(orders);
-        order_history[indexOfOrder].order_status = "Cancelled";
-        localStorage.setItem("order_list", JSON.stringify(order_history));
+      if (confirm("This order will be cancelled completely")) {
+        for (let i = 0; i < items.length; i++) {
+          items[i].order_status = "Cancelled";
+        }
+        localStorage.setItem("ordered_items", JSON.stringify(orderItem));
         window.location.href = "../Login and Order/Profile.html";
       }
     }
@@ -293,6 +305,6 @@
       window.location.href = "../Cart/cart.html";
     }
   </script>
-    </body>
+</body>
 
 </html>

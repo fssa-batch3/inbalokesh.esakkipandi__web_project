@@ -2,273 +2,280 @@
 
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ONLY HOME FOOD</title>
-        <link rel="stylesheet" href="../../assets/css/profile.css">
-        <link rel="stylesheet" href="../../assets/css/header.css">
-        <link rel="stylesheet" href="../../assets/css/footer.css">
-        <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONLY HOME FOOD</title>
+  <link rel="stylesheet" href="../../assets/css/profile.css">
+  <link rel="stylesheet" href="../../assets/css/header.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css">
+  <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+</head>
 
-    <body>
+<body>
 
-        <section>
-            <div class="side">
-                <div class="pro">
-                    <h1>Profile</h1>
-                    <div class="pbox">
-                        <div class="imgb">
-                            <img src="../../assets/Images/img.jpg" alt="Profile image" height="250px" width="250px">
-                            <div class="button_row">
-                                <button type="button" onclick="btn()">Edit profile</button>
-                                <button type="button" id="delete_user">Delete</button>
-                                <button type="submit" id="logout_user">Logout</button>
-                            </div>
-
-                        </div>
-                        <div>
-                            <div class="sep">
-                                <label for="name">Name</label>
-                                <input type="text" id="user_name" placeholder="Your Name" disabled>
-                            </div>
-                            <div class="sep">
-                                <label for="num">Mobile No</label>
-                                <input type="tel" id="user_phonenumber" placeholder="Mobile No" disabled>
-                            </div>
-                            <div class="sep">
-                                <label for="email">Email</label>
-                                <input type="email" id="user_email" placeholder="Email" disabled>
-                            </div>
-                            <div class="sep">
-                                <label class="addr">Address</label>
-                                <textarea type="text" id="user_address" placeholder="Your address" disabled></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <section>
+    <div class="side">
+      <div class="pro">
+        <h1>Profile</h1>
+        <div class="pbox">
+          <div class="imgb">
+            <img src="../../assets/Images/img.jpg" alt="Profile image" height="250px" width="250px">
+            <div class="button_row">
+              <button type="button" onclick="btn()">Edit profile</button>
+              <button type="button" id="delete_user">Delete</button>
+              <button type="submit" id="logout_user">Logout</button>
             </div>
 
-            <div class="history">
-                <h2>
-                    My Orders
-                </h2>
-                <div class="overflowbox">
-                </div>
+          </div>
+          <div>
+            <div class="sep">
+              <label>Name</label>
+              <input type="text" id="user_name" placeholder="Your Name" disabled>
             </div>
-        </section>
+            <div class="sep">
+              <label>Mobile No</label>
+              <input type="tel" id="user_phonenumber" placeholder="Mobile No" disabled>
+            </div>
+            <div class="sep">
+              <label>Email</label>
+              <input type="email" id="user_email" placeholder="Email" disabled>
+            </div>
+            <div class="sep">
+              <label class="addr">Address</label>
+              <textarea type="text" id="user_address" placeholder="Your address" disabled></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <!-- header script -->
-        <script src="../../assets/javascript/header.js"></script>
+    <div class="history">
+      <h2>
+        My Orders
+      </h2>
+      <div class="overflowbox">
+      </div>
+    </div>
+  </section>
 
-        <!-- footer script -->
-        <script src="../../assets/javascript/footer.js"></script>
+  <!-- header script -->
+  <script src="../../assets/javascript/header.js"></script>
 
-        <script>
-          function btn() {
-  window.location.href = "./Edit profile.html";
-}
+  <!-- footer script -->
+  <script src="../../assets/javascript/footer.js"></script>
 
-const user_list = JSON.parse(localStorage.getItem("user_list"));
-
-function login_data(e) {
-  return e.user_phonenumber === userId;
-}
-
-const user_data = user_list.find(login_data);
-
-document.getElementById("user_name").value = user_data.user_name;
-document.getElementById("user_phonenumber").value = user_data.user_phonenumber;
-document.getElementById("user_email").value = user_data.user_email;
-document.getElementById("user_address").value = user_data.user_address;
-
-const orderList = JSON.parse(localStorage.getItem("order_list")) || [];
-
-const product_list = JSON.parse(localStorage.getItem("product_list"));
-
-const orderedItems = orderList.filter(
-  (e) => e.ordered_items[0].user_id === userId
-);
-
-if (orderList == null || orderedItems.length === 0) {
-  document.querySelector(".history").setAttribute("style", "display:none");
-} else {
-  // Order history loop//
-  let div_obox;
-  let div_item;
-  let div_ihead;
-  let h3;
-  let h4;
-  let p;
-  let div_order;
-  let div_item_list;
-  let div_total;
-  let div_ordered_by;
-  let div_view_button;
-  let a_view;
-  let button;
-
-  for (let i = 0; i < orderedItems.length; i++) {
-    // <div class="obox">
-    div_obox = document.createElement("div");
-    div_obox.setAttribute("class", "obox");
-    console.log(div_obox);
-
-    // <div class="item">
-    div_item = document.createElement("div");
-    div_item.setAttribute("class", "item");
-    div_obox.append(div_item);
-
-    // <div class="ihead">
-    div_ihead = document.createElement("div");
-    div_ihead.setAttribute("class", "ihead");
-    div_item.append(div_ihead);
-
-    // <h3>
-    h3 = document.createElement("h3");
-    h3.innerText = `Order:#${i + 1}`;
-    div_ihead.append(h3);
-
-    // <h4>
-    h4 = document.createElement("h4");
-    if (orderedItems[i].order_status === "Not Delivered") {
-      h4.setAttribute("class", "ndel");
-    } else if (orderedItems[i].order_status === "Delivered") {
-      h4.setAttribute("class", "del");
-    } else if (orderedItems[i].order_status === "Cancelled") {
-      h4.setAttribute("class", "cancel");
-    }
-    h4.innerText = orderedItems[i].order_status;
-    div_ihead.append(h4);
-
-    // <h3>
-    h3 = document.createElement("h3");
-    h3.innerText = `Items` + `(${orderedItems[i].ordered_items.length})`;
-    div_item.append(h3);
-
-    // Date format to show //
-
-    const d = new Date(orderedItems[i].ordered_time);
-    const weekday = new Array("Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat");
-    const dayOfWeek = weekday[d.getDay()];
-    const domEnder = (function () {
-      let a = d;
-      if (/1/.test(parseInt(`${a}`.charAt(0)))) return "th";
-      a = parseInt(`${a}`.charAt(1));
-      return a === 1 ? "st" : a === 2 ? "nd" : a === 3 ? "rd" : "th";
-    })();
-    const dayOfMonth = (d.getDate() < 10 ? "0" : "") + d.getDate() + domEnder;
-    const months = new Array(
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    );
-    const curMonth = months[d.getMonth()];
-    const curYear = d.getFullYear();
-    const curHour =
-      d.getHours() > 12
-        ? d.getHours() - 12
-        : d.getHours() < 10
-        ? `0${d.getHours()}`
-        : d.getHours();
-    const curMinute =
-      d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes();
-    const curSeconds =
-      d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds();
-    const curMeridiem = d.getHours() >= 12 ? "PM" : "AM";
-    const orderTime = `${dayOfMonth} ${curMonth} ${curYear},${dayOfWeek} ${curHour}:${curMinute}:${curSeconds} ${curMeridiem}`;
-
-    // <p>
-    p = document.createElement("p");
-    p.innerText = orderTime;
-    div_item.append(p);
-
-    // <div class="order">
-    div_order = document.createElement("div");
-    div_order.setAttribute("class", "order");
-    div_obox.append(div_order);
-
-    // <div class="item_list">
-    div_item_list = document.createElement("div");
-    div_item_list.setAttribute("class", "item_list");
-    div_order.append(div_item_list);
-
-    const items = orderedItems[i].ordered_items;
-
-    // Loop for food
-    for (const item of items) {
-      // function for filtering products
-      const foodItems = product_list.filter(
-        (product) => item.product_id === product.product_id
-      );
-
-      // create <h4> element for food list
-      const h4 = document.createElement("h4");
-      h4.innerText = `${foodItems[0].product_name} (${item.quantity_ordered})`;
-      div_item_list.append(h4);
+  <script>
+    function btn() {
+      window.location.href = "./Edit profile.html";
     }
 
-    // <div class="total">
-    div_total = document.createElement("div");
-    div_total.setAttribute("class", "total");
-    div_order.append(div_total);
+    const user_list = JSON.parse(localStorage.getItem("user_list"));
 
-    // <h3> Total//
-    h3 = document.createElement("h3");
-    h3.innerText = "Total";
-    div_total.append(h3);
+    function login_data(e) {
+      return e.user_phonenumber === userId;
+    }
 
-    // <h4> price//
-    h4 = document.createElement("h4");
-    h4.innerText = `Rs. ${orderedItems[i].total_price}`;
-    div_total.append(h4);
+    const user_data = user_list.find(login_data);
 
-    // <div class="ordered_by">
-    div_ordered_by = document.createElement("div");
-    div_ordered_by.setAttribute("class", "order_by");
-    div_order.append(div_ordered_by);
+    document.getElementById("user_name").value = user_data.user_name;
+    document.getElementById("user_phonenumber").value = user_data.user_phonenumber;
+    document.getElementById("user_email").value = user_data.user_email;
+    document.getElementById("user_address").value = user_data.user_address;
 
-    // <h4> email//
-    h4 = document.createElement("h4");
-    h4.innerText = `Ordered by: ${orderedItems[i].ordered_by}`;
-    div_ordered_by.append(h4);
+    const orderList = JSON.parse(localStorage.getItem("order_list")) || [];
 
-    // <div class="view_button">
-    div_view_button = document.createElement("div");
-    div_view_button.setAttribute("class", "view_button");
-    div_order.append(div_view_button);
+    const orderItem = JSON.parse(localStorage.getItem("ordered_items")) || [];
 
-    // <a class = view>
-    a_view = document.createElement("a");
-    a_view.setAttribute("class", "view");
-    a_view.setAttribute(
-      "href",
-      `./orderhistory.html?order_id=${orderedItems[i].order_id}`
+    const product_list = JSON.parse(localStorage.getItem("product_list"));
+
+    const orderedItems = orderList.filter(
+      (e) => e.userId === userId
     );
-    div_view_button.append(a_view);
 
-    // <button>
-    button = document.createElement("button");
-    button.setAttribute("type", "button");
-    button.innerText = "View details";
-    a_view.append(button);
 
-    document.querySelector("div.overflowbox").prepend(div_obox);
-  }
-}
+    if (orderList === null || orderedItems.length === 0) {
+      document.querySelector(".history").setAttribute("style", "display:none");
+    } else {
+      // Order history loop//
+      let div_obox;
+      let div_item;
+      let div_ihead;
+      let h3;
+      let h4;
+      let p;
+      let div_order;
+      let div_item_list;
+      let div_total;
+      let div_ordered_by;
+      let div_view_button;
+      let a_view;
+      let button;
+
+      for (let i = 0; i < orderedItems.length; i++) {
+        // <div class="obox">
+        div_obox = document.createElement("div");
+        div_obox.setAttribute("class", "obox");
+        // console.log(div_obox);
+
+        // <div class="item">
+        div_item = document.createElement("div");
+        div_item.setAttribute("class", "item");
+        div_obox.append(div_item);
+
+        // <div class="ihead">
+        div_ihead = document.createElement("div");
+        div_ihead.setAttribute("class", "ihead");
+        div_item.append(div_ihead);
+
+        // <h3>
+        h3 = document.createElement("h3");
+        h3.innerText = `Order:#${i + 1}`;
+        div_ihead.append(h3);
+
+        // // <h4>
+        // h4 = document.createElement("h4");
+        // if (orderedItems[i].order_status === "Not Delivered") {
+        //   h4.setAttribute("class", "ndel");
+        // } else if (orderedItems[i].order_status === "Delivered") {
+        //   h4.setAttribute("class", "del");
+        // } else if (orderedItems[i].order_status === "Cancelled") {
+        //   h4.setAttribute("class", "cancel");
+        // }
+        // h4.innerText = orderedItems[i].order_status;
+        // div_ihead.append(h4);
+
+        const itemsCart = orderItem.filter((e) => orderedItems[i].order_id === e.order_id);
+
+        console.log(itemsCart)
+
+        // <h3>
+        h3 = document.createElement("h3");
+        h3.innerText = `Items` + `(${itemsCart.length})`;
+        div_item.append(h3);
+
+        // Date format to show //
+
+        const d = new Date(orderedItems[i].ordered_time);
+        const weekday = new Array("Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat");
+        const dayOfWeek = weekday[d.getDay()];
+        const domEnder = (function () {
+          let a = d;
+          if (/1/.test(parseInt(`${a}`.charAt(0)))) return "th";
+          a = parseInt(`${a}`.charAt(1));
+          return a === 1 ? "st" : a === 2 ? "nd" : a === 3 ? "rd" : "th";
+        })();
+        const dayOfMonth = (d.getDate() < 10 ? "0" : "") + d.getDate() + domEnder;
+        const months = new Array(
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        );
+        const curMonth = months[d.getMonth()];
+        const curYear = d.getFullYear();
+        const curHour =
+          d.getHours() > 12
+            ? d.getHours() - 12
+            : d.getHours() < 10
+              ? `0${d.getHours()}`
+              : d.getHours();
+        const curMinute =
+          d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes();
+        const curSeconds =
+          d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds();
+        const curMeridiem = d.getHours() >= 12 ? "PM" : "AM";
+        const orderTime = `${dayOfMonth} ${curMonth} ${curYear},${dayOfWeek} ${curHour}:${curMinute}:${curSeconds} ${curMeridiem}`;
+
+        // <p>
+        p = document.createElement("p");
+        p.innerText = orderTime;
+        div_item.append(p);
+
+        // <div class="order">
+        div_order = document.createElement("div");
+        div_order.setAttribute("class", "order");
+        div_obox.append(div_order);
+
+        // <div class="item_list">
+        div_item_list = document.createElement("div");
+        div_item_list.setAttribute("class", "item_list");
+        div_order.append(div_item_list);
+
+        const items = itemsCart;
+
+        // Loop for food
+        for (const item of items) {
+          // function for filtering products
+          const foodItems = product_list.filter(
+            (product) => item.product_id === product.product_id
+          );
+
+          // create <h4> element for food list
+          const h4 = document.createElement("h4");
+          h4.innerText = `${foodItems[0].product_name} (${item.quantity_ordered})`;
+          div_item_list.append(h4);
+        }
+
+        // <div class="total">
+        div_total = document.createElement("div");
+        div_total.setAttribute("class", "total");
+        div_order.append(div_total);
+
+        // <h3> Total//
+        h3 = document.createElement("h3");
+        h3.innerText = "Total";
+        div_total.append(h3);
+
+        // <h4> price//
+        h4 = document.createElement("h4");
+        h4.innerText = `Rs. ${orderedItems[i].total_price}`;
+        div_total.append(h4);
+
+        // <div class="ordered_by">
+        div_ordered_by = document.createElement("div");
+        div_ordered_by.setAttribute("class", "order_by");
+        div_order.append(div_ordered_by);
+
+        // <h4> email//
+        h4 = document.createElement("h4");
+        h4.innerText = `Ordered by: ${orderedItems[i].ordered_by}`;
+        div_ordered_by.append(h4);
+
+        // <div class="view_button">
+        div_view_button = document.createElement("div");
+        div_view_button.setAttribute("class", "view_button");
+        div_order.append(div_view_button);
+
+        // <a class = view>
+        a_view = document.createElement("a");
+        a_view.setAttribute("class", "view");
+        a_view.setAttribute(
+          "href",
+          `./orderhistory.html?order_id=${orderedItems[i].order_id}`
+        );
+        div_view_button.append(a_view);
+
+        // <button>
+        button = document.createElement("button");
+        button.setAttribute("type", "button");
+        button.innerText = "View details";
+        a_view.append(button);
+
+        document.querySelector("div.overflowbox").prepend(div_obox);
+      }
+    }
   </script>
 
-    </body>
+</body>
 
 </html>

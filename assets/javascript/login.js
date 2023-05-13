@@ -1,17 +1,9 @@
 function signUp(e) {
   e.preventDefault();
-  let user_name = document
-    .getElementById("user_name")
-    .value.trim()
-    .split(/\s+/g)
-    .join(" ");
+  let user_name = document.getElementById("user_name").value.trim().split(/\s+/g).join(" ");
   let user_phonenumber = document.getElementById("user_phonenumber").value;
   let user_email = document.getElementById("user_email").value;
-  let user_address = document
-    .getElementById("user_address")
-    .value.trim()
-    .split(/\s+/g)
-    .join(" ");
+  let user_address = document.getElementById("user_address").value.trim().split(/\s+/g).join(" ");
   let user_password = document.getElementById("user_password").value;
   let confirm_password = document.getElementById("confirm_password").value;
 
@@ -52,7 +44,7 @@ function signUp(e) {
     JSON.parse(localStorage.getItem("user_list")).some(
       (data) =>
         data.user_phonenumber.toLowerCase() ===
-          user_phonenumber.toLowerCase() ||
+        user_phonenumber.toLowerCase() ||
         data.user_email.toLowerCase() === user_email.toLowerCase()
     );
 

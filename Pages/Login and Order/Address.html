@@ -1,202 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Only home food</title>
-        <link rel="stylesheet" href="../../assets/css/login.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Only home food</title>
+    <link rel="stylesheet" href="../../assets/css/login.css">
+</head>
 
-    </head>
+<body>
 
-    <body>
-
-        <!-- <div class="new">
-            <div class="addressBox">
+    <div class="new">
+        <div class="addressBox">
             <a href="../../index.html">
-            <img src="../../assets/Images/LOGO.png" alt="logo">
+                <img src="../../assets/Images/LOGO.png" alt="logo">
             </a>
-            <h1>Address</h1> -->
-        <!-- <form role="form" name="address" id="addressForm"> -->
-        <div class="container">
-            <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+            <h1>Address</h1>
+            <form role="form" name="address" id="address-form" method="get" autocomplete="off">
 
-            <div id="map"></div>
+                <label for="mobile_number">Mobile No</label>
+                <input type="tel" id="mobile_number" placeholder="Mobile No" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
+                    title="Write your 10-digit mobile number." required>
+                <label for="addressSearch">Address</label>
+                <input type="text" id="addressSearch" placeholder="Enter a location" required autocomplete="off">
+                <label for="house_number">House no, Flat no, Street name</label>
+                <input type="text" class="houseNumber" id="house_number" placeholder="No.7, C.L.V nagar" required />
+                <label for="town_name">Town or Village Name</label>
+                <input type="text" id="town_name" placeholder="Kanathur" required>
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="Chennai" required>
+                <label for="pinCode">Pin Code</label>
+                <input type="number" id="pinCode" name="pincode" min="600001" max="643253"
+                    pattern="[6]{1}[0-4]{2}[0-9]{4}" maxlength="6" placeholder="603112"
+                    title="Sorry! We are currently available only in Tamil Nadu" required />
+                <label for="state">State</label>
+                <input type="text" id="state" placeholder="TN" pattern="TN"
+                    title="Sorry! We are currently available only in Tamil Nadu" required />
+                <div class="default">
+                    <input type="checkbox" id="checkBox">
+                    <label for="checkBox">Set as default address</label>
+                </div>
 
-            <ul class="geo-data">
-                <li>
-                    Full Address: <span id="location"></span>
-                </li>
-                <li>
-                    Postal Code: <span id="postal_code"></span>
-                </li>
-                <li>
-                    Country: <span id="country"></span>
-                </li>
-                <li>
-                    Latitude: <span id="lat"></span>
-                </li>
-                <li>
-                    Longitude: <span id="lon"></span>
-                </li>
-            </ul>
+                <button type="submit" class="btn-secondary">Add address
+                </button>
+            </form>
         </div>
-        <!-- <label>Mobile No</label>
-            <input type="tel" id="mobile_number" placeholder="Mobile No" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
-            title="Write your 10-digit mobile number." required>
-            <label>House no, Flat no</label>
-            <input type="text" class="houseNumber" id="house_number" placeholder="No.7" required>
-            <label>Street Name</label>
-            <input type="text" class="streetName" id="street_name" placeholder="C.L.V nagar" required>
-            <label>Town or Village Name</label>
-            <input type="text" id="town_name" placeholder="Perungudi" required>
-            <label>Disctrict/City</label>
-            <input type="text" id="city" placeholder="Kanchipuram" required>
-            <label>Pin Code</label>
-            <input type="number" id="pinCode" name="pincode" min="600001" max="643253"
-            pattern="[6]{1}[0-4]{2}[0-9]{4}" maxlength="6" placeholder="600096" required />
-            <div class="default">
-            <input type="checkbox" id="checkBox">
-            <label for="checkBox">Set as default address</label>
-            </div> -->
-        <!-- </div>
-            <button type="submit" class="btn-secondary">Add address
-            </button>
-            </form> -->
-        <!-- </div>
-            </div> -->
+    </div>
 
-        <!-- <script
-            src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAisncEj6pNGFLG5JPFGVfYistn-rOIcS4"></script> -->
-        <script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGhGk3DTCkjF1EUxpMm5ypFoQ-ecrS2gY&callback=initAutocomplete&libraries=places&v=weekly"
+        defer></script>
+    <script src="../../assets/javascript/address.js"></script>
+    <script>
 
-        let map;
+        document
+            .querySelector("#address-form")
+            .addEventListener("submit", function addressForm(e) {
+                e.preventDefault();
+                let mobile_number = document.getElementById("mobile_number").value;
+                let house_number = document.getElementById("house_number").value.trim().split(/\s+/g).join(" ");
+                let town_name = document.getElementById("town_name").value.trim().split(/\s+/g).join(" ");
+                let city = document.getElementById("city").value.trim().split(/\s+/g).join(" ");
+                let pinCode = document.getElementById("pinCode").value;
+                let state = document.getElementById("state").value.trim().split(/\s+/g).join(" ");
+                let status = document.getElementById("checkBox").checked
 
-        async function initMap() {
-            //@ts-ignore
-            const { Map } = await google.maps.importLibrary("maps");
-
-            map = new Map(document.getElementById("map"), {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 8,
-            });
-        }
-
-       
-
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: -33.8688, lng: 151.2195 },
-                zoom: 13
-            });
-            var input = document.getElementById('searchInput');
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo('bounds', map);
-
-            var infowindow = new google.maps.InfoWindow();
-            var marker = new google.maps.Marker({
-                map: map,
-                anchorPoint: new google.maps.Point(0, -29)
-            });
-
-            autocomplete.addListener('place_changed', function () {
-                infowindow.close();
-                marker.setVisible(false);
-                var place = autocomplete.getPlace();
-                if (!place.geometry) {
-                    window.alert("Autocomplete's returned place contains no geometry");
-                    return;
-                }
-
-                // If the place has a geometry, then present it on a map.
-                if (place.geometry.viewport) {
-                    map.fitBounds(place.geometry.viewport);
-                } else {
-                    map.setCenter(place.geometry.location);
-                    map.setZoom(17);
-                }
-                marker.setIcon(({
-                    url: place.icon,
-                    size: new google.maps.Size(71, 71),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(17, 34),
-                    scaledSize: new google.maps.Size(35, 35)
-                }));
-                marker.setPosition(place.geometry.location);
-                marker.setVisible(true);
-
-                var address = '';
-                if (place.address_components) {
-                    address = [
-                        (place.address_components[0] && place.address_components[0].short_name || ''),
-                        (place.address_components[1] && place.address_components[1].short_name || ''),
-                        (place.address_components[2] && place.address_components[2].short_name || '')
-                    ].join(' ');
-                }
-
-                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-                infowindow.open(map, marker);
-
-                // Location details
-                for (var i = 0; i < place.address_components.length; i++) {
-                    if (place.address_components[i].types[0] == 'postal_code') {
-                        document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
-                    }
-                    if (place.address_components[i].types[0] == 'country') {
-                        document.getElementById('country').innerHTML = place.address_components[i].long_name;
+                function validate() {
+                    if (/^\s*$/g.test(house_number) || /^\s*$/g.test(town_name) || /^\s*$/g.test(city) || /^\s*$/g.test(state) || /^\s*$/g.test(pinCode)) {
+                        alert("Write your information properly");
+                        reset();
                     }
                 }
-                document.getElementById('location').innerHTML = place.formatted_address;
-                document.getElementById('lat').innerHTML = place.geometry.location.lat();
-                document.getElementById('lon').innerHTML = place.geometry.location.lng();
+                validate()
+                let userId = JSON.parse(localStorage.getItem("userId")) || [];
+                console.log(userId)
+
+                let address =
+                    JSON.parse(localStorage.getItem("address")) || [];
+
+                address.push({
+                    mobile_number,
+                    house_number,
+                    town_name,
+                    city,
+                    pinCode,
+                    state,
+                    status,
+                    userId
+                });
+                console.log(address)
+                localStorage.setItem("address", JSON.stringify(address));
+                document.querySelector("form").reset();
+                alert("Your address has been submited");
+                // window.location.reload();
             });
-        }
-        initMap();
-
-//         new google.maps.places.Autocomplete();
-
-//         new google.maps.places.Autocomplete(
-//       document.getElementById("address")
-//   );
-//   new google.maps.places.Autocomplete(
-//    document.getElementById("address"), {
-//       bounds: new google.maps.LatLngBounds(45.4215296, -75.6971931)
-//    }
-// )
-        // document
-        //     .querySelector("#addressForm")
-        //     .addEventListener("submit", function contactForm(e) {
-        //         e.preventDefault();
-        //         let mobile_number = document.getElementById("mobile_number").value;
-        //         let house_number = document.getElementById("house_number").value;
-        //         let street_name = document.getElementById("street_name").value;
-        //         let town_name = document.getElementById("town_name").value;
-        //         let city = document.getElementById("city").value;
-        //         let pinCode = document.getElementById("pinCode").value;
-        //         let checkBox = document.getElementById("checkBox").checked
-
-        //         let address =
-        //             JSON.parse(localStorage.getItem("address")) || [];
-
-        //         address.push({
-        //             mobile_number,
-        //             house_number,
-        //             street_name,
-        //             town_name,
-        //             city,
-        //             pinCode,
-        //             checkBox
-        //         });
-
-        //         localStorage.setItem("address", JSON.stringify(address));
-        //         document.querySelector("form").reset();
-        //         alert("Your address has been submited");
-        //         // window.location.reload();
-        //     });
     </script>
-    </body>
+</body>
 
 </html>
