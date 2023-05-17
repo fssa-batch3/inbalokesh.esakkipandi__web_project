@@ -19,7 +19,7 @@
             <div class="side">
                 <div class="pro">
                     <h1>Edit Profile</h1>
-                    <form onsubmit="update_details(event)">
+                    <form onsubmit="update_details(event)" autocomplete="off">
                         <div class="pbox">
                             <div class="imgb">
                                 <img src="../../assets/Images/img.jpg" alt="profile image" height="250px" width="250px">
@@ -27,34 +27,38 @@
                             </div>
                             <div>
                                 <div class="sep">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="user_name" name="name" placeholder="Your Name">
+                                    <label for="user_name">Name</label>
+                                    <input type="text" id="user_name" name="name" placeholder="Your Name" autocomplete="off">
                                 </div>
                                 <div class="sep">
-                                    <label for="num">Mobile No</label>
+                                    <label for="user_phonenumber">Mobile No</label>
                                     <input type="tel" id="user_phonenumber" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
-                                        title="Write your 10-digit mobile number." name="Mobile No" placeholder="Mobile No" readonly>
+                                        title="Write your 10-digit mobile number." name="Mobile No" placeholder="Mobile No" readonly autocomplete="off">
                                 </div>
                                 <div class="sep">
-                                    <label for="email">Email</label>
+                                    <label for="user_email">Email</label>
                                     <input type="email" id="user_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" readonly
-                                        name="Email" placeholder="Email">
+                                        name="Email" placeholder="Email" autocomplete="off">
                                 </div>
                                 <div class="sep">
-                                    <label class="addr">Address</label>
-                                    <textarea type="text" name="Address" id="user_address" placeholder="Your address"></textarea>
+                                    <label for="user_address" class="addr">Address</label>
+                                    <textarea type="text" name="Address" id="user_address" placeholder="Your address" autocomplete="off"></textarea>
                                 </div>
                             </div>
                         </div>
                     </form>
+                    <button type="button" id="myAddress">Address Book</button>
                 </div>
             </div>
         </section>
-
+        
         <script src="../../assets/javascript/header.js"></script>
         <script src="../../assets/javascript/footer.js"></script>
         <script>const user_list = JSON.parse(localStorage.getItem("user_list"));
 
+    document.getElementById("myAddress").addEventListener("click", function direction(){
+      window.location.href = "../../Pages/Login and Order/List address.html"
+    })
     function login_data(e) {
       return e.user_phonenumber === userId;
     }

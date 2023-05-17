@@ -36,7 +36,7 @@ section{
 
 .pbox{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-top:50px;
 }
 
@@ -61,7 +61,7 @@ input{
 }
 
 textarea{
-    height:80px;
+    height:90px;
     border-color: transparent;
     resize: none;
 }
@@ -70,7 +70,7 @@ textarea{
     display: flex;
     flex-direction: column;
     margin-top:20px;
-    width:80%;
+    width:100%;
 }
 
 .overflowbox{
@@ -200,7 +200,7 @@ textarea{
         width:100%;
     }
     .history h2{
-        margin-top:10px;
+        margin-top:50px;
     }
     .pro{
         border-radius: 0;
@@ -248,8 +248,9 @@ textarea{
    .foot p{
     font-size: 13px;
    }
-
-
+   .foot{
+    margin-top: 90px;
+   }
 }
 @media (max-width:380px){
    .history h2{

@@ -117,9 +117,11 @@ h5.password_note{
     width:26rem;
 }
 
+/* For address form */
+
 .addressBox{
     width: 450px;
-    height: 850px;
+    height: 980px;
     margin: auto;
     border-radius: 3px;
     background-color: rgb(246, 246, 246);
@@ -133,6 +135,11 @@ h5.password_note{
     height: 15px;
     width: 25px;
 }
+.address-note{
+    text-align: left;
+    width:26rem
+}
+
 
 @media (max-width:490px){
     .new img{
@@ -143,6 +150,7 @@ h5.password_note{
         width:100%;
     }
     .addressBox{
+        height:1000px;
         width:100%;
     }
     form input{
@@ -156,6 +164,9 @@ h5.password_note{
     }
     h5.password_note{
         width:86vw;
+    }
+    .address-note{
+        width:88vw
     }
 } 
 

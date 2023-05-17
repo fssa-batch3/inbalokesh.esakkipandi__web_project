@@ -24,7 +24,7 @@ function signUp(e) {
   function validate() {
     if (/^\s*$/g.test(user_address) || /^\s*$/g.test(user_name)) {
       alert("Write your information properly");
-      user_address = reset();
+      user_name = reset();
     }
   }
   function checkPassword() {

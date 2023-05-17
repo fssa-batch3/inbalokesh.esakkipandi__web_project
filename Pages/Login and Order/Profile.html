@@ -134,18 +134,6 @@
         h3.innerText = `Order:#${i + 1}`;
         div_ihead.append(h3);
 
-        // // <h4>
-        // h4 = document.createElement("h4");
-        // if (orderedItems[i].order_status === "Not Delivered") {
-        //   h4.setAttribute("class", "ndel");
-        // } else if (orderedItems[i].order_status === "Delivered") {
-        //   h4.setAttribute("class", "del");
-        // } else if (orderedItems[i].order_status === "Cancelled") {
-        //   h4.setAttribute("class", "cancel");
-        // }
-        // h4.innerText = orderedItems[i].order_status;
-        // div_ihead.append(h4);
-
         const itemsCart = orderItem.filter((e) => orderedItems[i].order_id === e.order_id);
 
         console.log(itemsCart)

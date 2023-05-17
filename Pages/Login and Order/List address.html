@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/header.css">
+    <link rel="stylesheet" href="../../assets/css/my address.css">
+    <title>List Address</title>
+</head>
+
+<body>
+
+    <h1 class="add">Address Book</h1>
+    <section class="address-total">
+        <p class="selectHead">Select Delivery Address</p>
+        <div class="div-address">
+            <button class="addAddress" id="addressForm">Add address</button>
+        </div>
+        <div class="addressContainer">
+
+        </div>
+    </section>
+
+    <script src="../../assets/javascript/header.js"></script>
+    <script>
+
+        let address = JSON.parse(localStorage.getItem("address")) || [];
+
+        let userAddress = address.filter((data) => data.userId === userId);
+        console.log(userAddress)
+
+        for (let i = 0; i < userAddress.length; i++) {
+
+
+            // Create the main container element
+            const addressBox = document.createElement("div");
+            addressBox.classList.add("addressBox");
+            addressBox.setAttribute("data-address", userAddress[i].address_id);
+
+            // Create the tick_image container element
+            const tickImageContainer = document.createElement("div");
+            tickImageContainer.classList.add("tick_image");
+            addressBox.appendChild(tickImageContainer);
+
+            // Create the tick image element
+            const greenTickImage = document.createElement("img");
+            greenTickImage.classList.add("green_tick");
+            tickImageContainer.appendChild(greenTickImage);
+
+            // Create the h3 element for "Address 1"
+            const addressHeading = document.createElement("h3");
+            addressHeading.classList.add("no-address");
+            addressHeading.textContent = "Address " + [i + 1];
+            addressBox.appendChild(addressHeading);
+
+            // Create the name paragraph element
+            const nameParagraph = document.createElement("p");
+            nameParagraph.classList.add("name");
+            nameParagraph.textContent = userAddress[i].name;
+            addressBox.appendChild(nameParagraph);
+
+            // Create the street paragraph element
+            const streetParagraph = document.createElement("p");
+            streetParagraph.classList.add("street");
+            streetParagraph.textContent = userAddress[i].house_number + ",";
+            addressBox.appendChild(streetParagraph);
+
+            // Create the locality paragraph element
+            const localityParagraph = document.createElement("p");
+            localityParagraph.classList.add("locality");
+            localityParagraph.textContent = userAddress[i].town_name + ",";
+            addressBox.appendChild(localityParagraph);
+
+            // Create the city paragraph element
+            const cityParagraph = document.createElement("p");
+            cityParagraph.classList.add("city");
+            cityParagraph.textContent = userAddress[i].city + " - " + userAddress[i].pinCode;
+            addressBox.appendChild(cityParagraph);
+
+            // Create the mobile number paragraph element
+            const mobNumberParagraph = document.createElement("p");
+            mobNumberParagraph.classList.add("mobNumber");
+            mobNumberParagraph.textContent = "MOBILE : " + userAddress[i].mobile_number;
+            addressBox.appendChild(mobNumberParagraph);
+
+            // Create the "div_buttons"
+            const divButtons = document.createElement("div");
+            divButtons.classList.add("buttons");
+            addressBox.appendChild(divButtons);
+
+            if (userAddress[i].status !== true) {
+                // Create the "Set as default" button
+                const setDefaultButton = document.createElement("button");
+                setDefaultButton.classList.add("btn");
+                setDefaultButton.id = "set";
+                setDefaultButton.type = "button";
+                setDefaultButton.innerText = "Set as default";
+                divButtons.appendChild(setDefaultButton);
+
+            }
+
+            // Create the "Edit address" button
+            const editAddressButton = document.createElement("button");
+            editAddressButton.classList.add("btn");
+            editAddressButton.innerText = "Edit_address";
+            divButtons.appendChild(editAddressButton);
+
+            // Create the "Remove" button
+            const removeButton = document.createElement("button");
+            removeButton.classList.add("btn");
+            removeButton.innerText = "Remove";
+            divButtons.appendChild(removeButton);
+
+            // Append the addressBox to the document body or any desired parent element
+            document.querySelector("div.addressContainer").append(addressBox);
+        }
+
+
+        document.getElementById("addressForm").addEventListener("click", function formLocation() {
+            window.location.href = "../../Pages/Login and Order/addressForm.html"
+        })
+
+        let selectedBox = null;
+
+        let Box = document.querySelectorAll(".addressBox");
+
+        Box.forEach(function (findDiv) {
+            findDiv.addEventListener("click", function () {
+                if (selectedBox === this) {
+                    this.classList.remove("selectedBox");
+                    let select = this.querySelector(".green_tick");
+                    select.removeAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
+                    select.removeAttribute("alt", "tickImage");
+                    selectedBox = null;
+                } else {
+                    if (selectedBox !== null) {
+                        selectedBox.classList.remove("selectedBox");
+                        let select = selectedBox.querySelector(".green_tick");
+                        select.removeAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
+                        select.removeAttribute("alt", "tickImage");
+                    }
+
+                    let parentBox = this.closest(".addressBox");
+                    let address_id = parentBox.dataset.address
+                    console.log(address_id)
+                    parentBox.classList.add("selectedBox");
+                    let select = parentBox.querySelector(".green_tick");
+                    select.setAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
+                    select.setAttribute("alt", "tickImage");
+                    selectedBox = parentBox;
+                }
+            });
+        });
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

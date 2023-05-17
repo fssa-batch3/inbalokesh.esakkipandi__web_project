@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ONLY HOME FOOD</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../../assets/css/header.css">
   <link rel="stylesheet" href="../../assets/css/cart.css">
@@ -35,7 +36,7 @@
 
       <div class="summary" style="display: none;">
         <h2>SUMMARY</h2>
-      </div>
+      </div>   
     </div>
   </section>
 
@@ -476,7 +477,8 @@
 
       const total_price = document
         .querySelector("#total_cost")
-        .innerText.replace("Rs. ", "");
+        .innerText.replace("Rs. ", "");  
+         
       let delTime = "";
       for (const user of find_user) {
         if (user.delivery_time !== "") {

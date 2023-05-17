@@ -2,60 +2,60 @@
 
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ONLY HOME FOOD</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="../../assets/css/menu.css">
-        <link rel="stylesheet" href="../../assets/css/footer.css">
-        <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONLY HOME FOOD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/menu.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css">
+  <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+</head>
 
-    <body>
+<body>
 
-        <!-- filter box -->
-        <h1 class="he">Menu</h1>
-        <div class="search_box">
-            <input type="text" class="search" placeholder="Search" id="search_food">
-            <div>
-                <a href="#">
-                    <img class="search_image" src="../../assets/Images/Search image.png" alt="">
-                </a>
-            </div>
-        </div>
-        <div class="top">
-            <div class="menu">
-                <a href="./menu.html" class="all">All</a>
-            </div>
-        </div>
+  <!-- filter box -->
+  <h1 class="he">Menu</h1>
+  <div class="search_box">
+    <input type="text" class="search" placeholder="Search" id="search_food">
+    <div>
+      <a href="#">
+        <img class="search_image" src="../../assets/Images/Search image.png" alt="">
+      </a>
+    </div>
+  </div>
+  <div class="top">
+    <div class="menu">
+      <a href="./menu.html" class="all">All</a>
+    </div>
+  </div>
 
-        <div class="res">
-            <div class="no_result" style="display:none">
-                <img class="result_img" src="../../assets/Images/no-result.png" alt="No result image">
-            </div>
-        </div>
+  <div class="res">
+    <div class="no_result" style="display:none">
+      <img class="result_img" src="../../assets/Images/no-result.png" alt="No result image">
+    </div>
+  </div>
 
-        <!-- list of food starts -->
-        <section class="details">
-        </section>
-        <!-- list of foods end -->
+  <!-- list of food starts -->
+  <section class="details">
+  </section>
+  <!-- list of foods end -->
 
-        <!-- scooty gif -->
-        <div class="gif">
-            <img src="../../assets/Images/scooty.gif" alt="scooty img" height="150px" width="150px">
-        </div>
+  <!-- scooty gif -->
+  <div class="gif">
+    <img src="../../assets/Images/scooty.gif" alt="scooty img" height="150px" width="150px">
+  </div>
 
-        <!-- script starts-->
+  <!-- script starts-->
 
-        <!-- header script -->
-        <script src="../../assets/javascript/header.js"></script>
+  <!-- header script -->
+  <script src="../../assets/javascript/header.js"></script>
 
-        <!-- footer script -->
-        <script src="../../assets/javascript/footer.js"></script>
-        <script>// DOM //
+  <!-- footer script -->
+  <script src="../../assets/javascript/footer.js"></script>
+  <script>// DOM //
     let div_box;
     let img_food;
     let div_border;
@@ -201,7 +201,7 @@
       const input_search = document
         .getElementById("search_food")
         .value.toUpperCase()
-    .trim()
+        .trim()
         .split(/\s+/g)
         .join("");
 
@@ -212,45 +212,35 @@
       const result = document.querySelector("div.no_result");
 
       const item_name = document.getElementsByTagName("h4");
-      console.log(item_name);
-      // if(){
-      //   // return true
-      //             // result.style.display = "none";
-      //           }
+      // console.log(item_name);
+      let count = 0;
       for (let i = 0; i < item_name.length; i++) {
         const a = item[i].getElementsByTagName("h4")[0];
 
         const value = a.innerText || a.innerHTML || a.textContent;
 
-        // if (input_search === "") {
-        //   result.style.display = "none";
-        // }
-
-        // // if () {
-        // //   result.style.display = "";
-        // // }
-        // // else {
-        //   if(value.toUpperCase().trim()
-        //     .split(/\s+/g)
-        //     .join("").indexOf(input_search).length === 0){
-        //       console.log("Inba")
-        //     }
-
-        if (
-          value.toUpperCase().trim().split(/\s+/g).join("").indexOf(input_search) >
-          -1
-    ) {
+        if (input_search === "") {
+          result.style.display = "none";
+        }
+        if (value.toUpperCase().trim().split(/\s+/g).join("").indexOf(input_search) > -1) {
           item[i].style.display = "";
-        } else {
+          result.style.display = "none";
+        } 
+        else{
           item[i].style.display = "none";
         }
-
-        // }
+        if(item[i].style.display === "none"){      
+            count++
+        }
+        if(count === item_name.length){
+          result.style.display = "";
+        }
       }
+
     });
   </script>
-        <!-- script ends-->
+  <!-- script ends-->
 
-    </body>
+</body>
 
 </html>

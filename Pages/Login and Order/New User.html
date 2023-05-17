@@ -21,7 +21,7 @@
                 <h1>Sign Up</h1>
                 <form role="form" name="newform" id="form" onsubmit="signUp(event);">
                     <label>Name</label>
-                    <input type="text" class="username" id="user_name" minlength="3" placeholder="Name" required>
+                    <input type="text" class="username" id="user_name" minlength="3" pattern="[a-zA-Z ]+" placeholder="Name" required>
                     <label>Mobile No</label>
                     <input type="tel" id="user_phonenumber" placeholder="Mobile No" pattern="[6-9]{1}[0-9]{9}" maxlength="10" title="Write your 10-digit mobile number." required>
                     <label>Email</label>
