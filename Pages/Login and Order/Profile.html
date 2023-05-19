@@ -135,7 +135,6 @@
         div_ihead.append(h3);
 
         const itemsCart = orderItem.filter((e) => orderedItems[i].order_id === e.order_id);
-
         console.log(itemsCart)
 
         // <h3>
@@ -144,7 +143,7 @@
         div_item.append(h3);
 
         // Date format to show //
-
+        
         const d = new Date(orderedItems[i].ordered_time);
         const weekday = new Array("Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat");
         const dayOfWeek = weekday[d.getDay()];

@@ -11,14 +11,13 @@
 
 <body>
 
-    <div class="new">
-        <div class="addressBox">
+    <!-- <div class="new">
+        <div class="addressBoxEdit">
             <a href="../../index.html">
                 <img src="../../assets/Images/LOGO.png" alt="logo">
             </a>
-            <h1>Address</h1>
-            <form role="form" name="address" id="address-form" method="get" autocomplete="off">
-
+            <h1>Edit Address</h1>
+            <form role="form" name="address" id="address-save" method="get" autocomplete="off">
                 <label for="name">Name</label>
                 <input type="text" id="name" placeholder="Jhon" pattern="[a-zA-Z ]+" title="Write your name properly"
                     minlength="3" required>
@@ -41,18 +40,11 @@
                 <input type="text" id="state" placeholder="TN" pattern="TN"
                     title="Sorry! We are currently available only in Tamil Nadu" required />
 
-                <p class="address-note">Note: Some fields may give improper inputs while autocomplete. Kindly check and
-                    fill the address properly.</p>
-                <div class="default">
-                    <input type="checkbox" id="checkBox">
-                    <label for="checkBox">Set as default address</label>
-                </div>
-
-                <button type="submit" class="btn-secondary">Add address
+                <button type="submit" class="btn-secondary">Save address
                 </button>
             </form>
         </div>
-    </div>
+    </div> -->
 
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGhGk3DTCkjF1EUxpMm5ypFoQ-ecrS2gY&callback=initAutocomplete&libraries=places&v=weekly"
@@ -63,101 +55,7 @@
     <script src="../../assets/javascript/address.js"></script>
     <script>
 
-        document.querySelector("#address-form")
-            .addEventListener("submit", function addressForm(e) {
-                e.preventDefault();
-                let name = document.getElementById("name").value.trim().split(/\s+/g).join(" ");
-                let mobile_number = document.getElementById("mobile_number").value;
-                let addressSearch = document.getElementById("addressSearch").value;
-                let house_number = document.getElementById("house_number").value.trim().split(/\s+/g).join(" ");
-                let town_name = document.getElementById("town_name").value.trim().split(/\s+/g).join(" ");
-                let city = document.getElementById("city").value.trim().split(/\s+/g).join(" ");
-                let pinCode = document.getElementById("pinCode").value;
-                let state = document.getElementById("state").value.trim().split(/\s+/g).join(" ");
-                let status = document.getElementById("checkBox").checked
-                let address_id = uuidv4();
-                function validate() {
-                    if (/^\s*$/g.test(house_number) || /^\s*$/g.test(town_name) || /^\s*$/g.test(city) || /^\s*$/g.test(state) || /^\s*$/g.test(pinCode)) {
-                        alert("Write your information properly");
-                        reset();
-                    }
-                }
-                validate()
-                let userId = JSON.parse(localStorage.getItem("userId")) || [];
-                console.log(userId)
-
-                let address =
-                    JSON.parse(localStorage.getItem("address")) || [];
-
-                let userAddress = address.filter((data) => data.userId === userId);
-                console.log(userAddress.length)
-
-                let checkAddress = address.some((e) => e.location === addressSearch);
-                if (!checkAddress) {
-                    if (userAddress.length === 0) {
-                        address.push({
-                            name,
-                            mobile_number,
-                            location: addressSearch,
-                            house_number,
-                            town_name,
-                            city,
-                            pinCode,
-                            state,
-                            status: true,
-                            userId,
-                            address_id
-                        });
-                    }
-                    else {
-                        if (status === true) {
-                            let defaultAddress = userAddress.find((e) => e.status === true);
-                            defaultAddress.status = false;
-                            localStorage.setItem("address", JSON.stringify(address));
-                            address.push({
-                                name,
-                                mobile_number,
-                                location: addressSearch,
-                                house_number,
-                                town_name,
-                                city,
-                                pinCode,
-                                state,
-                                status: true,
-                                userId,
-                                address_id
-                            });
-
-                        }
-                        else {
-                            address.push({
-                                name,
-                                mobile_number,
-                                location: addressSearch,
-                                house_number,
-                                town_name,
-                                city,
-                                pinCode,
-                                state,
-                                status,
-                                userId,
-                                address_id
-                            });
-                        }
-                    }
-
-                    localStorage.setItem("address", JSON.stringify(address));
-                    document.querySelector("form").reset();
-                    alert("Your address has been submited");
-                    window.location.href = "../../Pages/Login and Order/List address.html";
-                }
-                else {
-                    alert("This address is already in your address book")
-                }
-
-
-            
-            });
+       
     </script>
 </body>
 

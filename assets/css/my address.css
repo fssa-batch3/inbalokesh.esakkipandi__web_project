@@ -2,6 +2,11 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+::-webkit-scrollbar{
+    display: none;
+}
+
+
 h1.add {
     text-align: center;
     margin: 50px;
@@ -34,7 +39,7 @@ h1.add {
     position: relative;
 }
 
-button.btn {
+button.btn-set,button.btn-edit,button.btn-remove {
     color: white;
     background-color: #5cb748;
     border-color: transparent;

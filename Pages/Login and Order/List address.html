@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="../../assets/css/header.css">
     <link rel="stylesheet" href="../../assets/css/my address.css">
     <title>List Address</title>
+    <style>
+   
+    </style>
 </head>
 
 <body>
@@ -19,8 +22,32 @@
             <button class="addAddress" id="addressForm">Add address</button>
         </div>
         <div class="addressContainer">
-
         </div>
+
+        <!-- <div class="selected-address">
+            <div class="top-tittle">
+                <h3 class="shippment-address">Shipping Address</h3>
+                <button class="btn-change">Change Address</button>
+            </div>
+            <div class="detailsBox">
+                <div class="location-image">
+                    <img src="../../assets/Images/locator.png" alt="locator image">
+                </div>
+                <div class="user-details">
+                    <p class="dname">Inba</p>
+                    <p class="dmobNumber">9876544787</p>
+                    <p class="dstreet">1st Main Rd, Uthandi,</p>
+                    <p class="dlocality">Chennai,</p>
+                    <p class="dcity">Kancheepuram - 600119</p>
+
+                </div>
+            </div>
+        </div> -->
+
+        <!-- <div class="empty-address">
+            <h3>No address found!</h3>
+            <button class="btn-add">Add address</button>
+        </div> -->
     </section>
 
     <script src="../../assets/javascript/header.js"></script>
@@ -32,8 +59,6 @@
         console.log(userAddress)
 
         for (let i = 0; i < userAddress.length; i++) {
-
-
             // Create the main container element
             const addressBox = document.createElement("div");
             addressBox.classList.add("addressBox");
@@ -93,23 +118,25 @@
             if (userAddress[i].status !== true) {
                 // Create the "Set as default" button
                 const setDefaultButton = document.createElement("button");
-                setDefaultButton.classList.add("btn");
-                setDefaultButton.id = "set";
+                setDefaultButton.classList.add("btn-set");
                 setDefaultButton.type = "button";
                 setDefaultButton.innerText = "Set as default";
                 divButtons.appendChild(setDefaultButton);
 
             }
+            else {
+                addressHeading.textContent = "Address " + [i + 1] + " (Default)";
+            }
 
             // Create the "Edit address" button
             const editAddressButton = document.createElement("button");
-            editAddressButton.classList.add("btn");
+            editAddressButton.classList.add("btn-edit");
             editAddressButton.innerText = "Edit_address";
             divButtons.appendChild(editAddressButton);
 
             // Create the "Remove" button
             const removeButton = document.createElement("button");
-            removeButton.classList.add("btn");
+            removeButton.classList.add("btn-remove");
             removeButton.innerText = "Remove";
             divButtons.appendChild(removeButton);
 
@@ -117,49 +144,101 @@
             document.querySelector("div.addressContainer").append(addressBox);
         }
 
-
         document.getElementById("addressForm").addEventListener("click", function formLocation() {
-            window.location.href = "../../Pages/Login and Order/addressForm.html"
+            window.location.href = "../../Pages/Login and Order/addressForm.html?form=CreateAddress"
         })
 
-        let selectedBox = null;
+        // For selecting the address after the cart process //
+        const url = window.location.search;
+        const urlParams = new URLSearchParams(url);
+        const addressStatus = urlParams.get("type");
+        console.log(addressStatus);
 
-        let Box = document.querySelectorAll(".addressBox");
+        if (addressStatus === "SelectAddress") {
+            let selectedBox = null;
 
-        Box.forEach(function (findDiv) {
-            findDiv.addEventListener("click", function () {
-                if (selectedBox === this) {
-                    this.classList.remove("selectedBox");
-                    let select = this.querySelector(".green_tick");
-                    select.removeAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
-                    select.removeAttribute("alt", "tickImage");
-                    selectedBox = null;
-                } else {
-                    if (selectedBox !== null) {
-                        selectedBox.classList.remove("selectedBox");
-                        let select = selectedBox.querySelector(".green_tick");
+            let Box = document.querySelectorAll(".addressBox");
+
+            Box.forEach(function (findDiv) {
+                findDiv.addEventListener("click", function () {
+                    if (selectedBox === this) {
+                        this.classList.remove("selectedBox");
+                        let select = this.querySelector(".green_tick");
                         select.removeAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
                         select.removeAttribute("alt", "tickImage");
-                    }
+                        selectedBox = null;
+                    } else {
+                        if (selectedBox !== null) {
+                            selectedBox.classList.remove("selectedBox");
+                            let select = selectedBox.querySelector(".green_tick");
+                            select.removeAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
+                            select.removeAttribute("alt", "tickImage");
+                        }
 
-                    let parentBox = this.closest(".addressBox");
-                    let address_id = parentBox.dataset.address
-                    console.log(address_id)
-                    parentBox.classList.add("selectedBox");
-                    let select = parentBox.querySelector(".green_tick");
-                    select.setAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
-                    select.setAttribute("alt", "tickImage");
-                    selectedBox = parentBox;
-                }
+                        let parentBox = this.closest(".addressBox");
+                        let address_id = parentBox.dataset.address
+                        console.log(address_id)
+                        parentBox.classList.add("selectedBox");
+                        let select = parentBox.querySelector(".green_tick");
+                        select.setAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
+                        select.setAttribute("alt", "tickImage");
+                        localStorage.setItem("addressId", JSON.stringify(address_id));
+                        selectedBox = parentBox;
+                    }
+                });
+            });
+        }
+
+        // Function for set the default address //
+        let setDefault = document.querySelectorAll(".btn-set");
+        setDefault.forEach(function addressSet(set) {
+            set.addEventListener("click", function setEach() {
+                let parentDiv = this.closest(".addressBox");
+                let address_id = parentDiv.dataset.address;
+                let defaultAddress = userAddress.find((e) => e.status === true);
+                defaultAddress.status = false;
+                let findAddress = userAddress.find((findId) => findId.address_id === address_id);
+                findAddress.status = true;
+                localStorage.setItem("address", JSON.stringify(address));
+                localStorage.setItem("addressId", JSON.stringify(address_id))
+                window.location.reload();
             });
         });
 
+        // Function to remove the address //
+        let removeAddress = document.querySelectorAll(".btn-remove");
+        removeAddress.forEach(function addressRemove(remove) {
+            remove.addEventListener("click", function removeEach() {
+                let parentDiv = this.closest(".addressBox");
+                let address_id = parentDiv.dataset.address;
 
+                let defaultAddress = userAddress.find((e) => e.status === true);
+                // console.log(address_id)
 
+                if (defaultAddress.address_id === address_id) {
+                    alert("Default address cannot be deleted")
+                }
+                else {
+                    let findAddress = userAddress.find((findId) => findId.address_id === address_id);
+                    let indexOfAddress = address.indexOf(findAddress)
+                    address.splice(indexOfAddress, 1)
+                    localStorage.setItem("address", JSON.stringify(address));
+                    window.location.reload()
+                }
+            })
+        })
 
-
+        // Function to edit address //
+        let editAddress = document.querySelectorAll(".btn-edit");
+        editAddress.forEach(function addressEdit(edit){
+            edit.addEventListener("click", function editEach(){
+                let parentDiv = this.closest(".addressBox");
+                let address_id = parentDiv.dataset.address;
+                window.location.href = "../../Pages/Login and Order/addressForm.html?form=EditAddress&id="+address_id;
+                
+            })
+        })
     </script>
 
 </body>
-
 </html>

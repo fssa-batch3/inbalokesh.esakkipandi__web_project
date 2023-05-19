@@ -184,7 +184,7 @@ body{
     font-size: 20px;
 }
 
-.sumlist button{
+.sumlist button.place_order{
     height:45px;
     width:100%;
     margin-top: 30px;
@@ -200,7 +200,7 @@ body{
     cursor:pointer;
 }
 
-.sumlist button:hover{
+.sumlist button.place_order:hover{
     transform: scale(1.03);
 }
 
@@ -217,6 +217,146 @@ input[type=button]{
 
 .noItems{
     text-align: center;
+}
+
+/* Shippment Address */
+.selected-address{
+    height:200px;
+}
+
+.selected-address p{
+    margin: 0px;
+    color: gray;
+}
+
+.top-tittle{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.location-image img{
+    height: 30px;
+}
+
+.location-image{
+    background-color: #eeffeb;
+    padding: 12px 15px;
+    border-radius: 40px;
+}
+
+.user-details{
+    margin-left:25px
+}
+
+.detailsBox{
+    display: flex;
+    height: 50px;
+}
+
+p.dmobNumber{
+    margin-top: 8px;
+}
+
+p.dstreet{
+    margin-top: 15px;
+}
+
+.btn-change{
+    color:#5cb748;
+    background-color: #eeffeb;
+    border-color: transparent;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.btn-change:hover{
+    border: #5cb748 2px solid;
+    transform: scale(1.04);
+}
+
+.empty-address {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.btn-add {
+    color: #5cb748;
+    background-color: #eeffeb;
+    border-color: transparent;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.btn-add:hover {
+    border: #5cb748 2px solid;
+    transform: scale(1.05);
+}
+
+/* Place order css */
+
+.content{
+    height: 100vh;
+    display: flex;
+    z-index: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    position: fixed;
+    left:50%;
+    top:100%;
+    transform:translate(-50%, -100%);
+}
+
+.placed{
+    display:none;
+    background-color:white;
+    height:260px;
+    width:400px;
+    border:solid 2px #32c671;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 20px 20px;
+    color:#333;
+    box-shadow: -2px 4px 37px -16px rgba(115,201,96,1);
+}
+
+.placed img{
+    height:60px;
+    width:60px;
+    position:relative;
+    bottom:18px;   
+}
+
+.placed h2{
+    font-size: 30px;
+}
+
+.placed a button{
+    margin-top: 15px;
+    height:40px;
+    width:120px;
+    background-color:#32c671;
+    color:white;
+    cursor: pointer;
+    font-size: 17px;
+    letter-spacing: 0.3px;
+    border-color: transparent;
+    border-radius: 30px;   
+}
+
+.placed a button:hover{
+    transform: scale(1.05);
+}
+
+@media (max-width:500px){
+    .placed{
+        margin:0 20px;
+    }
+
 }
 
 @media all and (max-width:1250px){

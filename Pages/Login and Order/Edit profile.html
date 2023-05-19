@@ -2,62 +2,64 @@
 
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ONLY HOME FOOD</title>
-        <link rel="stylesheet" href="../../assets/css/edit profile.css">
-        <link rel="stylesheet" href="../../assets/css/header.css">
-        <link rel="stylesheet" href="../../assets/css/footer.css">
-        <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONLY HOME FOOD</title>
+  <link rel="stylesheet" href="../../assets/css/edit profile.css">
+  <link rel="stylesheet" href="../../assets/css/header.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css">
+  <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+</head>
 
-    <body>
+<body>
 
-        <section>
-            <div class="side">
-                <div class="pro">
-                    <h1>Edit Profile</h1>
-                    <form onsubmit="update_details(event)" autocomplete="off">
-                        <div class="pbox">
-                            <div class="imgb">
-                                <img src="../../assets/Images/img.jpg" alt="profile image" height="250px" width="250px">
-                                <button type="submit">Save</button>
-                            </div>
-                            <div>
-                                <div class="sep">
-                                    <label for="user_name">Name</label>
-                                    <input type="text" id="user_name" name="name" placeholder="Your Name" autocomplete="off">
-                                </div>
-                                <div class="sep">
-                                    <label for="user_phonenumber">Mobile No</label>
-                                    <input type="tel" id="user_phonenumber" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
-                                        title="Write your 10-digit mobile number." name="Mobile No" placeholder="Mobile No" readonly autocomplete="off">
-                                </div>
-                                <div class="sep">
-                                    <label for="user_email">Email</label>
-                                    <input type="email" id="user_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" readonly
-                                        name="Email" placeholder="Email" autocomplete="off">
-                                </div>
-                                <div class="sep">
-                                    <label for="user_address" class="addr">Address</label>
-                                    <textarea type="text" name="Address" id="user_address" placeholder="Your address" autocomplete="off"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <button type="button" id="myAddress">Address Book</button>
-                </div>
+  <section>
+    <div class="side">
+      <div class="pro">
+        <h1>Edit Profile</h1>
+        <form onsubmit="update_details(event)" autocomplete="off">
+          <div class="pbox">
+            <div class="imgb">
+              <img src="../../assets/Images/img.jpg" alt="profile image" height="250px" width="250px">
+              <button type="submit">Save</button>
             </div>
-        </section>
-        
-        <script src="../../assets/javascript/header.js"></script>
-        <script src="../../assets/javascript/footer.js"></script>
-        <script>const user_list = JSON.parse(localStorage.getItem("user_list"));
+            <div>
+              <div class="sep">
+                <label for="user_name">Name</label>
+                <input type="text" id="user_name" name="name" placeholder="Your Name" autocomplete="off">
+              </div>
+              <div class="sep">
+                <label for="user_phonenumber">Mobile No</label>
+                <input type="tel" id="user_phonenumber" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
+                  title="Write your 10-digit mobile number." name="Mobile No" placeholder="Mobile No" readonly
+                  autocomplete="off">
+              </div>
+              <div class="sep">
+                <label for="user_email">Email</label>
+                <input type="email" id="user_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" readonly
+                  name="Email" placeholder="Email" autocomplete="off">
+              </div>
+              <!-- <div class="sep">
+                <label for="user_address" class="addr">Address</label>
+                <textarea type="text" name="Address" id="user_address" placeholder="Your address"
+                  autocomplete="off"></textarea>
+              </div> -->
+            </div>
+          </div>
+        </form>
+        <button type="button" id="myAddress">Address Book</button>
+      </div>
+    </div>
+  </section>
 
-    document.getElementById("myAddress").addEventListener("click", function direction(){
-      window.location.href = "../../Pages/Login and Order/List address.html"
+  <script src="../../assets/javascript/header.js"></script>
+  <script src="../../assets/javascript/footer.js"></script>
+  <script>const user_list = JSON.parse(localStorage.getItem("user_list"));
+
+    document.getElementById("myAddress").addEventListener("click", function direction() {
+      window.location.href = "../../Pages/Login and Order/List address.html?status=1"
     })
     function login_data(e) {
       return e.user_phonenumber === userId;
@@ -68,32 +70,24 @@
     document.getElementById("user_name").value = user_data.user_name;
     document.getElementById("user_phonenumber").value = user_data.user_phonenumber;
     document.getElementById("user_email").value = user_data.user_email;
-    document.getElementById("user_address").value = user_data.user_address;
+    // document.getElementById("user_address").value = user_data.user_address;
 
     function update_details(e) {
       e.preventDefault();
-      const edit_name = document
-        .getElementById("user_name")
-        .value.trim()
-        .split(/\s+/g)
-        .join(" ");
+      const edit_name = document.getElementById("user_name").value.trim().split(/\s+/g).join(" ");
       const edit_number = document.getElementById("user_phonenumber").value;
       const edit_email = document.getElementById("user_email").value;
-      let edit_address = document
-        .getElementById("user_address")
-        .value.trim()
-        .split(/\s+/g)
-        .join(" ");
+      // let edit_address = document.getElementById("user_address").value.trim().split(/\s+/g).join(" ");
 
       user_data.user_name = edit_name;
       user_data.user_phonenumber = edit_number;
       user_data.user_email = edit_email;
-      user_data.user_address = edit_address;
+      // user_data.user_address = edit_address;
 
       function validate() {
-        if (/^\s*$/g.test(edit_address) || /^\s*$/g.test(edit_name)) {
+        if (/^\s*$/g.test(edit_name)) {
           alert("Write your information properly");
-          edit_address = reset();
+          edit_name = reset();
         }
       }
       validate();
@@ -104,6 +98,6 @@
     }
   </script>
 
-    </body>
+</body>
 
 </html>

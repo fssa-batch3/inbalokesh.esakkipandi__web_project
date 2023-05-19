@@ -41,6 +41,7 @@ h2{
     display: flex;
     justify-content: start;
     margin-top:40px;
+    align-items: center;
 }
 
 .pbox img{
@@ -90,6 +91,10 @@ textarea{
     flex-direction: column;
     margin-top:20px;
     width:100%;
+}
+
+#myAddress{
+    margin-top: 20px;
 }
 
 @media (max-width:500px){
