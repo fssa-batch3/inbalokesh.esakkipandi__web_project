@@ -3,7 +3,7 @@ function signUp(e) {
   let user_name = document.getElementById("user_name").value.trim().split(/\s+/g).join(" ");
   let user_phonenumber = document.getElementById("user_phonenumber").value;
   let user_email = document.getElementById("user_email").value;
-  let user_address = document.getElementById("user_address").value.trim().split(/\s+/g).join(" ");
+  // let user_address = document.getElementById("user_address").value.trim().split(/\s+/g).join(" ");
   let user_password = document.getElementById("user_password").value;
   let confirm_password = document.getElementById("confirm_password").value;
 
@@ -22,7 +22,7 @@ function signUp(e) {
     }
   }
   function validate() {
-    if (/^\s*$/g.test(user_address) || /^\s*$/g.test(user_name)) {
+    if (/^\s*$/g.test(user_name)) {
       alert("Write your information properly");
       user_name = reset();
     }
@@ -53,13 +53,11 @@ function signUp(e) {
       user_name,
       user_phonenumber,
       user_email,
-      user_address,
+      // user_address,
       user_password,
     });
 
     localStorage.setItem("user_list", JSON.stringify(user_list));
-
-    console.log(localStorage.getItem("user_list"));
 
     document.querySelector("form").reset();
     document.getElementById("user_phonenumber").focus();

@@ -46,13 +46,21 @@ section{
 
 .pbox button{
     height:30px;
-    margin-top: 60px;
+    margin-top: 30px;
     margin-left: 20px;
     color:white;
     border-color:transparent;
     border-radius: 5px;
     background-color: #FF7223;
     cursor: pointer;
+}
+
+#delete_user{
+    margin-left: 35px;
+}
+
+#logout_user{
+    margin-left: 60px;
 }
 
 input{
@@ -70,7 +78,7 @@ textarea{
     display: flex;
     flex-direction: column;
     margin-top:20px;
-    width:100%;
+    width:90%;
 }
 
 .overflowbox{
@@ -218,6 +226,13 @@ textarea{
     .pbox button {
         margin-top: 10px;
         width: 90%;
+    }
+    #delete_user{
+        margin-left: 20px;
+    }
+    
+    #logout_user{
+        margin-left: 20px;
     }
     .imgb{
         width:40%;

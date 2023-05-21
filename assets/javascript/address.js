@@ -1,6 +1,6 @@
 
 const createAddress =
-` 
+    ` 
 <div class="new">
 <div class="addressBox">
     <a href="../../index.html">
@@ -46,14 +46,14 @@ const createAddress =
 `
 
 const editAddress =
-`
+    `
 <div class="new">
 <div class="addressBoxEdit">
     <a href="../../index.html">
         <img src="../../assets/Images/LOGO.png" alt="logo">
     </a>
     <h1>Edit Address</h1>
-    <form role="form" name="address" id="address-save" method="get" autocomplete="off">
+    <form role="form" id="address-save" autocomplete="off">
         <label for="name">Name</label>
         <input type="text" id="name" placeholder="Jhon" pattern="[a-zA-Z ]+" title="Write your name properly"
             minlength="3" required>
@@ -74,7 +74,7 @@ const editAddress =
             title="Sorry! We are currently available only in Tamil Nadu" required />
         <label for="state">State</label>
         <input type="text" id="state" placeholder="TN" pattern="TN"
-            title="Sorry! We are currently available only in Tamil Nadu" required />
+            title="Sorry! We are currently available only in Tamil Nadu" required/>
             
         <button type="submit" class="btn-secondary">Save address
         </button>
@@ -88,110 +88,116 @@ const urlParams = new URLSearchParams(url);
 const addressFrom = urlParams.get("form");
 const addressUniqueId = urlParams.get("id");
 
-if(addressFrom === "CreateAddress"){
+if (addressFrom === "CreateAddress") {
     document.body.insertAdjacentHTML("afterbegin", createAddress);
 
     document.querySelector("#address-form")
-    .addEventListener("submit", function addressForm(e) {
-        e.preventDefault();
-        let name = document.getElementById("name").value.trim().split(/\s+/g).join(" ");
-        let mobile_number = document.getElementById("mobile_number").value;
-        let addressSearch = document.getElementById("addressSearch").value;
-        let house_number = document.getElementById("house_number").value.trim().split(/\s+/g).join(" ");
-        let town_name = document.getElementById("town_name").value.trim().split(/\s+/g).join(" ");
-        let city = document.getElementById("city").value.trim().split(/\s+/g).join(" ");
-        let pinCode = document.getElementById("pinCode").value;
-        let state = document.getElementById("state").value.trim().split(/\s+/g).join(" ");
-        let status = document.getElementById("checkBox").checked;
-        let address_id = uuidv4();
-        function validate() {
-            if (/^\s*$/g.test(house_number) || /^\s*$/g.test(town_name) || /^\s*$/g.test(city) || /^\s*$/g.test(state) || /^\s*$/g.test(pinCode)) {
-                alert("Write your information properly");
-                reset();
+        .addEventListener("submit", function addressForm(e) {
+            e.preventDefault();
+            let name = document.getElementById("name").value.trim().split(/\s+/g).join(" ");
+            let mobile_number = document.getElementById("mobile_number").value;
+            let addressSearch = document.getElementById("addressSearch").value;
+            let house_number = document.getElementById("house_number").value.trim().split(/\s+/g).join(" ");
+            let town_name = document.getElementById("town_name").value.trim().split(/\s+/g).join(" ");
+            let city = document.getElementById("city").value.trim().split(/\s+/g).join(" ");
+            let pinCode = document.getElementById("pinCode").value;
+            let state = document.getElementById("state").value.trim().split(/\s+/g).join(" ");
+            let status = document.getElementById("checkBox").checked;
+            let address_id = uuidv4();
+            function validate() {
+                if (/^\s*$/g.test(house_number) || /^\s*$/g.test(town_name) || /^\s*$/g.test(city) || /^\s*$/g.test(state) || /^\s*$/g.test(pinCode)) {
+                    alert("Write your information properly");
+                    house_number.value=reset();
+                }
             }
-        }
-        validate()
-        let userId = JSON.parse(localStorage.getItem("userId")) || [];
-        console.log(userId)
+            validate()
+            let userId = JSON.parse(localStorage.getItem("userId")) || [];
+            console.log(userId)
 
-        let address = JSON.parse(localStorage.getItem("address")) || [];
+            let address = JSON.parse(localStorage.getItem("address")) || [];
 
-        let userAddress = address.filter((data) => data.userId === userId);
-        console.log(userAddress)
+            let userAddress = address.filter((data) => data.userId === userId);
+            console.log(userAddress.length)
 
-        let checkAddress = address.some((e) => e.location === addressSearch);
+            let checkAddress = address.some((e) => e.location === addressSearch);
 
-        if (!checkAddress) {
-            if (userAddress.length === 0) {
-                address.push({
-                    name,
-                    mobile_number,
-                    location: addressSearch,
-                    house_number,
-                    town_name,
-                    city,
-                    pinCode,
-                    state,
-                    status: true,
-                    userId,
-                    address_id
-                });
-                localStorage.setItem("addressId", JSON.stringify(address_id));
-            }
-            else {
-                if (status === true) {
-                    let defaultAddress = userAddress.find((e) => e.status === true);
-                    defaultAddress.status = false;
+            if (userAddress.length < 10) {
+                if (!checkAddress) {
+                    if (userAddress.length === 0) {
+                        address.push({
+                            name,
+                            mobile_number,
+                            location: addressSearch,
+                            house_number,
+                            town_name,
+                            city,
+                            pinCode,
+                            state,
+                            status: true,
+                            userId,
+                            address_id
+                        });
+                        localStorage.setItem("addressId", JSON.stringify(address_id));
+                    }
+                    else {
+                        if (status === true) {
+                            let defaultAddress = userAddress.find((e) => e.status === true);
+                            defaultAddress.status = false;
+                            localStorage.setItem("address", JSON.stringify(address));
+                            address.push({
+                                name,
+                                mobile_number,
+                                location: addressSearch,
+                                house_number,
+                                town_name,
+                                city,
+                                pinCode,
+                                state,
+                                status: true,
+                                userId,
+                                address_id
+                            });
+                            localStorage.setItem("addressId", JSON.stringify(address_id));
+                        }
+                        else {
+                            address.push({
+                                name,
+                                mobile_number,
+                                location: addressSearch,
+                                house_number,
+                                town_name,
+                                city,
+                                pinCode,
+                                state,
+                                status,
+                                userId,
+                                address_id
+                            });
+                        }
+                    }
+
                     localStorage.setItem("address", JSON.stringify(address));
-                    address.push({
-                        name,
-                        mobile_number,
-                        location: addressSearch,
-                        house_number,
-                        town_name,
-                        city,
-                        pinCode,
-                        state,
-                        status: true,
-                        userId,
-                        address_id
-                    });
-                    localStorage.setItem("addressId", JSON.stringify(address_id));
+                    document.querySelector("form").reset();
+                    alert("Your address has been submited");
+                    window.location.href = "../../Pages/Login and Order/List address.html?status=1";
                 }
                 else {
-                    address.push({
-                        name,
-                        mobile_number,
-                        location: addressSearch,
-                        house_number,
-                        town_name,
-                        city,
-                        pinCode,
-                        state,
-                        status,
-                        userId,
-                        address_id
-                    });
+                    alert("This address is already in your address book or your limt is over")
                 }
             }
-
-            localStorage.setItem("address", JSON.stringify(address));
-            document.querySelector("form").reset();
-            alert("Your address has been submited");
-            window.location.href = "../../Pages/Login and Order/List address.html?status=1";
-        }
-        else {
-            alert("This address is already in your address book")
-        }
-    });
+            else {
+                document.querySelector("form").reset();
+                alert("Your limit for the address is over")
+            }
+        });
 }
 
-if(addressFrom === "EditAddress"){
+if (addressFrom === "EditAddress") {
     document.body.insertAdjacentHTML("afterbegin", editAddress);
     let userId = JSON.parse(localStorage.getItem("userId")) || [];
-    let address = JSON.parse(localStorage.getItem("address")) || [];
+    let address = JSON.parse(localStorage.getItem("address"));
     let userAddress = address.filter((data) => data.userId === userId && data.address_id === addressUniqueId);
-    console.log(userAddress)
+    // console.log(userAddress)
 
     document.getElementById("name").value = userAddress[0].name
     document.getElementById("mobile_number").value = userAddress[0].mobile_number
@@ -199,8 +205,55 @@ if(addressFrom === "EditAddress"){
     document.getElementById("house_number").value = userAddress[0].house_number
     document.getElementById("town_name").value = userAddress[0].town_name
     document.getElementById("city").value = userAddress[0].city
-    document.getElementById("pinCode").value  = userAddress[0].pinCode
+    document.getElementById("pinCode").value = userAddress[0].pinCode
     document.getElementById("state").value = userAddress[0].state
+
+    // Save the updated Address //
+
+    let saveAddress = document.querySelector("#address-save");
+    saveAddress.addEventListener("submit", function updateDetails(e) {
+        e.preventDefault()
+
+        // const updateaddress = JSON.parse(localStorage.getItem("address"));
+        // let userAddress = address.filter((data) => data.userId === userId && data.address_id === addressUniqueId);
+        // console.log(userAddress)
+        let uname = document.getElementById("name").value.trim().split(/\s+/g).join(" ");
+        let umobile_number = document.getElementById("mobile_number").value;
+        let uaddressSearch = document.getElementById("addressSearch").value;
+        let uhouse_number = document.getElementById("house_number").value.trim().split(/\s+/g).join(" ");
+        let utown_name = document.getElementById("town_name").value.trim().split(/\s+/g).join(" ");
+        let ucity = document.getElementById("city").value.trim().split(/\s+/g).join(" ");
+        let upinCode = document.getElementById("pinCode").value;
+        let ustate = document.getElementById("state").value.trim().split(/\s+/g).join(" ");
+
+        console.log(uname)
+
+        userAddress[0].name = uname
+        userAddress[0].mobile_number = umobile_number
+        userAddress[0].location = uaddressSearch;
+        userAddress[0].house_number = uhouse_number
+        userAddress[0].town_name = utown_name
+        userAddress[0].city = ucity
+        userAddress[0].pinCode = upinCode
+        userAddress[0].state = ustate
+        userAddress[0].status = userAddress[0].status
+        userAddress[0].userId =  userAddress[0].userId
+        userAddress[0].address_id = userAddress[0].address_id
+
+        
+        function validate() {
+            if (/^\s*$/g.test(uhouse_number) || /^\s*$/g.test(utown_name) || /^\s*$/g.test(ucity) || /^\s*$/g.test(ustate) || /^\s*$/g.test(upinCode)) {
+                alert("Write your information properly");
+                uhouse_number.value=reset();
+            }
+        }
+        validate()
+
+        localStorage.setItem("address", JSON.stringify(address));
+        document.querySelector("form").reset();
+        alert("Address updated sucessfully");
+        window.location.href = "../../Pages/Login and Order/List address.html?status=1";    
+    });
 }
 
 let autocomplete;
@@ -233,7 +286,7 @@ function fillInAddress() {
     let administrativeAreaName;
     let subLocalityName;
     let subLocalityName2;
-    
+
     for (const component of place.address_components) {
         const componentType = component.types[0];
 
@@ -262,7 +315,7 @@ function fillInAddress() {
                 subLocalityName2 = component.long_name;
                 break;
             }
-            case "sublocality_level_1" : {
+            case "sublocality_level_1": {
                 subLocalityName = component.long_name;
                 break;
             }
@@ -273,29 +326,29 @@ function fillInAddress() {
             case "administrative_area_level_1": {
                 document.querySelector("#state").value = component.short_name;
                 break;
-            }  
+            }
 
         }
     }
-    if(localityName === administrativeAreaName){
+    if (localityName === administrativeAreaName) {
         document.querySelector("#town_name").value = subLocalityName;
     }
-    else{
-        document.querySelector("#town_name").value = localityName;            
+    else {
+        document.querySelector("#town_name").value = localityName;
     }
     address1Field.value = address1;
     postalField.value = postcode;
-    
-    if(subLocalityName2 !== undefined){
+
+    if (subLocalityName2 !== undefined) {
         address2Field.value = address1Field.value + ", " + subLocalityName2
     }
-    else if(subLocalityName !== undefined){
+    else if (subLocalityName !== undefined) {
         address2Field.value = address1Field.value + ", " + subLocalityName
     }
-    else if(address1Field.value === subLocalityName){
+    else if (address1Field.value === subLocalityName) {
         address2Field.value = address1Field.value
     }
-    else{
+    else {
         address2Field.value = address1Field.value
     }
     address2Field.focus();

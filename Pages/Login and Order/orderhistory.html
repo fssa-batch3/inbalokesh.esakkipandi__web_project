@@ -136,6 +136,65 @@
 
     }
 
+    // To get the address //
+
+    let address = JSON.parse(localStorage.getItem("address"));
+
+    let deliveryAddress = address.filter((id) => id.address_id === orders.delivery_address_Id);
+
+    console.log(deliveryAddress)
+    // Create the outermost div element with class "delivery-address-box"
+    const deliveryAddressBox = document.createElement("div");
+    deliveryAddressBox.classList.add("delivery-address-box");
+    div_popup.append(deliveryAddressBox);
+
+    // Create the div element with class "address-head"
+    const addressHead = document.createElement("div");
+    addressHead.classList.add("address-head");
+
+    // Create the image element
+    const houseimage = document.createElement("img");
+    houseimage.src = "../../assets/Images/Green house.png";
+    houseimage.alt = "green house image";
+
+    // Create the h2 element with class "side-head"
+    const heading = document.createElement("h2");
+    heading.classList.add("side-head");
+    heading.textContent = "Delivery details";
+
+    // Append the image and heading elements to the addressHead div
+    addressHead.appendChild(houseimage);
+    addressHead.appendChild(heading);
+
+    // Create the div element with class "address-content"
+    const addressContent = document.createElement("div");
+    addressContent.classList.add("address-content");
+
+    // Create the p elements with the respective content
+    const nameParagraph = document.createElement("p");
+    nameParagraph.classList.add("delivery-name");
+    nameParagraph.textContent = deliveryAddress[0].name;
+
+    const addressParagraph = document.createElement("p");
+    addressParagraph.textContent = deliveryAddress[0].house_number + ", " + deliveryAddress[0].town_name ;
+
+    const locationParagraph = document.createElement("p");
+    locationParagraph.textContent = deliveryAddress[0].city + " - " + deliveryAddress[0].pinCode;
+
+    const mobileParagraph = document.createElement("p");
+    mobileParagraph.textContent = "Mobile - " + deliveryAddress[0].mobile_number;
+
+    // Append the p elements to the addressContent div
+    addressContent.appendChild(nameParagraph);
+    addressContent.appendChild(addressParagraph);
+    addressContent.appendChild(locationParagraph);
+    addressContent.appendChild(mobileParagraph);
+
+    // Append the addressHead and addressContent divs to the deliveryAddressBox div
+    deliveryAddressBox.appendChild(addressHead);
+    deliveryAddressBox.appendChild(addressContent);
+
+
     // <div class="dpara">
     const div_dpara = document.createElement("div");
     div_dpara.setAttribute("class", "dpara");
@@ -151,9 +210,9 @@
     p.innerText = "Ordered time";
     div_lpara.append(p);
 
-    p = document.createElement("p");
-    p.innerText = "Delivery status";
-    div_lpara.append(p);
+    // p = document.createElement("p");
+    // p.innerText = "Delivery status";
+    // div_lpara.append(p);
 
     p = document.createElement("p");
     p.innerText = "Total";
@@ -211,9 +270,9 @@
     p.innerText = orderTime;
     div_spara.append(p);
 
-    p = document.createElement("p");
-    p.innerText = "Not delivered";
-    div_spara.append(p);
+    // p = document.createElement("p");
+    // p.innerText = "Not delivered";
+    // div_spara.append(p);
 
     p = document.createElement("p");
     p.innerText = `Rs.${orders.total_price}`;

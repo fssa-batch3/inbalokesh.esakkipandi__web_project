@@ -345,7 +345,6 @@
       let addressId = JSON.parse(localStorage.getItem("addressId")) || [];
 
       let selectedAddress = userAddresses.find((selected) => selected.address_id === addressId);
-      console.log(selectedAddress)
 
       if (selectedAddress === undefined || selectedAddress === null) {
         // Create the <div> element
@@ -428,12 +427,12 @@
         // Create the street paragraph
         const streetParagraph = document.createElement('p');
         streetParagraph.classList.add('dstreet');
-        streetParagraph.textContent = selectedAddress.house_number + ",";
+        streetParagraph.textContent = selectedAddress.house_number;
 
         // Create the locality paragraph
         const localityParagraph = document.createElement('p');
         localityParagraph.classList.add('dlocality');
-        localityParagraph.textContent = selectedAddress.town_name + ",";
+        localityParagraph.textContent = selectedAddress.town_name;
 
         // Create the city paragraph
         const cityParagraph = document.createElement('p');
@@ -635,7 +634,8 @@
                   ordered_time: d,
                   ordered_by: current_user.user_email,
                   userId: userId,
-                  total_price: parseInt(total_price)
+                  total_price: parseInt(total_price),
+                  delivery_address_Id : selectedAddress.address_id
                 });
 
                 for (let i = 0; i < userProducts.length; i++) {
@@ -654,7 +654,7 @@
                 localStorage.setItem("food_count", 0);
 
                 document.querySelector(".placed").setAttribute("style", "display:inline-block");
-                document.querySelector("#content").setAttribute("style","opacity:0.2;");
+                document.querySelector("#content").setAttribute("style","opacity:0;");
 
               }
             } else {

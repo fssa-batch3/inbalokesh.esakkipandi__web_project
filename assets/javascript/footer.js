@@ -20,7 +20,7 @@ const footer = `
                             <img src="${origin}/assets/Images/mail-outline.svg" alt="mail image" height="30px" width="30px">
                     </div>
                     <div>
-                        <p>+918888888888</p>
+                        <p>+918888888889</p>
                         <p>ohfood@gmail.com</p>    
                     </div>
                 </div>

@@ -41,26 +41,19 @@
                 <input type="email" id="user_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" readonly
                   name="Email" placeholder="Email" autocomplete="off">
               </div>
-              <!-- <div class="sep">
-                <label for="user_address" class="addr">Address</label>
-                <textarea type="text" name="Address" id="user_address" placeholder="Your address"
-                  autocomplete="off"></textarea>
-              </div> -->
             </div>
           </div>
         </form>
-        <button type="button" id="myAddress">Address Book</button>
       </div>
     </div>
   </section>
 
   <script src="../../assets/javascript/header.js"></script>
   <script src="../../assets/javascript/footer.js"></script>
-  <script>const user_list = JSON.parse(localStorage.getItem("user_list"));
-
-    document.getElementById("myAddress").addEventListener("click", function direction() {
-      window.location.href = "../../Pages/Login and Order/List address.html?status=1"
-    })
+  <script>
+  
+  const user_list = JSON.parse(localStorage.getItem("user_list"));
+  
     function login_data(e) {
       return e.user_phonenumber === userId;
     }

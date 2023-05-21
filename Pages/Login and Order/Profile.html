@@ -23,7 +23,8 @@
           <div class="imgb">
             <img src="../../assets/Images/img.jpg" alt="Profile image" height="250px" width="250px">
             <div class="button_row">
-              <button type="button" onclick="btn()">Edit profile</button>
+              <button type="button" id="edit-btn">Edit profile</button>
+              <button type="button" id="myAddress">Address Book</button>
               <button type="button" id="delete_user">Delete</button>
               <button type="submit" id="logout_user">Logout</button>
             </div>
@@ -67,11 +68,22 @@
   <script src="../../assets/javascript/footer.js"></script>
 
   <script>
-    function btn() {
-      window.location.href = "./Edit profile.html";
-    }
+
+    document.getElementById("myAddress").addEventListener("click", function direction() {
+      window.location.href = "../../Pages/Login and Order/List address.html?status=1"
+    })
+
+    document.getElementById("edit-btn").addEventListener("click", function direction() {
+      window.location.href = "./Edit profile.html"
+    })
 
     const user_list = JSON.parse(localStorage.getItem("user_list"));
+
+    let address = JSON.parse(localStorage.getItem("address"));
+
+    let defaultAddress = address.filter((e) => e.status === true && e.userId === userId);
+
+    console.log(defaultAddress)
 
     function login_data(e) {
       return e.user_phonenumber === userId;
@@ -82,7 +94,14 @@
     document.getElementById("user_name").value = user_data.user_name;
     document.getElementById("user_phonenumber").value = user_data.user_phonenumber;
     document.getElementById("user_email").value = user_data.user_email;
-    document.getElementById("user_address").value = user_data.user_address;
+
+    if (defaultAddress.length === 1) {
+      document.getElementById("user_address").value = defaultAddress[0].house_number + ", " + defaultAddress[0].town_name + ", " + defaultAddress[0].city + " - " + defaultAddress[0].pinCode;
+    }
+    else {
+      document.getElementById("user_address").value = "";
+    }
+
 
     const orderList = JSON.parse(localStorage.getItem("order_list")) || [];
 
@@ -93,7 +112,6 @@
     const orderedItems = orderList.filter(
       (e) => e.userId === userId
     );
-
 
     if (orderList === null || orderedItems.length === 0) {
       document.querySelector(".history").setAttribute("style", "display:none");
@@ -143,7 +161,6 @@
         div_item.append(h3);
 
         // Date format to show //
-        
         const d = new Date(orderedItems[i].ordered_time);
         const weekday = new Array("Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat");
         const dayOfWeek = weekday[d.getDay()];
@@ -233,9 +250,13 @@
         div_ordered_by.setAttribute("class", "order_by");
         div_order.append(div_ordered_by);
 
+        // Find the person who ordered //
+        const deliveryPersonName = address.filter((e)=> e.address_id === orderedItems[i].delivery_address_Id);
+        console.log(deliveryPersonName)
+
         // <h4> email//
         h4 = document.createElement("h4");
-        h4.innerText = `Ordered by: ${orderedItems[i].ordered_by}`;
+        h4.innerText = `Ordered by: ${deliveryPersonName[0].name}`;
         div_ordered_by.append(h4);
 
         // <div class="view_button">

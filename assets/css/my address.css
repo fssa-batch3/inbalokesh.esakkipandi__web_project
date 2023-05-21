@@ -92,3 +92,55 @@ div.tick_image {
     display: flex;
     justify-content: space-between;
 }
+
+/* pop up */
+
+.done-box{
+    height: 100vh;
+    display: flex;
+    z-index: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    position: fixed;
+    left:50%;
+    top:100%;
+    transform:translate(-50%, -100%);
+}
+
+
+.selected-container {
+    display: none;
+    background-color: white;
+    font-size: 20px;
+    height: 350px;
+    width: 400px;
+    border: solid 2px #32c671;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 20px 20px;
+    color: #333;
+    box-shadow: -2px 4px 37px -16px rgba(115, 201, 96, 1);
+}
+
+.selected-gif img {
+    height: 180px;
+    width: 180px;
+}
+
+.two-button button {
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-color: #32c671;
+    color: white;
+    cursor: pointer;
+    font-size: 17px;
+    letter-spacing: 0.3px;
+    border-color: transparent;
+    border-radius: 30px;
+}
+
+.two-button button:hover {
+    transform: scale(1.05);
+}

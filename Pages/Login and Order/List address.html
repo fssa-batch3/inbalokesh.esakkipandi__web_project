@@ -49,6 +49,19 @@
             <button class="btn-add">Add address</button>
         </div> -->
     </section>
+    <div class="done-box">
+        <div class="selected-container">
+            <div class="selected-gif">
+                <img src="../../assets/Images/Location.gif" alt="location gif">
+            </div>
+            <h2>Address has been selected sucessfully!</h2>
+            <div class="two-button">
+                <button type="button" class="btn-done">Done</button>
+                <button type="button" class="btn-back">Back</button>
+            </div>
+
+        </div>
+    </div>
 
     <script src="../../assets/javascript/header.js"></script>
     <script>
@@ -155,6 +168,15 @@
         console.log(addressStatus);
 
         if (addressStatus === "SelectAddress") {
+
+            document.querySelector(".btn-done").addEventListener("click", function goCart(){
+                window.location.href = '../../Pages/Cart/cart.html';
+            })
+
+            document.querySelector(".btn-back").addEventListener("click", function goCart(){
+                window.location.href = '../../Pages/Login and Order/List address.html?type=SelectAddress';
+            })
+
             let selectedBox = null;
 
             let Box = document.querySelectorAll(".addressBox");
@@ -167,7 +189,8 @@
                         select.removeAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
                         select.removeAttribute("alt", "tickImage");
                         selectedBox = null;
-                    } else {
+                    } 
+                    else {
                         if (selectedBox !== null) {
                             selectedBox.classList.remove("selectedBox");
                             let select = selectedBox.querySelector(".green_tick");
@@ -177,13 +200,22 @@
 
                         let parentBox = this.closest(".addressBox");
                         let address_id = parentBox.dataset.address
-                        console.log(address_id)
                         parentBox.classList.add("selectedBox");
                         let select = parentBox.querySelector(".green_tick");
                         select.setAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
                         select.setAttribute("alt", "tickImage");
                         localStorage.setItem("addressId", JSON.stringify(address_id));
                         selectedBox = parentBox;
+
+         
+                        // For the popup
+                        function popUp(){
+                            document.querySelector(".selected-container").style.display="inline-block";
+                            document.querySelector(".address-total").setAttribute("style", "display:none");
+                        }
+
+                        setTimeout(popUp, 100)
+
                     }
                 });
             });
@@ -239,6 +271,6 @@
             })
         })
     </script>
-
+<a href=""></a>
 </body>
 </html>

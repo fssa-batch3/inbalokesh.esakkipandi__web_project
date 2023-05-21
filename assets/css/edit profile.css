@@ -93,9 +93,9 @@ textarea{
     width:100%;
 }
 
-#myAddress{
+/* #myAddress{
     margin-top: 20px;
-}
+} */
 
 @media (max-width:500px){
     section{
