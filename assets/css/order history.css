@@ -135,7 +135,10 @@ section{
         grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
         grid-gap: 70px;
     }
-    .popup img{
+    /* .greenHouse{
+        width:20px;
+    } */
+    .orderr img{
         width:6rem;
         object-fit: cover;
     }
@@ -157,7 +160,7 @@ section{
         justify-items: center;
         grid-gap: 10px;
     }
-    .popup img{
+    .orderr img{
         height:55%;
         width:106%;
         /* object-fit: cover; */

@@ -21,10 +21,10 @@
                 <h1>Login</h1>
                 <form role="form" onsubmit="signIn(event)";>
                     <label>Mobile No</label>
-                    <input type="tel" class="inp" id="user_phonenumber" pattern="[6-9]{1}[0-9]{9}" maxlength="10" placeholder="Mobile No" required>
+                    <input type="tel" class="inp" id="user_phonenumber" pattern="[6-9]{1}[0-9]{9}" maxlength="10" placeholder="Mobile No" value="9988776655" required>
                     <label>Password</label>
                     <input type="password" class="inp" id="user_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                        title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" required>
+                        title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" value="Inba1234" required>
                     <button type="submit" class="but" id="logOut">Login
                     </button >
                 </form>

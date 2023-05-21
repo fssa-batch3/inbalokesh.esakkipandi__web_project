@@ -11,9 +11,9 @@ const createAddress =
 
         <label for="name">Name</label>
         <input type="text" id="name" placeholder="Jhon" pattern="[a-zA-Z ]+" title="Write your name properly"
-            minlength="3" required>
+            minlength="3" value="Praveen" required>
         <label for="mobile_number">Mobile No</label>
-        <input type="tel" id="mobile_number" placeholder="Mobile No" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
+        <input type="tel" id="mobile_number" value="6383355909" placeholder="Mobile No" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
             title="Write your 10-digit mobile number." required>
         <label for="addressSearch">Location</label>
         <input type="text" id="addressSearch" placeholder="Enter a location" required autocomplete="off">

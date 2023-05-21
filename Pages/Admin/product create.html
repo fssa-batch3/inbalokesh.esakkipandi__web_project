@@ -107,20 +107,20 @@
         <h1>Create product</h1>
       </div>
       <label>Image</label>
-      <input type="url" id="product_image" placeholder="" pattern="https://.*" required>
+      <input type="url" id="product_image" placeholder="" pattern="https://.*" value="https://iili.io/HgW76tn.md.jpg" required>
       <label>Food name</label>
-      <input type="text" id="product_name" placeholder="Ex: Mutton Biryani" pattern="[a-zA-Z ]+" required>
+      <input type="text" id="product_name" placeholder="Ex: Mutton Biryani" pattern="[a-zA-Z ]+" value="Rice with Mutton curry" required>
       <label>Type</label>
       <select id="product_type" required>
         <option value="Veg">Veg</option>
-        <option value="Non-veg">Non-veg</option>
+        <option value="Non-veg" selected>Non-veg</option>
       </select>
       <label>Quantity</label>
-      <input type="number" id="product_quantity" placeholder="Ex: 1 or 250" min="1" max="750" required>
+      <input type="number" id="product_quantity" placeholder="Ex: 1 or 250" min="1" max="750" value="1" required>
       <label>Quantity Type</label>
-      <input type="text" id="quantity_type" pattern="[a-zA-Z0-9]+" placeholder="Ex: kg,bowl,plate etc" required>
+      <input type="text" id="quantity_type" pattern="[a-zA-Z]+" placeholder="Ex: kg,bowl,plate etc" value="plate" required>
       <label>Price</label>
-      <input type="number" id="product_price" placeholder="Price of the food" min="7" max="500" maxlength="3" required>
+      <input type="number" id="product_price" placeholder="Price of the food" min="7" max="500" maxlength="3" value="79" required>
 
       <button type="submit" class="btn-primary">Create</button>
     </form>

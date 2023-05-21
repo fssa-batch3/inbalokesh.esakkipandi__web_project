@@ -79,7 +79,7 @@
 
     const user_list = JSON.parse(localStorage.getItem("user_list"));
 
-    let address = JSON.parse(localStorage.getItem("address"));
+    let address = JSON.parse(localStorage.getItem("address")) || [];
 
     let defaultAddress = address.filter((e) => e.status === true && e.userId === userId);
 

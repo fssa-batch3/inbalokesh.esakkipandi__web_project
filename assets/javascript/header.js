@@ -70,7 +70,7 @@ if (userId) {
   const foodCount = JSON.parse(localStorage.getItem("food_count"));
   span.textContent = foodCount;
 
-  if (span.textContent === "0") {
+  if (span.textContent === "0" || span.textContent === "") {
     span.setAttribute("style", "display:none");
   }
 

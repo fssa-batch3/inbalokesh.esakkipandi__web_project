@@ -97,7 +97,7 @@
 
     const order_items = JSON.parse(localStorage.getItem("product_list"));
 
-    let cartProducts = JSON.parse(localStorage.getItem("cart_product"));
+    let cartProducts = JSON.parse(localStorage.getItem("cart_product")) || [];
 
     const userProducts = cartProducts.filter((e) => e.user_id === userId);
 
