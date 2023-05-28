@@ -59,6 +59,10 @@ button.btn-set,button.btn-edit,button.btn-remove {
     font-weight: 545;
 }
 
+.details{
+    cursor: pointer;
+}
+
 .addAddress {
     background-color: grey;
     color: white;
@@ -121,6 +125,8 @@ div.tick_image {
     padding: 0 20px 20px;
     color: #333;
     box-shadow: -2px 4px 37px -16px rgba(115, 201, 96, 1);
+    animation-name: zoomIn;
+    animation-duration: 0.8s;
 }
 
 .selected-gif img {
@@ -128,8 +134,8 @@ div.tick_image {
     width: 180px;
 }
 
-.two-button button {
-    margin-top: 15px;
+.done-button button {
+    margin-top: 10px;
     height: 40px;
     width: 120px;
     background-color: #32c671;
@@ -141,6 +147,18 @@ div.tick_image {
     border-radius: 30px;
 }
 
-.two-button button:hover {
+.done-button button:hover {
     transform: scale(1.05);
 }
+
+@keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale3d(0.5, 0.5, 0.5);
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  }
+  

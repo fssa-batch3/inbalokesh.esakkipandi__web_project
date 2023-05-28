@@ -81,7 +81,7 @@
 
     let address = JSON.parse(localStorage.getItem("address")) || [];
 
-    let defaultAddress = address.filter((e) => e.status === true && e.userId === userId);
+    let defaultAddress = address.filter((e) => e.defaultStatus === true && e.userId === userId);
 
     console.log(defaultAddress)
 

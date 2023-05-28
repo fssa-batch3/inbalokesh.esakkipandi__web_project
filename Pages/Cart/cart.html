@@ -344,7 +344,10 @@
 
       let addressId = JSON.parse(localStorage.getItem("addressId")) || [];
 
+      let defaultAddress = userAddresses.find((e) => e.defaultStatus === true);
+    
       let selectedAddress = userAddresses.find((selected) => selected.address_id === addressId);
+  
 
       if (selectedAddress === undefined || selectedAddress === null) {
         // Create the <div> element
@@ -651,6 +654,7 @@
                 localStorage.setItem("order_list", JSON.stringify(order_placed));
                 localStorage.setItem("ordered_items", JSON.stringify(ordered_items));
                 localStorage.setItem("cart_product", JSON.stringify(cartProducts));
+                localStorage.setItem("addressId", JSON.stringify(defaultAddress.address_id))
                 localStorage.setItem("food_count", 0);
 
                 document.querySelector(".placed").setAttribute("style", "display:inline-block");
@@ -668,7 +672,7 @@
         }
       });
     }
-    
+   
     
   </script>
   <!-- script for footer -->

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../assets/css/my address.css">
     <title>List Address</title>
     <style>
-   
+
     </style>
 </head>
 
@@ -55,9 +55,8 @@
                 <img src="../../assets/Images/Location.gif" alt="location gif">
             </div>
             <h2>Address has been selected sucessfully!</h2>
-            <div class="two-button">
+            <div class="done-button">
                 <button type="button" class="btn-done">Done</button>
-                <button type="button" class="btn-back">Back</button>
             </div>
 
         </div>
@@ -68,7 +67,7 @@
 
         let address = JSON.parse(localStorage.getItem("address")) || [];
 
-        let userAddress = address.filter((data) => data.userId === userId);
+        let userAddress = address.filter((data) => data.userId === userId && data.Showstatus === 0);
         console.log(userAddress)
 
         for (let i = 0; i < userAddress.length; i++) {
@@ -77,10 +76,14 @@
             addressBox.classList.add("addressBox");
             addressBox.setAttribute("data-address", userAddress[i].address_id);
 
+            const details = document.createElement("div");
+            details.classList.add("details");
+            addressBox.appendChild(details);
+
             // Create the tick_image container element
             const tickImageContainer = document.createElement("div");
             tickImageContainer.classList.add("tick_image");
-            addressBox.appendChild(tickImageContainer);
+            details.appendChild(tickImageContainer);
 
             // Create the tick image element
             const greenTickImage = document.createElement("img");
@@ -91,44 +94,44 @@
             const addressHeading = document.createElement("h3");
             addressHeading.classList.add("no-address");
             addressHeading.textContent = "Address " + [i + 1];
-            addressBox.appendChild(addressHeading);
+            details.appendChild(addressHeading);
 
             // Create the name paragraph element
             const nameParagraph = document.createElement("p");
             nameParagraph.classList.add("name");
             nameParagraph.textContent = userAddress[i].name;
-            addressBox.appendChild(nameParagraph);
+            details.appendChild(nameParagraph);
 
             // Create the street paragraph element
             const streetParagraph = document.createElement("p");
             streetParagraph.classList.add("street");
             streetParagraph.textContent = userAddress[i].house_number + ",";
-            addressBox.appendChild(streetParagraph);
+            details.appendChild(streetParagraph);
 
             // Create the locality paragraph element
             const localityParagraph = document.createElement("p");
             localityParagraph.classList.add("locality");
             localityParagraph.textContent = userAddress[i].town_name + ",";
-            addressBox.appendChild(localityParagraph);
+            details.appendChild(localityParagraph);
 
             // Create the city paragraph element
             const cityParagraph = document.createElement("p");
             cityParagraph.classList.add("city");
             cityParagraph.textContent = userAddress[i].city + " - " + userAddress[i].pinCode;
-            addressBox.appendChild(cityParagraph);
+            details.appendChild(cityParagraph);
 
             // Create the mobile number paragraph element
             const mobNumberParagraph = document.createElement("p");
             mobNumberParagraph.classList.add("mobNumber");
             mobNumberParagraph.textContent = "MOBILE : " + userAddress[i].mobile_number;
-            addressBox.appendChild(mobNumberParagraph);
+            details.appendChild(mobNumberParagraph);
 
             // Create the "div_buttons"
             const divButtons = document.createElement("div");
             divButtons.classList.add("buttons");
             addressBox.appendChild(divButtons);
 
-            if (userAddress[i].status !== true) {
+            if (userAddress[i].defaultStatus !== true) {
                 // Create the "Set as default" button
                 const setDefaultButton = document.createElement("button");
                 setDefaultButton.classList.add("btn-set");
@@ -138,7 +141,10 @@
 
             }
             else {
+                addressBox.classList.add("selectedBox");
                 addressHeading.textContent = "Address " + [i + 1] + " (Default)";
+                greenTickImage.setAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
+                greenTickImage.setAttribute("alt", "tickImage");
             }
 
             // Create the "Edit address" button
@@ -169,27 +175,30 @@
 
         if (addressStatus === "SelectAddress") {
 
-            document.querySelector(".btn-done").addEventListener("click", function goCart(){
+            document.querySelector(".btn-done").addEventListener("click", function goCart() {
                 window.location.href = '../../Pages/Cart/cart.html';
-            })
-
-            document.querySelector(".btn-back").addEventListener("click", function goCart(){
-                window.location.href = '../../Pages/Login and Order/List address.html?type=SelectAddress';
             })
 
             let selectedBox = null;
 
-            let Box = document.querySelectorAll(".addressBox");
+            let Box = document.querySelectorAll(".details");
+
+            let defaultSelectedBox = document.querySelector(".selectedBox");
+            let defaultSelectedTick = defaultSelectedBox.querySelector(".green_tick");
+            defaultSelectedTick.setAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
+            defaultSelectedTick.setAttribute("alt", "tickImage");
+            selectedBox = defaultSelectedBox;
 
             Box.forEach(function (findDiv) {
                 findDiv.addEventListener("click", function () {
+
                     if (selectedBox === this) {
                         this.classList.remove("selectedBox");
                         let select = this.querySelector(".green_tick");
                         select.removeAttribute("src", "../../assets/Images/green_tick-removebg-preview.png");
                         select.removeAttribute("alt", "tickImage");
                         selectedBox = null;
-                    } 
+                    }
                     else {
                         if (selectedBox !== null) {
                             selectedBox.classList.remove("selectedBox");
@@ -207,14 +216,14 @@
                         localStorage.setItem("addressId", JSON.stringify(address_id));
                         selectedBox = parentBox;
 
-         
+
                         // For the popup
-                        function popUp(){
-                            document.querySelector(".selected-container").style.display="inline-block";
+                        function popUp() {
+                            document.querySelector(".selected-container").style.display = "inline-block";
                             document.querySelector(".address-total").setAttribute("style", "display:none");
                         }
 
-                        setTimeout(popUp, 100)
+                        setTimeout(popUp, 180)
 
                     }
                 });
@@ -225,12 +234,13 @@
         let setDefault = document.querySelectorAll(".btn-set");
         setDefault.forEach(function addressSet(set) {
             set.addEventListener("click", function setEach() {
+
                 let parentDiv = this.closest(".addressBox");
                 let address_id = parentDiv.dataset.address;
-                let defaultAddress = userAddress.find((e) => e.status === true);
-                defaultAddress.status = false;
+                let defaultAddress = userAddress.find((e) => e.defaultStatus === true);
+                defaultAddress.defaultStatus = false;
                 let findAddress = userAddress.find((findId) => findId.address_id === address_id);
-                findAddress.status = true;
+                findAddress.defaultStatus = true;
                 localStorage.setItem("address", JSON.stringify(address));
                 localStorage.setItem("addressId", JSON.stringify(address_id))
                 window.location.reload();
@@ -244,7 +254,7 @@
                 let parentDiv = this.closest(".addressBox");
                 let address_id = parentDiv.dataset.address;
 
-                let defaultAddress = userAddress.find((e) => e.status === true);
+                let defaultAddress = userAddress.find((e) => e.defaultStatus === true);
                 // console.log(address_id)
 
                 if (defaultAddress.address_id === address_id) {
@@ -252,8 +262,7 @@
                 }
                 else {
                     let findAddress = userAddress.find((findId) => findId.address_id === address_id);
-                    let indexOfAddress = address.indexOf(findAddress)
-                    address.splice(indexOfAddress, 1)
+                    findAddress.Showstatus = 1
                     localStorage.setItem("address", JSON.stringify(address));
                     window.location.reload()
                 }
@@ -262,15 +271,16 @@
 
         // Function to edit address //
         let editAddress = document.querySelectorAll(".btn-edit");
-        editAddress.forEach(function addressEdit(edit){
-            edit.addEventListener("click", function editEach(){
+        editAddress.forEach(function addressEdit(edit) {
+            edit.addEventListener("click", function editEach() {
                 let parentDiv = this.closest(".addressBox");
                 let address_id = parentDiv.dataset.address;
-                window.location.href = "../../Pages/Login and Order/addressForm.html?form=EditAddress&id="+address_id;
-                
+                window.location.href = "../../Pages/Login and Order/addressForm.html?form=EditAddress&id=" + address_id;
+
             })
         })
     </script>
-<a href=""></a>
+
 </body>
+
 </html>

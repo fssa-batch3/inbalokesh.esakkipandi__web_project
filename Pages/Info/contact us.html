@@ -1,69 +1,55 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ONLY HOME FOOD</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="../../assets/css/header.css">
-        <link rel="stylesheet" href="../../assets/css/contactus.css">
-        <link rel="stylesheet" href="../../assets/css/footer.css">
-        <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
-    </head>
 
-    <body>
-        
-        <h1 class="con">Contact Us</h1>
-        <div class="box">
-            <form id="feedback_form">
-                <label>Name</label>
-                <input type="text" id="name" name="name" pattern="[a-zA-Z0-9]+" placeholder="Name" required>
-                <br>
-                <label>Mobile No</label>
-                <input type="tel" id="number" name="Mobile No" pattern="[0-9].{9}" placeholder="Mobile No" required>
-                <label>Email</label>
-                <input type="email" id="email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email" required>
-                <br>
-                <label>Message</label>
-                <textarea id="message" name="sub" placeholder="Message" required></textarea>
-                <button type="submit" id="message_submit" value="Submit">Submit</button>
-            </form>
-            <img src="../../assets/Images/mother-removebg-preview.png" alt="mother cooking image">
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONLY HOME FOOD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/css/header.css">
+    <link rel="stylesheet" href="../../assets/css/contactus.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+ 
+</head>
 
-        <!-- script -->
-        <script src="../../assets/javascript/header.js"></script>
-        <script src="../../assets/javascript/footer.js"></script>
+<body>
 
-        <script>
-            document
-  .querySelector("#feedback_form")
-  .addEventListener("submit", function contactForm(e) {
-                e.preventDefault();
-                const name = document.getElementById("name").value;
-                const number = document.getElementById("number").value;
-                const email = document.getElementById("email").value;
-                const message = document.getElementById("message").value;
+    <h1 class="con">Contact Us</h1>
+    <div class="box">
+        <form id="feedback_form">
+            <label>Name</label>
+            <input type="text" id="name" name="name" pattern="[a-zA-Z0-9]+" placeholder="Name" required>
+            <br>
+            <label>Mobile No</label>
+            <input type="tel" id="number" name="Mobile No" pattern="[6-9]{1}[0-9]{9}" placeholder="Mobile No" required>
+            <label>Email</label>
+            <input type="email" id="email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                placeholder="Email" required>
+            <br>
+            <label>Message</label>
+            <textarea id="message" name="sub" placeholder="Message" required></textarea>
+            <button type="submit" id="message_submit" value="Submit">Submit</button>
+        </form>
+        <img src="../../assets/Images/mother-removebg-preview.png" alt="mother cooking image">
+    </div>
 
-                const user_messages =
-      JSON.parse(localStorage.getItem("user_messages")) || [];
+    <!-- script -->
+    <script src="../../assets/javascript/header.js"></script>
+    <script src="../../assets/javascript/footer.js"></script>
 
-                user_messages.push({
-                  name,
-                  number,
-                  email,
-                  message,
-                });
-            
-                localStorage.setItem("user_messages", JSON.stringify(user_messages));
-                document.querySelector("form").reset();
-                alert("Your message has been submited");
-                window.location.reload();
-              });
-        </script>
-        <!-- script -->
-    </body>
+    <script src="../../assets/javascript/contact us.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("N5MFrq6o8HTabV3Md");
+        })();
+    </script>
+</body>
+
 </html>

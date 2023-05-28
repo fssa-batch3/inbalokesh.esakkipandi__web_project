@@ -16,7 +16,7 @@ const createAddress =
         <input type="tel" id="mobile_number" value="6383355909" placeholder="Mobile No" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
             title="Write your 10-digit mobile number." required>
         <label for="addressSearch">Location</label>
-        <input type="text" id="addressSearch" placeholder="Enter a location" required autocomplete="off">
+        <input type="text" id="addressSearch" placeholder="Search your location" required autocomplete="off">
         <label for="house_number">House no, Flat no, Street name</label>
         <input type="text" class="houseNumber" id="house_number" placeholder="No.7, C.L.V nagar" required />
         <label for="town_name">Town or Village Name</label>
@@ -102,12 +102,13 @@ if (addressFrom === "CreateAddress") {
             let city = document.getElementById("city").value.trim().split(/\s+/g).join(" ");
             let pinCode = document.getElementById("pinCode").value;
             let state = document.getElementById("state").value.trim().split(/\s+/g).join(" ");
-            let status = document.getElementById("checkBox").checked;
+            let defaultStatus = document.getElementById("checkBox").checked;
             let address_id = uuidv4();
+
             function validate() {
-                if (/^\s*$/g.test(house_number) || /^\s*$/g.test(town_name) || /^\s*$/g.test(city) || /^\s*$/g.test(state) || /^\s*$/g.test(pinCode)) {
+                if (/^\s*$/g.test(name) || /^\s*$/g.test(house_number) || /^\s*$/g.test(town_name) || /^\s*$/g.test(city) || /^\s*$/g.test(state) || /^\s*$/g.test(pinCode)) {
                     alert("Write your information properly");
-                    house_number.value=reset();
+                    house_number.value = reset();
                 }
             }
             validate()
@@ -119,10 +120,16 @@ if (addressFrom === "CreateAddress") {
             let userAddress = address.filter((data) => data.userId === userId);
             console.log(userAddress.length)
 
-            let checkAddress = address.some((e) => e.location === addressSearch);
+            let limitAddress = userAddress.filter((limit) => limit.Showstatus === 0);
+            console.log(limitAddress)
 
-            if (userAddress.length < 10) {
-                if (!checkAddress) {
+            let checkAddress = userAddress.filter((e) => e.name === name &&
+                e.mobile_number === mobile_number && e.location === addressSearch &&
+                e.house_number === house_number && e.town_name === town_name &&
+                e.city === city && e.pinCode === pinCode && e.state === state)
+
+            if (limitAddress.length < 10) {
+                if (checkAddress.length === 0) {
                     if (userAddress.length === 0) {
                         address.push({
                             name,
@@ -133,16 +140,17 @@ if (addressFrom === "CreateAddress") {
                             city,
                             pinCode,
                             state,
-                            status: true,
+                            defaultStatus: true,
+                            Showstatus: 0,
                             userId,
                             address_id
                         });
                         localStorage.setItem("addressId", JSON.stringify(address_id));
                     }
                     else {
-                        if (status === true) {
-                            let defaultAddress = userAddress.find((e) => e.status === true);
-                            defaultAddress.status = false;
+                        if (defaultStatus === true) {
+                            let defaultAddress = userAddress.find((e) => e.defaultStatus === true);
+                            defaultAddress.defaultStatus = false;
                             localStorage.setItem("address", JSON.stringify(address));
                             address.push({
                                 name,
@@ -153,7 +161,8 @@ if (addressFrom === "CreateAddress") {
                                 city,
                                 pinCode,
                                 state,
-                                status: true,
+                                defaultStatus: true,
+                                Showstatus: 0,
                                 userId,
                                 address_id
                             });
@@ -169,7 +178,8 @@ if (addressFrom === "CreateAddress") {
                                 city,
                                 pinCode,
                                 state,
-                                status,
+                                defaultStatus,
+                                Showstatus: 0,
                                 userId,
                                 address_id
                             });
@@ -182,8 +192,25 @@ if (addressFrom === "CreateAddress") {
                     window.location.href = "../../Pages/Login and Order/List address.html?status=1";
                 }
                 else {
-                    alert("This address is already in your address book or your limt is over")
+                    if(checkAddress[0].Showstatus === 1){
+                    checkAddress[0].Showstatus = 0;
+                    if (defaultStatus === true) {
+                        let defaultAddress = userAddress.find((e) => e.defaultStatus === true);
+                        defaultAddress.defaultStatus = false;
+                        localStorage.setItem("addressId", JSON.stringify(checkAddress[0].address_id));
+                        localStorage.setItem("address", JSON.stringify(address));
+                        checkAddress[0].defaultStatus = true;
+                    }
+                    localStorage.setItem("address", JSON.stringify(address));
+                    document.querySelector("form").reset();
+                    alert("Your address has been submited");
+                    window.location.href = "../../Pages/Login and Order/List address.html?status=1";
                 }
+                else{
+                    alert("This address is already in your book")
+                }
+                }
+
             }
             else {
                 document.querySelector("form").reset();
@@ -214,9 +241,10 @@ if (addressFrom === "EditAddress") {
     saveAddress.addEventListener("submit", function updateDetails(e) {
         e.preventDefault()
 
-        // const updateaddress = JSON.parse(localStorage.getItem("address"));
-        // let userAddress = address.filter((data) => data.userId === userId && data.address_id === addressUniqueId);
-        // console.log(userAddress)
+        let userAddress = address.filter((data) => data.userId === userId);
+  
+        let EditAddress = address.filter((edit) => edit.address_id === addressUniqueId);
+     
         let uname = document.getElementById("name").value.trim().split(/\s+/g).join(" ");
         let umobile_number = document.getElementById("mobile_number").value;
         let uaddressSearch = document.getElementById("addressSearch").value;
@@ -225,36 +253,53 @@ if (addressFrom === "EditAddress") {
         let ucity = document.getElementById("city").value.trim().split(/\s+/g).join(" ");
         let upinCode = document.getElementById("pinCode").value;
         let ustate = document.getElementById("state").value.trim().split(/\s+/g).join(" ");
+        let address_id = uuidv4();
 
-        console.log(uname)
-
-        userAddress[0].name = uname
-        userAddress[0].mobile_number = umobile_number
-        userAddress[0].location = uaddressSearch;
-        userAddress[0].house_number = uhouse_number
-        userAddress[0].town_name = utown_name
-        userAddress[0].city = ucity
-        userAddress[0].pinCode = upinCode
-        userAddress[0].state = ustate
-        userAddress[0].status = userAddress[0].status
-        userAddress[0].userId =  userAddress[0].userId
-        userAddress[0].address_id = userAddress[0].address_id
-
-        
         function validate() {
-            if (/^\s*$/g.test(uhouse_number) || /^\s*$/g.test(utown_name) || /^\s*$/g.test(ucity) || /^\s*$/g.test(ustate) || /^\s*$/g.test(upinCode)) {
+            if (/^\s*$/g.test(uname) || /^\s*$/g.test(uhouse_number) || /^\s*$/g.test(utown_name) || /^\s*$/g.test(ucity) || /^\s*$/g.test(ustate) || /^\s*$/g.test(upinCode)) {
                 alert("Write your information properly");
-                uhouse_number.value=reset();
+                uhouse_number.value = reset();
             }
         }
         validate()
 
-        localStorage.setItem("address", JSON.stringify(address));
+        let alreadyExist = userAddress.some((details) => details.name === uname &&
+            details.mobile_number === umobile_number && details.location === uaddressSearch &&
+            details.house_number === uhouse_number && details.town_name === utown_name &&
+            details.city === ucity && details.pinCode === upinCode && details.state === ustate)
+
+        console.log(alreadyExist)
+
+        if (!alreadyExist) {
+            address.push({
+                "name": uname,
+                "mobile_number": umobile_number,
+                "location": uaddressSearch,
+                "house_number": uhouse_number,
+                "town_name": utown_name,
+                "city": ucity,
+                "pinCode": upinCode,
+                "state": ustate,
+                "defaultStatus": EditAddress[0].defaultStatus,
+                "Showstatus": 0,
+                userId,
+                address_id
+            });
+
+            EditAddress[0].defaultStatus = false
+            EditAddress[0].Showstatus = 1;
+            localStorage.setItem("addressId", JSON.stringify(address_id));
+            localStorage.setItem("address", JSON.stringify(address));
+            alert("Address updated sucessfully");
+        }
+
         document.querySelector("form").reset();
-        alert("Address updated sucessfully");
-        window.location.href = "../../Pages/Login and Order/List address.html?status=1";    
+        window.location.href = "../../Pages/Login and Order/List address.html?status=1";
     });
 }
+
+
+// Address auto complete //
 
 let autocomplete;
 let address1Field;
@@ -356,3 +401,4 @@ function fillInAddress() {
 }
 
 window.initAutocomplete = initAutocomplete;
+
