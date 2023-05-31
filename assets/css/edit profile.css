@@ -33,10 +33,15 @@ h2{
     left:450px;
 }
 
+::-webkit-scrollbar{
+    display: none;
+}
+
 .pbox{
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     margin-top:40px;
+    align-items: center;
 }
 
 .pbox img{
@@ -52,7 +57,7 @@ input[type=file]{
     cursor: pointer;
 }
 
-.pbox button{
+button{
     height:30px;
     width:10rem;
     margin-bottom: 30px;
@@ -76,7 +81,7 @@ input{
 }
 
 textarea{
-    height:60px;
+    height:85px;
     border-color: transparent;
     resize: none;
 }
@@ -85,8 +90,12 @@ textarea{
     display: flex;
     flex-direction: column;
     margin-top:20px;
-    width:80%;
+    width:100%;
 }
+
+/* #myAddress{
+    margin-top: 20px;
+} */
 
 @media (max-width:500px){
     section{

@@ -44,19 +44,18 @@ body{
 }
 
 .navbar{
-    margin-top:30px;
+    display: flex;
+    justify-content: space-between;
+    width:420px;
+    align-items: center;
 }
 
 .navbar a{
     text-decoration: none;
     color:black;
-    margin-right:50px;
 }
 
 .Profile button{
-    position: relative;
-    bottom: 10px;
-    right:20px;
     padding:5px 10px;
     color:white;
     height:35px;
@@ -69,12 +68,12 @@ body{
 
 .Profile{
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+    margin-left: 40px;
 }
-.Profile img{
-    margin-top:25px;
-    margin-right: 20px;
-}
+
 span.count{
     background-color:#FF7223 ;
     color:white;
@@ -84,54 +83,12 @@ span.count{
     align-items: center;
     height: 20px;
     width: 20px;
-    position: absolute;
-    top:21%;
-    right:12.5%;
+    position: relative;
+    bottom:19%;
+    right:25%;
     border-radius: 30px;
 }
 
-@media (max-width:1435px){
-    span.count{
-        position: absolute;
-        top:21%;
-        right:12%;
-    }
-}
-@media (max-width:1395px){
-    span.count{
-        position: absolute;
-        top:21%;
-        right:11%;
-    }
-}
-@media (max-width:1285px){
-    span.count{
-        position: absolute;
-        top:21%;
-        right:10%;
-    }
-}
-@media (max-width:1190px){
-    span.count{
-        position: absolute;
-        top:21%;
-        right:9%;
-    }
-}
-@media (max-width:1120px){
-    span.count{
-        position: absolute;
-        top:21%;
-        right:8%;
-    }
-}
-@media (max-width:1070px){
-    span.count{
-        position: absolute;
-        top:21%;
-        right:7%;
-    }
-}
 @media (max-width:1020px){
     .header{
         display: flex;
@@ -151,16 +108,15 @@ span.count{
     .toggle-button{
         display: flex;
     }
-    span.count{
-        position: absolute;
-        top:350px;
-        left:13%;
-    }
     .navbar{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-top: 2px;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .navbar a{
+        width: 100%;
     }
     .head{
         display: none;
@@ -174,40 +130,20 @@ span.count{
         display: flex;
     }
     .Profile{
-        margin: 10px 30px;
+        width:90px;
+        margin-left: 0;
+        padding: 10px;
     }
-}
-@media (max-width:730px) {
     span.count{
-        position: absolute;
-        top:350px;
-        left:18%;
+        position: relative;
+        top:-42%;
+        left:-21%;
     }
 }
-
 @media (max-width:565px) {
     .shead h1{
         font-size: 6vw;
         margin-top: 25px;
-    }
-    span.count{
-        position: absolute;
-        top:350px;
-        left:23.5%;
-    }
-}
-@media (max-width:450px) {
-    span.count{
-        position: absolute;
-        top:350px;
-        left:30%;
-    }
-}
-@media (max-width:385px) {
-    span.count{
-        position: absolute;
-        top:350px;
-        left:35%;
     }
 }
 

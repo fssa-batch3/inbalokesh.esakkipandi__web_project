@@ -2,6 +2,10 @@ body{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+::-webkit-scrollbar{
+  display: none;
+}
+
 .box{
   display:flex;
   justify-content: space-between;
@@ -30,8 +34,13 @@ input[type=text], [type=tel], [type=email], textarea{
   margin-bottom: 16px; 
   resize: vertical;
 }
+
+#message{
+  height:200px;
+  resize: none;
+}
  
-input[type=submit]{
+#message_submit{
   background-color: grey;
   color: white;
   padding: 12px 20px;
@@ -40,7 +49,7 @@ input[type=submit]{
   cursor: pointer;
 }
   
-input[type=submit]:hover{
+#message_submit:hover{
   background-color:  #5cb748;
 }
 
@@ -51,6 +60,22 @@ h1.con{
   margin:50px 0;
 }
   
+.message_note h3{
+  font-size: 30px;
+}
+
+.message_gif{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:120px 0 160px 0;
+}
+
+.message_gif img{
+  height:150px;
+}
+
 @media (max-width:1245px) {
   .box{
     flex-direction: column-reverse;

@@ -3,475 +3,244 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONLY HOME FOOD</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../../assets/css/menu.css">
-    <link rel="stylesheet" href="../../assets/css/footer.css">
-    <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONLY HOME FOOD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/menu.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css">
+  <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
 </head>
 
 <body>
-    <!-- header -->
-    <header class="header">
-        <div class="shead">
-            <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px"
-                    width="100px"></a>
-            <h1>ONLY HOME FOOD</h1>
-            <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-        </div>
-        <div class="head">
-            <nav class="navbar">
-                <a class="navigation__link" href="../../index.html">Home</a>
-                <a class="navigation__link" href="../Menu/menu.html">Menu</a>
-                <a class="navigation__link" href="../Info/about us.html">About Us</a>
-                <a class="navigation__link" href="../Info/contact us.html">Contact Us</a>
-            </nav>
-            <div class="Profile">
-                <a href="../Login and Order/Login.html"><button>Login</button></a>
-                <a href="../Cart/cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon"
-                height="30px" width="30px"></a>
-                <span class="count">0</span>
-                <a href="../Login and Order/Profile.html"><img src="../../assets/Images/person-circle-outline.svg"
-                        alt="Profile icon" height="30px" width="30px"></a>
-            </div>
-        </div>
-    </header>
-    <!-- header ends -->
 
-    <!-- filter box -->
-    <h1 class="he">Menu</h1>
-    <div class="top">
-        <div class="menu">
-            <a href="./menu.html" class="all">All</a>
-            <a href="./breakfast.html">Breakfast</a>
-            <a href="./lunch.html">Lunch</a>
-            <a href="./night.html">Dinner</a>
-        </div>
+  <!-- filter box -->
+  <h1 class="he">Menu</h1>
+  <div class="search_box">
+    <input type="text" class="search" placeholder="Search" id="search_food">
+    <div>
+      <a href="#">
+        <img class="search_image" src="../../assets/Images/Search image.png" alt="">
+      </a>
     </div>
-
-    <!-- list of food starts -->
-    <section class="details">
-    </section>
-    <!-- list of foods end -->
-
-    <!-- scooty gif -->
-    <div class="gif">
-        <img src="../../assets/Images/scooty.gif" alt="scooty img" height="150px" width="150px">
+  </div>
+  <div class="top">
+    <div class="menu">
+      <a href="./menu.html" class="all">All</a>
     </div>
+  </div>
 
-    <!-- footer starts -->
-    <footer>
-        <div class="foot">
-            <div class="footer">
-                <img src="../../assets/Images/logo-facebook.svg" alt="facebook link">
-                <img src="../../assets/Images/\/logo-instagram.svg" alt="instagram link">
-                <img src="../../assets/Images/logo-twitter.svg" alt="twitter link">
-                <img src="../../assets/Images/logo-whatsapp.svg" alt="whatsapp link">
-            </div>
-            <p>
-                No.123, Rk Road, CLV Nagar, Uthandi, Chennai - 600 119.
-            </p>
-            <div class="phone">
-                <div>
-                    <div>
-                        <img src="../../assets/Images/call-outline.svg" alt="call image" height="30px" width="30px">
-                    </div>
-                    <img src="../../assets/Images/mail-outline.svg" alt="mail image" height="30px" width="30px">
-                </div>
-                <div>
-                    <p>+918888888888</p>
-                    <p>ohfood@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- footer ends -->
+  <div class="res">
+    <div class="no_result" style="display:none">
+      <img class="result_img" src="../../assets/Images/no-result.png" alt="No result image">
+    </div>
+  </div>
 
-    <!-- script starts-->
-    <script src="../../assets/javascript/javascript.js"></script>
+  <!-- list of food starts -->
+  <section class="details">
+  </section>
+  <!-- list of foods end -->
 
-    <script>
-        // To navigate to cart page
-        function btn() {
-            window.location.href = "../Cart/cart.html"
+  <!-- scooty gif -->
+  <div class="gif">
+    <img src="../../assets/Images/scooty.gif" alt="scooty img" height="150px" width="150px">
+  </div>
+
+  <!-- script starts-->
+
+  <!-- header script -->
+  <script src="../../assets/javascript/header.js"></script>
+
+  <!-- footer script -->
+  <script src="../../assets/javascript/footer.js"></script>
+  <script>// DOM //
+    let div_box;
+    let img_food;
+    let div_border;
+    let h4;
+    let div_info_box;
+    let div_info;
+    let h5;
+    let p;
+    let div_price;
+    let p_price;
+    let button;
+    let div_no_result;
+    let result_img;
+
+    // Function to display foods //
+
+    const product_list = JSON.parse(localStorage.getItem("product_list"));
+    const uu_id = JSON.parse(localStorage.getItem("product_ids")) || [];
+    // console.log(uu_id);
+
+    const food_list = product_list.filter((product) =>
+      uu_id.some((uuid) => product.product_id === uuid.product_id)
+    );
+
+    // console.log(food_list);
+
+    if (uu_id.length !== 0) {
+      for (let i = 0; i < food_list.length; i++) {
+        // <div class="box">
+        div_box = document.createElement("div");
+        div_box.setAttribute("class", "box");
+        // console.log(div_box);
+
+        // <img>
+        img_food = document.createElement("img");
+        img_food.setAttribute("src", food_list[i].product_image);
+        img_food.setAttribute("alt", `${food_list[i].product_name} image`);
+        div_box.append(img_food);
+
+        // <div class="border">
+        div_border = document.createElement("div");
+        div_border.setAttribute("class", "border");
+        div_box.append(div_border);
+
+        // <h4>
+        h4 = document.createElement("h4");
+        h4.innerText = food_list[i].product_name;
+        div_border.append(h4);
+
+        // <div class="info_box">
+        div_info_box = document.createElement("div");
+        div_info_box.setAttribute("class", "info_box");
+        div_border.append(div_info_box);
+
+        // <div class="info">
+        div_info = document.createElement("div");
+        div_info.setAttribute("class", "info");
+        div_info_box.append(div_info);
+
+        h5 = document.createElement("h5");
+        h5.innerText = "Type";
+        div_info.append(h5);
+
+        p = document.createElement("p");
+        p.innerText = food_list[i].product_type;
+        div_info.append(p);
+
+        // <div class="info2">
+        div_info = document.createElement("div");
+        div_info.setAttribute("class", "info");
+        div_info_box.append(div_info);
+
+        h5 = document.createElement("h5");
+        h5.innerText = "Quantity";
+        div_info.append(h5);
+
+        p = document.createElement("p");
+        p.innerText = `${food_list[i].product_quantity} ${food_list[i].quantity_type}`;
+        div_info.append(p);
+
+        // <div class="price">
+        div_price = document.createElement("div");
+        div_price.setAttribute("class", "price");
+        div_border.append(div_price);
+
+        p_price = document.createElement("p");
+        p_price.setAttribute("class", "food_price");
+        p_price.innerText = `Rs.${food_list[i].product_price}`;
+        div_price.append(p_price);
+
+        button = document.createElement("button");
+        button.setAttribute("type", "button");
+        button.setAttribute("class", "addCart");
+        button.setAttribute("data-uuid", food_list[i].product_id);
+        button.innerText = "Add to cart";
+        div_price.append(button);
+
+        document.querySelector("section.details").append(div_box);
+      }
+    } else {
+      const result = (document.querySelector("div.no_result").style.display = "");
+    }
+    // function for add to cart //
+    const addToCarts = document.querySelectorAll("button.addCart");
+    addToCarts.forEach(function addCarts(add_foods) {
+      add_foods.addEventListener("click", function clickToAdd() {
+        const { uuid } = this.dataset;
+        const price_parent = this.closest(".price");
+        const food_price = price_parent
+          .querySelector(".food_price")
+          .innerText.replace("Rs.", "");
+
+        const cart_products =
+          JSON.parse(localStorage.getItem("cart_product")) || [];
+
+        const exist =
+          cart_products.length &&
+          JSON.parse(localStorage.getItem("cart_product")).some(
+            (data) => data.product_id === uuid && data.user_id === userId
+          );
+
+        if (userId == null) {
+          alert("Login to order your food");
+          window.location.href = "../Login and Order/Login.html";
+        } else if (!exist) {
+          cart_products.push({
+            user_id: userId,
+            product_id: uuid,
+            quantity_ordered: "1",
+            delivery_time: "",
+            price: parseInt(food_price),
+          });
+          localStorage.setItem("cart_product", JSON.stringify(cart_products));
+          window.location.reload();
+        } else {
+          alert("This product is already added to your cart");
         }
+      });
+    });
 
+    const searchBox = document.getElementById("search_food");
+    searchBox.addEventListener("keyup", function findFood() {
+      const input_search = document
+        .getElementById("search_food")
+        .value.toUpperCase()
+        .trim()
+        .split(/\s+/g)
+        .join("");
 
-        let div_box;
-        let img_food;
-        let div_border;
-        let h4;
-        let div_info_box;
-        let div_info;
-        let h5;
-        let p;
-        let div_price;
-        let p_price;
-        let button;
+      const item = document.querySelectorAll("div.box");
 
-        // const food_card_list = [
-        //     {
-        //         "name": "Mutton Biryani",
-        //         "type": "Non-veg",
-        //         "image": {
-        //             "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-        //             "alt": "Mutton Biryani image",
-        //         },
-        //         "quantity": ["1 Kg Biryani"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 179,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Pongal",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/pongal-ven-pongal-500x375.jpg",
-        //             "alt": "Pongal image",
-        //         },
-        //         "quantity": ["1 bowl"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 29,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Chicken 65",
-        //         "type": "Non-veg",
-        //         "image": {
-        //             "source": "../../assets/Images/637945968919611327.webp",
-        //             "alt": "Chicken 65 image",
-        //         },
-        //         "quantity": ["250g"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 49,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Idly",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/homemade-breakfast.jpg",
-        //             "alt": "Idly image",
-        //         },
-        //         "quantity": ["4 Idly"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 19,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Morning Combo",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/TAMIL-NADU-FOOD.jpg",
-        //             "alt": "Morning Combo image",
-        //         },
-        //         "quantity": ["Dosa", "Idly", "Pongal", "Vadai"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 49,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Ragi Koozh",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/ragi-koozh-kepai-kool-transformed.jpeg",
-        //             "alt": "Ragi Koozh image",
-        //         },
-        //         "quantity": ["1 Bowl"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 39,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Sambar Rice",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
-        //             "alt": "Sambar Rice image",
-        //         },
-        //         "quantity": ["1 plate"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 39,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Poratta",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/malabar_parotta-1.jpg",
-        //             "alt": "Poratta image",
-        //         },
-        //         "quantity": ["2 piece"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 19,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Ice Biryani",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/Old rice.jpg",
-        //             "alt": "Ice Biryani image",
-        //         },
-        //         "quantity": ["1 Bowl"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 99,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Poori",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/poori-masala-kizhangu.jpg",
-        //             "alt": "Poori image",
-        //         },
-        //         "quantity": ["3 Poori", "potato curry"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 39,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Curd Rice",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/curd-rice-recipe.jpg",
-        //             "alt": "Curd Rice image",
-        //         },
-        //         "quantity": ["1 Bowl"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 39,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Chapathi with chana",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/chapati.jpg",
-        //             "alt": "Chapathi with chana image",
-        //         },
-        //         "quantity": ["3 Chapati", "Chana"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 49,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Ghee Rice",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/ghee rice.jpg",
-        //             "alt": "Ghee Rice image",
-        //         },
-        //         "quantity": ["Ghee Rice", "Panner curry"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 99,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Chicken Biryani",
-        //         "type": "Non-veg",
-        //         "image": {
-        //             "source": "../../assets/Images/thumb__700_0_0_0_auto.jpg",
-        //             "alt": "Chicken Biryani image",
-        //         },
-        //         "quantity": ["1 Kg Biryani"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 149,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Upma",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/Upma.jpg",
-        //             "alt": "Upma image",
-        //         },
-        //         "quantity": ["1 Bowl"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 39,
-        //         },
-        //         "ordered": 0
-        //     },
-        //     {
-        //         "name": "Veg Biryani",
-        //         "type": "Veg",
-        //         "image": {
-        //             "source": "../../assets/Images/Vegetable-Biryani-scaled.jpg",
-        //             "alt": "Veg Biryani image",
-        //         },
-        //         "quantity": ["1 plate"],
-        //         "price": {
-        //             "currency": "Rs. ",
-        //             "rate": 69,
-        //         },
-        //         "ordered": 0
-        //     },
+      // console.log(item)
 
-        // ]
+      const result = document.querySelector("div.no_result");
 
-        
-        // Function to display foods //
+      const item_name = document.getElementsByTagName("h4");
+      // console.log(item_name);
+      let count = 0;
+      for (let i = 0; i < item_name.length; i++) {
+        const a = item[i].getElementsByTagName("h4")[0];
 
-        let product_list = JSON.parse(localStorage.getItem("product_list"));
-        let uu_id = JSON.parse(localStorage.getItem("product_ids"));
+        const value = a.innerText || a.innerHTML || a.textContent;
 
-        let food_list = product_list.filter(product =>
-            uu_id.some(uuid => uuid.product_id === product.product_id)
-        );
-        
-        console.log(food_list);
-
-        for (let i = 0; i < food_list.length; i++) {
-
-            // <div class="box">
-            div_box = document.createElement("div");
-            div_box.setAttribute("class", "box");
-            console.log(div_box);
-
-            // <img>
-            img_food = document.createElement("img");
-            img_food.setAttribute("src", food_list[i]["product_image"]);
-            img_food.setAttribute("alt", food_list[i]["product_name"] + " image");
-            div_box.append(img_food);
-
-            // <div class="border">
-            div_border = document.createElement("div");
-            div_border.setAttribute("class", "border");
-            div_box.append(div_border);
-
-            // <h4>
-            h4 = document.createElement("h4");
-            h4.innerText = food_list[i]["product_name"];
-            div_border.append(h4);
-
-            // <div class="info_box"> 
-            div_info_box = document.createElement("div");
-            div_info_box.setAttribute("class", "info_box");
-            div_border.append(div_info_box);
-
-            // <div class="info">
-            div_info = document.createElement("div");
-            div_info.setAttribute("class", "info");
-            div_info_box.append(div_info);
-
-            h5 = document.createElement("h5");
-            h5.innerText = "Type";
-            div_info.append(h5);
-
-            p = document.createElement("p");
-            p.innerText = food_list[i]["product_type"];
-            div_info.append(p);
-
-            // <div class="info2">
-            div_info = document.createElement("div");
-            div_info.setAttribute("class", "info");
-            div_info_box.append(div_info);
-
-            h5 = document.createElement("h5");
-            h5.innerText = "Quantity";
-            div_info.append(h5);
-
-            p = document.createElement("p");
-            p.innerText = food_list[i]["product_quantity"];
-            div_info.append(p);
-
-            // <div class="price">
-            div_price = document.createElement("div");
-            div_price.setAttribute("class", "price");
-            div_border.append(div_price);
-
-            p_price = document.createElement("p");
-            p_price.innerText = "Rs." + food_list[i]["product_price"];
-            div_price.append(p_price);
-
-            button = document.createElement("button")
-            button.setAttribute("type", "button");
-            button.setAttribute("class", "addCart");
-            button.setAttribute("data-uuid", food_list[i]["product_id"]);
-            button.innerText = "Add to cart";
-            div_price.append(button);
-
-
-
-            document.querySelector("section.details").append(div_box);
+        if (input_search === "") {
+          result.style.display = "none";
         }
+        if (value.toUpperCase().trim().split(/\s+/g).join("").indexOf(input_search) > -1) {
+          item[i].style.display = "";
+          result.style.display = "none";
+        } 
+        else{
+          item[i].style.display = "none";
+        }
+        if(item[i].style.display === "none"){      
+            count++
+        }
+        if(count === item_name.length){
+          result.style.display = "";
+        }
+      }
 
+    });
+  </script>
+  <!-- script ends-->
 
-        // function for add to cart //
-
-        let carts = document.querySelectorAll("button.addCart");
-        carts.forEach(function (add_foods) {
-            add_foods.addEventListener("click", function () {
-                const uuid = this.dataset.uuid;
-
-                let cart_products = JSON.parse(localStorage.getItem("cart_product")) || [];
-
-                let exist = cart_products.length &&
-                    JSON.parse(localStorage.getItem('cart_product')).some(data =>
-                        data.product_id == uuid)
-
-                if (!exist) {
-                    cart_products.push({
-                        "product_id": uuid,
-                        "quantity_ordered":"1",
-                        "delivery_time":"",
-                        "ordered_time":""
-                    });
-
-                    let food_count = cart_products.length;
-
-                    localStorage.setItem('food_count', JSON.stringify(food_count));
-                    localStorage.setItem('cart_product', JSON.stringify(cart_products));
-                    alert("Product is added to cart")
-                    location.reload()
-                } else {
-                    alert("This product is already added to your cart")
-                }
-            });
-        });
-
-        // To store the count in the cart //
-        let foodCount = localStorage.getItem("food_count");   
-        document.querySelector('.Profile span').textContent = foodCount;
-
-    </script>
-    <!-- script ends-->
 </body>
 
 </html>

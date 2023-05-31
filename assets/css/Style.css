@@ -4,6 +4,10 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+::-webkit-scrollbar{
+    display: none;
+}
+
 .btn{
     color: white;
     background-color: #5cb748;

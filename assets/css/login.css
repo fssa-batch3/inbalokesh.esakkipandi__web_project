@@ -24,7 +24,7 @@ body{
 
 .signupbox{
     width: 450px;
-    height: 900px;
+    height: 780px;
     margin: auto;
     border-radius: 3px;
     background-color: rgb(246, 246, 246);
@@ -55,16 +55,15 @@ form{
 form label{
     display: flex;
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 17px;
 }
   
 form input{
     width: 132%;
     padding: 7px;
     border: none;
-    border: 1px solid grey;
+    border: 1px solid #ccc;
     border-radius: 3px;
-    outline: none;
 }
 
 form input.inp{
@@ -96,6 +95,7 @@ button:hover{
 textarea{
     height:100px;
     width:405px;
+    border: 1px solid #ccc;
     resize: none;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -112,12 +112,55 @@ p{
     font-size: 15px;
 }
   
+h5.password_note{
+    color: #393E46;
+    width:26rem;
+}
+
+/* For address form */
+
+.addressBox{
+    width: 450px;
+    height: 980px;
+    margin: auto;
+    border-radius: 3px;
+    background-color: rgb(246, 246, 246);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.addressBoxEdit{
+    width: 450px;
+    height: 880px;
+    margin: auto;
+    border-radius: 3px;
+    background-color: rgb(246, 246, 246);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.default{
+    display: flex;
+    align-items: baseline;
+}
+#checkBox{
+    height: 15px;
+    width: 25px;
+}
+.address-note{
+    text-align: left;
+    width:26rem
+}
+
+
 @media (max-width:490px){
     .new img{
         position:relative;
         left:25%;
     }
     .signupbox{
+        width:100%;
+    }
+    .addressBox{
+        height:1000px;
         width:100%;
     }
     form input{
@@ -128,6 +171,12 @@ p{
     }
     .btn-secondary{
         width:83.5vw;
+    }
+    h5.password_note{
+        width:86vw;
+    }
+    .address-note{
+        width:88vw
     }
 } 
 

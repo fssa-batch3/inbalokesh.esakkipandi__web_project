@@ -1,269 +1,370 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>ONLY HOME FOOD</title>
-      <link rel="stylesheet" href="../../assets/css/header.css">
-      <link rel="stylesheet" href="../../assets/css/footer.css">
-      <link rel="stylesheet" href="../../assets/css/order history.css">
-      <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
-    </head>
 
-    <body>
-      <header class="header">   
-        <div class="head">
-          <a href="../../index.html"><img src="../../assets/Images/LOGO.png" alt="Logo" height="80px" width="100px"></a>
-          <h1>ONLY HOME FOOD</h1>
-          <a href="#" class="toggle-button">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </a>
-        </div>
-        <div class="head">
-          <nav class="navbar">
-            <a class="navigation__link" href="../../index.html">Home</a>
-            <a class="navigation__link" href="../Menu/menu.html">Menu</a>
-            <a class="navigation__link" href="../Info/about us.html">About Us</a>
-            <a class="navigation__link" href="../Info/contact us.html">Contact Us</a>
-          </nav>
-          <div class="Profile">
-            <a href="Login.html"><button>Login</button></a>
-            <a href="../Cart/cart.html"><img src="../../assets/Images/cart-outline.svg" alt="Cart icon" height="30px" width="30px"></a>
-            <a href="Profile.html"><img src="../../assets/Images/person-circle-outline.svg" alt="Profile icon" height="30px" width="30px"></a>
-          </div>
-        </div>
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONLY HOME FOOD</title>
+  <link rel="stylesheet" href="../../assets/css/header.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css">
+  <link rel="stylesheet" href="../../assets/css/order history.css">
+  <link rel="icon" href="../../assets/Images/LOGO.png" type="image/x-icon">
+</head>
 
-      <section class="order_details">
-        
-      </section>
+<body>
 
-      <footer>
-        <div class="foot">
-          <div class="footer">
-            <img src="../../assets/Images/logo-facebook.svg" alt="facebook link">
-            <img src="../../assets/Images/logo-instagram.svg" alt="instagram link">
-            <img src="../../assets/Images/logo-twitter.svg" alt="twitter link">
-            <img src="../../assets/Images/logo-whatsapp.svg" alt="whatsapp link">
-          </div>
-          <p>
-            No.123, Rk Road, CLV Nagar, Uthandi, Chennai - 600 119.
-          </p>
-          <div class="phone">
-            <div>
-              <div>
-                <img src="../../assets/Images/call-outline.svg" alt="call image" height="30px" width="30px"> 
-              </div>
-              <img src="../../assets/Images/person-circle-outline.svg" alt="mail image" height="30px" width="30px">
-            </div>
-            <div>
-              <p>+918888888888</p>
-              <p>ohfood@gmail.com</p>    
-            </div>
-          </div>
-        </div>
-      </footer>
+  <section class="order_details">
 
-      <script>
-        let div_popup;
-        let h3_order_num;
-        let div_phead;
-        let p;
-        let div_order;
-        let image;
-        let div_name;
-        let p_fname;
-        let p_quantity;
-        let div_dpara;
-        let div_lpara;
-        let div_spara;
-        let p_impnote;
-        let div_cbut;
-        let a;
-        let button;
+  </section>
 
-        const items = [
-          {
-            "name": "Mutton Biryani",
-            "type": "Non-veg",
-            "image": {
-              "source": "../../assets/Images/Authentic-Hyderabadi-mutton-biryani-recipe.jpg",
-              "alt": "Mutton Biryani image"
-            },
-            "quantity": 2,
-            "price": {
-              "currency": "Rs ",
-              "rate": 179
-            }
-          },
-          {
-            "name": "Smabar Rice",
-            "type": "Veg",
-            "image": {
-              "source": "../../assets/Images/Sambar-Rice-min-scaled.webp",
-              "alt": "Sambar Rice image"
-            },
-            "quantity": 1,
-            "price": {
-              "currency": "Rs ",
-              "rate": 39
-            }
-          }
-        ]
+  <!-- header script -->
+  <script src="../../assets/javascript/header.js"></script>
 
-        // <div class="popuup">
-        div_popup = document.createElement("div");
-        div_popup.setAttribute("class", "popup");
-        console.log(div_popup)
+  <!-- footer script -->
+  <script src="../../assets/javascript/footer.js"></script>
+  <script>
+    let p;
+    let div_order;
+    let image;
+    let div_name;
+    let p_fname;
+    // let p_quantity;
+    // let p_impnote;
+    let div_cbut;
+    // let a;
+    let button;
 
-        // <h3> order_num
-        h3_order_num = document.createElement("h3")
-        h3_order_num.innerText = "Order:#5";
-        div_popup.append(h3_order_num)
+    const order_history = JSON.parse(localStorage.getItem("order_list"));
 
-        // <div class="phead">
-        div_phead = document.createElement("div");
-        div_phead.setAttribute("class", "phead");
-        div_popup.append(div_phead)
+    const url = window.location.search;
+    const urlParams = new URLSearchParams(url);
+    const order_id = urlParams.get("order_id");
+    console.log(order_id);
 
-        // <p>
-        p = document.createElement("p");
-        p.innerText = "Food Name";
-        div_phead.append(p)
+    const product_list = JSON.parse(localStorage.getItem("product_list"));
+    // console.log(product_list)
 
-        p = document.createElement("p");
-        p.setAttribute("class", "quan");
-        p.innerText = "Quantity";
-        div_phead.append(p)
+    const orderItem = JSON.parse(localStorage.getItem("ordered_items"));
 
-        p = document.createElement("p");
-        p.innerText = "Price";
-        div_phead.append(p)
+    const orders = order_history.find((e) => e.order_id === order_id);
+    console.log(orders);
 
-        // Order list //
-        for(let i=0; i<2; i++){
-        // <div class="order">
-        div_order = document.createElement("div");
-        div_order.setAttribute("class", "orderr");
-        div_popup.append(div_order)
+    const items = orderItem.filter((e) => e.order_id === orders.order_id);
+    console.log(items)
 
-        image = document.createElement("img");
-        image.setAttribute("src", items[i]["image"]["source"]);
-        image.setAttribute("alt", items[i]["image"]["alt"]);
-        div_order.append(image)
-        
-        div_name = document.createElement("div");
-        div_name.setAttribute("class", "name");
-        div_order.append(div_name)
+    const foodData = product_list.filter((product) =>
+      items.some((id) => id.product_id === product.product_id)
+    );
+    // console.log(foodData)
 
-        p_fname = document.createElement("p");
-        p_fname.setAttribute("class", "fname");
-        p_fname.innerText = items[i]["name"];
-        div_name.append(p_fname)
+    // <div class="popuup">
+    const div_popup = document.createElement("div");
+    div_popup.setAttribute("class", "popup");
+    console.log(div_popup);
 
-        p_fname = document.createElement("p");
-        p_fname.setAttribute("class", "fname");
-        p_fname.innerText = items[i]["type"];
-        div_name.append(p_fname)
+    // <h3> order_num
+    const h3_order_num = document.createElement("h3");
+    h3_order_num.innerText = `Order_id: ${order_id}`;
+    div_popup.append(h3_order_num);
 
-        p = document.createElement("p");
-        p.setAttribute("class", "quantity");
-        p.innerText = items[i]["quantity"];
-        div_order.append(p)
+    // <div class="phead">
+    const div_phead = document.createElement("div");
+    div_phead.setAttribute("class", "phead");
+    div_popup.append(div_phead);
 
-        p = document.createElement("p");
-        p.innerText = items[i]["price"]["currency"]+items[i]["price"]["rate"];
-        div_order.append(p)
-      }
+    // <p>
+    p = document.createElement("p");
+    p.innerText = "Food Name";
+    div_phead.append(p);
 
-      // <div class="dpara">
-      div_dpara = document.createElement("div");
-      div_dpara.setAttribute("class", "dpara");
-      div_popup.append(div_dpara)
+    p = document.createElement("p");
+    p.setAttribute("class", "quan");
+    p.innerText = "Quantity";
+    div_phead.append(p);
 
-      // <div class="lpara">
-      div_lpara = document.createElement("div");
-      div_lpara.setAttribute("class", "lpara");
-      div_dpara.append(div_lpara)
+    p = document.createElement("p");
+    p.innerText = "Price";
+    div_phead.append(p);
 
-      // <p>
-      p = document.createElement("p");
-      p.innerText = "Ordered time";
-      div_lpara.append(p)
+    p = document.createElement("p");
+    p.innerText = "Delivery";
+    div_phead.append(p);
+
+    // Order list //
+    for (let i = 0; i < foodData.length; i++) {
+      // <div class="order">
+      div_order = document.createElement("div");
+      div_order.setAttribute("class", "orderr");
+      div_popup.append(div_order);
+
+      image = document.createElement("img");
+      image.setAttribute("src", foodData[i].product_image);
+      image.setAttribute("alt", `${foodData[i].product_name} image`);
+      div_order.append(image);
+
+      div_name = document.createElement("div");
+      div_name.setAttribute("class", "name");
+      div_order.append(div_name);
+
+      p_fname = document.createElement("p");
+      p_fname.setAttribute("class", "fname");
+      p_fname.innerText = foodData[i].product_name;
+      div_name.append(p_fname);
+
+      p_fname = document.createElement("p");
+      p_fname.setAttribute("class", "fname");
+      p_fname.innerText = foodData[i].product_type;
+      div_name.append(p_fname);
 
       p = document.createElement("p");
-      p.innerText = "Delivered time";
-      div_lpara.append(p)
+      p.setAttribute("class", "quantity");
+      p.innerText = items[i].quantity_ordered;
+      div_order.append(p);
+
 
       p = document.createElement("p");
-      p.innerText = "Total";
-      div_lpara.append(p)
+      p.setAttribute("class", "cost");
+      p.innerText = `Rs. ${foodData[i].product_price * items[i].quantity_ordered}`;
+      div_order.append(p);
 
       p = document.createElement("p");
-      p.innerText = "Payment";
-      div_lpara.append(p)
+      p.setAttribute("class", "deliveryStatus");
+      p.innerText = "(" + items[i].delivery_time[0] + ") " + items[i].order_status;
+      div_order.append(p);
 
-      // <div class="spara">
-      div_spara = document.createElement("div");
-      div_spara.setAttribute("class", "spara");
-      div_dpara.append(div_spara)
+    }
 
-      // <p>
-      p = document.createElement("p");
-      p.innerText = "30 Nov 2022,01:47 PM";
-      div_spara.append(p)
+    // To get the address //
 
-      p = document.createElement("p");
-      p.innerText = "Not Delivered";
-      div_spara.append(p)
+    let address = JSON.parse(localStorage.getItem("address"));
 
-      p = document.createElement("p");
-      p.innerText = "Rs.397";
-      div_spara.append(p)
+    let deliveryAddress = address.filter((id) => id.address_id === orders.delivery_address_Id);
 
-      p = document.createElement("p");
-      p.innerText = "-";
-      div_spara.append(p)
+    console.log(deliveryAddress)
+    // Create the outermost div element with class "delivery-address-box"
+    const deliveryAddressBox = document.createElement("div");
+    deliveryAddressBox.classList.add("delivery-address-box");
+    div_popup.append(deliveryAddressBox);
 
-      // <p class="impnote">
-      p = document.createElement("p");
-      p.setAttribute("class", "impnote");
-      p.innerText = "*Note: You have to cancel your order the same day you have placed it.";
-      div_popup.append(p)
+    // Create the div element with class "address-head"
+    const addressHead = document.createElement("div");
+    addressHead.classList.add("address-head");
 
-      // <div class="cbut">
-      div_cbut = document.createElement("div");
-      div_cbut.setAttribute("class", "cbut");
-      div_popup.append(div_cbut)
+    // Create the image element
+    const houseimage = document.createElement("img");
+    houseimage.classList.add("greenHouse");
+    houseimage.src = "../../assets/Images/Green house.png";
+    houseimage.alt = "green house image";
 
+    // Create the h2 element with class "side-head"
+    const heading = document.createElement("h2");
+    heading.classList.add("side-head");
+    heading.textContent = "Delivery details";
+
+    // Append the image and heading elements to the addressHead div
+    addressHead.appendChild(houseimage);
+    addressHead.appendChild(heading);
+
+    // Create the div element with class "address-content"
+    const addressContent = document.createElement("div");
+    addressContent.classList.add("address-content");
+
+    // Create the p elements with the respective content
+    const nameParagraph = document.createElement("p");
+    nameParagraph.classList.add("delivery-name");
+    nameParagraph.textContent = deliveryAddress[0].name;
+
+    const addressParagraph = document.createElement("p");
+    addressParagraph.textContent = deliveryAddress[0].house_number + ", " + deliveryAddress[0].town_name ;
+
+    const locationParagraph = document.createElement("p");
+    locationParagraph.textContent = deliveryAddress[0].city + " - " + deliveryAddress[0].pinCode;
+
+    const mobileParagraph = document.createElement("p");
+    mobileParagraph.textContent = "Mobile - " + deliveryAddress[0].mobile_number;
+
+    // Append the p elements to the addressContent div
+    addressContent.appendChild(nameParagraph);
+    addressContent.appendChild(addressParagraph);
+    addressContent.appendChild(locationParagraph);
+    addressContent.appendChild(mobileParagraph);
+
+    // Append the addressHead and addressContent divs to the deliveryAddressBox div
+    deliveryAddressBox.appendChild(addressHead);
+    deliveryAddressBox.appendChild(addressContent);
+
+
+    // <div class="dpara">
+    const div_dpara = document.createElement("div");
+    div_dpara.setAttribute("class", "dpara");
+    div_popup.append(div_dpara);
+
+    // <div class="lpara">
+    const div_lpara = document.createElement("div");
+    div_lpara.setAttribute("class", "lpara");
+    div_dpara.append(div_lpara);
+
+    // <p>
+    p = document.createElement("p");
+    p.innerText = "Ordered time";
+    div_lpara.append(p);
+
+    // p = document.createElement("p");
+    // p.innerText = "Delivery status";
+    // div_lpara.append(p);
+
+    p = document.createElement("p");
+    p.innerText = "Total";
+    div_lpara.append(p);
+
+    p = document.createElement("p");
+    p.innerText = "Payment";
+    div_lpara.append(p);
+
+    // <div class="spara">
+    const div_spara = document.createElement("div");
+    div_spara.setAttribute("class", "spara");
+    div_dpara.append(div_spara);
+
+    // Date format to show //
+    const d = new Date(orders.ordered_time);
+    const weekday = new Array("Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat");
+    const dayOfWeek = weekday[d.getDay()];
+    const domEnder = (function () {
+      let a = d;
+      if (/1/.test(parseInt(`${a}`.charAt(0)))) return "th";
+      a = parseInt(`${a}`.charAt(1));
+      return a === 1 ? "st" : a === 2 ? "nd" : a === 3 ? "rd" : "th";
+    })();
+    const dayOfMonth = (d.getDate() < 10 ? "0" : "") + d.getDate() + domEnder;
+    const months = new Array(
+      "January",
+      "February",
+      "Mar",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    );
+    const curMonth = months[d.getMonth()];
+    const curYear = d.getFullYear();
+    const curHour =
+      d.getHours() > 12
+        ? d.getHours() - 12
+        : d.getHours() < 10
+          ? `0${d.getHours()}`
+          : d.getHours();
+    const curMinute = d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes();
+    const curSeconds = d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds();
+    const curMeridiem = d.getHours() >= 12 ? "PM" : "AM";
+    const orderTime = `${dayOfMonth} ${curMonth} ${curYear},${dayOfWeek} ${curHour}:${curMinute}:${curSeconds} ${curMeridiem}`;
+
+    // <p>
+    p = document.createElement("p");
+    p.innerText = orderTime;
+    div_spara.append(p);
+
+    // p = document.createElement("p");
+    // p.innerText = "Not delivered";
+    // div_spara.append(p);
+
+    p = document.createElement("p");
+    p.innerText = `Rs.${orders.total_price}`;
+    div_spara.append(p);
+
+    p = document.createElement("p");
+    p.innerText = "COD";
+    div_spara.append(p);
+
+    // <p class="impnote">
+    p = document.createElement("p");
+    p.setAttribute("class", "impnote");
+    p.innerText =
+      "Note: You can only cancel your order on the same day of the placement.";
+    div_popup.append(p);
+
+    // <div class="cbut">
+    div_cbut = document.createElement("div");
+    div_cbut.setAttribute("class", "cbut");
+    div_popup.append(div_cbut);
+
+    // Function for button //
+    const startTime = d;
+
+    const endTime = new Date(
+      startTime.getFullYear(),
+      startTime.getMonth(),
+      startTime.getDate() + 1,
+      0,
+      0,
+      0,
+      0
+    );
+    const now = new Date();
+
+    if (endTime > now) {
       // <button>
-      button = document.createElement("button");
-      button.setAttribute("onclick", "cancel()");
-      button.innerText = "Cancel order";
-      div_cbut.append(button)
-
-      // <button>
-      button = document.createElement("button");
-      button.setAttribute("onclick", "btn()");
-      button.setAttribute("type", "close");
-      button.innerText = "Close";
-      div_cbut.append(button)
-
-      document.querySelector("section.order_details").append(div_popup)
-
-      function btn(){
-        window.location.href="./Profile.html"
+      if (orders.order_status === "Cancelled") {
+        button = document.createElement("button");
+        button.setAttribute("class", "cancel_order");
+        button.setAttribute("style", "display:none");
+        button.innerText = "Cancel order";
+        div_cbut.append(button);
+      } else {
+        button = document.createElement("button");
+        button.setAttribute("class", "cancel_order");
+        button.setAttribute("onclick", "cancel()");
+        button.innerText = "Cancel order";
+        div_cbut.append(button);
       }
-      
-      function cancel(){
-        window.location.href="../Cart/cart.html"
+    }
+
+    button = document.createElement("button");
+    button.setAttribute("class", "re_order");
+    button.setAttribute("onclick", "re_order()");
+    button.innerText = "Re-order";
+    div_cbut.append(button);
+
+    // <button>
+    button = document.createElement("button");
+    button.setAttribute("onclick", "btn()");
+    button.setAttribute("type", "close");
+    button.innerText = "Close";
+    div_cbut.append(button);
+
+    document.querySelector("section.order_details").append(div_popup);
+
+    function btn() {
+      window.location.href = "./Profile.html";
+    }
+
+    function cancel() {
+      if (confirm("This order will be cancelled completely")) {
+        for (let i = 0; i < items.length; i++) {
+          items[i].order_status = "Cancelled";
+        }
+        localStorage.setItem("ordered_items", JSON.stringify(orderItem));
+        window.location.href = "../Login and Order/Profile.html";
       }
+    }
 
-      </script>
+    function re_order() {
+      let cart_product = JSON.parse(localStorage.getItem("cart_product"));
+      cart_product = cart_product.filter((e) => e.user_id !== userId);
+      cart_product.push(...items);
+      localStorage.setItem("cart_product", JSON.stringify(cart_product));
+      localStorage.setItem("food_count", parseInt(items.length));
+      alert("Your product is added to the cart");
+      window.location.href = "../Cart/cart.html";
+    }
+  </script>
+</body>
 
-    </body>
 </html>
