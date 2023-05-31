@@ -120,7 +120,7 @@ if (addressFrom === "CreateAddress") {
             let userAddress = address.filter((data) => data.userId === userId);
             console.log(userAddress.length)
 
-            let limitAddress = userAddress.filter((limit) => limit.Showstatus === 0);
+            let limitAddress = userAddress.filter((limit) => limit.Showstatus === 1);
             console.log(limitAddress)
 
             let checkAddress = userAddress.filter((e) => e.name === name &&
@@ -141,7 +141,7 @@ if (addressFrom === "CreateAddress") {
                             pinCode,
                             state,
                             defaultStatus: true,
-                            Showstatus: 0,
+                            Showstatus: 1,
                             userId,
                             address_id
                         });
@@ -162,7 +162,7 @@ if (addressFrom === "CreateAddress") {
                                 pinCode,
                                 state,
                                 defaultStatus: true,
-                                Showstatus: 0,
+                                Showstatus: 1,
                                 userId,
                                 address_id
                             });
@@ -179,7 +179,7 @@ if (addressFrom === "CreateAddress") {
                                 pinCode,
                                 state,
                                 defaultStatus,
-                                Showstatus: 0,
+                                Showstatus: 1,
                                 userId,
                                 address_id
                             });
@@ -192,23 +192,23 @@ if (addressFrom === "CreateAddress") {
                     window.location.href = "../../Pages/Login and Order/List address.html?status=1";
                 }
                 else {
-                    if(checkAddress[0].Showstatus === 1){
-                    checkAddress[0].Showstatus = 0;
-                    if (defaultStatus === true) {
-                        let defaultAddress = userAddress.find((e) => e.defaultStatus === true);
-                        defaultAddress.defaultStatus = false;
-                        localStorage.setItem("addressId", JSON.stringify(checkAddress[0].address_id));
+                    if (checkAddress[0].Showstatus === 0) {
+                        checkAddress[0].Showstatus = 1;
+                        if (defaultStatus === true) {
+                            let defaultAddress = userAddress.find((e) => e.defaultStatus === true);
+                            defaultAddress.defaultStatus = false;
+                            localStorage.setItem("addressId", JSON.stringify(checkAddress[0].address_id));
+                            localStorage.setItem("address", JSON.stringify(address));
+                            checkAddress[0].defaultStatus = true;
+                        }
                         localStorage.setItem("address", JSON.stringify(address));
-                        checkAddress[0].defaultStatus = true;
+                        document.querySelector("form").reset();
+                        alert("Your address has been submited");
+                        window.location.href = "../../Pages/Login and Order/List address.html?status=1";
                     }
-                    localStorage.setItem("address", JSON.stringify(address));
-                    document.querySelector("form").reset();
-                    alert("Your address has been submited");
-                    window.location.href = "../../Pages/Login and Order/List address.html?status=1";
-                }
-                else{
-                    alert("This address is already in your book")
-                }
+                    else {
+                        alert("This address is already in your book")
+                    }
                 }
 
             }
@@ -242,9 +242,9 @@ if (addressFrom === "EditAddress") {
         e.preventDefault()
 
         let userAddress = address.filter((data) => data.userId === userId);
-  
+
         let EditAddress = address.filter((edit) => edit.address_id === addressUniqueId);
-     
+
         let uname = document.getElementById("name").value.trim().split(/\s+/g).join(" ");
         let umobile_number = document.getElementById("mobile_number").value;
         let uaddressSearch = document.getElementById("addressSearch").value;
@@ -263,14 +263,14 @@ if (addressFrom === "EditAddress") {
         }
         validate()
 
-        let alreadyExist = userAddress.some((details) => details.name === uname &&
+        let alreadyExist = userAddress.filter((details) => details.name === uname &&
             details.mobile_number === umobile_number && details.location === uaddressSearch &&
             details.house_number === uhouse_number && details.town_name === utown_name &&
             details.city === ucity && details.pinCode === upinCode && details.state === ustate)
 
-        console.log(alreadyExist)
+        // console.log(alreadyExist)
 
-        if (!alreadyExist) {
+        if (alreadyExist.length === 0) {
             address.push({
                 "name": uname,
                 "mobile_number": umobile_number,
@@ -281,18 +281,30 @@ if (addressFrom === "EditAddress") {
                 "pinCode": upinCode,
                 "state": ustate,
                 "defaultStatus": EditAddress[0].defaultStatus,
-                "Showstatus": 0,
+                "Showstatus": 1,
                 userId,
                 address_id
             });
 
             EditAddress[0].defaultStatus = false
-            EditAddress[0].Showstatus = 1;
+            EditAddress[0].Showstatus = 0;
             localStorage.setItem("addressId", JSON.stringify(address_id));
-            localStorage.setItem("address", JSON.stringify(address));
+            localStorage.setItem("address", JSON.stringify(address))
             alert("Address updated sucessfully");
         }
 
+        else if (alreadyExist[0].Showstatus === 1) {
+            console.log("Inba")
+            alert("Address already exist in your book");
+        }
+        else {
+            EditAddress[0].Showstatus = 0;
+            alreadyExist[0].Showstatus = 1;
+            alreadyExist[0].defaultStatus = EditAddress[0].defaultStatus;
+            localStorage.setItem("addressId", JSON.stringify(address_id));
+            localStorage.setItem("address", JSON.stringify(address))
+            alert("Updated sucessfully");
+        }
         document.querySelector("form").reset();
         window.location.href = "../../Pages/Login and Order/List address.html?status=1";
     });

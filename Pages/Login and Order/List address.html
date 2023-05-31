@@ -67,7 +67,7 @@
 
         let address = JSON.parse(localStorage.getItem("address")) || [];
 
-        let userAddress = address.filter((data) => data.userId === userId && data.Showstatus === 0);
+        let userAddress = address.filter((data) => data.userId === userId && data.Showstatus === 1);
         console.log(userAddress)
 
         for (let i = 0; i < userAddress.length; i++) {
@@ -262,7 +262,7 @@
                 }
                 else {
                     let findAddress = userAddress.find((findId) => findId.address_id === address_id);
-                    findAddress.Showstatus = 1
+                    findAddress.Showstatus = 0
                     localStorage.setItem("address", JSON.stringify(address));
                     window.location.reload()
                 }
