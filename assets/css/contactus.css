@@ -60,6 +60,22 @@ h1.con{
   margin:50px 0;
 }
   
+.message_note h3{
+  font-size: 30px;
+}
+
+.message_gif{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:120px 0 160px 0;
+}
+
+.message_gif img{
+  height:150px;
+}
+
 @media (max-width:1245px) {
   .box{
     flex-direction: column-reverse;
